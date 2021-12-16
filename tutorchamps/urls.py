@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.urls import path,include
 from django.contrib.auth import views as auth_views 
-# from django.contrib.sitemaps.views import sitemap
-# from app.sitemaps import Static_Sitemap
-# sitemaps = {
-#     'static': Static_Sitemap(),
-# }
+from django.contrib.sitemaps.views import sitemap
+from app.sitemaps import Static_Sitemap
+sitemaps = {
+    'static': Static_Sitemap(),
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -16,5 +16,5 @@ urlpatterns = [
          name='password_reset_confirm'),
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), 
          name='password_reset_complete'), 
-    # path('sitemap.xml',sitemap,{'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('sitemap.xml',sitemap,{'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
