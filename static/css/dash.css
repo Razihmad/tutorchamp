@@ -1,0 +1,93 @@
+body{margin: 0; padding: 0; font-size: 16px; font-family: 'Noto Sans TC', sans-serif; color: #777;}
+
+
+header{background: #fbfbfb; padding: 5px 0;}
+header .top-menu ul{display: flex;align-items: center;}
+header .top-menu ul li{display: inline-block;}
+header .top-menu ul img {
+    width: 18px;
+    margin-right: 6px;
+    vertical-align: -4px;
+    filter: invert(1);
+}
+header .top-menu ul img.plusImg{border-radius: 50px; filter: none;}
+header .top-menu ul .new-assignment-btn {
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    padding: 8px 12px;
+    background: #47bf7f;
+    margin-top: -7px;
+}
+header .top-menu ul li a{padding: 3px 10px 8px 15px;display: inline-block;}
+header .top-menu ul li a span.badge {
+    font-family: "Open Sans", sans-serif;
+    left: 21px;
+    font-family: "Open Sans", sans-serif;
+    position: absolute;
+    top: -13px;
+    right: auto;
+    font-weight: 300;
+    padding: 4px;
+    font-size: 9px !important;
+    border-radius: 10px;
+    height: 18px;
+    background: #333;
+    color: #fff;
+}
+.profileDrop{
+    display: flex!important;
+    align-items: baseline;
+    padding: 7px 10px 0!important;
+}
+a:hover{text-decoration: none;}
+.user-details {
+    position: relative !important;
+    top: -9px;
+}
+header ul li ul{display: block!important;box-shadow: 3px 5px 10px #ddd; opacity: 0;}
+header ul li ul li{display: block!important;}
+header ul li ul li a{font-size: 15px;font-weight: 400;color: #777; text-decoration: none;}
+header ul li:hover>ul{opacity: 1;}
+.user-details span {
+    color: #333;
+    display: block;
+    font-size: 12px;
+    text-transform: capitalize;
+    line-height: 1.4;
+}
+header .profile{height: 31px!important; width: 31px!important;}
+.orderID h4{font-size: 18px;font-weight: bold;padding: 8px 0;margin: 0;color: #344f88;}
+.assignmentDetails{background: #3e5076;margin-bottom: 20px;border-radius: 7px;overflow: hidden;border: 1px solid #3e5076;}
+footer{background: #f8fbff;padding: 12px 0;position: absolute;font-size: 15px;bottom: 0;width: 100%;}
+.assignmentDetails .panel-heading {
+    color: #fff;
+    background-color: #344f88;
+    border-color: #337ab7;
+}
+.assignmentDetails .panel-title {
+    margin: 0;
+    font-size: 16px;
+    padding: 15px;
+}
+.assignmentDetails .panelBody{
+    background: #fff;
+    padding: 30px 20px;
+}
+.submitDetail{
+    background: #47bf7f;
+    display: inline-block;
+    color: #fff;
+    padding: 5px 37px 8px;
+    cursor: pointer;
+    margin: 34px auto 0;
+    font-size: 16px;
+    text-transform: capitalize;
+    text-decoration: none;
+    border-radius: 52px;
+    border: 1px solid #47bf7f;
+    line-height: 24px;
+}
+.submitDetail:focus{outline: none;}
+
+

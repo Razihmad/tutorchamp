@@ -1,0 +1,156 @@
+.logout{position: absolute!important;
+    bottom: 15px;z-index: 1!important;
+    width: 100%;}
+		.mob-logo{margin-bottom: 90px!important;}
+		.active{background: #47bf7f!important;
+    color: #fff!important;    margin-bottom: 20px!important;}
+		body{background-color: #f0faf5;}
+		.dashboardContainer:after{content: ""; background: #ddddddf7; position: absolute;top: 0; right: 0; width: calc(100% - 260px); height: 100%;}
+		.dashboardContainer{ position: relative;   display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 100vh;background: url(../images/tutorChamp_dashboard_pattren_bg.png);background-position: center; } 
+		.DashboardContent{width: calc(100% - 300px);    position: relative;
+    z-index: 3; background: #fff; margin: 20px; padding: 25px;box-shadow: 0 0 6px #00000024;}
+		.sidebar_menu.sidebar li{position: relative;z-index: 2;background-color: #fff;}
+		.sidebar_menu.sidebar li>a {
+		    position: relative;
+		    padding: 12px 25px;
+		    margin: 0;
+		    color: #000;
+		    display: block;
+		}
+		.sidebar_menu.sidebar li>a i{
+			width: 50px;
+		    font-size: 18px;
+		    line-height: 22px;
+		    text-align: center;
+		}
+		.sidebar_menu.sidebar{
+		    position: fixed;
+		    top: 0;
+		    left: 0;
+		    z-index: 30;
+		    width: 260px;
+		    height: 100%;
+            overflow: hidden;
+		    padding-top: 40px;
+		    background: #fff;
+		    box-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 1px 1px rgb(0 0 0 / 5%);
+		    -moz-box-shadow: 0 0 0 1px rgba(0,0,0,.05),0 1px 1px rgba(0,0,0,.05);
+		    -webkit-box-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 1px 1px rgb(0 0 0 / 5%);
+		    transition: all .4s ease;
+		    -moz-transition: all .4s ease;
+		    -o-transition: all .4s ease;
+		    -ms-transition: all .4s ease;
+		    -webkit-transition: all .4s ease;
+		}
+.userprof{    height: 100px;
+    width: 100px;}
+.userprof img{    max-width: 100%;
+    max-height: 100%;
+    background: #e6e6e6;
+    border-radius: 10px;}
+.DashboardContent .commForm h2{margin: 10px 0 0px 0;}
+.DashboardContent .commForm h2+p{margin: 0px 0 40px 0;line-height: 10px;}
+.profileContent{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.live_session_content .col50{width: 45%!important;
+    max-width: 450px!important;}
+.col50{
+    width: 45%;
+    max-width: 450px;
+}
+.live_session_content label, .clientDashboard label{font-size: 13px; margin-bottom: 2px;color: #000;}
+.live_session_content .flex_div > div{    width: 100%;
+    max-width: 220px;}
+.attachFile {
+    height: 116px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 11px;
+}
+.mt30{margin-top: 30px;}
+.attachFile .addfile{height: 90px;
+    width: 73px;
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+}
+.attachFile .addfile .inputFile{
+	cursor: pointer;
+    position: absolute;
+    bottom: 0px;
+    font-size: 12px;
+    left: -86px;
+    height: 90px;
+    padding-top: 54px;
+}
+.custom-file-upload{
+    background: url(../images/addFile.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  padding: 4px;
+  color: #fff!important;
+  font-size: 11px!important;
+    cursor: pointer;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    justify-content: center;
+}
+.assignment_help_inner>div{width: 33%; max-width: 310px;}
+.profileContent, .live_session_content, .homeContant, .project_lab_content, .assignment_help_content, .Update_subject_content{height: 0;overflow: hidden;}
+.active_{height: auto!important; background: none;}
+.active_ .commForm{margin-bottom: 15px;}
+.sidebar_menu li:first-child a.active{background: none!important;}
+.project_lab_content .col4{width: 22%;}
+.homeContant .col3{width: 32%}
+.pt7{padding-top: 7px;}
+.mb55{margin-bottom: 55px;}
+.mobHeader{display: none;}
+
+@media screen and (max-width: 767px){
+
+    .mobHeader{display: block;}
+    .mobHeader > div{display: flex; align-items: center;justify-content: space-between;padding: 15px;}
+    .mobHeader a{font-size: 22px;
+    border: 2px solid #3e5076;
+    padding: 2px 10px;
+    border-radius: 6px;
+    color: #3e5076;}
+    .DashboardContent{margin: 0;}
+    .dashboardContainer:after{width: 100%;}
+    .DashboardContent{width: 100%;}
+    .DashboardContent{padding: 15px;}
+    .sidebar{left: -225px!important; width: 225px!important;
+    box-shadow: 0px 0px 13px 0px rgb(0 0 0 / 32%);}
+    .sidebar.open{left: 0!important;}
+    .flex_div{display: block!important;}
+    .homeContant .col3 {
+        width: 100%; margin-bottom: 15px;
+    }
+    .assignment_help_inner>div{width: 100%;}
+    .live_session_content .col50{width: 100%!important;}
+    .live_session_content .flex_div > div{max-width: 100%;}
+    .live_session_content .flex_div > div textarea{margin-bottom: 10px;}
+    .project_lab_content .col4{width: 100%;margin-top: 15px;}
+    .profileContent{display: block;}
+    .profileContent .col50, .col50{width: 100%;}
+    .DashboardContent .commForm h2+p{line-height: 22px;}
+}
+
+
+
+
+
+
+
+
+

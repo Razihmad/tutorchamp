@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<meta charset="utf-8">
+<title>Become A Tutor at TutorChamps.com</title>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<style>
+	@media screen and (max-width: 767px){
+		.reg-section{display: block;}
+	.reg-section > div{width: 100%!important;}
+	.reg-section p, .reg-section ul li{font-size: 14px!important;}
+	.w-75 {
+		    width: 90%!important;
+		}
+	.commForm{border-radius: 0px; width: 100%;}
+	.commForm .form_group{display: block!important;}
+	.commForm .form_group .pos_rel{width: 100%!important;}
+	.bgsignup{padding: 30px 0;}
+	}
+</style>
+</head>
+
+<body class="hidden-bar-wrapper">
+
+<div class="page-wrapper">
+	<section class="reg-section">
+		<div style="width: 35%;" class="flex_div">
+			<form class="commForm mt-3 shadowNone border-0" method="POST">
+				{% csrf_token %}
+				<div class="text-center"><img src="{% static 'images/RectLogo.jpg' %}" alt=""></div>
+				<div class="first_step">
+					<h3 class="text-dark text-center mb-4">Personal Information</h3>
+	                <div class="form_group">
+	                	<div class="pos_rel">
+
+	                		<label>Enter Your Name </label>
+	                		<input required name="name" type="text" placeholder="Name" class="input">
+	                	</div>
+	                    <div class="pos_rel">
+							{% for message in messages %}
+							  <p>{{message}}</p>
+							{% endfor %}
+	                    	<label>Enter Your Email </label>
+	                        <input required name="email" type="email" class="input" placeholder="Enter Email">
+	                    </div>
+	                </div>
+	                <div class="form_group">
+	                    <div class="pos_rel">
+	                    	<label>Enter WhatsApp Number</label>
+	                        <input required name="number" class="input" placeholder="Enter WhatsApp Number" type="Number" maxlength="10">
+	                    </div>
+	                    <div class="pos_rel">
+						    <label for="inputState">State</label>
+						    <select required class="input" id="inputState" name="State">
+		                        <option value="SelectState">Select State</option>
+		                        <option value="Andra Pradesh">Andra Pradesh</option>
+		                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+		                        <option value="Assam">Assam</option>
+		                        <option value="Bihar">Bihar</option>
+		                        <option value="Chhattisgarh">Chhattisgarh</option>
+		                        <option value="Goa">Goa</option>
+		                        <option value="Gujarat">Gujarat</option>
+		                        <option value="Haryana">Haryana</option>
+		                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+		                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+		                        <option value="Jharkhand">Jharkhand</option>
+		                        <option value="Karnataka">Karnataka</option>
+		                        <option value="Kerala">Kerala</option>
+		                        <option value="Madya Pradesh">Madya Pradesh</option>
+		                        <option value="Maharashtra">Maharashtra</option>
+		                        <option value="Manipur">Manipur</option>
+		                        <option value="Meghalaya">Meghalaya</option>
+		                        <option value="Mizoram">Mizoram</option>
+		                        <option value="Nagaland">Nagaland</option>
+		                        <option value="Orissa">Orissa</option>
+		                        <option value="Punjab">Punjab</option>
+		                        <option value="Rajasthan">Rajasthan</option>
+		                        <option value="Sikkim">Sikkim</option>
+		                        <option value="Tamil Nadu">Tamil Nadu</option>
+		                        <option value="Telangana">Telangana</option>
+		                        <option value="Tripura">Tripura</option>
+		                        <option value="Uttaranchal">Uttaranchal</option>
+		                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+		                        <option value="West Bengal">West Bengal</option>
+		                        <option disabled style="background-color:#aaa; color:#fff">UNION Territories</option>
+		                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+		                        <option value="Chandigarh">Chandigarh</option>
+		                        <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+		                        <option value="Daman and Diu">Daman and Diu</option>
+		                        <option value="Delhi">Delhi</option>
+		                        <option value="Lakshadeep">Lakshadeep</option>
+		                        <option value="Pondicherry">Pondicherry</option>
+		                      </select>
+						</div>
+	                </div>
+	                <div class="form_group">
+	                	<div class="pos_rel">
+						    <label for="inputDistrict">Select City</label>
+						    <select required class="input" id="inputDistrict" name="city">
+						        <option value="">-- select one -- </option>
+						    </select>
+						</div>
+	                    <div class="pos_rel">
+	                    	<label>Pin Code</label>
+	                    	<input required name="pin" class="input" placeholder="Pin Code" type="text" maxlength="6">
+	                    </div>
+	                </div>
+	                <div class="text-center mt-3">
+	                    <a style="padding: 7px 43px;" href="javascript:void(0)" class="theme-btn btn-style-one" id="next"><span class="txt">Next</span></a>
+	                </div>
+                </div>
+
+                <div class="Second_step">
+                	<h3 class="text-dark text-center mb-4 Second_step">Academic Details</h3>
+	                <div class="form_group "> 
+	                	<div class="pos_rel">
+	                        <label>Qualification level</label>
+	                        <select required id="level" class="input" name="level">
+	                            <option value="test_city" disabled="" selected="">-- Select --</option>
+	                            <option value="Undergraduate">Undergraduate</option>
+	                            <option value="Postgraduate">Postgraduate </option>
+	                            <option value="PhD">PhD</option>
+				            </select>
+	                    </div>
+	                    <div class="pos_rel">
+	                        <label>Degree</label>
+	                        <select id="degree" required class="input" name="degree">
+	                            <option value="test_city" disabled="" selected="">-- Select --</option>
+	                            <option value="B.tech">B.tech</option>
+	                            <option value="M.tech">M.tech </option>
+	                            <option value="B.A.">B.A.</option>
+	                            <option value="M.A.">M.A.</option>
+	                            <option value="B.com">B.com</option>
+	                            <option value="M.com">M.com</option>
+	                            <option value="BCA">BCA</option>
+	                            <option value="MCA">MCA</option>
+				            </select>
+	                    </div>
+	                </div>
+	                <div class="form_group Second_step">
+	                	<div class="pos_rel">
+	                    	<label>Branch/Course</label>
+	                        <input required name="branch" class="input" placeholder="Branch/Course" type="text">
+	                    </div>
+	                    <div class="pos_rel">
+	                    	<label>College/University</label>
+	                        <input required name="college" class="input" placeholder="College/University" type="text">
+	                    </div>
+	                </div>
+	                <div class="form_group Second_step">
+	                    <div class="pos_rel">
+	                        <div class="attch-feild"> 
+	                    		<label> College id/ passing certificate</label>
+		                        <input required style="line-height: 16px;" class="input" type="file" name="att_file" id=""> 
+		                    </div>
+	                    </div>
+	                    <div class="pos_rel">
+	                    	<label>Select Subject</label>
+	                        <select class="input" required name="subject">
+	                            <option value="test_city" disabled="" selected="">-- Select --</option>
+	                            <option value="Essay Writing">Essay Writing</option>
+								<option value="Physics">Physics</option>  
+	                            <option value="Case Study Writing">Case Study Writing</option>
+	                            <option value="Chemistry">Chemistry </option>
+	                            <option value="Math">Math</option>
+	                            <option value="Science">Science </option>
+	                            <option value="English">English</option>
+	                            <option value="Programming">Programming</option>
+	                            <option value="Biology">Biology </option>
+	                            <option value="Engineering">Engineering </option>
+	                            <option value="Computer Science">Computer Science </option>
+	                            <option value="Statistics">Statistics </option>
+	                            <option value="Accounting">Accounting</option>
+	                            <option value="Economics">Economics</option>
+				            </select>
+	                    </div>
+	                </div>
+	                <div class="text-center mt-3 Second_step">
+	                    <!-- <a style="padding: 7px 43px;" href="" class="theme-btn btn-style-one"><span class="txt">Submit</span></a> -->
+						<input type="submit" name="" id="" class="theme-btn btn-style-one" style="padding: 7px 43px;"  value="Submit">
+	                </div>
+                </div>
+            </form>
+		</div>
+		<div class="bgsignup">
+			<div class="banner-list">
+				<div class="w-75 mx-auto">
+					<h2>Greetings, and Welcome to<br> <span class="sec-underline">Tutor Champs!</span></h2>
+					<p style="font-size: 1.15rem;" class="mt-4 text-white">We provide you with the best chance to make a lot of money by working as an online tutor with Tutor Champs. We provide the most competitive rates in the essay writing and online tutoring industries, as well as the freedom to choose your own working hours and assignments. 
+                    <br> Working as a researcher for our organisation allows you to explore a diverse range of themes and fields of study, making it a demanding and fascinating career choice. We value your writing abilities and will work with you to improve your academic talents as well as share your information and skills with others so that you can achieve academic success.
+                    </p> 
+                    <ul style="font-size: 1.15rem;" class="mt-3 text-white">
+                    	<li><i style="color: #ffe00c;" class="fa fa-star"> </i> Share your expertise across the globe.</li> 
+                    	<li><i style="color: #ffe00c;" class="fa fa-star"> </i> Earn a decent amount of money by sharing your knowledge.</li> 
+                    	<li><i style="color: #ffe00c;" class="fa fa-star"> </i> Increase your knowledge by practicing and solving a variety of questions.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+	</section>	
+	
+</div>
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<script>
+
+$("#next").click(function(){
+		$(".first_step").hide();
+		$(".Second_step").show();
+   
+});
+</script>
+</body>
+</html>

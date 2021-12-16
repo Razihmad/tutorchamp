@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Template</title>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
+
+<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<style>
+	.pageNotFound{
+	background: url('/static/images/404.svg'),#f0faf5;
+    background-repeat: no-repeat;
+    padding: 65px 0;
+    background-position: center;
+}
+	.pageNotFound h1 {
+    font-size: 170px;
+    color: #fff;
+    font-weight: 700;
+    text-shadow: 5px 5px 0 #3e5076;
+    margin: 0;
+    line-height: 214px;
+}
+.pageNotFound h2 {
+        font-size: 37px;
+    color: #3e5076;
+    margin: 0 0 25px;
+    display: inline-block;
+}
+</style>
+</head>
+
+<body class="hidden-bar-wrapper">
+
+<div class="page-wrapper">
+    <div class="preloader">
+    	<div class="mesh-loader">
+	      <div class="set-one">
+	        <div class="circle"></div>
+	        <div class="circle"></div>
+	      </div>
+	      <div class="set-two">
+	        <div class="circle"></div>
+	        <div class="circle"></div>
+	      </div>
+
+	    </div>
+	    <div>Loading.....</div>
+    </div>
+    <header class="main-header">
+        <div class="header-upper">
+        	<div class="auto-container clearfix">            	
+				<div class="pull-left logo-box">
+					<div class="logo"><a href=""><img src="{% static 'images/logo.png' %}" alt="" title=""></a></div>
+				</div>	
+				<a href="" style="display: none;" class="theme-btn sign_up btn-style-three">Sign In</a>
+
+
+				<div class="nav-outer clearfix">
+					<div class="mobile-nav-toggler"><span class="icon flaticon-menu"></span></div>
+					<nav class="main-menu navbar-expand-md">
+						<div class="navbar-header">
+							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>						
+						<div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
+							<ul class="navigation clearfix">
+								<li><a href="#">Home</a></li>
+								<li class="dropdown"><a href="">Services</a>
+									<ul>
+										<li><a href="">Online Homework Help</a></li>
+										<li><a href="">Essay Writing Help</a></li>
+										<li><a href="">Live Sessions</a></li>
+										<li><a href="">Project/Lab Report Help</a></li>
+										<li><a href="">Coursework Help</a></li>
+										<li><a href="">Dissertation Writing Help</a></li>
+										<li><a href="">Case Study Writing Help</a></li>
+									</ul>
+								</li>
+								<li class="dropdown"><a href="">Subject</a>
+									<ul>
+										<li><a href="">Physics Homework Help</a></li>
+										<li><a href="">Chemistry Homework Help</a></li>
+										<li><a href="">Math Homework Help</a></li>
+										<li><a href="">Science Homework Help</a></li>
+										<li><a href="">English Homework Help</a></li>
+										<li><a href="">Programming Homework Help</a></li>
+										<li class="more"><a style="color: #43b97e;" href="">View More <span class="fa fa-angle-double-right"></span>
+										</a></li>
+									</ul>
+								</li>
+								<li class="dropdown"><a href="">Features</a>
+									<ul>
+										<li><a href="">1000+ Expert Tutors</a></li>
+										<li><a href="">100% Plagiarsim Free Solutions</a></li>
+										<li><a href="">Cost Effective Pricing</a></li>
+										<li><a href="">Confidentiality</a></li>
+										<li><a href="">One Destination for All Subject Solutions</a></li>
+										<li><a href="">24x7 Availability</a></li>
+										<li><a href="">100% Correct Solutions</a></li>
+										<li><a href="">On Time delivery</a></li>
+									</ul>
+								</li>
+								<li><a href="blog.html">Blog</a></li>
+								<li><a href="">Reviews</a></li>
+								<a href="" class="theme-btn sign_up btn-style-three" data-toggle="modal" data-target="#myModal">Sign In</a>
+
+							</ul>
+						</div>
+					</nav>
+					
+				</div>
+				
+            </div>
+        </div>
+        <!--End Header Upper-->
+        
+		<!-- Sticky Header  -->
+        <div class="sticky-header">
+            <div class="auto-container clearfix">
+                <div class="logo pull-left">
+                    <a href="index-2.html" title=""><img src="images/logo.png" alt="" title=""></a>
+                </div>
+                <div class="pull-right">
+                    <nav class="main-menu">
+                        <!--Keep This Empty / Menu will come through Javascript-->
+                    </nav>
+					<div class="outer-box clearfix">
+					</div>
+                </div>
+            </div>
+        </div>
+		<!-- End Sticky Menu -->
+    
+		<!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><span class="icon flaticon-multiply"></span></div>
+            
+            <nav class="menu-box">
+                <div class="nav-logo"><a href=""><img src="images/logo.png" alt="" title=""></a></div>
+
+                <div class="menu-outer"></div>
+            </nav>
+        </div><!-- End Mobile Menu -->
+
+        <div class="modal" id="myModal">
+		    <div class="modal-dialog">
+			    <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">×</button>
+			        </div>
+			        
+			        <!-- Modal body -->
+			        <div class="modal-body">
+			          	<form action="" method="post" id="" class="pt-4 login_form loginF">
+							<div class="form-group loginField login">
+								<img src="images/uName.svg" alt="User Name">
+								<input class="form-control" type="email" name="email" placeholder="Email" id="email">
+							</div>
+							<div class="form-group loginField login">
+								<img src="images/password_Img.svg" alt="password">
+								<input class="form-control" type="password" name="password" placeholder="Password" id="password">	
+							</div> 
+							<div class="row mt-3 login">
+								<div class="col-xs-7 col-sm-6">
+									<div class="checkbox_box">
+										<div>New User? <a href="order-now.html" class="text-bold"><b>Start Here.</b> </a> </div>
+									</div>
+								</div>
+								<div class="col-xs-5 col-sm-6 text-center">
+									<div class="forgotpas">
+										<a href="javascript:void(0)" id="fp" class="fp">Forgot Password?</a>
+									</div>
+								</div>
+							</div>
+							<div class="row forgotPass">
+								<div class="col-md-12">
+									<div class="form-group loginField ">
+										<img src="images/uName.svg" alt="User Name">
+										<input class="form-control" type="FEmail" name="FEmail" placeholder="Email" id="FEmail">
+									</div>
+									<div class="text-center mt-4 mb-3">
+										<a style="position: initial;" href="" class="theme-btn sign_up btn-style-three">SUBMIT</a>
+									</div>
+									<span class="or">Or</span>									
+									<div>
+										<span class="d-block text-center">Back to <a href="javascript:void(0)" class="LBtn">Login</a></span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group centerbtn text-center mt-4 login">
+								<a style="position: initial;" href="" class="theme-btn sign_up btn-style-three">Sign In</a>
+							</div>
+						</form>
+			        </div>
+			    </div>
+		    </div>
+		</div>
+	
+    </header>
+    <!-- End Main Header -->
+	
+	<div class="pageNotFound text-center">
+		<h1>404</h1>
+		<h2>OOPS! Page Not Found</h2>
+		<p class="mb-5">The page you are looking for might have been removed<br> had its name changed or is temporarily unavailable.</p>
+		<div class="text-center mt-3">
+            <a href="" class="theme-btn btn-style-one"><span class="txt">Go To Homepage</span></a>
+        </div>
+	</div>
+	
+	<!-- Main Footer -->
+    <footer class="main-footer">
+		<div class="circle-layer"></div>
+		<div class="pattern-layer-one" style="background-image: url(images/background/pattern-12.png)"></div>
+		<div class="pattern-layer-two" style="background-image: url(images/background/pattern-13.png)"></div>
+		<div class="pattern-layer-three" style="background-image: url(images/background/pattern-14.png)"></div>
+		<div class="pattern-layer-four" style="background-image: url(images/background/pattern-13.png)"></div>
+    	<div class="auto-container">
+        	<!--Widgets Section-->
+            <div class="widgets-section">
+            	<div class="row clearfix">
+							<!-- Column -->
+							<div class="column col-lg-3 col-md-3 col-sm-12">
+								<h5>Services </h5>
+								<ul class="list">
+									<li><a href="#">Online Homework Help</a></li>
+									<li><a href="#">Essay Writing Help</a></li>
+									<li><a href="#">Live Sessions</a></li>
+									<li><a href="#">Project/Lab Report Help</a></li>
+									<li><a href="#">Coursework Help</a></li>
+									<li><a href="#">Dissertation Writing Help</a></li>
+									<li><a href="#">Case Study Writing Help</a></li>
+								</ul>
+							</div>
+							<div class="column col-lg-3 col-md-3 col-sm-12">
+								<h5>Subject</h5>
+								<ul class="list">
+									<li><a href="#">Physics Homework Help</a></li>
+									<li><a href="#">Chemistry Homework Help</a></li>
+									<li><a href="#">Math Homework Help</a></li>
+									<li><a href="#">Programming Homework Help</a></li>
+									<li><a href="#">Engineering Homework Help</a></li>
+									<li><a href="#">Computer Science Homework Help</a></li>
+									<li><a href="#">Statistics Homework Help</a></li>
+									<li><a href="#">Accounting Homework Help</a></li>
+									<li><a href="#">Economics Homework Help</a></li>
+								</ul>
+							</div>
+							
+							<!-- Column -->
+							<div class="column col-lg-3 col-md-3 col-sm-12">
+								<h5>Features</h5>
+								<ul class="list">
+									<li><a href="#">1000+ Expert Tutors</a></li>
+									<li><a href="#">100% Plagiarsim Free Solutions</a></li>
+									<li><a href="#">Cost Effective Pricing</a></li>
+									<li><a href="#">Confidentiality</a></li>
+									<li><a href="#">One Destination for All Subject Solutions</a></li>
+									<li><a href="#">24x7 Availability</a></li>
+									<li><a href="#">100% Correct Solutions</a></li>
+									<li><a href="#">On Time delivery</a></li>
+								</ul>
+							</div>
+							<!-- Column -->
+							<div class="column pl-5 col-lg-3 col-md-3 col-sm-12">
+								<h5>About</h5>
+								<ul class="list">
+									<li><a href="#">About Us</a></li>
+									<li><a href="#">Blog</a></li>
+									<li><a href="#">Refund Policy</a></li>
+									<li><a href="#">Privacy Policy</a></li>
+									<li><a href="#">Terms and Conditions</a></li>
+									<li><a href="#">FAQs</a></li>
+									<li><a href="#">Reviews</a></li>
+								</ul>
+							</div>
+							
+				</div>
+			</div>
+			
+			
+			<!-- Footer Bottom -->
+			<div class="footer-bottom">
+				<div class="row clearfix">
+					
+					<!-- Copyright Column -->
+					<div class="copyright-column col-lg-6 col-md-12 col-sm-12">
+						<div class="copyright">Copyright 2021, All Right Reserved</div>
+					</div>
+					
+					<!-- Nav Column -->
+					<div class="nav-column logo-widget col-lg-6 col-md-12 col-sm-12">
+						<ul class="social-box">
+								<li class="twitter"><a target="_blank" href="http://twitter.com/" class="fa fa-twitter"></a></li>
+								<li class="pinterest"><a target="_blank" href="http://pinterest.com/" class="fa fa-pinterest-p"></a></li>
+								<li class="facebook"><a target="_blank" href="http://facebook.com/" class="fa fa-facebook-f"></a></li>
+								<li class="dribbble"><a target="_blank" href="https://instagram.com/" class="fa fa-instagram"><img src="images/instagram.png"> </a></li>
+							</ul>
+					</div>
+					
+				</div>
+			</div>
+			
+		</div>
+	</footer>
+	
+</div>
+
+
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-arrow-up"></span></div>
+
+<script src="js/jquery.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/jquery.fancybox.js"></script>
+<script src="js/appear.js"></script>
+<script src="js/parallax.min.js"></script>
+<script src="js/tilt.jquery.min.js"></script>
+<script src="js/jquery.paroller.min.js"></script>
+<script src="js/owl.js"></script>
+<script src="js/wow.js"></script>
+<script src="js/nav-tool.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>

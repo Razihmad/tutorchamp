@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+   <style>
+    .left_con li{margin-bottom: 10px;padding-left: 25px;}
+    .left_con h2{font-size: 32px;}
+    .left_con{padding-right: 10px;position: relative;}
+    .left_con li i{position: absolute;
+    left: 0;}
+    .py70{padding: 70px 0;}
+    .loginF .form-control{box-sizing: border-box;}
+    header{padding: 12px; background: #fbfbfb;    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;}
+        body{height: 100vh;
+    }
+ 
+    form{background: #fff;    width: 100%;
+    max-width: 500px;}
+    .userImg{    max-width: 120px;
+    background: #e8f0fe;
+    border-radius: 100%;
+    padding: 5px;
+    margin-bottom: 35px;}
+    .loginF{max-width: 470px;
+    width: 100%;
+    box-shadow: 1px 1px 15px #e0e0e0;
+    margin: 0 auto; padding: 30px 26px 60px;
+    border-radius: 15px;
+    position: relative;}
+    .epError {
+        bottom: 0px;
+        top: auto;
+        font-size: 16px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        color: red;
+        position: relative;
+        top: 160px
+    }
+    .logo{
+        text-align: center;
+        position: absolute;
+        top: -70px;
+        width: 100%;
+        left: 0;}
+        .loginT p{font-size: 14px;
+    text-align: center;
+    margin-bottom: 35px;}
+    .bgsignup ul li{margin-bottom: 10px;}
+    a.continue_btn{display: flex;
+    font-size: 14px;
+    line-height: 30px;
+    color: #000;
+    padding: 3px 8px 4px 4px;
+    font-weight: 600;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 83px;
+    align-items: center;
+    max-width: 215px;}
+    .btn_con{display: flex;justify-content: space-between;}
+    .btn_con img{max-width: 26px; margin-right: 4px;}
+    .continue_with_fb{background: #3b5999;
+    color: #fff!important; padding: 5px 8px 5px 8px!important;}
+    .continue_with_fb span{margin-left: 4px;}
+    .line_{text-align: center;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 25px;}
+    .line_ > div{line-height: 0;
+    display: block;
+    max-width: 37px;
+    margin: -10px auto;
+    background: #fff;
+    height: 9px;}
+    .err_msz{    font-size: 13px;
+    color: red;
+    text-align: center;
+    text-transform: capitalize;
+    margin: -35px 0 40px 0;}
+    .loginField img {
+        filter: grayscale(1);
+    }
+    @media screen and (max-width:992px) {
+        .account_sec > div.d-flex{display: block!important;}
+        .account_sec .pattern-layer-seven{display: none;}
+    }
+    @media screen and (max-width: 767px){   
+        .btn_con{display: block;}
+        a.continue_btn{margin: 15px auto;}
+        .loginF{margin-top: 30px;}
+    }
+    #alr{
+        position: relative;
+    top: -16px;
+    right: 26px;
+    }
+    #anch{
+        position: relative;
+        top: -60px;
+        left: 104px;
+    }
+    form h5{font-size: 26px;}
+    form h5 + p{    line-height: 24px;
+    margin-bottom: 33px;}
+
+    </style>
+</head>
+<body> 
+    <div class="page-wrapper">
+        <header class="">
+            <div class="container">
+                <a href="/" title=""><img src="/static/images/logo.png" alt="" title=""></a>
+            </div>
+        </header>
+
+        <section class="account_sec mt-5 bg-white py70 main-footer">
+            <div class="container d-flex align-items-center">
+                <div class="left_con ">
+                    <h2 class="color_000">Benefits of Becoming Tutors With<br> <span class="sec-underline">TutorChamps</span></h2>
+                    <ul style="font-size: 1.15rem;" class="mt-5">
+                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Share your expertise across the globe.</li> 
+                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Earn handsome money by sharing your knowledge.</li> 
+                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Increase your knowledge by practicing and solving a variety of questions.</li>
+                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Share your expertise across the globe.</li> 
+                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Earn handsome money by sharing your knowledge.</li> 
+                    </ul>
+                </div>
+                <form action="/login/" method="POST" id="" class="commForm login_form loginF">
+        {% csrf_token %}
+        <div class="text-center text-dark mb-2">
+            <h5>Sign in</h5>
+            <p>Sign in to get your assignments solved and get trained live sessions from our experts.</p>
+        </div>
+        <div class="form-group loginField login">
+            <img src="{% static 'images/uName.svg' %}" alt="User Name">
+            <input class="form-control" type="email" name="email" placeholder="Email"
+                id="email">
+        </div>
+        <div class="form-group loginField login">
+            <img src="{% static 'images/password_Img.svg' %}" alt="password">
+            <input class="form-control" type="password" name="password" placeholder="Password"
+                id="password">
+        </div>
+        <div class="row mt-3 login" style="display: flex;">
+            <div class="col-6 pr-0 col-sm-6">
+                <div class="checkbox_box">
+                    <div style="font-size: 13px;">New User? <a href="/sign-up/" class="text-bold"><b style="color: #43b97e;">Start Here.</b> </a> </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-6 text-center">
+                <div class="forgotpas">
+                    <a style="font-size: 13px; color: #43b97e;" href="/password_reset/" id="fp" class="fp">Forgot Password?</a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center psr mt-3 mb-4 pb-2">
+            <input type="submit" class="formBtn theme-btn btn-style-one" value="Sign In">
+            <a href="" class="theme-btn btn-style-one"><span class="txt">Sign In</span></a>
+        </div>
+        {% for message in messages  %}
+          <p class="epError">{{message}}</p>
+        {% endfor %}
+        <div class="line_">
+            <div>OR</div>
+        </div>
+        <div class="btn_con">
+            <a href="{% url 'social:begin' 'google-oauth2' %}" class="continue_btn continue_with_google"><img src="/static/images/google.png"> <span class="txt">Continue with Google</span></a>
+            <a href="" class="continue_btn continue_with_fb"><img src="/static/images/fb.png"> <span class="txt">Continue with Facebook</span></a>
+        </div>
+        
+    </form>
+            </div> 
+    <div class="pattern-layer-seven" style="background-image: url('/static/images/main-slider/pattern-5.png')"></div>               
+    <div class="circle-layer"></div>
+        </section>  
+    
+    </div>
+</body>
+</html>

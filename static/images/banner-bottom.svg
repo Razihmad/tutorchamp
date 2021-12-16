@@ -1,0 +1,12 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 74" width="1024" height="74">
+	<title>banner-bottom-svg</title>
+	<style>
+		tspan { white-space:pre }
+		.shp0 { fill: #f1f4f7 } 
+	</style>
+	<g id="Layer_1">
+	</g>
+	<g id="Layer_2">
+		<path id="Layer" class="shp0" d="M-4.99 25.87C-4.99 25.87 238.5 109.8 545.2 52.81C851.9 -4.18 875.73 76.64 1027 57.99L1027 1L-4.99 1C-4.99 1 -5.58 25.87 -4.99 25.87Z" />
+	</g>
+</svg>

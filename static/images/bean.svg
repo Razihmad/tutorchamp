@@ -1,0 +1,14 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 605 402" width="605" height="402">
+	<title>bean-svg</title>
+	<style>
+		tspan { white-space:pre }
+		.shp0 { fill: #43b97e } 
+	</style>
+	<g id="Layer_3">
+		<g id="Layer">
+			<g id="Layer">
+				<path id="Layer" class="shp0" d="M24.3 341.3C24.3 341.3 -20.5 268.1 39.9 170.5C100.3 72.9 310.2 -51.4 517.2 72.5C517.2 72.5 603.5 125 598.6 212.5C598.6 212.5 605.9 286.4 505.8 310C405.7 333.6 317.8 343.5 159.1 383.3C159.2 383.3 55.1 403.7 24.3 341.3Z" />
+			</g>
+		</g>
+	</g>
+</svg>

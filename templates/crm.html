@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<meta charset="utf-8">
+<title>Dashboard</title>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<style>
+	.thead td{width: 14.2%; border: 1px solid #fff;}
+	.quicksearch{min-width: 320px; font-size: 15px;}
+	.quicksearch:focus::placeholder{opacity: .5;}
+	.quicksearch::placeholder{opacity: .8;}
+	.quicksearch:focus{border:none; box-shadow: 0 0 0 1px rgb(71 191 127);}
+	.searchList{min-height: calc(100vh - 130px);
+    display: flex;
+    align-items: center;}
+</style>
+</head>
+
+<body>
+	<header class="main-header header wow fadeInUp">
+        <nav class="navbar navbar-expand-lg navbar-light custom_nav">
+            <div class="container">
+                <a class="mob-logo" href=""><img src="{% static 'images/logo.png' %}" alt="logo"></a>
+                
+                <div class="collapse navbar-collapse justify-content-end" id="mynav">
+                    <div class="top-menu">
+						<div class="">
+                            <input type="text" class="form-control quicksearch" placeholder="Search Here...">
+                        </div>
+					</div>
+                </div>
+            </div>
+        </nav>           
+
+    </header>
+
+
+    <div class="mainContent searchList">
+    	<div class="container">
+    		<div class="row">
+				<div class="col-md-12">
+					<div class="dTbale">
+						<table class="table table-striped" style="border: 2px solid #43b97e;">
+						    <tbody>
+						      <tr class="thead" style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
+						        <td>Submission Date</td>
+						        <td>Student Email</td>
+						        <td>Assignment</td>
+						        <td>Deadline</td>
+						        <td>Tutor Name</td>
+						        <td>Tutor Mobile Number</td>
+						        <td>Status</td>
+						      </tr>
+						      
+						      <tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
+						        <td style="width: 13%;color:#43b97e;">30-06-2021</td>
+						      	<td style="width: 14%;">test@gmail.com</td>
+						        <td style="width: 14%;">Assignment</td>
+						        <td style="width: 13%;color:#43b97e;">30-06-2021</td>
+						        <td style="width: 14%;color: #43b97e;">Assignment</td>
+						        <td style="width: 17%;color: #43b97e;">898658748</td>
+						        <td style="width: 15%;color: #43b97e;">Received</td>
+						      </tr>
+						      <tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
+						        <td style="width: 13%;color:#43b97e;">30-06-2021</td>
+						      	<td style="width: 14%;">test@gmail.com</td>
+						        <td style="width: 14%;">Assignment</td>
+						        <td style="width: 13%;color:#43b97e;">30-06-2021</td>
+						        <td style="width: 14%;color: #43b97e;">Assignment</td>
+						        <td style="width: 17%;color: #43b97e;">898658748</td>
+						        <td style="width: 15%;color: #43b97e;">Received</td>
+						      </tr>
+						      <tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
+						        <td style="width: 13%;color:#43b97e;">30-06-2021</td>
+						      	<td style="width: 14%;">test@gmail.com</td>
+						        <td style="width: 14%;">Assignment</td>
+						        <td style="width: 13%;color:#43b97e;">30-06-2021</td>
+						        <td style="width: 14%;color: #43b97e;">Assignment</td>
+						        <td style="width: 17%;color: #43b97e;">898658748</td>
+						        <td style="width: 15%;color: #43b97e;">Received</td>
+						      </tr>
+						      <tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
+						        <td style="width: 13%;color:#43b97e;">30-06-2021</td>
+						      	<td style="width: 14%;">test@gmail.com</td>
+						        <td style="width: 14%;">Assignment</td>
+						        <td style="width: 13%;color:#43b97e;">30-06-2021</td>
+						        <td style="width: 14%;color: #43b97e;">Assignment</td>
+						        <td style="width: 17%;color: #43b97e;">898658748</td>
+						        <td style="width: 15%;color: #43b97e;">Received</td>
+						      </tr>
+						      <tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
+						        <td style="width: 13%;color:#43b97e;">30-06-2021</td>
+						      	<td style="width: 14%;">test@gmail.com</td>
+						        <td style="width: 14%;">Assignment</td>
+						        <td style="width: 13%;color:#43b97e;">30-06-2021</td>
+						        <td style="width: 14%;color: #43b97e;">Assignment</td>
+						        <td style="width: 17%;color: #43b97e;">898658748</td>
+						        <td style="width: 15%;color: #43b97e;">Received</td>
+						      </tr>
+						      <tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
+						        <td style="width: 13%;color:#43b97e;">30-06-2021</td>
+						      	<td style="width: 14%;">test@gmail.com</td>
+						        <td style="width: 14%;">Assignment</td>
+						        <td style="width: 13%;color:#43b97e;">30-06-2021</td>
+						        <td style="width: 14%;color: #43b97e;">Assignment</td>
+						        <td style="width: 17%;color: #43b97e;">898658748</td>
+						        <td style="width: 15%;color: #43b97e;">Received</td>
+						      </tr>
+						      <tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
+						        <td style="width: 13%;color:#43b97e;">31-06-2021</td>
+						      	<td style="width: 14%;">AJ@gmail.com</td>
+						        <td style="width: 14%;">Assignment</td>
+						        <td style="width: 13%;color:#43b97e;">30-06-2021</td>
+						        <td style="width: 14%;color: #43b97e;">Assignment</td>
+						        <td style="width: 17%;color: #43b97e;">898658748</td>
+						        <td style="width: 15%;color: #43b97e;">Received</td>
+						      </tr>
+						      
+						    </tbody>
+						  </table>
+					</div>
+				</div>
+			</div>
+    	</div>
+    </div>
+
+
+
+
+    <footer>
+    	<div class="text-center">Copyright 2021 © tutorchamps.com, All Right Reserved</div>
+    </footer>
+
+
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function(){
+		    $(".quicksearch").on("keyup", function() {
+		        var value = $(this).val().toLowerCase();
+		        $(".searchList *").filter(function() {
+		            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+		        });
+		    });
+		});
+	</script>
+
+	<!-- <script>
+		$(document).ready(function(){
+		    $(".quicksearch").on("keyup", function() {
+		        var value = $(this).val().toLowerCase();
+		        $(".searchList *").filter(function() {
+		            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+		            $(this).parentElement("tr").addClass("tr_search");
+		        });
+		    });
+		});
+	</script> -->
+
+
+</body>
+</html>

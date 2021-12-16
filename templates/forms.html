@@ -1,0 +1,53 @@
+<form class="commForm mt-3" method="POST" action="" onsubmit="myFunction()">
+            {% csrf_token %}
+            <h2 class="text-dark">Guaranteed Higher Grade Or Get Your Money Back!</h2>
+            <div class="form_group">
+            </div>
+            <div class="form_group">
+                <div class="twoField">
+                    <div class="pos_rel">
+                        <label>Your Subject/Course Code</label>
+                        <input class="input" required name="subject" type="text"
+                            placeholder="Eg. UNCC100 Self &amp; Community">
+                    </div>
+                    <div class="pos_rel">
+                        <label>Choose Assignment Deadline</label>
+                        <input required class="input" type="datetime-local" id="birthdaytime" name="birthdaytime" placeholder="Deadline">
+                    </div>
+                </div>
+    
+                <div class="pos_rel">
+                    <label>Your Message*</label>
+                    <textarea name="Details" id="description" class="Detail"
+                        placeholder="Write assignment description"></textarea>
+                    <div>
+                        <input type="file" name="files" id="files" multiple="" value="Add File">
+                        <p id="file-name" class="fileName"></p>
+                    </div>
+    
+    
+                </div>
+            </div>
+            <div class="text-center psr mt-3">
+                <input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
+    
+                <a href="" class="theme-btn btn-style-one"><span class="txt">Get Solution Now</span></a>
+    
+            </div>
+        </form>
+        <script>
+            var input = document.getElementById('files');
+            var info_area = document.getElementById('file-name');
+            input.addEventListener('change', showFileName);
+            function showFileName(event) {
+                var input = event.srcElement;
+                var fileName = input.files[0].name;
+                info_area.textContent = fileName;
+            }
+    
+        </script>
+        <script>
+            function myFunction() {
+              $("#myModal").css("display","block");
+            }
+        </script>

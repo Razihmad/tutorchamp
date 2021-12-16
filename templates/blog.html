@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+  
+	<!-- Sidebar Cart Item -->
+	<div class="xs-sidebar-group info-group">
+		<div class="xs-overlay xs-bg-black"></div>
+		<div class="xs-sidebar-widget">
+			<div class="sidebar-widget-container">
+				<div class="widget-heading">
+					<a href="#" class="close-side-widget">
+						X
+					</a>
+				</div>
+				<div class="sidebar-textwidget">
+					
+					<!-- Sidebar Info Content -->
+					<div class="sidebar-info-contents">
+						<div class="content-inner">
+							<div class="logo">
+								<a href="index-2.html"><img src="{% static 'images/logo-2.png' %}" alt="" /></a>
+							</div>
+							<div class="content-box">
+								<h2>About Us</h2>
+								<p class="text">The argument in favor of using filler text goes something like this: If you use real content in the Consulting Process, anytime you reach a review point you’ll end up reviewing and negotiating the content itself and not the design.</p>
+								<a href="#" class="theme-btn btn-style-two"><span class="txt">Consultation</span></a>
+							</div>
+							<div class="contact-info">
+								<h2>Contact Info</h2>
+								<ul class="list-style-two">
+									<li><span class="icon fa fa-location-arrow"></span>Chicago 12, Melborne City, USA</li>
+									<li><span class="icon fa fa-phone"></span>(111) 111-111-1111</li>
+									<li><span class="icon fa fa-envelope"></span><a href="http://themazine.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b9d5dcdbd8cbd0f9ded4d8d0d597dad6d4">[email&#160;protected]</a></li>
+									<li><span class="icon fa fa-clock-o"></span>Week Days: 09.00 to 18.00 Sunday: Closed</li>
+								</ul>
+							</div>
+							<!-- Social Box -->
+							<ul class="social-box">
+								<li class="facebook"><a href="#" class="fa fa-facebook-f"></a></li>
+								<li class="twitter"><a href="#" class="fa fa-twitter"></a></li>
+								<li class="linkedin"><a href="#" class="fa fa-linkedin"></a></li>
+								<li class="instagram"><a href="#" class="fa fa-instagram"></a></li>
+								<li class="youtube"><a href="#" class="fa fa-youtube"></a></li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END sidebar widget item -->
+	
+	<!-- Blog Detail Section -->
+    <section class="blog-page-section">
+		<div class="pattern-layer-one" style="background-image: url('/static/images/icons/icon-5.png')"></div>
+		<div class="pattern-layer-two" style="background-image: url('/static/images/icons/icon-6.png')"></div>
+		<div class="pattern-layer-three" style="background-image: url('/static/images/icons/icon-4.png')"></div>
+		<div class="auto-container">
+			<!-- Page Breadcrumb -->
+			<ul class="page-breadcrumb">
+				<li><a href="/">Home</a></li>
+				<li>Blog</li>
+			</ul>
+			<div class="content-box">
+				<h2>Latest articles & news</h2>
+				<div class="text">Our blogs and articles are based on the latest trends in online education and have tips
+					and tricks that help the students in their exam preparation and writing skills.</div>
+			</div>
+		</div>
+		<div class="outer-container">
+			<div class="row clearfix">
+				
+				<!-- News Block / Style Two -->
+				<div class="news-block style-two col-lg-4 col-md-6 col-sm-12">
+					<div class="inner-box">
+						<div class="image">
+							<a href="{% url 'blog-detail' 'top-10-scholarships-for-college-students' %}"><img src="{% static 'images/resource/news-6.jpg' %}" alt="" /></a>
+						</div>
+						<div class="lower-content">
+							<div class="border-layer"></div>
+							<ul class="post-info">
+								<li>Technology</li>
+								<li>Updated  Sep 26, 2019</li>
+							</ul>
+							<h4><a href="{% url 'blog-detail' 'top-10-scholarships-for-college-students' %}">
+								{{one.title}}
+								</a></h4>
+							<a href="{% url 'blog-detail' 'top-10-scholarships-for-college-students' %}" class="more">More <span class="fa fa-angle-double-right"></span></a>
+						</div>
+					</div>
+				</div>
+				
+				<!-- News Block / Style Two -->
+				<div class="news-block style-two col-lg-4 col-md-6 col-sm-12">
+					<div class="inner-box">
+						<div class="image">
+							<a href="{% url 'blog-detail' 'best-tips-and-tricks-to-do-homework-fast' %}"><img src="{% static 'images/resource/news-7.jpg' %}" alt="" /></a>
+						</div>
+						<div class="lower-content">
+							<div class="border-layer"></div>
+							<ul class="post-info">
+								<li>Education</li>
+								<li>Updated  Aug 03, 2017</li>
+							</ul>
+							<h4><a href="{% url 'blog-detail' 'best-tips-and-tricks-to-do-homework-fast' %}">{{two.title}}</a></h4>
+							<a href="{% url 'blog-detail' 'best-tips-and-tricks-to-do-homework-fast' %}" class="more">More <span class="fa fa-angle-double-right"></span></a>
+						</div>
+					</div>
+				</div>
+				
+				<!-- News Block / Style Two -->
+				<div class="news-block style-two col-lg-4 col-md-6 col-sm-12">
+					<div class="inner-box">
+						<div class="image">
+							<a href="{% url 'blog-detail' 'top-informative-speech-topics' %}"><img src="{% static 'images/resource/news-8.jpg' %}" alt="" /></a>
+						</div>
+						<div class="lower-content">
+							<div class="border-layer"></div>
+							<ul class="post-info">
+								<li>Education</li>
+								<li>Updated  Sep 26, 2018</li>
+							</ul>
+							<h4><a href="{% url 'blog-detail' 'top-informative-speech-topics' %}">{{three.title}}</a></h4>
+							<a href="{% url 'blog-detail' 'top-informative-speech-topics' %}" class="more">More <span class="fa fa-angle-double-right"></span></a>
+						</div>
+					</div>
+				</div>
+				
+				<!-- News Block / Style Two -->
+				<div class="news-block style-two col-lg-4 col-md-6 col-sm-12">
+					<div class="inner-box">
+						<div class="image">
+							<a href="{% url 'blog-detail' 'top-persuasive-speech-topics' %}"><img src="{% static 'images/resource/news-9.jpg' %}" alt="" /></a>
+						</div>
+						<div class="lower-content">
+							<div class="border-layer"></div>
+							<ul class="post-info">
+								<li>Technology</li>
+								<li>Updated  Dec 26, 2020</li>
+							</ul>
+							<h4><a href="{% url 'blog-detail' 'top-persuasive-speech-topics' %}">{{four.title}}</a></h4>
+							<a href="{% url 'blog-detail' 'top-persuasive-speech-topics' %}" class="more">More <span class="fa fa-angle-double-right"></span></a>
+						</div>
+					</div>
+				</div>
+				
+				<!-- News Block / Style Two -->
+				<div class="news-block style-two col-lg-4 col-md-6 col-sm-12">
+					<div class="inner-box">
+						<div class="image">
+							<a href="{% url 'blog-detail' 'compare-and-contrast-essay-topics' %}"><img src="{% static 'images/resource/news-10.jpg' %}" alt="" /></a>
+						</div>
+						<div class="lower-content">
+							<div class="border-layer"></div>
+							<ul class="post-info">
+								<li>Education</li>
+								<li>Updated  Sep 16, 2019</li>
+							</ul>
+							<h4><a href="{% url 'blog-detail' 'compare-and-contrast-essay-topics' %}">{{five.title}} </a></h4>
+							<a href="{% url 'blog-detail' 'compare-and-contrast-essay-topics' %}" class="more">More <span class="fa fa-angle-double-right"></span></a>
+						</div>
+					</div>
+				</div>
+				
+				<!-- News Block / Style Two -->
+				<div class="news-block style-two col-lg-4 col-md-6 col-sm-12">
+					<div class="inner-box">
+						<div class="image">
+							<a href="{% url 'blog-detail' 'top-50-research-paper-topics' %}"><img src="{% static 'images/resource/news-11.jpg' %}" alt="" /></a>
+						</div>
+						<div class="lower-content">
+							<div class="border-layer"></div>
+							<ul class="post-info">
+								<li>Education</li>
+								<li>Updated  Aug 02, 2018</li>
+							</ul>
+							<h4><a href="{% url 'blog-detail' 'top-50-research-paper-topics' %}">{{six.title}} </a></h4>
+							<a href="{% url 'blog-detail' 'top-50-research-paper-topics' %}" class="more">More <span class="fa fa-angle-double-right"></span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Button Box -->
+			<div class="btn-box text-center">
+				<a href="#" class="theme-btn  mb-4 btn-style-one"><span class="txt">View More Artical</span></a>
+			</div>
+			
+		</div>
+	</section>
+
+	{% endblock body %}

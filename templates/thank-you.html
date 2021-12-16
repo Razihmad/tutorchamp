@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<meta charset="utf-8">
+<title>Thank you</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta http-equiv="refresh" content="5;url=http://tutorchamps.com/login" />
+<style>
+    .thead td {
+        width: 25%;
+        border-right: 1px solid #fff;
+    }
+
+    tr td {
+        text-align: center;
+        border:none;
+        margin: 0;
+        padding: 9px 0;
+    }
+.thankYou{
+	text-align: center;
+    display: flex;
+    color: #000;
+    font-family: 'Noto Sans TC', sans-serif;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(70vh - 150px)}
+.thankYou h1{
+	font-size: 45px;
+    text-align: center;
+    margin: 0px;
+    padding: 15px 0 0 0;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 600;
+}
+.thankYou p{font-size: 17px;
+    padding: 5px;
+    margin-top: 0px;
+    color: #06092d;
+}
+.thankYou h3{    font-size: 30px;
+    text-align: center;
+    padding: 10px;
+    margin: 0px
+}
+.thankYou h3+p{color: #06092d; font-size: 16px;}
+a:hover{color: #EE698C;}
+a{color: #43b97e;}
+.thankYouCounter{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            position: relative;
+            height: 100px;
+        }
+        .fitstrip{position: absolute;bottom: 0; left: 0; width: 100%; height: 70px;background-color: #47bf7f;}
+        .thankYouCounter span{
+            display: inline-block;
+    font-size: 45px;
+    padding: 20px;
+    width: 85px;
+    box-sizing: border-box;
+    height: 85px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 100%;
+    background: #47bf7f;
+    color: #ffffff;
+    font-weight: 500;
+            
+        }
+        .thankYouCounter span:after{
+        	width: 100%;
+		    content: "0";
+		    position: absolute;
+		    animation-name: contentChang;
+		    animation-duration: 6s;
+		    left: 0;
+    	}
+        @keyframes contentChang {
+          0%{
+            content: "5";
+          }
+          20% {
+            content: "4";
+          }
+          40% {
+            content: "3";
+          }
+          60% {
+            content: "2";
+          }
+          80% {
+            content: "1";
+          }
+          100% {
+            content: "0";
+          }
+        }
+.pattern-layer-seven{top: auto!important;bottom: 50px!important;z-index: 0!important;}
+.news-section .icon-layer-two{    right: auto;
+    bottom: 60px;
+    top: auto;
+    left: 34px;}
+    header{    background: #fbfbfb;
+    display: inline-block;}
+    .table{max-width: 700px; width: 100%; margin: 15px auto}
+</style>
+</head>
+
+<body class="hidden-bar-wrapper">
+	<header class="main-header">
+            <div class="header-upper">
+                <div class="auto-container clearfix">
+                    <div class="pull-left logo-box">
+                        <div class="logo"><a href=""><img src="{% static 'images/logo.png' %}" alt="" title=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+	<div class="page-wrapper news-section">
+		<section id="counter-stats" style="display: inline-block; width: 100%;">
+			<div class="pattern-layer-seven" style="background-image: url('/static/images/main-slider/pattern-5.png')"></div>
+			<div class="icon-layer-two" style="background-image:url('/static/images/icons/icon-2.png')"></div>
+			<div class="auto-container">
+        <h2 style="text-align: center;font-size: 25px;color: #000;">Order Summary</h2>
+        <table cellpadding="0" cellspacing="0" class="table Summary_table table-striped" style="border: 2px solid #43b97e;">
+          <tr class="thead" style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
+            <td>File</td>
+            <td>Message</td>
+            <td>Deadline</td>
+            <td>Subject</td>
+          </tr>
+          <tr style="color: #000;">
+            <td><a href="{{order.assignment}}">Assignment File</a></td>
+            <td>{{order.desc}}</td>
+            <td>{{order.deadline}}</td>
+            <td>{{order.subject}}</td>
+          </tr>
+        </table>
+				<div class="row">
+					<div class="col-12">
+						<div class="thankYou">
+							<div class=" thankYouCounter">
+						        <span class="span"></span>
+						    </div>
+							<h1>Thank You for contacting us!</h1>
+							<p>Thank you for visiting <b>Tutor Champs</b> website. You will<br> received an email message shortly.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<div class="fitstrip"></div>
+<script src="js/jquery.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
