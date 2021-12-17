@@ -3,6 +3,7 @@ from django.urls import path,include
 from django.contrib.auth import views as auth_views 
 from django.contrib.sitemaps.views import sitemap
 from app.sitemaps import Static_Sitemap
+from tutorchamps.settings import DEBUG
 sitemaps = {
     'static': Static_Sitemap(),
 }
@@ -21,3 +22,7 @@ urlpatterns = [
      
 
 ]
+
+
+if DEBUG ==False:
+     handler404 = 'app.views.error_404'

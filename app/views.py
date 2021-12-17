@@ -628,3 +628,7 @@ def blog_detail(request, title):
         return render(request, 'check_out.html')
     elif title == 'top-50-research-paper-topics':
         return render(request, 'top_research.html')
+
+
+def error_404(request,exception):
+    return render(request,'404.html')
