@@ -251,7 +251,7 @@ def signup(request):
         try:
             User.objects.get(email=email)
             messages.info(request, 'this email is already registered')
-            return redirect('sign-up')
+            return redirect('signup')
         except ObjectDoesNotExist:
             user = User(username=email, email=email)
             user.set_password(password)
