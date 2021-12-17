@@ -20,7 +20,7 @@
 						<h1 class="pt-4">Project/Lab Report Help</h1>
 						<h2>Get The Best Project/Lab Report Help From The Expert Tutors! </h2>
 						<div class="__form-container">
-							<form class="commForm mt-3 " method="POST" action="">
+							<form class="commForm mt-3 " method="POST" action="" enctype="multipart/form-data">
 								{% csrf_token %}
 								<h2 class="text-dark">Guaranteed Higher Grade Or Get Your Money Back!</h2>
 								<div class="form_group">
@@ -38,21 +38,21 @@
 								<div class="form_group">
 									<div class="pos_rel">
 										<label>Lab Manual</label>
-										<input type="file" class="attach_file input" required="" multiple="" value="Add File" name="lab_manual">
+										<input type="file" class="attach_file input" required=""  value="Add File" name="lab_manual">
 									</div>
 									<div class="pos_rel">
 										<label>Report Guidelines</label>
-										<input type="file" class="attach_file input" required="" multiple="" value="Add File" name="report_guidline">
+										<input type="file" class="attach_file input" required="" value="Add File" name="report_guidline">
 									</div>
 								</div>
 								<div class="form_group">
 									<div class="pos_rel">
 										<label>Lab Data</label>
-										<input type="file" class="attach_file input" required="" multiple="" value="Add File" name="lab_data">
+										<input type="file" class="attach_file input" required=""  value="Add File" name="lab_data">
 									</div>
 									<div class="pos_rel">
 										<label>Reference Materials</label>
-										<input type="file" class="attach_file input" required="" multiple="" value="Add File" name="reference_material">
+										<input type="file" class="attach_file input" required=""  value="Add File" name="reference_material">
 									</div>
 								</div>
 								<div class="text-center psr mt-3">

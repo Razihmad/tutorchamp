@@ -21,6 +21,7 @@
                     <textarea name="Details" id="description" class="Detail"
                         placeholder="Write assignment description"></textarea>
                     <div>
+                        <label for="files"></label>
                         <input type="file" name="files" id="files" multiple="" value="Add File">
                         <p id="file-name" class="fileName"></p>
                     </div>
@@ -38,9 +39,9 @@
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
         <script>
-            $('#birthdaytime').change(function() {
+            $('#files').change(function() {
 				var i = $(this).prev('label').clone();
-				var file = $('#birthdaytime')[0].files[0].name;
+				var file = $('#files')[0].files[0].name;
 				$(this).prev('label').text(file);
 			  });
         </script>

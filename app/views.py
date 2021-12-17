@@ -58,15 +58,7 @@ def home(request):
 
 
 def blog(requset):
-    context = {
-        'one': Blog.objects.get(pk=1),
-        'two': Blog.objects.get(pk=2),
-        'three': Blog.objects.get(pk=3),
-        'four': Blog.objects.get(pk=4),
-        'five': Blog.objects.get(pk=5),
-        'six': Blog.objects.get(pk=6),
-    }
-    return render(requset, 'blog.html', context)
+    return render(requset, 'blog.html',)
 
 
 def homework(request):
@@ -118,22 +110,24 @@ def project(request):
         subject = request.POST.get('subject')
         deadline = request.POST.get('deadline')
         lab_manual = request.FILES['lab_manual']
-        report_guidline = request.FILES['report_guideline']
+        report_guidline = request.FILES['report_guidline']
         lab_data = request.FILES['lab_data']
         reference_material = request.FILES['reference_material']
         try:
-            new_user = request.user
-            user_detail = UserDetails.objects.get(user=new_user)
-            LabOrders(user=user_detail, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
+            user = request.user
+            uname = user.username
+            user = User.objects.get(username=uname)
+            LabOrders(user=user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
                    deadline=deadline, reference_material=reference_material, status='Pending').save()
             return redirect('old-user')
         except:
-            request.session['subject'] = subject
-            request.session['deadline'] = deadline
-            request.session['lab_data'] = lab_data
-            request.session['report_guideline'] = report_guidline
-            request.session['reference_material'] = reference_material
-            request.session['lab_manual'] = lab_manual
+            if not request.session.session_key:
+                request.session.save()
+            session_key = request.session.session_key
+            new_user = User(username=session_key,email=session_key)
+            new_user.save()
+            LabOrders(user=new_user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
+                   deadline=deadline, reference_material=reference_material).save()
             return redirect('signup')
 
     return render(request, 'project.html')
@@ -265,51 +259,36 @@ def signup(request):
             user_detail = UserDetails(user=user)
             user_detail.save()
             try:
-                subject = request.session['subject']
-                deadline = request.session['deadline']
-                lab_data = request.session['lab_data']
-                report_guidline = request.session['report_guideline']
-                reference_material = request.session['reference_material']
-                lab_manual = request.session['lab_manual']
-                order = LabOrders(subject=subject, deadline=deadline, user=user, lab_data=lab_data,
-                               report_guidline=report_guidline, render_to_response=reference_material,
-                               lab_manual=lab_manual, status='Pending')
+                session_key = request.session.session_key
+                new_user = User.objects.get(username=session_key)
+                order = LabOrders.objects.get(user = new_user)
+                order.user = user
+                order.pk -=1
                 order.save()
-                del request.session['subject']
-                del request.session['deadline']
-                del request.session['lab_data']
-                del request.session['report_guideline']
-                del request.session['reference_material']
-                del request.session['lab_manual']
+                new_user.delete()
+                request.session.flush()
             except:
                 pass
             try:
-                subject = request.session['subject']
-                desc = request.session['desc']
-                deadline = request.session['deadline']
-                assignment = request.session['assignment']
-                duration = request.session['duration']
-                order = Orders(subject=subject, deadline=deadline, desc=desc,
-                               assignment=assignment, user=user, duration=duration, status='Pending')
+                session_key = request.session.session_key
+                new_user = User.objects.get(username=session_key)
+                order = Orders.objects.get(user = new_user)
+                order.user = user
+                order.pk -=1
                 order.save()
-                del request.session['subject']
-                del request.session['deadline']
-                del request.session['assignment']
-                del request.session['duration']
+                new_user.delete()
+                request.session.flush()
             except:
                 pass
             try:
-                subject = request.session['subject']
-                desc = request.session['desc']
-                deadline = request.session['deadline']
-                assignment = request.session['assignment']
-                order = Orders(subject=subject, deadline=deadline, desc=desc,
-                               assignment=assignment, user=user, status='Pending')
+                session_key = request.session.session_key
+                new_user = User.objects.get(username=session_key)
+                order = Orders.objects.get(user = new_user)
+                order.user = user
+                order.pk -=1
                 order.save()
-                del request.session['subject']
-                del request.session['deadline']
-                del request.session['assignment']
-                del request.session['desc']
+                new_user.delete()
+                request.session.flush()
             except:
                 pass
             messages.success(request, 'you have registered successfully')
@@ -368,71 +347,41 @@ def signin(request):
                 login(request, user)
                 usr = request.user
                 uname= usr.username
-                usr = User.objects.get(username=uname)
-                detail = UserDetails.objects.get_or_create(user=usr)
-                detail = detail[0]
-                try:
-                    subject = request.session['subject']
-                    deadline = request.session['deadline']
-                    lab_data = request.session['lab_data']
-                    report_guidline = request.session['report_guideline']
-                    reference_material = request.session['reference_material']
-                    lab_manual = request.session['lab_manual']
-                    new_user = request.user
-                    uname = new_user.username
-                    new_user = User.objects.get(username=uname)
-                    user_detail = UserDetails.objects.get_or_create(user=new_user)
-                    user_detail = user_detail[0]
-                    order = LabOrders(subject=subject, deadline=deadline, user=new_user, lab_data=lab_data, report_guidline=report_guidline,
-                                   render_to_response=reference_material, lab_manual=lab_manual, status='Pending')
-                    order.save()
-                    del request.session['subject']
-                    del request.session['deadline']
-                    del request.session['lab_data']
-                    del request.session['report_guideline']
-                    del request.session['reference_material']
-                    del request.session['lab_manual']
-                except:
-                    pass
-                try:
-                    subject = request.session['subject']
-                    desc = request.session['desc']
-                    deadline = request.session['deadline']
-                    assignment = request.session['assignment']
-                    duration = request.session['duration']
-                    new_user = request.user
-                    uname = new_user.username
-                    new_user = User.objects.get(username=uname)
-                    user_detail = UserDetails.objects.get_or_create(user=new_user)
-                    order = Orders(subject=subject, deadline=deadline, desc=desc, assignment=assignment,
-                                   user=new_user, duration=duration, status='Pending')
-                    order.save()
-                    del request.session['subject']
-                    del request.session['deadline']
-                    del request.session['assignment']
-                    del request.session['duration']
-
-                except:
-                    pass
-                try:
-                    subject = request.session['subject']
-                    desc = request.session['desc']
-                    deadline = request.session['deadline']
-                    assignment = request.session['assignment']
-                    new_user = request.user
-                    uname = new_user.username
-                    new_user = User.objects.get(username=uname)
-                    user_detail = UserDetails.objects.get(user=new_user)
-                    order = Orders(subject=subject, deadline=deadline, desc=desc,
-                                   assignment=assignment, user=new_user, status='Pendin')
-                    order.save()
-                    del request.session['subject']
-                    del request.session['deadline']
-                    del request.session['assignment']
-                    del request.session['desc']
-
-                except:
-                    pass
+                user = User.objects.get(username=uname)
+                detail = UserDetails.objects.get_or_create(user=user)
+            try:
+                session_key = request.session.session_key
+                new_user = User.objects.get(username=session_key)
+                order = LabOrders.objects.get(user = new_user)
+                order.user = user
+                order.pk -=1
+                order.save()
+                new_user.delete()
+                request.session.flush()
+            except:
+                pass
+            try:
+                session_key = request.session.session_key
+                new_user = User.objects.get(username=session_key)
+                order = Orders.objects.get(user = new_user)
+                order.user = user
+                order.pk -=1
+                order.save()
+                new_user.delete()
+                request.session.flush()
+            except:
+                pass
+            try:
+                session_key = request.session.session_key
+                new_user = User.objects.get(username=session_key)
+                order = Orders.objects.get(user = new_user)
+                order.user = user
+                order.pk -=1
+                order.save()
+                new_user.delete()
+                request.session.flush()
+            except:
+                pass
                 messages.success(request, f"Welcome Back {email}")
                 return redirect('old-user')
             else:
@@ -464,10 +413,12 @@ def onlyorders(request):
                    assignment=assignment, user=user, status='Pending').save()
             return redirect('old-user')
         except:
-            request.session['subject'] = subject
-            request.session['desc'] = desc
-            request.session['deadline'] = deadline
-            request.session['assignment'] = request.FILES['files']
+            if not request.session.session_key:
+                request.session.save()
+            session_key = request.session.session_key
+            new_user = User(username=session_key,email=session_key)
+            new_user.save()
+            Orders(user=new_user,subject=subject,desc=desc,assignment=assignment,deadline=deadline).save()
             return redirect('signup')
 
 
@@ -487,11 +438,13 @@ def live_session(request):
             order.save()
             return redirect('old-user')
         except:
-            request.session['subject'] = subject
-            request.session['desc'] = desc
-            request.session['deadline'] = deadline
-            request.session['duration'] = duration
-            request.session['assignment'] = file
+            if not request.session.session_key:
+                request.session.save()
+
+            session_key = request.session.session_key
+            new_user = User(username=session_key,email=session_key)
+            new_user.save()
+            Orders(deadline=deadline,subject=subject,assignment=file,duration=duration,user=new_user,desc=desc).save()
             return redirect('signup')
     return render(request, 'live-session.html')
 
