@@ -50,6 +50,7 @@ class Static_Sitemap(Sitemap):
        {'url':'reset_password','priority':0.9,'changefreq':'daily'},
        {'url':'password_reset','priority':0.9,'changefreq':'daily'},
        {'url':'lab_orders','priority':0.9,'changefreq':'daily'},
+       
     ]
        
     def items(self):
