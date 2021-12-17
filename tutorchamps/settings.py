@@ -34,9 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'app',
     'social_django',
-
     
-
+    
 ]
 
 MIDDLEWARE = [

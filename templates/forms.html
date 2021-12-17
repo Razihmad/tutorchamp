@@ -1,4 +1,4 @@
-<form class="commForm mt-3" method="POST" action="" onsubmit="myFunction()">
+<form class="commForm mt-3" method="POST" action="/order/" enctype="multipart/form-data">
             {% csrf_token %}
             <h2 class="text-dark">Guaranteed Higher Grade Or Get Your Money Back!</h2>
             <div class="form_group">
@@ -11,8 +11,8 @@
                             placeholder="Eg. UNCC100 Self &amp; Community">
                     </div>
                     <div class="pos_rel">
-                        <label>Choose Assignment Deadline</label>
-                        <input required class="input" type="datetime-local" id="birthdaytime" name="birthdaytime" placeholder="Deadline">
+                        <label for="birthdaytime">Choose Assignment Deadline</label>
+                        <input required class="input" type="datetime-local" id="birthdaytime" name="deadline" placeholder="Deadline">
                     </div>
                 </div>
     
@@ -35,19 +35,13 @@
     
             </div>
         </form>
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
         <script>
-            var input = document.getElementById('files');
-            var info_area = document.getElementById('file-name');
-            input.addEventListener('change', showFileName);
-            function showFileName(event) {
-                var input = event.srcElement;
-                var fileName = input.files[0].name;
-                info_area.textContent = fileName;
-            }
-    
+            $('#birthdaytime').change(function() {
+				var i = $(this).prev('label').clone();
+				var file = $('#birthdaytime')[0].files[0].name;
+				$(this).prev('label').text(file);
+			  });
         </script>
-        <script>
-            function myFunction() {
-              $("#myModal").css("display","block");
-            }
-        </script>
+ 

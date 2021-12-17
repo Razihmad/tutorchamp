@@ -455,12 +455,11 @@ def onlyorders(request):
         subject = request.POST.get('subject')
         desc = request.POST.get('Details')
         deadline = request.POST.get('deadline')
-        assignment = request.POST.get('files')
+        assignment = request.FILES['files']
         try:
             user = request.user
             uname= user.username
             user = User.objects.get(username=uname)
-            user_detail = UserDetails.objects.get_or_create(user=user)
             Orders(subject=subject, desc=desc, deadline=deadline,
                    assignment=assignment, user=user, status='Pending').save()
             return redirect('old-user')
@@ -468,7 +467,7 @@ def onlyorders(request):
             request.session['subject'] = subject
             request.session['desc'] = desc
             request.session['deadline'] = deadline
-            request.session['assignment'] = assignment
+            request.session['assignment'] = request.FILES['files']
             return redirect('signup')
 
 
