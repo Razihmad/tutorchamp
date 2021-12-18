@@ -133,6 +133,7 @@ def project(request):
             if not request.session.session_key:
                 request.session.save()
             session_key = request.session.session_key
+            request.session['session_key'] = session_key
             new_user = User(username=session_key,email=session_key)
             new_user.save()
             LabOrders(user=new_user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
@@ -261,47 +262,27 @@ def signup(request):
         password = request.POST.get('password')
         try:
             User.objects.get(email=email)
-            messages.info(request, 'this email is already registered')
-            return redirect('signup')
+            messages.info(request, 'This email is already registered')
+            return redirect('login')
         except ObjectDoesNotExist:
             user = User(username=email, email=email)
             user.set_password(password)
             user.save()
             user_detail = UserDetails(user=user)
             user_detail.save()
-            try:
-                session_key = request.session.session_key
-                new_user = User.objects.get(username=session_key)
-                order = LabOrders.objects.get(user = new_user)
-                order.user = user
-                order.pk -=1
-                order.save()
-                new_user.delete()
-                request.session.flush()
-            except:
-                pass
-            try:
-                session_key = request.session.session_key
-                new_user = User.objects.get(username=session_key)
-                order = Orders.objects.get(user = new_user)
-                order.user = user
-                order.pk -=1
-                order.save()
-                new_user.delete()
-                request.session.flush()
-            except:
-                pass
-            try:
-                session_key = request.session.session_key
-                new_user = User.objects.get(username=session_key)
-                order = Orders.objects.get(user = new_user)
-                order.user = user
-                order.pk -=1
-                order.save()
-                new_user.delete()
-                request.session.flush()
-            except:
-                pass
+            if request.session.get('session_key'):
+                username = request.session['session_key']
+                unknown_user = User.objects.get(username=username)
+                try:
+                    laborder = LabOrders.objects.get(user=unknown_user)
+                    laborder.user = user
+                    laborder.save()
+                except:
+                    order = Orders.objects.get(user=unknown_user)
+                    order.user = user
+                    order.save()
+                unknown_user.delete()
+                del request.session['session_key']
             messages.success(request, 'you have registered successfully')
             usr = authenticate(username=email,password=password)
             login(request,usr)
@@ -360,39 +341,21 @@ def signin(request):
                 uname= usr.username
                 user = User.objects.get(username=uname)
                 detail = UserDetails.objects.get_or_create(user=user)
-            try:
-                session_key = request.session.session_key
-                new_user = User.objects.get(username=session_key)
-                order = LabOrders.objects.get(user = new_user)
-                order.user = user
-                order.pk -=1
-                order.save()
-                new_user.delete()
-                request.session.flush()
-            except:
-                pass
-            try:
-                session_key = request.session.session_key
-                new_user = User.objects.get(username=session_key)
-                order = Orders.objects.get(user = new_user)
-                order.user = user
-                order.pk -=1
-                order.save()
-                new_user.delete()
-                request.session.flush()
-            except:
-                pass
-            try:
-                session_key = request.session.session_key
-                new_user = User.objects.get(username=session_key)
-                order = Orders.objects.get(user = new_user)
-                order.user = user
-                order.pk -=1
-                order.save()
-                new_user.delete()
-                request.session.flush()
-            except:
-                pass
+                if request.session.get('session_key'):
+                    username = request.session['session_key']
+                    unknown_user = User.objects.get(username=username)
+                    try:
+                        laborder = LabOrders.objects.get(user=unknown_user)
+                        laborder.user = user
+                        laborder.save()
+                        print(laborder.user)
+                    except:
+                        order = Orders.objects.get(user=unknown_user)
+                        order.user = user
+                        order.save()
+                        print(order.subject)
+                    unknown_user.delete()
+                    del request.session['session_key']
                 messages.success(request, f"Welcome Back {email}")
                 return redirect('old-user')
             else:
@@ -427,6 +390,8 @@ def onlyorders(request):
             if not request.session.session_key:
                 request.session.save()
             session_key = request.session.session_key
+            print(session_key)
+            request.session['session_key'] = session_key
             new_user = User(username=session_key,email=session_key)
             new_user.save()
             Orders(user=new_user,subject=subject,desc=desc,assignment=assignment,deadline=deadline).save()
@@ -453,6 +418,7 @@ def live_session(request):
                 request.session.save()
 
             session_key = request.session.session_key
+            request.session['session_key'] = session_key
             new_user = User(username=session_key,email=session_key)
             new_user.save()
             Orders(deadline=deadline,subject=subject,assignment=file,duration=duration,user=new_user,desc=desc).save()
