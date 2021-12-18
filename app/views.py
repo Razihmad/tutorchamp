@@ -138,7 +138,6 @@ def project(request):
             LabOrders(user=new_user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
                    deadline=deadline, reference_material=reference_material).save()
             return redirect('signup')
-
     return render(request, 'project.html')
 
 
@@ -197,7 +196,7 @@ def nursing(request):
 def management(request):
     return render(request, 'management.html')
 
-
+# assignment orders from the dashboard
 @login_required(login_url='/login/')
 def dashboard_old(request):
     user = request.user
@@ -217,6 +216,7 @@ def dashboard_old(request):
         
     return render(request, 'dash_board.html', {'details': details, 'user': user, 'user_detail': user_detail})
 
+# lab order from the dashboard
 @login_required(login_url='/login/')
 def labordes(request):
     user = request.user
@@ -236,6 +236,8 @@ def labordes(request):
              lab_data=lab_data).save()
         return redirect('old-user')
         
+        
+# live session ordes from the dashboard 
 @login_required(login_url='/login/')
 def live_session_orders(request):
     user = request.user
@@ -614,21 +616,15 @@ def faq(request):
 def finance(request):
     return render(request, "finance.html")
 
-
-def blog_detail(request, title):
-    if title == 'top-10-scholarships-for-college-students':
-        return render(request, 'top_scholor.html')
-    elif title == 'best-tips-and-tricks-to-do-homework-fast':
-        return render(request, 'how_to_do.html')
-    elif title == 'top-informative-speech-topics':
-        return render(request, 'informative.html')
-    elif title == 'top-persuasive-speech-topics':
-        return render(request, 'check_out_2.html')
-    elif title == 'compare-and-contrast-essay-topics':
-        return render(request, 'check_out.html')
-    elif title == 'top-50-research-paper-topics':
-        return render(request, 'top_research.html')
-
-
-def error_404(request,exception):
-    return render(request,'404.html')
+def blog1(request):
+    return render(request,'top_scholor.html')
+def blog2(request):
+    return render(request, 'how_to_do.html')
+def blog3(request):
+    return render(request, 'informative.html')
+def blog4(request):
+    return render(request, 'check_out_2.html')
+def blog5(request):
+    return render(request, 'check_out.html')
+def blog6(request):
+    return render(request, 'top_research.html')

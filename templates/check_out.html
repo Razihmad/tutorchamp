@@ -148,54 +148,7 @@
 					</div>
 				</div>
 
-				<!-- Sidebar Side -->
-				<div class="sidebar-side col-lg-3 col-md-12 col-sm-12">
-					<aside class="sidebar sticky-top">
-						<div class="sidebar-widget popular-posts">
-							<div class="sidebar-title">
-								<h3 class="border-bottom">Recent Posts</h3>
-							</div>
-							<div class="widget-content">
-								<article class="post">
-									<div class="post-info">August 02, 2021</div>
-									<div class="text"><a href="">Check Out The Interesting Persuasive Speech Topics To Convince Your Audience!</a></div>
-								</article>
-								<article class="post">
-									<div class="post-info">August 03, 2021</div>
-									
-									<div class="text"><a href="{% url 'blog-detail' 'top-50-research-paper-topics' %}">Top 50 Research Paper Topics In 2021</a></div>
-								</article>
-								<article class="post">
-									<div class="post-info">August 03, 2021</div>
-									
-									<div class="text"><a href="{% url 'blog-detail' 'top-10-scholarships-for-college-students' %}">Top 10 Scholarships For College Students</a></div>
-								</article>
-							</div>
-						</div>
-
-						<div class="sidebar-widget popular-posts">
-							<div class="sidebar-title">
-								<h3 class="border-bottom">Popular Posts</h3>
-							</div>
-							<div class="widget-content">
-								<article class="post">
-									<div class="post-info">August 02, 2021</div>
-									<div class="text"><a href="">Check Out The Interesting Persuasive Speech Topics To Convince Your Audience!</a></div>
-								</article>
-								<article class="post">
-									<div class="post-info">August 03, 2021</div>
-									
-									<div class="text"><a href="{% url 'blog-detail' 'top-50-research-paper-topics' %}">Top 50 Research Paper Topics In 2021</a></div>
-								</article>
-								<article class="post">
-									<div class="post-info">August 03, 2021</div>
-									
-									<div class="text"><a href="{% url 'blog-detail' 'top-10-scholarships-for-college-students' %}">Top 10 Scholarships For College Students</a></div>
-								</article>
-							</div>
-						</div>
-					</aside>
-				</div>
+				{% include "blog_aside.html" %}			
 
 			</div>
 		</div>
