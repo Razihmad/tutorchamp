@@ -34,9 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'django.contrib.sites',
     'app',
-    'social_django',
-    # 'robots'
-    
+    'social_django',    
 ]
 SESSION_SAVE_EVERY_REQUEST = True
 
