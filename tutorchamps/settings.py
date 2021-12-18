@@ -14,7 +14,7 @@ templates = os.path.join(BASE_DIR,'templates')
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG')
+DEBUG = bool(int(config('DEBUG')))
 
 ALLOWED_HOSTS = ['*']
 APPEND_SLASH = False
@@ -139,9 +139,11 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/old-user'
-if config('DEBUG')==False:
+if DEBUG==False:
+    print(DEBUG)
     STATIC_ROOT = os.path.join(BASE_DIR,'static')
 else:
+    print(DEBUG)
     STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),]
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
