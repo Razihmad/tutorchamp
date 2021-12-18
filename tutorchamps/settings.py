@@ -32,9 +32,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
+    'django.contrib.sites',
     'app',
     'social_django',
-    
+    'robots'
     
 ]
 SESSION_SAVE_EVERY_REQUEST = True
@@ -140,8 +141,10 @@ MEDIA_URL = '/media/'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/old-user'
 if DEBUG==False:
+    SITE_ID=2
     STATIC_ROOT = os.path.join(BASE_DIR,'static')
 else:
+    SITE_ID=1
     STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),]
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
