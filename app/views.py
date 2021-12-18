@@ -457,7 +457,7 @@ def tutor_register(request):
         except:
             messages.warning(request, 'you already have been registered')
             return redirect('tutor')
-        return render(request, 'test.html', {'email': email})
+        return redirect('tutor')
     return render(request, 'register.html')
 
 

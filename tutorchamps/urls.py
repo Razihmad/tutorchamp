@@ -19,10 +19,4 @@ urlpatterns = [
          name='password_reset_complete'), 
     path('sitemap.xml',sitemap,{'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
      path('', include('social_django.urls', namespace='social'))
-     
-
 ]
-
-
-if DEBUG ==False:
-     handler404 = 'app.views.error_404'
