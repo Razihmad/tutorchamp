@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'app',
     'social_django',
-    'robots'
+    # 'robots'
     
 ]
 SESSION_SAVE_EVERY_REQUEST = True
