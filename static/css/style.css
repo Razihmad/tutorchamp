@@ -1936,29 +1936,19 @@ img{
 }
 
 .mobile-menu .navigation li.dropdown .dropdown-btn{
-	position:absolute;
-	right:0px;
-	top:0px;
-	width:44px;
-	height:44px;
-	text-align:center;
-	font-size:16px;
-	line-height:44px;
-	color:#404040;
-	cursor:pointer;
-	z-index:5;
+	position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 100%;
+    height: 44px;
+    text-align: right;
+    font-size: 16px;
+    line-height: 44px;
+    color: #404040;
+    cursor: pointer;
+    z-index: 5;
+    padding-right: 15px;
 }
-
-.mobile-menu .navigation li.dropdown .dropdown-btn:after{
-	content:'';
-	position:absolute;
-	left:0px;
-	top:10px;
-	width:1px;
-	height:24px;
-	border-left:1px solid rgba(0,0,0,0.10);
-}
-
 .mobile-menu .navigation li > ul,
 .mobile-menu .navigation li > ul > li > ul{
 	display: none;
@@ -4249,11 +4239,6 @@ img{
     transition: all 300ms ease;
 	background-color:#e8ebef;
 }
-
-/* .subscribe-form .form-group input:focus{
-	
-} */
-
 .subscribe-form .form-group input[type="submit"],
 .subscribe-form .form-group button {
 	position: absolute;
@@ -5489,12 +5474,6 @@ img{
 .default-form .form-group textarea::-webkit-input-placeholder{
 	color:#777777;
 }
-
-/* .default-form .form-group input[type="text"]:focus,
-.default-form .form-group input[type="email"]:focus,
-.default-form .form-group textarea:focus{
-	
-} */
 
 .default-form .form-group textarea{
 	position:relative;
@@ -8473,11 +8452,6 @@ img{
 	margin-bottom:0px;
 	border-bottom:1px solid #e9e9e9;
 }
-
-/* .accordion-box-two .block .acc-btn.active .icon{
-	
-} */
-
 .accordion-box-two .block .icon{
 	position:absolute;
 	left: 0px;
@@ -11777,13 +11751,13 @@ footer .foot_row .column_2 ul{columns: 2;
 }
 .questions-con .card-header{padding: 12px 40px 12px 20px;}
 .content-column.homepageform{display: flex;align-items: center;}
-#accordion .btn.btn-link.collapsed:after{
+#accordion .btn.btn-link.collapsed:after, #accordion_2 .btn.btn-link.collapsed:after{
 	content: "+"; position: absolute;top: 8px;
     right: -25px; color: #000;font-size: 28px;
     line-height: 0;
     font-weight: bold;
 }
-#accordion .btn.btn-link:after{content: "-";
+#accordion .btn.btn-link:after, #accordion_2 .btn.btn-link:after{content: "-";
     position: absolute;
     top: 8px;
     right: -25px;
@@ -11814,7 +11788,7 @@ footer .foot_row .column_2 ul{columns: 2;
 .topHeader .whatsAppCTAWrp{position: initial; background: no-repeat;
     box-shadow: none;
     padding: 0px 0 0 6px;
-    height: auto;}
+    height: auto; width: auto; z-index: 9;}
 .topHeader .whtIcon img {
     width: auto;
     height: 23px;
@@ -11897,3 +11871,6 @@ form.login_form h5 + p{    line-height: 24px;
     display: flex;
     align-items: center;
     margin: 0 auto;}
+.mob_fix_button{display: none;}
+#birthdaytime{height: 40px; background: #fff;}
+.mob_visible{display: none;}

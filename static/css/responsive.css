@@ -480,6 +480,7 @@
 }
 
 @media only screen and (max-width: 767px){
+	.how-it-works article + span.arrow{display: none;}
 	.header_login_btn{margin-left: 12px;}
 	.main-footer .logo-widget .social-box li a {
 	    font-size: 18px;
@@ -1368,6 +1369,17 @@
     font-size: 35px;}
     .blog_inner h2{font-size: 24px;}
     .blog-page-section .content-box .text{font-size: 17px;}
+}
+@media screen and (max-width:767px) {
+.mob_visible{display: block!important;}
+.feature-section .image-column .image .overlay-box{padding: 50px 50px 50px 15px!important;}
+	.mob_fix_button.visible{position: fixed; z-index: 100;
+    bottom: 22px;
+    width: 100%;
+    text-align: center;
+    left: 0; display: block!important;}
+    .whatsAppCTAWrp{left: 15px;}
+    .scroll-to-top{bottom: 30px;}
 }
 @media screen and (max-width:575px) {
 .contact_n{margin-top: 30px;}

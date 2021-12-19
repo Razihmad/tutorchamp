@@ -23,6 +23,9 @@
     z-index: 999;}
         body{height: 100vh;
     }
+    /*display: flex;
+    align-items: center;
+    justify-content: center;*/}
     form{background: #fff;    width: 100%;
     max-width: 500px;}
     .userImg{    max-width: 120px;
@@ -64,14 +67,14 @@
     text-transform: capitalize;
     margin: -35px 0 40px 0;}
     .loginField img {
-	    filter: grayscale(1);
-	}
+        filter: grayscale(1);
+    }
     @media screen and (max-width:992px) {
         .account_sec > div.d-flex{display: block!important;}
         .account_sec .pattern-layer-seven{display: none;}
     }
     @media screen and (max-width: 767px){   
-        .btn_con{display: block;}
+        .login_form .btn_con{display: block!important;}
         a.continue_btn{margin: 15px auto;}
         .loginF{margin-top: 30px;}
     }
@@ -134,6 +137,7 @@
         {% endfor %}
         <p class="text-center mb-5">Already have an Account? <a style="color: #43b97e;" href="/login/">Log In</a></p>
         <div class="line_">
+            <!-- <p id="alr">Already have an account?</p> <p id="anch"><a href="/login/">Log In</a></p> -->
             <div>OR</div>
         </div>
         <div class="btn_con">
