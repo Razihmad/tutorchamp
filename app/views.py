@@ -348,12 +348,10 @@ def signin(request):
                         laborder = LabOrders.objects.get(user=unknown_user)
                         laborder.user = user
                         laborder.save()
-                        print(laborder.user)
                     except:
                         order = Orders.objects.get(user=unknown_user)
                         order.user = user
                         order.save()
-                        print(order.subject)
                     unknown_user.delete()
                     del request.session['session_key']
                 messages.success(request, f"Welcome Back {email}")
@@ -390,7 +388,6 @@ def onlyorders(request):
             if not request.session.session_key:
                 request.session.save()
             session_key = request.session.session_key
-            print(session_key)
             request.session['session_key'] = session_key
             new_user = User(username=session_key,email=session_key)
             new_user.save()
@@ -502,7 +499,6 @@ def tutor_dashboard(request):
             t.ifsc = ifsc
             t.save()
         else:
-            print('some error')
             messages.info(request,'pleaase check the account number')
             return redirect('tutor-dashboard')
     tutor_account = TutorAccount.objects.get(tutor=tutor_register)
@@ -550,11 +546,9 @@ def withdrawl_money(request):
             tutor_balance.balance -= withdrawl
             tutor_balance.save()
             
-            print('success')
             # send email
             return redirect('tutor-dashboard')
         else:
-            print('fail')
             messages.warning(request,'you dont have enough balance')
             return redirect('tutor-dashboard')
 
