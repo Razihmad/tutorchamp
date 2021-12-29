@@ -1380,6 +1380,8 @@
     left: 0; display: block!important;}
     .whatsAppCTAWrp{left: 15px;}
     .chat_icon{bottom: 20px;}
+    input[name="deadline"]:after{content: "Deadline"; position: absolute; left: 9px; color: #a5a5a5;}
+    input[name="deadline"]:focus:after{display: none;}
 }
 @media screen and (max-width:575px) {
 .contact_n{margin-top: 30px;}
