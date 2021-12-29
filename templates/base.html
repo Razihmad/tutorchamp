@@ -52,6 +52,9 @@
     text-transform: capitalize;
     font-size: 14px;}
     #login_form{display: none;}
+    .mob_fix_button .btn-style-one{padding: 5px 34px; font-size: 12px;}
+    .mob_fix_button .btn-style-one .txt:before {left: -26px; top: 8px;}
+    .mob_fix_button .btn-style-one .txt:after {right: -26px; top: 8px;}
 </style>
 </head>
 
@@ -431,7 +434,7 @@
     </div>
 
     <!--Scroll to top-->
-    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-arrow-up"></span>
+    <div class="chat_icon" data-target="html"> <img  src="{% static 'images/chat.png' %}"> </span></div>
 
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>

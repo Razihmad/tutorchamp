@@ -1,9 +1,244 @@
-{% extends "base.html" %}
-
+<!DOCTYPE html>
 {% load static %}
+<html>
 
-{% block body %}
-  
+<head>
+    <meta charset="utf-8">
+    <title>Online Homework Help - 24x7 Homework Help from TutorChamps.com</title>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">    
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/animation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom-animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.bootstrap-touchspin.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.bootstrap-touchspin.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&amp;display=swap"
+        rel="stylesheet">
+    
+
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description"
+        content="Are you struggling with homework writing? Try Tutor Champs and Get the best online homework help solution from expert tutors. Get Solution Now!">
+        
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NVND638');</script>
+    <!-- End Google Tag Manager -->
+<style>
+    .header_login_btn.btn-style-one .txt:before {
+    left: -22px;
+    width: 16px;
+    height: 3px;}
+    .header_login_btn.btn-style-one .txt:after{right: -22px;width: 16px;
+    height: 3px;}
+    .header_login_btn{margin-top: 18px;
+    padding: 2px 30px 5px;
+    text-transform: capitalize;
+    font-size: 14px;}
+    #login_form{display: none;}
+    .mob_fix_button .btn-style-one{padding: 5px 34px; font-size: 12px;}
+    .mob_fix_button .btn-style-one .txt:before {left: -26px; top: 8px;}
+    .mob_fix_button .btn-style-one .txt:after {right: -26px; top: 8px;}
+
+    html body .tutor_foter.main-footer .social-box{text-align: left!important;}
+    .contact_n > div{display: flex;
+    margin-top: 10px;}
+    @media only screen and (max-width: 767px) {
+      .social-box{margin-bottom: 30px;}
+    }
+
+</style>
+</head>
+
+<body class="hidden-bar-wrapper">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVND638"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="page-wrapper">
+        <div class="preloader">
+            <div class="mesh-loader">
+                <div class="set-one">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+                <div class="set-two">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+
+            </div>
+        </div>
+        <header class="main-header">
+            <div class="header-upper">
+                <div class="auto-container clearfix">
+                    <div class="pull-left logo-box">
+                        <div class="logo"><a href="/"><img src="{% static 'images/logo.png' %}" alt="Tutor Champs" title="Tutor Champs"></a>
+                        </div>
+                    </div>
+        
+
+                    <div class="nav-outer clearfix">
+                        <div class="mobile-nav-toggler"><span class="icon flaticon-menu"></span></div>
+                        <nav class="main-menu navbar-expand-md">
+                            <div class="navbar-header">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
+                                <ul class="navigation clearfix">
+                                    <li><a href="#howitworks">How It Works</a></li>
+                                    <li><a href="#benefits">Benefits</a></li>
+                                    <li><a href="#work-description">Work Description</a></li>
+                                    <li><a href="#testimonials">Testimonial</a></li>
+                                    <li><a href="#faqs">FAQs</a></li>
+                                    <a href="" class="sign_up header_login_btn theme-btn btn-style-one"><span class="txt">Sign In</span> </a>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--End Header Upper-->
+
+            <!-- Sticky Header  -->
+            <div class="sticky-header">
+                <div class="auto-container clearfix">
+                    <div class="logo pull-left">
+                        <a href="/" title=""><img src="{% static 'images/logo.png' %}" alt="" title=""></a>
+                    </div>
+                    <div class="pull-right">
+                        <nav class="main-menu">
+                            <!--Keep This Empty / Menu will come through Javascript-->
+                        </nav>
+                        <div class="outer-box clearfix">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Sticky Menu -->
+
+            <!-- Mobile Menu  -->
+            <div class="mobile-menu">
+                <div class="menu-backdrop"></div>
+                <div class="close-btn"><span class="icon flaticon-multiply"></span></div>
+
+                <nav class="menu-box">
+                    <div class="nav-logo"><a href="/"><img src="{% static 'images/logo.png' %}" alt="" title=""></a>
+                    </div>
+
+                    <div class="menu-outer"></div>
+                </nav>
+            </div><!-- End Mobile Menu -->
+
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header border-0 pt-2">
+                            <button type="button" class="close pb-0" data-dismiss="modal">×</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body pt-1">
+                            <form id="sign_up" class="commForm login_form loginF border-0 pt-0" method="POST" action="">
+                                {% csrf_token %}
+                                <div class="text-center text-dark mb-2">
+                                    <h5>Sign Up</h5>
+                                    <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor.</P>
+                                </div>
+                                <div class="form-group loginField login">
+                                    <img src="{% static 'images/uName.svg' %}" alt="User Name">
+                                    <input class="form-control" type="email" name="email" placeholder="Email"
+                                        id="email">
+                                </div>
+                                <div class="form-group loginField login">
+                                    <img src="{% static 'images/password_Img.svg' %}" alt="password">
+                                    <input class="form-control" type="password" name="password" placeholder="Create Password"
+                                        id="password">
+                                </div>
+                                <div class="text-center psr mt-3">
+                                    <input type="submit" class="formBtn theme-btn btn-style-one" value="Sign Up">
+                                    <a href="" class="theme-btn btn-style-one"><span class="txt">Sign Up</span></a>
+                                </div>
+                                {% for message in messages %}
+                                  <p class="err_msz">{{message}}</p>
+                                {% endfor %}
+                                <p class="text-center mb-5">Already have an Account? <a style="color: #43b97e;" href="javascript:void(0)" id="login_to">Log In</a></p>
+                                <div class="line_">
+                                    <div>OR</div>
+                                </div>
+                                <div class="btn_con">
+                                    <a href="" class="continue_btn continue_with_google"><img src="/static/images/google.png"> <span class="txt">Continue with Google</span></a>
+                                    <a href="" class="continue_btn continue_with_fb"><img src="/static/images/fb.png"> <span class="txt">Continue with Facebook</span></a>
+                                </div>
+                            </form>
+                            <form id="login_form" action="/login/" method="POST" id="" class="commForm login_form loginF border-0 pt-0">
+                                {% csrf_token %}
+                                <div class="text-center text-dark mb-2">
+                                    <h5>Sign in</h5>
+                                    <p>Sign in to get your assignments solved and get trained live sessions from our experts.</p>
+                                </div>
+                                <div class="form-group loginField login">
+                                    <img src="{% static 'images/uName.svg' %}" alt="User Name">
+                                    <input class="form-control" type="email" name="email" placeholder="Email"
+                                        id="email">
+                                </div>
+                                <div class="form-group loginField login">
+                                    <img src="{% static 'images/password_Img.svg' %}" alt="password">
+                                    <input class="form-control" type="password" name="password" placeholder="Password"
+                                        id="password">
+                                </div>
+                                <div class="row mt-3 login" style="display: flex;">
+                                    <div class="col-6 pr-0 col-sm-6">
+                                        <div class="checkbox_box">
+                                            <div style="font-size: 13px;">New User? <a href="javascript:void(0)" id="new_user" class="text-bold"><b style="color: #43b97e;">Start Here.</b> </a> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-6 text-center">
+                                        <div class="forgotpas">
+                                            <!-- <a style="font-size: 13px; color: #43b97e;" href="/password_reset/" id="fp" class="fp">Forgot Password?</a> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center psr mt-3 mb-4 pb-2">
+                                    <input type="submit" class="formBtn theme-btn btn-style-one" value="Sign In">
+                                    <a href="" class="theme-btn btn-style-one"><span class="txt">Sign In</span></a>
+                                </div>
+                                {% for message in messages  %}
+                                  <p class="epError">{{message}}</p>
+                                {% endfor %}
+                                <div class="line_">
+                                    <div>OR</div>
+                                </div>
+                                <div class="btn_con">
+                                    <a href="" class="continue_btn continue_with_google"><img src="/static/images/google.png"> <span class="txt">Continue with Google</span></a>
+                                    <a href="" class="continue_btn continue_with_fb"><img src="/static/images/fb.png"> <span class="txt">Continue with Facebook</span></a>
+                                </div>
+                                
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header>
 	
 	<!-- Banner Section -->
     <section class="banner-section homeBanner tutor">
@@ -49,8 +284,9 @@
                             <div class="form_group">
                                 <input style="height: 47px;" class="input" type="password" required name="password" placeholder="Password">
                             </div>
-                            <div class="text-center mt-3">
-                                <input class="theme-btn btn-style-one" type="submit" value="Sign in">
+                            <div class="text-center psr mt-3">
+                              <input class="formBtn theme-btn btn-style-one" type="submit" value="Sign in">
+                              <a href="" class="theme-btn btn-style-one"><span class="txt">Sign in</span></a>                    
                             </div>
                             <div class="mt-2 text-center">
 								<p class="mb-2">Don't have an account? <a href="/tutor/register/">Sign up</a></p>
@@ -110,7 +346,7 @@
 	</section>
 	
 	
-	<section class="benefitSec py-5">
+	<section class="benefitSec py-5" id="benefits">
 		<div class="auto-container">
 			<div class="row">
 				<div class="col-md-12 col-sm-12 text-center text-dark pb-5">
@@ -141,7 +377,7 @@
 		</div>
 	</section>
 
-	<section class="workDisc py-5">
+	<section class="workDisc py-5" id="work-description">
 		<div class="auto-container">
 			<div class="row">
 				<div class="col-md-6 col-sm-12">
@@ -176,7 +412,7 @@
 		</div>
 	</section>
 	
-	<section class="testimonial-section">
+	<section class="testimonial-section" id="testimonials">
 		<div class="circle-one paroller" data-paroller-factor="-0.20" data-paroller-factor-lg="0.20" data-paroller-type="foreground" data-paroller-direction="horizontal"></div>
 		<div class="circle-two paroller" data-paroller-factor="0.20" data-paroller-factor-lg="-0.20" data-paroller-type="foreground" data-paroller-direction="horizontal"></div>
 		<div class="pattern-layer-two" style="background-image:url('static/images/background/pattern-10.png')"></div>
@@ -284,7 +520,7 @@
 		</div>
 	</section>
 
-	<section class="career-section">
+	<section class="career-section" id="faqs">
 		<div class="auto-container">
 			<div class="row clearfix">
 				
@@ -409,4 +645,104 @@
 		</div>
 	</section>
 	
-	{% endblock body %}
+	<footer class="main-footer tutor_foter">
+            <div class="circle-layer"></div>
+            <div class="pattern-layer-two" style="background-image: url(/static/images/background/pattern-13.png)"></div>
+            <div class="pattern-layer-three" style="background-image: url(/static/images/background/pattern-14.png)"></div>
+            <div class="pattern-layer-four" style="background-image: url(/static/images/background/pattern-13.png)"></div>
+            <div class="auto-container">
+                
+                <!--Widgets Section-->
+                <div class="widgets-section border-0 footer-bottom py-5">
+                    <div class="row foot_row clearfix">
+                        <!-- Column -->
+                        <div class="col-md-6 col-sm-12">
+                            <div class="nav-logo">
+                            	<a href="/"><img src="{% static 'images/logo.png' %}" alt="" title=""></a>
+                           	</div>
+                           	<p>Put your knowledge to good use and help students around the globe get better grades. It is because of the efforts of subject matter experts like you that we have been able to successfully pay heed to the academic help requests we receive on a daily basis.</p>
+                            <div class="logo-widget nav-column">
+	                            <ul class="social-box text-center mt-5">
+		                            <li class="twitter"><a target="_blank" href="http://twitter.com/" class="fa fa-twitter"></a></li>
+		                            <li class="pinterest"><a target="_blank" href="http://pinterest.com/" class="fa fa-pinterest-p"></a></li>
+		                            <li class="facebook"><a target="_blank" href="http://facebook.com/" class="fa fa-facebook-f"></a></li>
+		                            <li class="instagram"><a target="_blank" href="https://instagram.com/" class="fa fa-instagram"></a></li>
+		                            <li class="youtube youtube_icon"><a target="_blank" href="https://youtube.com/" class="fa fa-youtube"></a></li>
+		                        </ul>
+		                    </div>
+                        </div>
+                        <!-- Column -->
+                        <div class="col-md-3 col-sm-12">
+                            <h5>Quick Links</h5>
+                            <ul class="list">
+                                <li><a href="#howitworks">How It Works</a></li>
+                                <li><a href="#benefits">Benefits</a></li>
+                                <li><a href="#work-description">Work Description</a></li>
+                                <li><a href="#testimonials">Testimonial</a></li>
+                                <li><a href="#faqs">FAQs</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-3 col-sm-12">
+                            <h5>Contact Us</h5>
+                            <p>Any question? Reach out to us and we'll get back to you shortly.</p>
+                            <div class="font-13 contact_n"> 
+                                <div>Email : <a href="mailto:help@tutorchamps.com" title="E-mail" target="_blank" class="fa fw fa-envelope font-14" rel="noopener"></a>
+                                </div>
+                                <div>Whatsapp : <a href="https://wa.me/+919891365498" title="Whatsapp" target="_blank" class="fa fw fa-whatsapp font-14" rel="noopener"></a>
+                                </div>
+                            </div>  
+                        </div>           
+                    </div>
+                </div>
+                
+                
+                <!-- Footer Bottom -->
+                <div class="footer-bottom">
+                    <div class="row clearfix">
+                        
+                        <!-- Copyright Column -->
+                        <div class="copyright-column col-lg-12 col-md-12 col-sm-12">
+                            <div class="copyright text-center">Copyright 2021, All Right Reserved</div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+    <script src="{% static 'js/jquery.fancybox.js' %}"></script>
+    <script src="{% static 'js/appear.js' %}"></script>
+    <script src="{% static 'js/parallax.min.js' %}"></script>
+    <script src="{% static 'js/tilt.jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery.paroller.min.js' %}"></script>
+    <script src="{% static 'js/owl.js' %}"></script>
+
+    <script src="{% static 'js/slider.min.js' %}"></script>
+    <script src="{% static 'js/wow.js' %}"></script>
+    <script src="{% static 'js/nav-tool.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'js/validate.js' %}"></script>
+    
+
+    
+
+     <script>
+
+        $(document).ready(function(){
+          $(".mobile-menu ul li a").click(function(){
+            $(".mobile-menu").css('transform','scale(0)');
+          });
+        }); 
+    </script>
+</body>
+
+</html>

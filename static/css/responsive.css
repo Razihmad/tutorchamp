@@ -1379,7 +1379,7 @@
     text-align: center;
     left: 0; display: block!important;}
     .whatsAppCTAWrp{left: 15px;}
-    .scroll-to-top{bottom: 30px;}
+    .chat_icon{bottom: 20px;}
 }
 @media screen and (max-width:575px) {
 .contact_n{margin-top: 30px;}
