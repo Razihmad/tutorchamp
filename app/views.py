@@ -89,11 +89,6 @@ def reviews(request):
 def about(request):
     return render(request, 'about.html')
 
-
-def orderNow(request):
-    return render(request, 'order-now.html')
-
-
 def essay(request):
     return render(request, 'essay.html')
 
