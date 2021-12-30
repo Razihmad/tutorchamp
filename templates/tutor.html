@@ -184,11 +184,11 @@
                                     <div>OR</div>
                                 </div>
                                 <div class="btn_con">
-                                    <a href="" class="continue_btn continue_with_google"><img src="/static/images/google.png"> <span class="txt">Continue with Google</span></a>
-                                    <a href="" class="continue_btn continue_with_fb"><img src="/static/images/fb.png"> <span class="txt">Continue with Facebook</span></a>
+                                    <a href="" class="continue_btn continue_with_google"><img src="{% static 'images/google.png' %}"> <span class="txt">Continue with Google</span></a>
+                                    <a href="" class="continue_btn continue_with_fb"><img src="{% static 'images/fb.png' %}"> <span class="txt">Continue with Facebook</span></a>
                                 </div>
                             </form>
-                            <form id="login_form" action="/login/" method="POST" id="" class="commForm login_form loginF border-0 pt-0">
+                            <form id="login_form" action="" method="POST" id="" class="commForm login_form loginF border-0 pt-0">
                                 {% csrf_token %}
                                 <div class="text-center text-dark mb-2">
                                     <h5>Sign in</h5>
@@ -212,7 +212,6 @@
                                     </div>
                                     <div class="col-6 col-sm-6 text-center">
                                         <div class="forgotpas">
-                                            <!-- <a style="font-size: 13px; color: #43b97e;" href="/password_reset/" id="fp" class="fp">Forgot Password?</a> -->
                                         </div>
                                     </div>
                                 </div>
@@ -227,8 +226,8 @@
                                     <div>OR</div>
                                 </div>
                                 <div class="btn_con">
-                                    <a href="" class="continue_btn continue_with_google"><img src="/static/images/google.png"> <span class="txt">Continue with Google</span></a>
-                                    <a href="" class="continue_btn continue_with_fb"><img src="/static/images/fb.png"> <span class="txt">Continue with Facebook</span></a>
+                                    <a href="" class="continue_btn continue_with_google"><img src="{% static 'images/google.png' %}"> <span class="txt">Continue with Google</span></a>
+                                    <a href="" class="continue_btn continue_with_fb"><img src="{% static 'images/fb.png' %}"> <span class="txt">Continue with Facebook</span></a>
                                 </div>
                                 
                             </form>
@@ -415,10 +414,10 @@
 	<section class="testimonial-section" id="testimonials">
 		<div class="circle-one paroller" data-paroller-factor="-0.20" data-paroller-factor-lg="0.20" data-paroller-type="foreground" data-paroller-direction="horizontal"></div>
 		<div class="circle-two paroller" data-paroller-factor="0.20" data-paroller-factor-lg="-0.20" data-paroller-type="foreground" data-paroller-direction="horizontal"></div>
-		<div class="pattern-layer-two" style="background-image:url('static/images/background/pattern-10.png')"></div>
+		<div class="pattern-layer-two" style="background-image:url('/static/images/background/pattern-10.png')"></div>
 		<div class="auto-container">
 			<div class="inner-container">
-				<div class="pattern-layer" style="background-image:url('static/images/background/pattern-9.png')"></div>
+				<div class="pattern-layer" style="background-image:url('/static/images/background/pattern-9.png')"></div>
 				<!-- Sec Title -->
 				<div class="sec-title centered">
 					<h2>What Our Tutors Are Saying</h2>

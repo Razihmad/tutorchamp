@@ -83,14 +83,14 @@
                    <a href="https://wa.me/+919540989578" target="_blank">
                         <small>&nbsp; WhatsApp for any query </small>
                         <div class="whatsAppCTAWrp ">
-                            <span class="whtIcon"><img src="/static/images/whatsapp.svg" alt="My Assignment Services- Whatsapp"> </span>
+                            <span class="whtIcon"><img src="{% static 'images/whatsapp.svg' %}" alt="My Assignment Services- Whatsapp"> </span>
                         </div>
                         <small class="mob_visible">&nbsp; For Query</small>
                     </a>
                 </div>
                 <div class="d-flex justify-content-between">
                     <a href="/tutor/">Become a Tutor</a>
-                    <a href="" class="ml-4">Sign In</a>
+                    <a href="/tutor/register/" class="ml-4">Sign In</a>
                 </div>
             </div>
         </div>
@@ -232,8 +232,8 @@
                                     <div>OR</div>
                                 </div>
                                 <div class="btn_con">
-                                    <a href="" class="continue_btn continue_with_google"><img src="/static/images/google.png"> <span class="txt">Continue with Google</span></a>
-                                    <a href="" class="continue_btn continue_with_fb"><img src="/static/images/fb.png"> <span class="txt">Continue with Facebook</span></a>
+                                    <a href="" class="continue_btn continue_with_google"><img src="{% static 'images/google.png' %}"> <span class="txt">Continue with Google</span></a>
+                                    <a href="" class="continue_btn continue_with_fb"><img src="{% static 'images/fb.png' %}"> <span class="txt">Continue with Facebook</span></a>
                                 </div>
                             </form>
                             <form id="login_form" action="/login/" method="POST" id="" class="commForm login_form loginF border-0 pt-0">
@@ -275,8 +275,8 @@
                                     <div>OR</div>
                                 </div>
                                 <div class="btn_con">
-                                    <a href="" class="continue_btn continue_with_google"><img src="/static/images/google.png"> <span class="txt">Continue with Google</span></a>
-                                    <a href="" class="continue_btn continue_with_fb"><img src="/static/images/fb.png"> <span class="txt">Continue with Facebook</span></a>
+                                    <a href="" class="continue_btn continue_with_google"><img src="{% static 'images/google.png' %}"> <span class="txt">Continue with Google</span></a>
+                                    <a href="" class="continue_btn continue_with_fb"><img src="{% static 'images/fb.png' %}"> <span class="txt">Continue with Facebook</span></a>
                                 </div>
                                 
                             </form>
@@ -426,7 +426,7 @@
 
     <div class="whatsAppCTAWrp">
         <a href="https://wa.me/+919540989578" target="_blank"> 
-            <span class="whtIcon"><img src="/static/images/whatsapp.svg" alt="My Assignment Services- Whatsapp"></span> <span class="whatsAppText"><strong>Tap to Chat</strong><small>Get instant assignment help</small></span>
+            <span class="whtIcon"><img src="{% static 'images/whatsapp.svg' %}" alt="My Assignment Services- Whatsapp"></span> <span class="whatsAppText"><strong>Tap to Chat</strong><small>Get instant assignment help</small></span>
         </a>
     </div> 
     <div class="mob_fix_button">

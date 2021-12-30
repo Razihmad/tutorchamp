@@ -120,7 +120,7 @@
     <div class="page-wrapper">
         <header class="">
             <div class="container">
-                <a href="/" title=""><img src="/static/images/logo.png" alt="" title=""></a>
+                <a href="/" title=""><img src="{% static 'images/logo.png' %}" alt="" title=""></a>
             </div>
         </header>
 
@@ -175,8 +175,8 @@
             <div>OR</div>
         </div>
         <div class="btn_con">
-            <a href="{% url 'social:begin' 'google-oauth2' %}" class="continue_btn continue_with_google"><img src="/static/images/google.png"> <span class="txt">Continue with Google</span></a>
-            <a href="{% url 'social:begin' 'facebook' %}" class="continue_btn continue_with_fb"><img src="/static/images/fb.png"> <span class="txt">Continue with Facebook</span></a>
+            <a href="{% url 'social:begin' 'google-oauth2' %}" class="continue_btn continue_with_google"><img src="{% static 'images/google.png' %}"> <span class="txt">Continue with Google</span></a>
+            <a href="{% url 'social:begin' 'facebook' %}" class="continue_btn continue_with_fb"><img src="{% static 'images/fb.png' %}"> <span class="txt">Continue with Facebook</span></a>
         </div>
         
     </form>
