@@ -45,7 +45,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
-
+SITE_ID = 6
 ROOT_URLCONF = 'tutorchamps.urls'
 
 TEMPLATES = [
@@ -135,10 +135,8 @@ MEDIA_URL = '/media/'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/old-user'
 if DEBUG==False:
-    SITE_ID=2
     STATIC_ROOT = os.path.join(BASE_DIR,'static')
 else:
-    SITE_ID=4
     STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),]
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
