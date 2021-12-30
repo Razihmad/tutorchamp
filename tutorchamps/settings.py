@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'social_django',    
 ]
 SESSION_SAVE_EVERY_REQUEST = True
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -123,7 +122,6 @@ EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
-
 STATIC_URL = '/static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -140,7 +138,7 @@ if DEBUG==False:
     SITE_ID=2
     STATIC_ROOT = os.path.join(BASE_DIR,'static')
 else:
-    SITE_ID=1
+    SITE_ID=4
     STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),]
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
