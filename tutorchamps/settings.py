@@ -17,8 +17,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = bool(int(config('DEBUG')))
 
 ALLOWED_HOSTS = ['*']
-
-
+APPEND_SLASH = True
 
 # Application definition
 
