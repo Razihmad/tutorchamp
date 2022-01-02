@@ -462,7 +462,7 @@ def tutor_login(request):
             messages.error(request, 'Invalid email or password')
             return redirect('tutor')
     return render(request, 'tutor.html')
-
+   
 
 @login_required(login_url='/tutor/')
 def tutor_dashboard(request):
