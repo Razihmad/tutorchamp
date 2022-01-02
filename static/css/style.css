@@ -1980,14 +1980,14 @@ img{
 }
 .chat_icon{
 	position: fixed;
-    bottom: 15px;
+    bottom: 30px;
     border-radius: 100%;
     right: 15px;
     width: 55px;
     height: 55px;
     color: #ffffff;
     text-align: center;
-    z-index: 100;
+    z-index: 101;
     cursor: pointer;
     padding: 10px;
     box-shadow: 0 0 12px #b3b3b3;
@@ -11877,6 +11877,3 @@ form.login_form h5 + p{    line-height: 24px;
 .mob_fix_button{display: none;}
 #birthdaytime{height: 40px; background: #fff;}
 .mob_visible{display: none;}
-input[name="deadline"]:after{
-  content: "Deadline"; position: absolute;left: 0; 
-}

@@ -30,9 +30,9 @@
 
 @media only screen and (max-width: 1350px){
 
-	.page-wrapper{
+	/*.page-wrapper{
 		overflow:hidden;	
-	}
+	}*/
 	.banner-section.homeBanner .content-column h1{line-height: 50px;}
 	.banner-section.homeBanner{padding-top: 30px!important;}
 	header .main-menu { padding: 4px 0;}
@@ -48,10 +48,10 @@
 		margin:0px !important;
 	}
 	
-	.page-wrapper{
+	/*.page-wrapper{
 		overflow:hidden;	
 	}
-	
+	*/
 	.main-menu .navigation > li{
 		margin-left:0px;
 	}
@@ -1371,17 +1371,19 @@
     .blog-page-section .content-box .text{font-size: 17px;}
 }
 @media screen and (max-width:767px) {
+	.mCustomScrollBox{max-height: inherit;}
 .mob_visible{display: block!important;}
 .feature-section .image-column .image .overlay-box{padding: 50px 50px 50px 15px!important;}
 	.mob_fix_button.visible{position: fixed; z-index: 100;
-    bottom: 22px;
+    bottom: 40px;
     width: 100%;
     text-align: center;
     left: 0; display: block!important;}
-    .whatsAppCTAWrp{left: 15px;}
-    .chat_icon{bottom: 20px;}
-    input[name="deadline"]:after{content: "Deadline"; position: absolute; left: 9px; color: #a5a5a5;}
+    .whatsAppCTAWrp{left: 15px; bottom: 45px;}
+    .chat_icon{bottom: 45px;}
+    input[name="deadline"]:after{content: "Deadline"; position: absolute; left: 9px; bottom: 8px; color: #a5a5a5;}
     input[name="deadline"]:focus:after{display: none;}
+    .input.removeAfter:after{display: none;}
 }
 @media screen and (max-width:575px) {
 .contact_n{margin-top: 30px;}
