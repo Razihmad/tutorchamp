@@ -58,16 +58,7 @@ def home(request):
 
 
 def blog(requset):
-    context = {
-        'one':Blog.objects.get(pk=1),
-        'two':Blog.objects.get(pk=2),
-        'three':Blog.objects.get(pk=3),
-        'four':Blog.objects.get(pk=4),
-        'five':Blog.objects.get(pk=5),
-        'six':Blog.objects.get(pk=6),
-
-    }
-    return render(requset, 'blog.html',context)
+    return render(requset, 'blog.html')
 
 
 def homework(request):
