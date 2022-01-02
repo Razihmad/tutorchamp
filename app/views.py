@@ -113,7 +113,7 @@ def project(request):
             uname = user.username
             user = User.objects.get(username=uname)
             LabOrders(user=user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
-                   deadline=deadline, reference_material=reference_material, status='Pending').save()
+                   deadline=deadline, reference_material=reference_material).save()
             return redirect('old-user')
         except:
             if not request.session.session_key:
@@ -123,7 +123,7 @@ def project(request):
             new_user = User(username=session_key,email=session_key)
             new_user.save()
             LabOrders(user=new_user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
-                   deadline=deadline, reference_material=reference_material,status ='Pending').save()
+                   deadline=deadline, reference_material=reference_material).save()
             return redirect('signup')
     return render(request, 'project.html')
 
