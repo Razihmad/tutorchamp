@@ -281,20 +281,19 @@
 			</form>
 			</div>
 			<div class="assignment_help_content">
-				<form class="commForm mt-3" method="POST" action="/order/" enctype="multipart/form-data">
+				<form class="commForm mt-3" method="POST" action="/asignment_order/" enctype="multipart/form-data">
 					{% csrf_token %}
 				<div  class="flex_div">
 					<div class="col50">
 	                    <label>Instruction</label>
-	                    <textarea name="" id="description" class="" placeholder="Please Enter Your Instruction Here"></textarea>
+	                    <textarea name="desc" id="description" class="" placeholder="Please Enter Your Instruction Here"></textarea>
 	                </div>
 	                <div class="col50">
 	                    <label>Instruction</label>
 	                    <div class="attachFile">
 	                    	<div class="addfile">
-	                    		<label for="choose-file" class="custom-file-upload">Add File</label>
-								<input name="files" type="file" id="choose-file" 
-								   accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png" style="display: none;" />
+	                    		<label for="choose-fil" class="custom-file-upload">Add File</label>
+								<input name="files" type="file" id="choose-fil" style="display: none;" />
 	                    	</div>
 	                    </div>
 	                </div>
@@ -433,6 +432,11 @@
 			  $('#live_f').change(function() {
 				var i = $(this).prev('label').clone();
 				var file = $('#live_f')[0].files[0].name;
+				$(this).prev('label').text(file);
+			  });
+			  $('#choose-fil').change(function() {
+				var i = $(this).prev('label').clone();
+				var file = $('#choose-fil')[0].files[0].name;
 				$(this).prev('label').text(file);
 			  });
 

@@ -574,3 +574,18 @@ def blog5(request):
     return render(request, 'check_out.html')
 def blog6(request):
     return render(request, 'top_research.html')
+
+
+def asignment_order(request):
+    user = request.user
+    uname= user.username
+    user = User.objects.get(username=uname)
+    if request.method=='POST':
+        desc = request.POST.get('desc')
+        assignment = request.FILES['files']
+        subject = request.POST.get('subject')
+        deadline = request.POST.get('deadline')
+        Orders(user=user,desc=desc,assignment=assignment,subject=subject,deadline=deadline,status='Pending').save()
+        return redirect('old-user')
+    
+        
