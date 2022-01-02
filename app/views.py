@@ -54,7 +54,6 @@ def password_reset_request(request):
 
 
 def home(request):
-    print("razi")
     return render(request, 'index.html')
 
 
