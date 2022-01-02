@@ -123,7 +123,7 @@ def project(request):
             new_user = User(username=session_key,email=session_key)
             new_user.save()
             LabOrders(user=new_user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
-                   deadline=deadline, reference_material=reference_material).save()
+                   deadline=deadline, reference_material=reference_material,status ='Pending').save()
             return redirect('signup')
     return render(request, 'project.html')
 
@@ -220,7 +220,7 @@ def labordes(request):
         subject = request.POST.get('subject')
         LabOrders(user=user,reference_material=reference_material,
              deadline=deadline,subject=subject,lab_manual=lab_manual,report_guidline=report_guidline,
-             lab_data=lab_data).save()
+             lab_data=lab_data,status='Pending').save()
         return redirect('old-user')
         
         
@@ -377,7 +377,7 @@ def onlyorders(request):
             request.session['session_key'] = session_key
             new_user = User(username=session_key,email=session_key)
             new_user.save()
-            Orders(user=new_user,subject=subject,desc=desc,assignment=assignment,deadline=deadline).save()
+            Orders(user=new_user,subject=subject,desc=desc,assignment=assignment,deadline=deadline,status='Pending').save()
             return redirect('signup')
 
 
@@ -393,7 +393,7 @@ def live_session(request):
             uname= user.username
             user = User.objects.get(username=uname)
             order = Orders(deadline=deadline, subject=subject, assignment=file,
-                           duration=duration, desc=desc, user=user)
+                           duration=duration, desc=desc, user=user,status="Pending")
             order.save()
             return redirect('old-user')
         except:
@@ -404,7 +404,7 @@ def live_session(request):
             request.session['session_key'] = session_key
             new_user = User(username=session_key,email=session_key)
             new_user.save()
-            Orders(deadline=deadline,subject=subject,assignment=file,duration=duration,user=new_user,desc=desc).save()
+            Orders(deadline=deadline,subject=subject,assignment=file,duration=duration,user=new_user,desc=desc,status='Pending').save()
             return redirect('signup')
     return render(request, 'live-session.html')
 
