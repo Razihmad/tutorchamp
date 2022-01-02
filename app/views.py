@@ -220,7 +220,7 @@ def labordes(request):
         subject = request.POST.get('subject')
         LabOrders(user=user,reference_material=reference_material,
              deadline=deadline,subject=subject,lab_manual=lab_manual,report_guidline=report_guidline,
-             lab_data=lab_data,status='Pending').save()
+             lab_data=lab_data).save()
         return redirect('old-user')
         
         
