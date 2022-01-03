@@ -107,7 +107,7 @@
                                     <li><a href="#work-description">Work Description</a></li>
                                     <li><a href="#testimonials">Testimonial</a></li>
                                     <li><a href="#faqs">FAQs</a></li>
-                                    <a href="" class="sign_up header_login_btn theme-btn btn-style-one"><span class="txt">Sign In</span> </a>
+                                    {% comment %} <a href="" class="sign_up header_login_btn theme-btn btn-style-one"><span class="txt">Sign In</span> </a> {% endcomment %}
                                 </ul>
                             </div>
                         </nav>
@@ -266,7 +266,7 @@
 				<!-- Content Column -->
 				<div class="content-column col-lg-5 col-sm-12">
 					<div class="inner-column banner_con">
-						<form class="commForm mt-3" method="POST" action="/tutor/">
+						<form class="commForm mt-3" method="POST" action="">
 							{% csrf_token %}
 							<div class="text-center"><img style="max-width: 80px;" src="{% static 'images/RectLogo.jpg' %}"> </div>
 							<h2 class="text-dark text-center mb-3">Sign in and get to work</h2>

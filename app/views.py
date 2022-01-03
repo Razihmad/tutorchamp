@@ -113,7 +113,7 @@ def project(request):
             uname = user.username
             user = User.objects.get(username=uname)
             LabOrders(user=user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
-                   deadline=deadline, reference_material=reference_material, status='Pending').save()
+                   deadline=deadline, reference_material=reference_material).save()
             return redirect('old-user')
         except:
             if not request.session.session_key:
@@ -377,7 +377,7 @@ def onlyorders(request):
             request.session['session_key'] = session_key
             new_user = User(username=session_key,email=session_key)
             new_user.save()
-            Orders(user=new_user,subject=subject,desc=desc,assignment=assignment,deadline=deadline).save()
+            Orders(user=new_user,subject=subject,desc=desc,assignment=assignment,deadline=deadline,status='Pending').save()
             return redirect('signup')
 
 
@@ -393,7 +393,7 @@ def live_session(request):
             uname= user.username
             user = User.objects.get(username=uname)
             order = Orders(deadline=deadline, subject=subject, assignment=file,
-                           duration=duration, desc=desc, user=user)
+                           duration=duration, desc=desc, user=user,status="Pending")
             order.save()
             return redirect('old-user')
         except:
@@ -404,7 +404,7 @@ def live_session(request):
             request.session['session_key'] = session_key
             new_user = User(username=session_key,email=session_key)
             new_user.save()
-            Orders(deadline=deadline,subject=subject,assignment=file,duration=duration,user=new_user,desc=desc).save()
+            Orders(deadline=deadline,subject=subject,assignment=file,duration=duration,user=new_user,desc=desc,status='Pending').save()
             return redirect('signup')
     return render(request, 'live-session.html')
 
@@ -421,7 +421,7 @@ def tutor_register(request):
         degree = request.POST.get('degree')
         branch = request.POST.get('branch')
         college = request.POST.get('college')
-        college_id = request.POST.get('att_file')
+        college_id = request.FILES['att_file']
         subject = request.POST.get('subject')
         try:
             user = User(email=email, username=email)
@@ -462,7 +462,7 @@ def tutor_login(request):
             messages.error(request, 'Invalid email or password')
             return redirect('tutor')
     return render(request, 'tutor.html')
-
+   
 
 @login_required(login_url='/tutor/')
 def tutor_dashboard(request):
@@ -574,3 +574,18 @@ def blog5(request):
     return render(request, 'check_out.html')
 def blog6(request):
     return render(request, 'top_research.html')
+
+
+def asignment_order(request):
+    user = request.user
+    uname= user.username
+    user = User.objects.get(username=uname)
+    if request.method=='POST':
+        desc = request.POST.get('desc')
+        assignment = request.FILES['files']
+        subject = request.POST.get('subject')
+        deadline = request.POST.get('deadline')
+        Orders(user=user,desc=desc,assignment=assignment,subject=subject,deadline=deadline,status='Pending').save()
+        return redirect('old-user')
+    
+        
