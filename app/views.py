@@ -421,7 +421,7 @@ def tutor_register(request):
         degree = request.POST.get('degree')
         branch = request.POST.get('branch')
         college = request.POST.get('college')
-        college_id = request.POST.get('att_file')
+        college_id = request.FILES['att_file']
         subject = request.POST.get('subject')
         try:
             user = User(email=email, username=email)
