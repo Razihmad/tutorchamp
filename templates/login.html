@@ -3,6 +3,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Login To Get Your Assignments Solved Instantly - TutorChamps.com </title>
+<meta name="description" content="Login to get all your assignments/homework solved instantly from subject expert tutors." />
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tutorchamps.com/login/" />
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
@@ -96,7 +101,7 @@
         .account_sec .pattern-layer-seven{display: none;}
     }
     @media screen and (max-width: 767px){   
-        .login_form .btn_con{display: block!important;}
+        .btn_con{display: block;}
         a.continue_btn{margin: 15px auto;}
         .loginF{margin-top: 30px;}
     }
@@ -120,27 +125,27 @@
     <div class="page-wrapper">
         <header class="">
             <div class="container">
-                <a href="/" title=""><img src="{% static 'images/logo.png' %}" alt="" title=""></a>
+                <a href="/" title=""><img src="/static/images/logo.png" alt="" title=""></a>
             </div>
         </header>
 
         <section class="account_sec mt-5 bg-white py70 main-footer">
             <div class="container d-flex align-items-center">
                 <div class="left_con ">
-                    <h2 class="color_000">Benefits of Becoming Tutors With<br> <span class="sec-underline">TutorChamps</span></h2>
+                    <h2 class="color_000">We are So Glad to Have You Back at<br> <span class="sec-underline">TutorChamps.com</span></h2>
                     <ul style="font-size: 1.15rem;" class="mt-5">
-                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Share your expertise across the globe.</li> 
-                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Earn handsome money by sharing your knowledge.</li> 
-                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Increase your knowledge by practicing and solving a variety of questions.</li>
-                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Share your expertise across the globe.</li> 
-                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Earn handsome money by sharing your knowledge.</li> 
+                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> 1000000+ Questions Solved.</li> 
+                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> 30k+ Tutors with 100+ PhD.</li> 
+                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Unlimited Revisions.</li>
+                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> More Humble Support Team.</li> 
+                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> 100% Plagiarism Free Solutions.</li> 
                     </ul>
                 </div>
                 <form action="/login/" method="POST" id="" class="commForm login_form loginF">
         {% csrf_token %}
         <div class="text-center text-dark mb-2">
-            <h5>Sign in</h5>
-            <p>Sign in to get your assignments solved and get trained live sessions from our experts.</p>
+            <h5>Sign In</h5>
+            <p>Sign in to get your assignments solved instantly and get live sessions from experts.</p>
         </div>
         <div class="form-group loginField login">
             <img src="{% static 'images/uName.svg' %}" alt="User Name">
@@ -175,8 +180,8 @@
             <div>OR</div>
         </div>
         <div class="btn_con">
-            <a href="{% url 'social:begin' 'google-oauth2' %}" class="continue_btn continue_with_google"><img src="{% static 'images/google.png' %}"> <span class="txt">Continue with Google</span></a>
-            <a href="{% url 'social:begin' 'facebook' %}" class="continue_btn continue_with_fb"><img src="{% static 'images/fb.png' %}"> <span class="txt">Continue with Facebook</span></a>
+            <a href="{% url 'social:begin' 'google-oauth2' %}" class="continue_btn continue_with_google"><img src="/static/images/google.png"> <span class="txt">Continue with Google</span></a>
+            <a href="{% url 'social:begin' 'facebook' %}" class="continue_btn continue_with_fb"><img src="/static/images/fb.png"> <span class="txt">Continue with Facebook</span></a>
         </div>
         
     </form>
