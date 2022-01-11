@@ -87,7 +87,7 @@ body {
 	width: 100%;
 	overflow-x: hidden;
 }
-
+::selection{background-color: #ffe00c; color: #000;}
 .bordered-layout .page-wrapper{
 	padding:0px 50px 0px;
 }
@@ -353,7 +353,7 @@ img{
 
 .btn-style-one:hover{
 	color: #222222;
-	border-color:#00e49a;
+	border-color:#fff;
 }
 .btn-style-two{
 	position: relative;
@@ -2002,7 +2002,8 @@ img{
 	position:relative;
 	overflow:hidden;
 	padding-top:50px;
-	padding-bottom:80px;
+	padding-bottom:90px;
+	border-bottom: 1px solid #efefef;
 }
 
 .banner-section .image-column .pattern-layer-one{
@@ -2584,7 +2585,7 @@ img{
 }
 .benefit-section{
 	position:relative;
-	padding:150px 0px 0px;
+	padding:90px 0px 0px;
 	top: -10px;
 }
 
@@ -3422,18 +3423,11 @@ img{
 	background-color:#f3fbf8;
 }
 
-/*** 
-
-====================================================================
-	Testimonial Section
-====================================================================
-
-***/
 
 .testimonial-section{
 	position:relative;
 	overflow:hidden;
-	padding:110px 0px 100px;
+	padding:90px 0px 100px;
 }
 
 .testimonial-section .circle-one{
@@ -10467,13 +10461,22 @@ section#counter-stats {
     padding: 40px 0 40px;
     overflow: hidden;
 }
+.img_dot{width: 48px;
+    height: 48px;
+    position: absolute;
+    left: 42px;
+    filter: invert(1);}
 .stats {
     position: relative;
     text-align: center;
     max-width: 347px;
-    flex: 210px;
-    background-color: #f3fbf8 !important;
     z-index: 9;
+    background: #fff;
+    min-height: 313px;
+    padding: 20px 12px 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 11px -7px #666!important;
+    border-radius: 4px;
 }
 .stats .fas {
     color: #f67f2d;
@@ -10483,7 +10486,7 @@ section#counter-stats {
     font-size: clamp(1.2em, 3vw, 1.8em);
     text-transform: none;
     font-weight: 600;
-    margin: 0.2em 0;
+    margin: 0 0 5px;
     color: #44b97f;
 }
 .stats small {
@@ -10510,13 +10513,10 @@ section#counter-stats {
 .main-footer .logo-widget .social-box li.facebook a:hover{background: #f8fbff;color: #3b5999;}
     .main-footer .logo-widget .social-box li.dribbble a:hover{background: none;transform: rotatey(160deg);}
 .count{display: inline-block;
-    font-size: 30px;
+    font-size: 26px;
     position: relative;
     font-weight: bold;
     color: #000;}
-.count:after{content: "+"; position: absolute; top: 0;    right: -20px;
-    color: #000;
-    font-size: 30px;}
 .banRt ul li {
     background: #fff;
     display: inline-block;
@@ -10789,8 +10789,7 @@ header li.more:hover > a::before {
     font-size: 16px;
 }
 .ban_container{max-width: 1240px; margin: 0 auto;}
-.row_{height: calc(100vh - 88px);
-    align-items: center;}
+.row_{align-items: center;}
 .__icon-container span{
     font-size: 17px;
 }
@@ -10806,7 +10805,7 @@ header li.more:hover > a::before {
     font-weight: 900;
     line-height: 1.2;
     text-align: center;
-    margin-bottom: 0;
+    margin: 15px 0 0;
 }
 .banner_con>h2{
     font-size: 20px;
@@ -11627,9 +11626,6 @@ header .profileDrop:after{content: "";
 .ml30{margin-left: 30px;}
 .course-block .inner-box .lower-content p{
 	    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
 }
 .keyMetrics h5+small{font-size: 14px;}
 .a_:hover {
@@ -11877,3 +11873,29 @@ form.login_form h5 + p{    line-height: 24px;
 .mob_fix_button{display: none;}
 #birthdaytime{height: 40px; background: #fff;}
 .mob_visible{display: none;}
+.h3_hover{color: #000;}
+.h3_hover:hover{color: #43b97e;}
+.mt100{margin-top: 100px}
+.ctaSec{color: #fff; background-color: #43b97e;
+    padding: 18px 50px 18px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 100px;
+    position: relative;}
+.ctaSec > span{    font-size: 21px;
+    display: block;}
+.border_r{border: 2px solid #FFF;}
+.rating_inner{  margin: 35px 0;  display: flex;
+    justify-content: space-between;}
+.rating_inner li{max-width: 192px; width: auto; display: flex; align-items: center;
+    justify-content: space-between; padding-right: 15px;}
+.rating_inner .img_con{ overflow: hidden; height: 34px;
+    width: 40px;}
+ .rating_inner .img_con + div{padding: 0 4px;}  
+.rating_inner li > span{font-size: 33px;color: #43b97e;}
+.rating_inner li > div p + img{max-width: 65px}
+.rating_inner p{margin-bottom: 0; line-height: 22px;}
+.rating_inner p a{font-size: 14px; color: #000;
+    font-weight: 500;}
+
