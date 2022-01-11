@@ -601,7 +601,7 @@
 	.news-block .inner-box .lower-content .post-info li{font-size: 13px;}
 	h1{font-size: 30px; line-height: 45px!important;}
 	#counter-stats div h2+div{display: block!important;}
-	.stats{margin-bottom: 25px;}
+	.stats{margin-bottom: 25px; min-height: 0; padding: 20px 12px 30px!important;}
 	.main-footer .pattern-layer-four{display: none;}
 	.main-footer .pattern-layer-one{display: none;}
 	.benefit-section .background-layer-two{left: -377px;
@@ -1371,6 +1371,16 @@
     .blog-page-section .content-box .text{font-size: 17px;}
 }
 @media screen and (max-width:767px) {
+	.ctaSec{display: block; padding: 20px; border-radius: 20px;}
+	.img_dot{display: none;}
+	.ctaSec > span{    padding: 0 0 24px 0!important;
+    font-size: 17px;}
+    .banner_con{width: 100%;}
+    .rating_inner li > span{font-size: 27px;}
+    .rating_inner p a{font-size: 12px;}
+    .rating_inner li{max-width: 168px;}
+    .rating_inner{flex-wrap: wrap;}
+    .rating_inner li:nth-child(2){padding-right: 0;}
 	.mCustomScrollBox{max-height: inherit;}
 .mob_visible{display: block!important;}
 .feature-section .image-column .image .overlay-box{padding: 50px 50px 50px 15px!important;}
@@ -1381,7 +1391,8 @@
     left: 0; display: block!important;}
     .whatsAppCTAWrp{left: 15px; bottom: 45px;}
     .chat_icon{bottom: 45px;}
-    input[name="deadline"]:after{content: "Deadline"; position: absolute; left: 9px; bottom: 8px; color: #a5a5a5;}
+    input[name="deadline"]:after{content: "Deadline"; position: absolute; left: 9px; bottom: 8px; color: #a5a5a5; background: #fff;
+    width: calc(100% - 40px);}
     input[name="deadline"]:focus:after{display: none;}
     .input.removeAfter:after{display: none;}
 }
