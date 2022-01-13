@@ -113,7 +113,7 @@
                         <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Earn handsome money by sharing your knowledge.</li> 
                     </ul>
                 </div>
-                <form class="commForm login_form loginF" method="POST" enctype="multipart/form-data">
+                <form class="commForm login_form loginF" method="POST">
                 {% csrf_token %}
                
                 <div class="first_step">
@@ -136,76 +136,6 @@
                     </div>
                     <div class="form_group">
                         <div class="pos_rel">
-                            <label>Enter WhatsApp Number</label>
-                            <input required name="number" class="input" placeholder="Enter WhatsApp Number" type="Number" maxlength="10">
-                        </div>
-                        <div class="pos_rel">
-                            <label for="inputState">State</label>
-                            <select required class="input" id="inputState" name="State">
-                                <option value="SelectState">Select State</option>
-                                <option value="Andra Pradesh">Andra Pradesh</option>
-                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                <option value="Assam">Assam</option>
-                                <option value="Bihar">Bihar</option>
-                                <option value="Chhattisgarh">Chhattisgarh</option>
-                                <option value="Goa">Goa</option>
-                                <option value="Gujarat">Gujarat</option>
-                                <option value="Haryana">Haryana</option>
-                                <option value="Himachal Pradesh">Himachal Pradesh</option>
-                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                                <option value="Jharkhand">Jharkhand</option>
-                                <option value="Karnataka">Karnataka</option>
-                                <option value="Kerala">Kerala</option>
-                                <option value="Madya Pradesh">Madya Pradesh</option>
-                                <option value="Maharashtra">Maharashtra</option>
-                                <option value="Manipur">Manipur</option>
-                                <option value="Meghalaya">Meghalaya</option>
-                                <option value="Mizoram">Mizoram</option>
-                                <option value="Nagaland">Nagaland</option>
-                                <option value="Orissa">Orissa</option>
-                                <option value="Punjab">Punjab</option>
-                                <option value="Rajasthan">Rajasthan</option>
-                                <option value="Sikkim">Sikkim</option>
-                                <option value="Tamil Nadu">Tamil Nadu</option>
-                                <option value="Telangana">Telangana</option>
-                                <option value="Tripura">Tripura</option>
-                                <option value="Uttaranchal">Uttaranchal</option>
-                                <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                <option value="West Bengal">West Bengal</option>
-                                <option disabled style="background-color:#aaa; color:#fff">UNION Territories</option>
-                                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                                <option value="Chandigarh">Chandigarh</option>
-                                <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
-                                <option value="Daman and Diu">Daman and Diu</option>
-                                <option value="Delhi">Delhi</option>
-                                <option value="Lakshadeep">Lakshadeep</option>
-                                <option value="Pondicherry">Pondicherry</option>
-                              </select>
-                        </div>
-                    </div>
-                    <div class="form_group">
-                        <div class="pos_rel">
-                            <label for="inputDistrict">Select City</label>
-                            <select required class="input" id="inputDistrict" name="city">
-                                <option value="">-- select one -- </option>
-                            </select>
-                        </div>
-                        <div class="pos_rel">
-                            <label>Pin Code</label>
-                            <input required name="pin" class="input" placeholder="Pin Code" type="text" maxlength="6">
-                        </div>
-                    </div>
-                    <div class="text-center mt-3">
-                        <a style="padding: 7px 43px;" href="javascript:void(0)" class="theme-btn btn-style-one" id="next"><span class="txt">Next</span></a>
-                    </div>
-                </div>
-
-                <div class="Second_step">
-                    <h3 class="text-dark text-center Second_step">Academic Details</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor.</p>
-                    <div class="form_group "> 
-                        <div class="pos_rel">
                             <label>Qualification level</label>
                             <select required id="level" class="input" name="level">
                                 <option value="test_city" disabled="" selected="">-- Select --</option>
@@ -213,38 +143,6 @@
                                 <option value="Postgraduate">Postgraduate </option>
                                 <option value="PhD">PhD</option>
                             </select>
-                        </div>
-                        <div class="pos_rel">
-                            <label>Degree</label>
-                            <select id="degree" required class="input" name="degree">
-                                <option value="test_city" disabled="" selected="">-- Select --</option>
-                                <option value="B.tech">B.tech</option>
-                                <option value="M.tech">M.tech </option>
-                                <option value="B.A.">B.A.</option>
-                                <option value="M.A.">M.A.</option>
-                                <option value="B.com">B.com</option>
-                                <option value="M.com">M.com</option>
-                                <option value="BCA">BCA</option>
-                                <option value="MCA">MCA</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form_group Second_step">
-                        <div class="pos_rel">
-                            <label>Branch/Course</label>
-                            <input required name="branch" class="input" placeholder="Branch/Course" type="text">
-                        </div>
-                        <div class="pos_rel">
-                            <label>College/University</label>
-                            <input required name="college" class="input" placeholder="College/University" type="text">
-                        </div>
-                    </div>
-                    <div class="form_group Second_step">
-                        <div class="pos_rel">
-                            <div class="attch-feild"> 
-                                <label> College id/ passing certificate</label>
-                                <input required style="line-height: 16px;" class="input" type="file" name="att_file" id=""> 
-                            </div>
                         </div>
                         <div class="pos_rel">
                             <label>Select Subject</label>
@@ -277,21 +175,11 @@
     <div class="pattern-layer-seven" style="background-image: url('/static/images/main-slider/pattern-5.png')"></div>               
     <div class="circle-layer"></div>
         </section>  
-    
     </div>
-
-
+    
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/custom.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-    <script>
-
-    $("#next").click(function(){
-            $(".first_step").hide();
-            $(".Second_step").show();
-       
-    });
-    </script>
 </body>
 </html>
