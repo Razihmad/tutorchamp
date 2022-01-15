@@ -11898,4 +11898,28 @@ form.login_form h5 + p{    line-height: 24px;
 .rating_inner p{margin-bottom: 0; line-height: 22px;}
 .rating_inner p a{font-size: 14px; color: #000;
     font-weight: 500;}
-
+.how_it_work_inner_page .h5{color: #43b97e;
+    font-size: 26px;
+    font-weight: 600;}
+.how_it_work_inner_page .content{padding: 20px;
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 0 1px 20px 2px #ecececbf;
+    margin: 0 0 30px;
+    text-align: center;}
+.how_it_work_inner_page{background: #f0faf5;
+    padding: 50px 0;}
+.how_it_work_inner_page .minHight266{min-height: 266px;}
+.how_it_work_inner_page .background-layer-two{top: 255px!important;}
+.four_pillars_inner{display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 755px;}
+.four_pillars_inner .content_div{width: 50%;
+    padding-left: 15px;}
+.mr_auto{margin-right: auto;}
+.ml_auto{margin-left: auto;}
+.four_pillars p{margin-bottom: 0;}
+.four_pillars{padding: 25px 0 60px;
+    margin-top: 70px;
+    background-image: radial-gradient(#fff 22%, #c2ede2 75%);}

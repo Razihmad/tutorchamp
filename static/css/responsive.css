@@ -1394,7 +1394,9 @@
     input[name="deadline"]:after{content: "Deadline"; position: absolute; left: 9px; bottom: 8px; color: #a5a5a5; background: #fff;
     width: calc(100% - 40px);}
     input[name="deadline"]:focus:after{display: none;}
-    .input.removeAfter:after{display: none;}
+    .input.removeAfter:after, .four_pillars_inner .img_box{display: none;}
+    .four_pillars_inner .content_div{width: 100%!important;}
+    .four_pillars{background-image: radial-gradient(#e3f6f2 22%, #c2ede2 75%)}
 }
 @media screen and (max-width:575px) {
 .contact_n{margin-top: 30px;}
