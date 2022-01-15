@@ -413,21 +413,13 @@ def tutor_register(request):
         name = request.POST.get('name')
         email = request.POST.get('email')
         email = email.lower()
-        phone = request.POST.get('number')
-        state = request.POST.get('State')
-        city = request.POST.get('city')
-        pin = request.POST.get('pin')
         qualification_level = request.POST.get('level')
-        degree = request.POST.get('degree')
-        branch = request.POST.get('branch')
-        college = request.POST.get('college')
-        college_id = request.FILES['att_file']
         subject = request.POST.get('subject')
-        try:
-            user = User(email=email, username=email)
-            user.save()
-            tutor = TutorRegister(name=name,phone=phone, state=state, city=city, pin=pin, qualification_level=qualification_level,
-                                  degree=degree, college=college, college_id=college_id, subject=subject, branch=branch, tutor=user)
+        user = User.objects.get_or_create(username=email,email=email)
+        b = user[1]
+        user = user[0]
+        if b==True:
+            tutor = TutorRegister(name=name,qualification_level=qualification_level, subject=subject,tutor=user)
             send_mail(subject='Welcome to the TutorChamps!!',
                       message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
                       ' We are specialists in delivering the best quality assignment within the deadline. ' + 
@@ -437,10 +429,10 @@ def tutor_register(request):
             x = TutorBalance(tutor=tutor,balance=0)
             x.save()
             TutorAccount(tutor = tutor).save()
-        except:
-            messages.warning(request, 'you already have been registered')
             return redirect('tutor')
-        return redirect('tutor')
+        else:
+            messages.warning(request, 'you already have been registered')
+            return redirect('registration')
     return render(request, 'register.html')
 
 
@@ -452,7 +444,6 @@ def tutor_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                messages.success(request, 'You logged in Successfully')
                 return redirect('tutor-dashboard')
             else:
                 messages.info(
@@ -487,14 +478,23 @@ def tutor_dashboard(request):
         else:
             messages.info(request,'pleaase check the account number')
             return redirect('tutor-dashboard')
-    tutor_account = TutorAccount.objects.get(tutor=tutor_register)
-    assignments = TutorSolvedAssignment.objects.filter(tutor=tutor_register)
-    labs = TutorSolvedLabs.objects.filter(tutor = tutor_register)
-    earned = TutorEarnedDetail.objects.filter(tutor=tutor_register)
-    payment_history  = TutorPaymenyDetails.objects.filter(tutor= tutor_register)
-    return render(request, 'tutor-dashboard.html',{'tutor_register': tutor_register,'tutor': tutor,'earned':earned,'payment_history':payment_history,
-                'b':tutor_balance.balance,'tutor_account':tutor_account,'assignments':assignments,'labs':labs })
+    if len(tutor_register.phone)>0:
+        return render(request,'tutor_detail.html')
+    else:
+        tutor_account = TutorAccount.objects.get(tutor=tutor_register)
+        assignments = TutorSolvedAssignment.objects.filter(tutor=tutor_register)
+        labs = TutorSolvedLabs.objects.filter(tutor = tutor_register)
+        earned = TutorEarnedDetail.objects.filter(tutor=tutor_register)
+        payment_history  = TutorPaymenyDetails.objects.filter(tutor= tutor_register)
+        return render(request, 'tutor-dashboard.html',{'tutor_register': tutor_register,'tutor': tutor,'earned':earned,'payment_history':payment_history,
+                    'b':tutor_balance.balance,'tutor_account':tutor_account,'assignments':assignments,'labs':labs })
     
+    
+# @login_required(login_url='/tutor/')
+def tutor_detail(request):
+    return render(request,'tutor_detail.html')
+
+
     
 @login_required(login_url='/tutor/')
 def tutor_profile(request):

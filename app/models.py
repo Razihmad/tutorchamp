@@ -1,3 +1,4 @@
+from os import truncate
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
@@ -68,15 +69,15 @@ class LabOrders(models.Model):
 class TutorRegister(models.Model):
     tutor = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    phone = models.CharField(max_length=13)
-    state = models.CharField(max_length=50)
-    city = models.CharField(max_length=60)
-    pin = models.IntegerField()
+    phone = models.CharField(max_length=13,null=True,blank=True)
+    state = models.CharField(max_length=50,blank=True,null=True)
+    city = models.CharField(max_length=60,blank=True,null=True)
+    pin = models.IntegerField(blank=True,null=True)
     qualification_level = models.CharField(max_length=100)
-    degree = models.CharField(max_length=100)
-    branch = models.CharField(max_length=100)
-    college = models.CharField(max_length=200)
-    college_id = models.FileField()
+    degree = models.CharField(max_length=100,blank=True,null=True)
+    branch = models.CharField(max_length=100,blank=True,null=True)
+    college = models.CharField(max_length=200,blank=True,null=True)
+    college_id = models.FileField(null=True,blank=True)
     subject = models.CharField(max_length=40)
 
 
