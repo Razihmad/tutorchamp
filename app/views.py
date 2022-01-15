@@ -478,7 +478,7 @@ def tutor_dashboard(request):
         else:
             messages.info(request,'pleaase check the account number')
             return redirect('tutor-dashboard')
-    if len(tutor_register.phone)>0:
+    if tutor_register.phone == None:
         return render(request,'tutor_detail.html')
     else:
         tutor_account = TutorAccount.objects.get(tutor=tutor_register)
