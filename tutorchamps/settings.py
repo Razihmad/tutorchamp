@@ -44,6 +44,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
+          'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 SITE_ID = 6
 ROOT_URLCONF = 'tutorchamps.urls'
@@ -107,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 LANGUAGE_CODE = 'en-us'
-
+ 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -135,12 +137,13 @@ MEDIA_URL = '/media/'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/old-user'
 SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/dashboard/new_user'
-if DEBUG==False:
-    STATIC_ROOT = os.path.join(BASE_DIR,'static')
-else:
-    STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),]
-
+# if DEBUG==False:
+#     STATIC_ROOT = os.path.join(BASE_DIR,'static')
+# else:
+#     STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),]
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 SOCIAL_AUTH_FACEBOOK_KEY = config('SOCIAL_AUTH_FACEBOOK_KEY') 
 SOCIAL_AUTH_FACEBOOK_SECRET = config('SOCIAL_AUTH_FACEBOOK_SECRET')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
