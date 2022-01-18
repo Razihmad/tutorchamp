@@ -1,4 +1,3 @@
-/* LeBari HTML Template*/
 
 @media only screen and (max-width: 2000px){
 	
@@ -29,10 +28,6 @@
 }
 
 @media only screen and (max-width: 1350px){
-
-	/*.page-wrapper{
-		overflow:hidden;	
-	}*/
 	.banner-section.homeBanner .content-column h1{line-height: 50px;}
 	.banner-section.homeBanner{padding-top: 30px!important;}
 	header .main-menu { padding: 4px 0;}
@@ -43,15 +38,11 @@
 }
 
 @media only screen and (max-width: 1140px){
-	
+	h4 {font-size: 20px!important;}
+	h5 {font-size: 18px!important;}
 	.main-header{
 		margin:0px !important;
 	}
-	
-	/*.page-wrapper{
-		overflow:hidden;	
-	}
-	*/
 	.main-menu .navigation > li{
 		margin-left:0px;
 	}
@@ -86,10 +77,6 @@
 	
 	.main-header .outer-box{
 		right:15px;
-	}
-	
-	.course-block .inner-box .lower-content h4{
-		font-size:20px;
 	}
 	
 	.feature-section .image-column .feature-icon,
@@ -127,7 +114,7 @@
 	}
 	
 	h2{
-		font-size:32px;
+		font-size:26px;
 	}
 	
 	.feature-section .image-column .inner-column{
@@ -187,10 +174,6 @@
 	.banner-section-three .image-column .image-two,
 	.banner-section-three .content-column .pattern-layer-one{
 		display:none;
-	}
-	
-	.banner-section-three .content-column .inner-column h2{
-		font-size:45px;
 	}
 	
 	.blog-detail .inner-box .blockquote-box .blockquote-column .inner-column{
@@ -491,16 +474,12 @@
 	.main-footer .footer-bottom .nav-column ul{margin-top: 25px; text-align: left;}
 	.main-footer .footer-bottom .nav-column ul li{margin-right: 6px;}
 	input[type=date]{height: 37px;}
-	.blog_inner h2{font-size: 22px;}
-	.blog_inner h4{font-size: 20px;}
 	.sidebar-page-container.style-two{padding-bottom: 0;}
 	.blog-detail-banner-section .pattern-layer-three{right: 5px; bottom: 5px;}
 	.blog-detail-banner-section .pattern-layer-four {
     left: 32px;
     bottom: 15px;}
-	.blog_inner h1 {
-    font-size: 24px!important;
-    line-height: 36px!important;}
+	.blog_inner h1 {line-height: 36px!important;}
 	.quality{padding-top: 0;}
 	section#counter-stats .keyMetrics{margin-top: 5px!important;}
 	.news-block{margin-bottom: 55px;}
@@ -529,8 +508,7 @@
     .about .features__icon + h3{padding: 10px 0 0!important;}
 	.reviews_summary figure{float: none; margin: 0 auto;}
 	.reviews_summary .rating, .reviews_summary h1{display: block;text-align: center;}
-	.reviews_summary h1{font-size: 26px;
-    margin: 15px 0 5px;}
+	.reviews_summary h1{margin: 15px 0 5px;}
     .about:before{top: -100px;}
     .about {padding: 40px 0 80px;}
     #history-slider .slick-next:after, #history-slider .slick-prev:after{content: "";
@@ -571,15 +549,15 @@
     .vasContent p{width: 100%;}
     .vasContent .right-txt h2{text-align: left;}
     .vasContent .subVas {margin: 50px 0 50px;}
-	.Sbanner h1{font-size: 32px; margin-bottom: 15px;}
-	.Sbanner h2{font-size: 15px; margin-bottom: 30px;}
+	.Sbanner h1{margin-bottom: 15px;}
+	.Sbanner h2{margin-bottom: 30px;}
 	.Sbanner .__icon-container{width: 100%;margin: 0 auto 30px;padding: 13px 0;background: #43b97e87;}
 	.Sbanner .__icon-container>div{padding: 0 9px}
 	.Sbanner .__icon-container span{font-size: 12px;}
 	.commForm .pos_rel{width: 100%;}
 	.commForm .form_group{display: block;}
 	.twoField{width: 100%;}
-	.commForm h2{font-size: 20px; margin-bottom: 15px;}
+	.commForm h2{font-size: 18px; margin-bottom: 15px;}
 	.ban_container{padding: 20px;}
 	.flex_div{display: block;}
 	.guarantees__item {
@@ -599,7 +577,7 @@
 	.main-header .header-upper .logo-box .logo{text-align: left; padding: 4px 0 10px;}
 	.banRt ul li{margin: 15px;}
 	.news-block .inner-box .lower-content .post-info li{font-size: 13px;}
-	h1{font-size: 30px; line-height: 45px!important;}
+	h1{font-size: 28px!important; line-height: 45px!important;}
 	#counter-stats div h2+div{display: block!important;}
 	.stats{margin-bottom: 25px; min-height: 0; padding: 20px 12px 30px!important;}
 	.main-footer .pattern-layer-four{display: none;}
@@ -630,10 +608,6 @@
 		bottom:0px;
 		width:100%;
 		margin:0px;
-	}
-	
-	.cource-detail-banner-section .content-box h2{
-		font-size:30px;
 	}
 	
 	.cource-detail-banner-section .content-box .hovers{
@@ -963,12 +937,10 @@
 		right:0px !important;
 		left:auto !important;
 	}
-	
 	.page-title h2,
 	h2{
-		font-size:30px;
+		font-size: 26px;
 	}
-	
 	.main-header .header-upper .outer-box .social-box li{
 		margin-left:0px;
 		margin-right:6px;
@@ -1022,15 +994,6 @@
 		padding:8px 20px 8px 10px;
 		margin:0px 4px 8px;
 	}
-	
-	.news-block-two .inner-box .lower-content h2{
-		font-size:26px;
-	}
-	
-	.blog-detail-banner-section .content-box h2{
-		font-size:30px;
-	}
-	
 	.blog-detail-banner-section .content-box .pull-right{
 		width:100%;
 	}
@@ -1082,11 +1045,6 @@
 	.contact-section .form-column .inner-column{
 		padding:30px 20px;
 	}
-	
-	.banner-section-three .content-column .inner-column h2{
-		font-size:35px;
-	}
-	
 	.user-profile-section .profile-box .box-inner .image{
 		position:relative;
 		margin-bottom:20px;
@@ -1152,17 +1110,9 @@
 		background-color:#ffffff;
 	}
 	
-	.cource-detail-banner-section .content-box h2{
-		font-size:26px;
-	}
-	
 	.accordion-box-two .block .acc-btn .side-text,
 	.cource-detail-banner-section .content-box h2 br{
 		display:none;
-	}
-	
-	.blog-page-section .content-box h2{
-		font-size:28px;
 	}
 	
 	.news-block-two .inner-box .lower-content{
@@ -1170,12 +1120,10 @@
 	}
 	
 	.news-block-two .inner-box .lower-content h2{
-		font-size:22px;
 		line-height:1.4em;
 	}
 	
 	.contact-page-section .info-column h2{
-		font-size:30px;
 		line-height:1.4em;
 	}
 	
@@ -1194,29 +1142,11 @@
 	.benefit-section .images-column .color-layer{
 		height:440px;
 	}
-	
-	.news-block .inner-box .lower-content h4{
-		font-size:17px;
-	}
-	
 	.professional-section .images-column .color-layer{
 		height:320px;
 	}
-	
-	.course-block .inner-box .lower-content h4{
-		font-size:20px;
-	}
-	
-	.banner-section-three .content-column .inner-column h2{
-		font-size:26px;
-	}
-	
 	.testimonial-block-two .inner-box .quote-icon{
 		display:none;
-	}
-	
-	.page-title-section .content-box h2{
-		font-size:30px;
 	}
 	
 	.course-block .inner-box .lower-content .pull-right{
@@ -1286,11 +1216,6 @@
 	.error-section .content h3{
 		margin-top:30px;
 	}
-	
-	.contact-page-section .form-column h2{
-		font-size:26px;
-	}
-	
 	.contact-page-section .form-column .text br,
 	.contact-page-section .form-column h2:before{
 		display:none;
@@ -1328,15 +1253,11 @@
     .banner-section .image-column .image-content{width: 200px;
     height: 200px; padding-top: 65px;
     background-size: contain;}
-    h2 {
-    font-size: 33px;}
     .sec-title {    top: -35px;
     margin-bottom: 35px;}
     .service-block .inner-box .text{font-size: 15px;}
     .service-block .inner-box h4, .service-block .inner-box h3{margin-bottom: 8px;
-    font-size: 20px;}
-    .sec-title h2 {
-    font-size: 27px;}
+    font-size: 22px;}
     .homeBanner .inner-column .image img{    max-width: 500px;
     margin-top: 10px;}
     .list-style-one li strong{margin-bottom: 3px; font-size: 22px;}
@@ -1347,7 +1268,7 @@
     margin-bottom: 5px;}
     .testimonial-block .inner-box .text{font-size: 16px;margin-bottom: 20px;}
     .sec-title .text{font-size: 16px;}
-    h4 {font-size: 22px;}
+    
     section#counter-stats {
     background: #fff;
     padding: 0px 0 25px;}
@@ -1361,13 +1282,6 @@
     line-height: 43px;
     font-size: 26px;}
     .content_sec{margin-top: -30px;}
-    .vasContent h2{font-size: 26px;}
-    .blog-page-section .content-box h2{font-size: 30px;}
-    .blog_inner h1{font-size: 28px;}
-    .reviews_summary h1{font-size: 28px;}
-    h1 {
-    font-size: 35px;}
-    .blog_inner h2{font-size: 24px;}
     .blog-page-section .content-box .text{font-size: 17px;}
 }
 @media screen and (max-width:767px) {
@@ -1397,6 +1311,7 @@
     .input.removeAfter:after, .four_pillars_inner .img_box{display: none;}
     .four_pillars_inner .content_div{width: 100%!important;}
     .four_pillars{background-image: radial-gradient(#e3f6f2 22%, #c2ede2 75%)}
+    .banner_con>h2{font-size: 18px!important}
 }
 @media screen and (max-width:575px) {
 .contact_n{margin-top: 30px;}
