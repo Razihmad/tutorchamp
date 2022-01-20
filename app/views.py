@@ -113,7 +113,7 @@ def project(request):
             uname = user.username
             user = User.objects.get(username=uname)
             LabOrders(user=user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
-                   deadline=deadline, reference_material=reference_material).save()
+                   deadline=deadline, reference_material=reference_material,status='Pending',assigned=False).save()
             return redirect('old-user')
         except:
             if not request.session.session_key:
@@ -123,7 +123,7 @@ def project(request):
             new_user = User(username=session_key,email=session_key)
             new_user.save()
             LabOrders(user=new_user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
-                   deadline=deadline, reference_material=reference_material).save()
+                   deadline=deadline, reference_material=reference_material,status='Pending',assigned=False).save()
             return redirect('signup')
     return render(request, 'project.html')
 
@@ -192,6 +192,7 @@ def dashboard_old(request):
     user_detail = UserDetails.objects.get_or_create(user=user)
     user_detail = user_detail[0]
     details = Orders.objects.filter(user=user)
+    labs = LabOrders.objects.filter(user=user)
     if request.method == 'POST':
         desc = request.POST.get('desc')
         reference_material = request.FILES['reference_material']
@@ -201,7 +202,7 @@ def dashboard_old(request):
         Orders(user=user, status='Pending', desc=desc,reference_material=reference_material,assignment=assignment,
              deadline=deadline,subject=subject).save()
         
-    return render(request, 'dash_board.html', {'details': details, 'user': user, 'user_detail': user_detail})
+    return render(request, 'dash_board.html', {'details': details, 'user': user, 'user_detail': user_detail,'labs':labs})
 
 # lab order from the dashboard
 @login_required(login_url='/login/')
@@ -220,7 +221,7 @@ def labordes(request):
         subject = request.POST.get('subject')
         LabOrders(user=user,reference_material=reference_material,
              deadline=deadline,subject=subject,lab_manual=lab_manual,report_guidline=report_guidline,
-             lab_data=lab_data).save()
+             lab_data=lab_data,status='Pending',assigned=False).save()
         return redirect('old-user')
         
         
