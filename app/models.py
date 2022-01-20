@@ -1,10 +1,13 @@
 from os import truncate
+from pyexpat import model
+from statistics import mode
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
 
 class UserDetails(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile = models.ImageField(null=True,blank=True)
     name = models.CharField(max_length=100)
     phone = models.CharField(max_length=20)
     study_level = models.CharField(max_length=100,null=True)
@@ -59,7 +62,15 @@ class LabOrders(models.Model):
     lab_data = models.FileField(null=True,blank=True)
     report_guidline = models.FileField(null=True,blank=True)
     reference_material = models.FileField(null=True,blank=True)
-
+    Pending = 'Pending'
+    Completed = 'Completed'
+    CHOICES = (
+        (Pending,'Pending'),
+        (Completed,'Completed')
+    )
+    status = models.CharField(max_length=100,choices=CHOICES)
+    submission_date = models.DateField(default=date.today())
+    assigned = models.BooleanField(default=False)
     def __str__(self) -> str:
         return str(self.pk)
 

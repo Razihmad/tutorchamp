@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<title>Dashboard</title>
@@ -13,7 +14,6 @@
 	<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<style>
-
 		.thead td {
 			width: 25%;
 			border: 1px solid #fff;
@@ -42,7 +42,7 @@
 			top: 13px;
 			color: #43b97e;
 			font-size: 14px;
-			text-decoration: underline!important;
+			text-decoration: underline !important;
 		}
 
 		.secondStp {
@@ -54,20 +54,31 @@
 			width: 100%;
 			top: 15%;
 		}
-		.wcMsz{
-		    text-align: center;
-		    width: 100%;
-		    font-size: 16px;
-		    color: #43b97e;
-		    font-weight: 500;
+
+		.wcMsz {
+			text-align: center;
+			width: 100%;
+			font-size: 16px;
+			color: #43b97e;
+			font-weight: 500;
 		}
-		.psr{position: relative;}
+
+		.psr {
+			position: relative;
+		}
+
 		@media screen and (max-width: 767px) {
 			.dTbale {
-		    	margin-top: calc(30vh - 170px);
+				margin-top: calc(30vh - 170px);
 			}
-			.ProjectLabAssignment .form_group{display: block!important;}
-			.ProjectLabAssignment .form_group .pos_rel{width: 100%!important;}
+
+			.ProjectLabAssignment .form_group {
+				display: block !important;
+			}
+
+			.ProjectLabAssignment .form_group .pos_rel {
+				width: 100% !important;
+			}
 
 			td,
 			th {
@@ -83,7 +94,7 @@
 			<div><img src="{% static 'images/logo.png' %}" alt="logo"></div>
 			<a href="javascript:void(0);" class="mobBtn" id="mobBtn"><i class="fa fa-bars" aria-hidden="true"></i></a>
 		</div>
-	</div>	
+	</div>
 	<div class="dashboardContainer clientDashboard">
 		<div class="sidebar sidebar_menu">
 
@@ -98,7 +109,7 @@
 			</ul>
 		</div>
 		<div>
-			{% for message in messages  %}
+			{% for message in messages %}
 			<script>
 
 				alert('{{message}}')
@@ -109,275 +120,354 @@
 			<div class="dTbale homeContant active_">
 				<!-- home page form  -->
 				<form class="mb55 commForm mt-3" method="POST" action="" enctype="multipart/form-data">
-							{% csrf_token %}
-				<div class="flex_div">
-	                <div class="col3 pt7">
-	                    <label>Instruction</label>
-	                    <textarea name="desc" id="description" class="" placeholder="Please Enter Your Instruction Here"></textarea>
-	                </div>
-	                
-	                <div class="col3">
-	                    <label>Question files</label>
-	                    <div class="attachFile">
-	                    	<div class="addfile">
-	                    		<label for="reffile" class="custom-file-upload">Add File</label>
-								<input name="assignment" type="file" id="reffile" accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png" style="display: none;">
-	                    	</div>
-	                    </div>
-	                </div>
-	                <div class="col3">
-	                    <label>Reference Materials</label>
-	                    <div class="attachFile">
-	                    	<div class="addfile">
-	                    		<label for="choose-file" class="custom-file-upload">Add File</label>
-								<input name="reference_material" type="file" id="choose-file" accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png" style="display: none;">
-	                    	</div>
-	                    </div>
-	                </div>
-				</div>
-				<div class="flex_div assignment_help_inner mt30">
-                    <div class="">
-                        <label>Subject Name</label>
-                        <input class="input" required="" name="subject" type="text" placeholder="Subject Name">
-                    </div>
-                    <div class="">
-                        <label>Choose Assignment Deadline</label>
-                        <input type="date" required="" class="input" name="deadline" id="birthday" placeholder="Deadline">
-                    </div>
-                    <div class="text-center psr mt-3">
-			                <input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
-			    
-			                <a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
-			    
-			            </div>
-				</div>
-			</form>
+					{% csrf_token %}
+					<div class="flex_div">
+						<div class="col3 pt7">
+							<label>Instruction</label>
+							<textarea name="desc" id="description" class=""
+								placeholder="Please Enter Your Instruction Here"></textarea>
+						</div>
 
-						<table class="mt30 table table-striped" style="border: 2px solid #43b97e;">
-							<tr class="thead"
-								style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
-								<td>Assignment</td>
-								<td>Deadline</td>
-								<td>Assigned</td>
-								<td>Status</td>
-							</tr>
-							{% for detail in details %}
-							<tr style="color: black;">
-								{% if detail.assignment %}
-								<td><a href="{{detail.assignment.url}}" download="">Download</a> / <a href="{{detail.assignment.url}}">Preview</a> </td>
-								{% else %}
-								<td>No File</td>
-								{% endif %}
-								<td>{{detail.deadline}}</td>
-								<td>{{detail.assigned}}</td>
-								<td>{{detail.get_status_display}}</td>
+						<div class="col3">
+							<label>Question files</label>
+							<div class="attachFile">
+								<div class="addfile">
+									<label for="reffile" class="custom-file-upload">Add File</label>
+									<input name="assignment" type="file" id="reffile"
+										accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png"
+										style="display: none;">
+								</div>
+							</div>
+						</div>
+						<div class="col3">
+							<label>Reference Materials</label>
+							<div class="attachFile">
+								<div class="addfile">
+									<label for="choose-file" class="custom-file-upload">Add File</label>
+									<input name="reference_material" type="file" id="choose-file"
+										accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png"
+										style="display: none;">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="flex_div assignment_help_inner mt30">
+						<div class="">
+							<label>Subject Name</label>
+							<input class="input" required="" name="subject" type="text" placeholder="Subject Name">
+						</div>
+						<div class="">
+							<label>Choose Assignment Deadline</label>
+							<input type="date" required="" class="input" name="deadline" id="birthday"
+								placeholder="Deadline">
+						</div>
+						<div class="text-center psr mt-3">
+							<input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
 
-							</tr>
+							<a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
 
-							{% endfor %}
-						</table>																								
+						</div>
+					</div>
+				</form>
+
+				<table class="mt30 table table-striped" style="border: 2px solid #43b97e;">
+					<tr class="thead"
+						style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
+						<td>Assignment</td>
+						<td>Deadline</td>
+						<td>Assigned</td>
+						<td>Status</td>
+					</tr>
+					{% for detail in details %}
+					<tr style="color: black;">
+						{% if detail.assignment %}
+						<td><a href="{{detail.assignment.url}}" download="">Download</a> / <a
+								href="{{detail.assignment.url}}">Preview</a> </td>
+						{% else %}
+						<td>No File</td>
+						{% endif %}
+						<td>{{detail.deadline}}</td>
+						<td>{{detail.assigned}}</td>
+						<td>{{detail.get_status_display}}</td>
+
+					</tr>
+
+					{% endfor %}
+				</table>
 			</div>
 			<div class="profileContent">
 				<div class="col50">
 					<form class="commForm mt-3" method="POST" action="/profile/">
 						{% csrf_token %}
-						<div class="userprof"><img style="    filter: grayscale(1);" src="/static/dashboard/images/profi.png"></div>
-			            <h2 class="text-dark text-left">Ajay Test</h2>
-			            <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
-			            <div class="">
-		                    <label>Enter Your Name </label>
-		                    <input type="name" name="nae" class="input"  placeholder="Enter Name" required="" value="{{user_detail.name}}">
-		                </div>
-			            <div class="">
-		                    <label>Enter Your Email Id </label>
-		                    <input type="email" name="email" class="input" readonly placeholder="Enter Email" required="" value="{{user.email}}">
-		                </div>
-		                <div class="pos_rel">
-		                    <label>Enter Phone/WhatsApp Number</label>
-		                    <input name="if-phone" id="if-phone" value="{{user_detail.phone}}" class="input" required="" placeholder="Enter Phone Number" type="text" maxlength="10">
-		                </div>
-			            <div class="pos_rel">
-	                        <label>University/College</label>
-	                        <input class="input" required="" name="College" type="text" placeholder="niversity/College" value="{{user_detail.study_level}}">
-	                    </div>
-	                    <div>
-	                    	<input type="checkbox" id="" name="checkbox" value="">
-  							<label for="checkbox">Get Email Notifications</label></div>
-			            
-			            <div class="psr mt-3">
-			                <input type="submit" class="formBtn theme-btn btn-style-one" value="Update">
-			    
-			                <a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
-			    
-			            </div>
-			        </form>
+						{% if user_detail.profile %}
+
+						<div class="userprof"><img style="    filter: grayscale(1);" src="{{user_detail.profile.url}}">
+						</div>
+						{% else %}
+						<div class="userprof"><img style="    filter: grayscale(1);"
+								src="/static/dashboard/images/profi.png"></div>
+						{% endif %}
+
+						<h2 class="text-dark text-left">{{user_detail.name}}</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
+						<div class="">
+							<label>Enter Your Name </label>
+							<input type="name" name="nae" class="input" placeholder="Enter Name" required=""
+								value="{{user_detail.name}}">
+						</div>
+						<div class="">
+							<label>Enter Your Email Id </label>
+							<input type="email" name="email" class="input" readonly placeholder="Enter Email"
+								required="" value="{{user.email}}">
+						</div>
+						<div class="pos_rel">
+							<label>Enter Phone/WhatsApp Number</label>
+							<input name="if-phone" id="if-phone" value="{{user_detail.phone}}" class="input" required=""
+								placeholder="Enter Phone Number" type="text" maxlength="10">
+						</div>
+						<div class="pos_rel">
+							<label>University/College</label>
+							<input class="input" required="" name="College" type="text" placeholder="niversity/College"
+								value="{{user_detail.study_level}}">
+						</div>
+						<div>
+							<input type="checkbox" id="" name="checkbox" value="">
+							<label for="checkbox">Get Email Notifications</label>
+						</div>
+
+						<div class="psr mt-3">
+							<input type="submit" class="formBtn theme-btn btn-style-one" value="Update">
+
+							<a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
+
+						</div>
+					</form>
 				</div>
 				<div class="col50">
 					<form class="commForm mt-3" method="POST" action="{% url 'reset_password' %}">
 						{% csrf_token %}
-			            <h2 class="text-dark text-left">Password</h2>
-			            <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
-			            <div class="">
-		                    <label>Current Password</label>
-		                    <input class="input" type="password" name="password" placeholder="Current Password" id="password">
-		                </div>
-			            <div class="">
-		                    <label>New Password</label>
-		                    <input class="input" type="password" name="password" placeholder="New Password" id="">
-		                </div>
-		                <div class="pos_rel">
-		                    <label>Confirm Password</label>
-		                    <input class="input" type="password" name="confm_password" placeholder="Confirm Password" id="">
-		                </div>
-			            <div class="psr mt-3">
-			                <input type="submit" class="formBtn theme-btn btn-style-one" value="Update">
-			    
-			                <a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
-			    
-			            </div>
-			        </form>
+						<h2 class="text-dark text-left">Password</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
+						<div class="">
+							<label>Current Password</label>
+							<input class="input" type="password" name="password" placeholder="Current Password"
+								id="password">
+						</div>
+						<div class="">
+							<label>New Password</label>
+							<input class="input" type="password" name="password" placeholder="New Password" id="">
+						</div>
+						<div class="pos_rel">
+							<label>Confirm Password</label>
+							<input class="input" type="password" name="confm_password" placeholder="Confirm Password"
+								id="">
+						</div>
+						<div class="psr mt-3">
+							<input type="submit" class="formBtn theme-btn btn-style-one" value="Update">
+
+							<a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
+
+						</div>
+					</form>
 				</div>
 			</div>
 			<div class="live_session_content">
 				<!-- live session form -->
 				<form class="commForm mt-3" method="POST" action="/live_session_orders/" enctype="multipart/form-data">
 					{% csrf_token %}
-				<div  class="flex_div">
-					<div class="col50">
-	                    <label>Instruction</label>
-	                    <textarea name="desc" id="description" class="" placeholder="Please Enter Your Instruction Here"></textarea>
-	                </div>
-	                <div class="col50">
-	                	<label>Add file</label>
-	                    <div class="attachFile">
-	                    	<div class="addfile">
-	                    		<label for="live_f" class="custom-file-upload">Add File</label>
-								<input name="ref_material" type="file" id="live_f" />
-	                    	</div>
-	                    </div>
-	                </div>
-				</div>
-				<div  class="flex_div mt30">
-					<div class="">
-                        <label>Choose Assignment Deadline</label>
-                        <input type="date" required="" class="input" name="deadline" id="birthday" placeholder="Deadline">
-                    </div>
-					<div class="">
-                        <label>Duration in minutes</label>
-                        <input class="input" required="" name="Duration" type="text" placeholder="Duration in minutes">
-                    </div>
-                    <div class="">
-                        <label>Subject Name</label>
-                        <input class="input" required="" name="subject" type="text" placeholder="Subject Name">
-                    </div>
-                    <div class="text-center psr mt-3">
-			                <input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
-			    
-			                <a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
-			    
-			            </div>
-				</div>
-			</form>
+					<div class="flex_div">
+						<div class="col50">
+							<label>Instruction</label>
+							<textarea name="desc" id="description" class=""
+								placeholder="Please Enter Your Instruction Here"></textarea>
+						</div>
+						<div class="col50">
+							<label>Add file</label>
+							<div class="attachFile">
+								<div class="addfile">
+									<label for="live_f" class="custom-file-upload">Add File</label>
+									<input name="ref_material" type="file" id="live_f" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="flex_div mt30">
+						<div class="">
+							<label>Choose Assignment Deadline</label>
+							<input type="date" required="" class="input" name="deadline" id="birthday"
+								placeholder="Deadline">
+						</div>
+						<div class="">
+							<label>Duration in minutes</label>
+							<input class="input" required="" name="Duration" type="text"
+								placeholder="Duration in minutes">
+						</div>
+						<div class="">
+							<label>Subject Name</label>
+							<input class="input" required="" name="subject" type="text" placeholder="Subject Name">
+						</div>
+						<div class="text-center psr mt-3">
+							<input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
+
+							<a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
+
+						</div>
+					</div>
+				</form>
+				<table class="mt30 table table-striped" style="border: 2px solid #43b97e;">
+					<tr class="thead"
+						style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
+						<td>Assignment</td>
+						<td>Deadline</td>
+						<td>Assigned</td>
+						<td>Status</td>
+					</tr>
+					{% for detail in details %}
+					{% if deail.duration %}
+
+					<tr style="color: black;">
+						{% if detail.assignment %}
+						<td><a href="{{detail.assignment.url}}" download="">Download</a> / <a
+								href="{{detail.assignment.url}}">Preview</a> </td>
+						{% else %}
+						<td>No File</td>
+						{% endif %}
+						<td>{{detail.deadline}}</td>
+						<td>{{detail.assigned}}</td>
+						<td>{{detail.get_status_display}}</td>
+						<td>{{detail.duration}}</td>
+					</tr>
+					{% endif %}
+
+					{% endfor %}
+				</table>
 			</div>
 			<div class="assignment_help_content">
 				<form class="commForm mt-3" method="POST" action="/asignment_order/" enctype="multipart/form-data">
 					{% csrf_token %}
-				<div  class="flex_div">
-					<div class="col50">
-	                    <label>Instruction</label>
-	                    <textarea name="desc" id="description" class="" placeholder="Please Enter Your Instruction Here"></textarea>
-	                </div>
-	                <div class="col50">
-	                    <label>Instruction</label>
-	                    <div class="attachFile">
-	                    	<div class="addfile">
-	                    		<label for="choose-fil" class="custom-file-upload">Add File</label>
-								<input name="files" type="file" id="choose-fil" style="display: none;" />
-	                    	</div>
-	                    </div>
-	                </div>
-				</div>
-				<div  class="flex_div assignment_help_inner mt30">
-                    <div class="">
-                        <label>Subject Name</label>
-                        <input class="input" required="" name="subject" type="text" placeholder="Subject Name">
-                    </div>
-                    <div class="">
-                        <label>Choose Assignment Deadline</label>
-                        <input type="date" required="" class="input" name="deadline" id="birthday" placeholder="Deadline">
-                    </div>
-                    <div class="text-center psr mt-3">
-			                <input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
-			    
-			                <a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
-			    
-			            </div>
-				</div>
-			</form>
+					<div class="flex_div">
+						<div class="col50">
+							<label>Instruction</label>
+							<textarea name="desc" id="description" class=""
+								placeholder="Please Enter Your Instruction Here"></textarea>
+						</div>
+						<div class="col50">
+							<label>Instruction</label>
+							<div class="attachFile">
+								<div class="addfile">
+									<label for="choose-fil" class="custom-file-upload">Add File</label>
+									<input name="files" type="file" id="choose-fil" style="display: none;" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="flex_div assignment_help_inner mt30">
+						<div class="">
+							<label>Subject Name</label>
+							<input class="input" required="" name="subject" type="text" placeholder="Subject Name">
+						</div>
+						<div class="">
+							<label>Choose Assignment Deadline</label>
+							<input type="date" required="" class="input" name="deadline" id="birthday"
+								placeholder="Deadline">
+						</div>
+						<div class="text-center psr mt-3">
+							<input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
+
+							<a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
+
+						</div>
+					</div>
+				</form>
 			</div>
 			<div class="project_lab_content">
 				<!-- lab form -->
 				<form class="commForm mt-3" method="POST" action="/lab_orders/" enctype="multipart/form-data">
 					{% csrf_token %}
-				<div  class="flex_div">
-	                <div class="col4">
-	                    <label>Lab Manual</label>
-	                    <div class="attachFile">
-	                    	<div class="addfile">
-	                    		<label for="labm" class="custom-file-upload">Add File</label>
-								<input name="lab_manual" type="file" id="labm" 
-								   accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png" style="display: none;" />
-	                    	</div>
-	                    </div>
-	                </div>
-	                <div class="col4">
-	                    <label>Report Guidelines</label>
-	                    <div class="attachFile">
-	                    	<div class="addfile">
-	                    		<label for="report" class="custom-file-upload">Add File</label>
-								<input name="report_guideline" type="file" id="report" 
-								   style="display: none;" />
-	                    	</div>
-	                    </div>
-	                </div>
-	                <div class="col4">
-	                    <label>Lab Data</label>
-	                    <div class="attachFile">
-	                    	<div class="addfile">
-	                    		<label for="labd" class="custom-file-upload">Add File</label>
-								<input name="lab_data" type="file" id="labd" 
-								   style="display: none;" />
-	                    	</div>
-	                    </div>
-	                </div>
-	                <div class="col4">
-	                    <label>Reference Materials</label>
-	                    <div class="attachFile">
-	                    	<div class="addfile">
-	                    		<label for="ref" class="custom-file-upload">Add File</label>
-								<input name="reference_material" type="file" id="ref" 
-								   style="display: none;" />
-	                    	</div>
-	                    </div>
-	                </div>
-				</div>
-				<div  class="flex_div assignment_help_inner mt30">
-                    <div class="">
-                        <label>Subject Name</label>
-                        <input class="input" required="" name="subject" type="text" placeholder="Subject Name">
-                    </div>
-                    <div class="">
-                        <label>Choose Assignment Deadline</label>
-                        <input type="date" required="" class="input" name="deadline" id="birthday" placeholder="Deadline">
-                    </div>
-                    <div class="text-center psr mt-3">
-			                <input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
-			    
-			                <a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
-			    
-			            </div>
-				</div>
-			</form>
+					<div class="flex_div">
+						<div class="col4">
+							<label>Lab Manual</label>
+							<div class="attachFile">
+								<div class="addfile">
+									<label for="labm" class="custom-file-upload">Add File</label>
+									<input name="lab_manual" type="file" id="labm"
+										accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png"
+										style="display: none;" />
+								</div>
+							</div>
+						</div>
+						<div class="col4">
+							<label>Report Guidelines</label>
+							<div class="attachFile">
+								<div class="addfile">
+									<label for="report" class="custom-file-upload">Add File</label>
+									<input name="report_guideline" type="file" id="report" style="display: none;" />
+								</div>
+							</div>
+						</div>
+						<div class="col4">
+							<label>Lab Data</label>
+							<div class="attachFile">
+								<div class="addfile">
+									<label for="labd" class="custom-file-upload">Add File</label>
+									<input name="lab_data" type="file" id="labd" style="display: none;" />
+								</div>
+							</div>
+						</div>
+						<div class="col4">
+							<label>Reference Materials</label>
+							<div class="attachFile">
+								<div class="addfile">
+									<label for="ref" class="custom-file-upload">Add File</label>
+									<input name="reference_material" type="file" id="ref" style="display: none;" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="flex_div assignment_help_inner mt30">
+						<div class="">
+							<label>Subject Name</label>
+							<input class="input" required="" name="subject" type="text" placeholder="Subject Name">
+						</div>
+						<div class="">
+							<label>Choose Assignment Deadline</label>
+							<input type="date" required="" class="input" name="deadline" id="birthday"
+								placeholder="Deadline">
+						</div>
+						<div class="text-center psr mt-3">
+							<input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
+
+							<a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
+
+						</div>
+					</div>
+				</form>
+				<table class="mt30 table table-striped" style="border: 2px solid #43b97e;">
+					<tr class="thead"
+						style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
+						<td>Lab Manual</td>
+						<td>Report Guidelines</td>
+						<td>Lab Data</td>
+						<td>Reference Materials</td>
+						<td>Deadline</td>
+						<td>Subject</td>
+						<td>Assigned</td>
+						<td>Status</td>
+					</tr>
+					{% for lab in labs %}
+					<tr style="color: black;">
+						<td>{{lab.lab_manual}}</td>
+						<td>{{lab.report_guidline}}</td>
+						<td>{{lab.lab_data}}</td>
+						<td>{{lab.reference_material}}</td>
+						<td>{{lab.deadline}}</td>
+						<td>{{lab.subject}}</td>
+						<td>{{lab.assigned}}</td>
+						<td>{{lab.status}}</td>
+					</tr>
+
+					{% endfor %}
+				</table>
 			</div>
 
 		</div>
@@ -397,98 +487,98 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script>
-			$('#choose-file').change(function() {
-				var i = $(this).prev('label').clone();
-				var file = $('#choose-file')[0].files[0].name;
-				$(this).prev('label').text(file);
-			  });
-		
-			  $('#reffile').change(function() {
-				var i = $(this).prev('label').clone();
-				var file = $('#reffile')[0].files[0].name;
-				$(this).prev('label').text(file);
-			  });
-			  $('#report').change(function() {
-				var i = $(this).prev('label').clone();
-				var file = $('#report')[0].files[0].name;
-				$(this).prev('label').text(file);
-			  });
-			  $('#labm').change(function() {
-				var i = $(this).prev('label').clone();
-				var file = $('#labm')[0].files[0].name;
-				$(this).prev('label').text(file);
-			  });
-			  $('#labd').change(function() {
-				var i = $(this).prev('label').clone();
-				var file = $('#labd')[0].files[0].name;
-				$(this).prev('label').text(file);
-			  });
-			  $('#ref').change(function() {
-				var i = $(this).prev('label').clone();
-				var file = $('#ref')[0].files[0].name;
-				$(this).prev('label').text(file);
-			  });
-			  $('#live_f').change(function() {
-				var i = $(this).prev('label').clone();
-				var file = $('#live_f')[0].files[0].name;
-				$(this).prev('label').text(file);
-			  });
-			  $('#choose-fil').change(function() {
-				var i = $(this).prev('label').clone();
-				var file = $('#choose-fil')[0].files[0].name;
-				$(this).prev('label').text(file);
-			  });
-
-		$("#home").click(function(){
-		  $(".homeContant").addClass("active_");
-		  $(".profileContent").removeClass("active_");
-		  $(".live_session_content").removeClass("active_");
-		  $(".assignment_help_content").removeClass("active_");
-		  $(".project_lab_content").removeClass("active_");
-		});
-		$("#profile").click(function(){
-		  $(".profileContent").addClass("active_");
-		  $(".homeContant").removeClass("active_");
-		  $(".live_session_content").removeClass("active_");
-		  $(".assignment_help_content").removeClass("active_");
-		  $(".project_lab_content").removeClass("active_");
-		});
-		$("#live_session").click(function(){
-		  $(".live_session_content").addClass("active_");
-		  $(".profileContent").removeClass("active_");
-		  $(".homeContant").removeClass("active_");
-		  $(".assignment_help_content").removeClass("active_");
-		  $(".project_lab_content").removeClass("active_");
-		});
-		$("#assignment_help").click(function(){
-		  $(".assignment_help_content").addClass("active_");
-		  $(".profileContent").removeClass("active_");
-		  $(".homeContant").removeClass("active_");
-		  $(".live_session_content").removeClass("active_");
-		  $(".project_lab_content").removeClass("active_");
-		});
-		$("#project_lab").click(function(){
-		  $(".project_lab_content").addClass("active_");
-		  $(".profileContent").removeClass("active_");
-		  $(".homeContant").removeClass("active_");
-		  $(".live_session_content").removeClass("active_");
-		  $(".assignment_help_content").removeClass("active_");
+		$('#choose-file').change(function () {
+			var i = $(this).prev('label').clone();
+			var file = $('#choose-file')[0].files[0].name;
+			$(this).prev('label').text(file);
 		});
 
-		$(document).ready(function(){
-		    $('.sidebar_menu ul li a').click(function(){
-		    	$('li a').removeClass("active");
-			    $(this).addClass("active");
+		$('#reffile').change(function () {
+			var i = $(this).prev('label').clone();
+			var file = $('#reffile')[0].files[0].name;
+			$(this).prev('label').text(file);
+		});
+		$('#report').change(function () {
+			var i = $(this).prev('label').clone();
+			var file = $('#report')[0].files[0].name;
+			$(this).prev('label').text(file);
+		});
+		$('#labm').change(function () {
+			var i = $(this).prev('label').clone();
+			var file = $('#labm')[0].files[0].name;
+			$(this).prev('label').text(file);
+		});
+		$('#labd').change(function () {
+			var i = $(this).prev('label').clone();
+			var file = $('#labd')[0].files[0].name;
+			$(this).prev('label').text(file);
+		});
+		$('#ref').change(function () {
+			var i = $(this).prev('label').clone();
+			var file = $('#ref')[0].files[0].name;
+			$(this).prev('label').text(file);
+		});
+		$('#live_f').change(function () {
+			var i = $(this).prev('label').clone();
+			var file = $('#live_f')[0].files[0].name;
+			$(this).prev('label').text(file);
+		});
+		$('#choose-fil').change(function () {
+			var i = $(this).prev('label').clone();
+			var file = $('#choose-fil')[0].files[0].name;
+			$(this).prev('label').text(file);
+		});
+
+		$("#home").click(function () {
+			$(".homeContant").addClass("active_");
+			$(".profileContent").removeClass("active_");
+			$(".live_session_content").removeClass("active_");
+			$(".assignment_help_content").removeClass("active_");
+			$(".project_lab_content").removeClass("active_");
+		});
+		$("#profile").click(function () {
+			$(".profileContent").addClass("active_");
+			$(".homeContant").removeClass("active_");
+			$(".live_session_content").removeClass("active_");
+			$(".assignment_help_content").removeClass("active_");
+			$(".project_lab_content").removeClass("active_");
+		});
+		$("#live_session").click(function () {
+			$(".live_session_content").addClass("active_");
+			$(".profileContent").removeClass("active_");
+			$(".homeContant").removeClass("active_");
+			$(".assignment_help_content").removeClass("active_");
+			$(".project_lab_content").removeClass("active_");
+		});
+		$("#assignment_help").click(function () {
+			$(".assignment_help_content").addClass("active_");
+			$(".profileContent").removeClass("active_");
+			$(".homeContant").removeClass("active_");
+			$(".live_session_content").removeClass("active_");
+			$(".project_lab_content").removeClass("active_");
+		});
+		$("#project_lab").click(function () {
+			$(".project_lab_content").addClass("active_");
+			$(".profileContent").removeClass("active_");
+			$(".homeContant").removeClass("active_");
+			$(".live_session_content").removeClass("active_");
+			$(".assignment_help_content").removeClass("active_");
+		});
+
+		$(document).ready(function () {
+			$('.sidebar_menu ul li a').click(function () {
+				$('li a').removeClass("active");
+				$(this).addClass("active");
 			});
 		});
-		$(document).ready(function(){
-		    $('#mobBtn').click(function(){
-		    	$('.sidebar').toggleClass("open");
+		$(document).ready(function () {
+			$('#mobBtn').click(function () {
+				$('.sidebar').toggleClass("open");
 			});
 		});
-		$(document).ready(function(){
-		    $('.sidebar a').click(function(){
-		    	$('.sidebar').toggleClass("open");
+		$(document).ready(function () {
+			$('.sidebar a').click(function () {
+				$('.sidebar').toggleClass("open");
 			});
 		});
 	</script>
