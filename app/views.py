@@ -432,7 +432,7 @@ def tutor_register(request):
             x = TutorBalance(tutor=tutor,balance=0)
             x.save()
             TutorAccount(tutor = tutor).save()
-            return redirect('tutor')
+            return render(request,'thank-you.html')
         else:
             messages.warning(request, 'you already have been registered')
             return redirect('registration')
