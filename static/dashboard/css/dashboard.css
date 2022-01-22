@@ -64,7 +64,7 @@
     width: 45%;
     max-width: 450px;
 }
-.live_session_content label, .clientDashboard label{font-size: 13px; margin-bottom: 2px;color: #000;}
+.live_session_content label, .clientDashboard label{font-size: 13px; margin-bottom: 0px;color: #000;}
 .live_session_content .flex_div > div{    width: 100%;
     max-width: 220px;}
 .attachFile {
