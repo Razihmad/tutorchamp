@@ -1,3 +1,5 @@
+from math import degrees
+from sre_parse import State
 from django.contrib.messages.api import error
 from django.core import mail
 from django.http import request
@@ -479,8 +481,8 @@ def tutor_dashboard(request):
         else:
             messages.info(request,'pleaase check the account number')
             return redirect('tutor-dashboard')
-    if tutor_register.phone == None:
-        return render(request,'tutor_detail.html')
+    elif tutor_register.phone == None or tutor_register.degree==None:
+        return redirect('tutor_detail')
     else:
         tutor_account = TutorAccount.objects.get(tutor=tutor_register)
         assignments = TutorSolvedAssignment.objects.filter(tutor=tutor_register)
@@ -489,13 +491,33 @@ def tutor_dashboard(request):
         payment_history  = TutorPaymenyDetails.objects.filter(tutor= tutor_register)
         return render(request, 'tutor-dashboard.html',{'tutor_register': tutor_register,'tutor': tutor,'earned':earned,'payment_history':payment_history,
                     'b':tutor_balance.balance,'tutor_account':tutor_account,'assignments':assignments,'labs':labs })
-    
-    
-# @login_required(login_url='/tutor/')
+        
+        
+@login_required(login_url='/tutor/')
 def tutor_detail(request):
+    tutor = request.user
+    if request.method=='POST':
+        phone = request.POST.get('phone')
+        state = request.POST.get('state')
+        city = request.POST.get('city')
+        pin = request.POST.get('pin')
+        degree = request.POST.get('degree')
+        branch = request.POST.get('branch')
+        college = request.POST.get('college')
+        college_id = request.FILES['college_id']
+        print(phone)
+        tutor_detail = TutorRegister.objects.get(tutor=tutor)
+        tutor_detail.phone = phone
+        tutor_detail.college_id = college_id
+        tutor_detail.state = state
+        tutor_detail.city = city
+        tutor_detail.branch = branch
+        tutor_detail.pin = pin
+        tutor_detail.college = college
+        tutor_detail.degree = degree
+        tutor_detail.save()
+        return redirect('tutor-dashboard')
     return render(request,'tutor_detail.html')
-
-
     
 @login_required(login_url='/tutor/')
 def tutor_profile(request):

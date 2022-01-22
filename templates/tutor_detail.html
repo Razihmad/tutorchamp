@@ -102,8 +102,8 @@
 
         <section class="account_sec mt-5 bg-white py100 main-footer">
             <div class="container d-flex align-items-center">
-                <form class="commForm login_form loginF" method="POST">
-                
+                <form class="commForm login_form loginF" method="POST" action="/tutor_detail/" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="first_step">
                     <h3 class="text-dark text-center">Personal Details</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -112,50 +112,49 @@
                         <div class="pos_rel">
 
                             <label>Phone Number</label>
-                            <input required name="" type="Number" placeholder="Phone Number" maxlength="10" class="input" >
+                            <input required name="phone" type="Number" placeholder="Phone Number" maxlength="10" class="input" >
                         </div>
                         <div class="pos_rel">
                             <label>Your State</label>
-                            <input required name="" type="text" class="input" placeholder="Select State">
+                            <input required name="state" type="text" class="input" placeholder="Select State">
                         </div>
                     </div>
                     <div class="form_group">
                         <div class="pos_rel">
                             <label>Your City</label>
-                            <input required name="" type="text" class="input" placeholder="Select State">
+                            <input required name="city" type="text" class="input" placeholder="Select State">
                         </div>
                         <div class="pos_rel">
                             <label>Enter Pin Code</label>
-                            <input required name="" type="Number" maxlength="6" class="input" placeholder="Enter Pin Code">
+                            <input required name="pin" type="Number" maxlength="6" class="input" placeholder="Enter Pin Code">
                         </div>
                     </div>
                     <div class="form_group">
                         <div class="pos_rel">
                             <label>Degree</label>
-                            <input required name="" type="text" class="input" placeholder="Degree">
+                            <input required name="degree" type="text" class="input" placeholder="Degree">
                         </div>
                         <div class="pos_rel">
                             <label>Branch</label>
-                            <input required name="" type="text" class="input" placeholder="Branch">
+                            <input required name="branch" type="text" class="input" placeholder="Branch">
                         </div>
                     </div>
                     <div class="form_group">
                         <div class="pos_rel">
                             <label>College</label>
-                            <input required name="" type="text" class="input" placeholder="College">
+                            <input required name="college" type="text" class="input" placeholder="College">
                         </div>
                         <div class="pos_rel">
                             <label>College ID</label>
-                            <input required name="" type="text" class="input" placeholder="College ID">
+                            <input required name="college_id" type="file" class="input" placeholder="College ID">
                         </div>
                     </div>
                     <div class="text-center mt-3">
-                        <input type="submit" name="" id="" class="formBtn theme-btn btn-style-one" style="padding: 7px 43px;" value="Submit">
-                        <a href="" class="theme-btn btn-style-one"><span class="txt">Submit</span></a>
+                        <input type="submit" name="" id="" class="theme-btn btn-style-one" value="Submit">
                     </div>
                 </div>
             </form>
-            </div> 
+        </div> 
     <div class="pattern-layer-seven" style="background-image: url('/static/images/main-slider/pattern-5.png')"></div>               
     <div class="circle-layer"></div>
         </section>  
