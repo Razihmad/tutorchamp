@@ -1,4 +1,4 @@
-<form class="commForm mt-3" method="POST" action="/order/" enctype="multipart/form-data">
+<form class="commForm mt-3" onsubmit="openModalFunction()" enctype="multipart/form-data">
             {% csrf_token %}
             <h2 class="text-dark">Guaranteed Higher Grade Or Get Your Money Back!</h2>
             <div class="form_group">
@@ -12,7 +12,7 @@
                     </div>
                     <div class="pos_rel">
                         <label for="birthdaytime">Choose Assignment Deadline</label>
-                        <input required class="input" type="datetime-local" id="birthdaytime" name="deadline" placeholder="Deadline">
+                        <input required class="input date_time" type="datetime-local" id="birthdaytime" name="deadline" placeholder="Deadline" >
                     </div>
                 </div>
     
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="text-center psr mt-3">
-                <input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
+                <input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now" data-toggle="modal" id="form_button">
     
                 <a href="" class="theme-btn btn-style-one"><span class="txt">Get Solution Now</span></a>
     

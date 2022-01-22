@@ -85,6 +85,11 @@
 				font-size: 12px;
 			}
 		}
+		.commForm{
+		    padding: 10px 20px;
+		}
+		.mt12{margin-top: 12px!important;}
+		.head_content{text-align: center;padding-bottom: 5px;}
 	</style>
 </head>
 
@@ -104,7 +109,7 @@
 				<li><a id="live_session" href="#"><i class="fa fa-video-camera"></i> Live Session</a></li>
 				<li><a id="project_lab" href="#"><i class="fa fa-bug"></i> Project Lab</a></li>
 				<li><a id="profile" href="#"><i class="fa fa-user"></i> Profile</a></li>
-				<li><a id="assignment_help" href="#"><i class="fa fa-file"></i> Assignment Help</a></li>
+				<!-- <li><a id="assignment_help" href="#"><i class="fa fa-file"></i> Assignment Help</a></li> -->
 				<li class="logout"><a id="" href="/logout/"><i class="fa fa-cog"></i> Logout</a></li>
 			</ul>
 		</div>
@@ -118,6 +123,10 @@
 		</div>
 		<div class="mainContent DashboardContent">
 			<div class="dTbale homeContant active_">
+				<div class="head_content">
+					<h1>Welcome to TutorChamps</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				</div>
 				<!-- home page form  -->
 				<form class="mb55 commForm mt-3" method="POST" action="" enctype="multipart/form-data">
 					{% csrf_token %}
@@ -163,6 +172,70 @@
 						</div>
 						<div class="text-center psr mt-3">
 							<input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
+							{% csrf_token %}
+				<div class="flex_div">
+	                <div class="col3 pt7">
+	                    <label>Instruction</label>
+	                    <textarea name="desc" id="description" class="" placeholder="Please Enter Your Instruction Here"></textarea>
+	                </div>
+	                
+	                <div class="col3">
+	                    <label>Question files</label>
+	                    <div class="attachFile">
+	                    	<div class="addfile">
+	                    		<label for="reffile" class="custom-file-upload">Add File</label>
+								<input name="assignment" type="file" id="reffile" accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png" style="display: none;">
+	                    	</div>
+	                    </div>
+	                </div>
+	                <div class="col3">
+	                    <label>Reference Materials</label>
+	                    <div class="attachFile">
+	                    	<div class="addfile">
+	                    		<label for="choose-file" class="custom-file-upload">Add File</label>
+								<input name="reference_material" type="file" id="choose-file" accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png" style="display: none;">
+	                    	</div>
+	                    </div>
+	                </div>
+				</div>
+				<div class="flex_div assignment_help_inner mt12">
+                    <div class="">
+                        <label>Subject Name</label>
+                        <input class="input" required="" name="subject" type="text" placeholder="Subject Name">
+                    </div>
+                    <div class="">
+                        <label>Choose Assignment Deadline</label>
+                        <input required class="input date_time" type="datetime-local" id="birthdaytime" name="deadline" placeholder="Deadline">
+                    </div>
+                    <div class="text-center psr mt-3">
+			                <input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
+			    
+			                <a href="" class="theme-btn btn-style-one"><span class="txt">Create A New Order Now</span></a>
+			    
+			            </div>
+				</div>
+			</form>
+
+			<div class="inn_progrss"><span>In Progress (Assignments)</span> </div>
+
+						<table class="mt30 table table-striped" style="border: 2px solid #43b97e;">
+							<tr class="thead"
+								style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
+								<td>Assignment</td>
+								<td>Deadline</td>
+								<td>Assigned</td>
+								<td>Status</td>
+							</tr>
+							{% for detail in details %}
+							<tr style="color: black;">
+								{% if detail.assignment %}
+								<td><a href="{{detail.assignment.url}}" download="">Download</a> / <a href="{{detail.assignment.url}}">Preview</a> </td>
+								{% else %}
+								<td>No File</td>
+								{% endif %}
+								<td>{{detail.deadline}}</td>
+								<td>{{detail.assigned}}</td>
+								<td>{{detail.get_status_display}}</td>
 
 							<a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
 
@@ -341,6 +414,42 @@
 
 					{% endfor %}
 				</table>
+				<div  class="flex_div">
+					<div class="col50">
+	                    <label>Instruction</label>
+	                    <textarea name="desc" id="description" class="" placeholder="Please Enter Your Instruction Here"></textarea>
+	                </div>
+	                <div class="col50">
+	                	<label>Add file</label>
+	                    <div class="attachFile">
+	                    	<div class="addfile">
+	                    		<label for="live_f" class="custom-file-upload">Add File</label>
+								<input name="ref_material" type="file" id="live_f" />
+	                    	</div>
+	                    </div>
+	                </div>
+				</div>
+				<div  class="flex_div mt30">
+					<div class="">
+                        <label>Choose Assignment Deadline</label>
+                        <input required class="input date_time" type="datetime-local" id="birthdaytime" name="deadline" placeholder="Deadline">
+                    </div>
+					<div class="">
+                        <label>Duration in minutes</label>
+                        <input class="input" required="" name="Duration" type="text" placeholder="Duration in minutes">
+                    </div>
+                    <div class="">
+                        <label>Subject Name</label>
+                        <input class="input" required="" name="subject" type="text" placeholder="Subject Name">
+                    </div>
+                    <div class="text-center psr mt-3">
+			                <input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
+			    
+			                <a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
+			    
+			            </div>
+				</div>
+			</form>
 			</div>
 			<div class="assignment_help_content">
 				<form class="commForm mt-3" method="POST" action="/asignment_order/" enctype="multipart/form-data">
@@ -379,6 +488,38 @@
 						</div>
 					</div>
 				</form>
+				<div  class="flex_div">
+					<div class="col50">
+	                    <label>Instruction</label>
+	                    <textarea name="desc" id="description" class="" placeholder="Please Enter Your Instruction Here"></textarea>
+	                </div>
+	                <div class="col50">
+	                    <label>Instruction</label>
+	                    <div class="attachFile">
+	                    	<div class="addfile">
+	                    		<label for="choose-fil" class="custom-file-upload">Add File</label>
+								<input name="files" type="file" id="choose-fil" style="display: none;" />
+	                    	</div>
+	                    </div>
+	                </div>
+				</div>
+				<div  class="flex_div assignment_help_inner mt30">
+                    <div class="">
+                        <label>Subject Name</label>
+                        <input class="input" required="" name="subject" type="text" placeholder="Subject Name">
+                    </div>
+                    <div class="">
+                        <label>Choose Assignment Deadline</label>
+                        <input required class="input date_time" type="datetime-local" id="birthdaytime" name="deadline" placeholder="Deadline">
+                    </div>
+                    <div class="text-center psr mt-3">
+			                <input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
+			    
+			                <a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
+			    
+			            </div>
+				</div>
+			</form>
 			</div>
 			<div class="project_lab_content">
 				<!-- lab form -->
@@ -468,6 +609,65 @@
 
 					{% endfor %}
 				</table>
+				<div  class="flex_div">
+	                <div class="col4">
+	                    <label>Lab Manual</label>
+	                    <div class="attachFile">
+	                    	<div class="addfile">
+	                    		<label for="labm" class="custom-file-upload">Add File</label>
+								<input name="lab_manual" type="file" id="labm" 
+								   accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png" style="display: none;" />
+	                    	</div>
+	                    </div>
+	                </div>
+	                <div class="col4">
+	                    <label>Report Guidelines</label>
+	                    <div class="attachFile">
+	                    	<div class="addfile">
+	                    		<label for="report" class="custom-file-upload">Add File</label>
+								<input name="report_guideline" type="file" id="report" 
+								   style="display: none;" />
+	                    	</div>
+	                    </div>
+	                </div>
+	                <div class="col4">
+	                    <label>Lab Data</label>
+	                    <div class="attachFile">
+	                    	<div class="addfile">
+	                    		<label for="labd" class="custom-file-upload">Add File</label>
+								<input name="lab_data" type="file" id="labd" 
+								   style="display: none;" />
+	                    	</div>
+	                    </div>
+	                </div>
+	                <div class="col4">
+	                    <label>Reference Materials</label>
+	                    <div class="attachFile">
+	                    	<div class="addfile">
+	                    		<label for="ref" class="custom-file-upload">Add File</label>
+								<input name="reference_material" type="file" id="ref" 
+								   style="display: none;" />
+	                    	</div>
+	                    </div>
+	                </div>
+				</div>
+				<div  class="flex_div assignment_help_inner mt30">
+                    <div class="">
+                        <label>Subject Name</label>
+                        <input class="input" required="" name="subject" type="text" placeholder="Subject Name">
+                    </div>
+                    <div class="">
+                        <label>Choose Assignment Deadline</label>
+                        <input required class="input date_time" type="datetime-local" id="birthdaytime" name="deadline" placeholder="Deadline">
+                    </div>
+                    <div class="text-center psr mt-3">
+			                <input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
+			    
+			                <a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
+			    
+			            </div>
+				</div>
+			</form>
 			</div>
 
 		</div>

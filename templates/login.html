@@ -14,6 +14,7 @@
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
    <style>
+    .err_msz_con{position: relative;}
     .left_con li{margin-bottom: 10px;padding-left: 25px;}
     .left_con h2{font-size: 32px;}
     .left_con{padding-right: 10px;position: relative;}
@@ -43,15 +44,14 @@
     border-radius: 15px;
     position: relative;}
     .epError {
-        bottom: 0px;
-        top: auto;
-        font-size: 16px;
+        font-size: 14px;
         left: 0;
         width: 100%;
         text-align: center;
         color: red;
         position: relative;
-        top: 160px
+        top: -40px;
+        margin: 0;
     }
     .logo{
         text-align: center;
@@ -169,12 +169,12 @@
                 </div>
             </div>
         </div>
-        <div class="text-center psr mt-3 mb-4 pb-2">
+        <div class="text-center psr mt-3 pb-5">
             <input type="submit" class="formBtn theme-btn btn-style-one" value="Sign In">
             <a href="" class="theme-btn btn-style-one"><span class="txt">Sign In</span></a>
         </div>
         {% for message in messages  %}
-          <p class="epError">{{message}}</p>
+          <div class="err_msz_con"><p class="epError">{{message}}</p></div>
         {% endfor %}
         <div class="line_">
             <div>OR</div>
