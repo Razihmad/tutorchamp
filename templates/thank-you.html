@@ -8,7 +8,7 @@
 <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<meta http-equiv="refresh" content="5;url=http://tutorchamps.com/login" />
+<meta http-equiv="refresh" content="5;url=http://127.0.0.1:8000/tutor/" />
 <style>
     .thead td {
         width: 25%;
@@ -130,22 +130,7 @@ a{color: #43b97e;}
 		<section id="counter-stats" style="display: inline-block; width: 100%;">
 			<div class="pattern-layer-seven" style="background-image: url('/static/images/main-slider/pattern-5.png')"></div>
 			<div class="icon-layer-two" style="background-image:url('/static/images/icons/icon-2.png')"></div>
-			<div class="auto-container">
-        <h2 style="text-align: center;font-size: 25px;color: #000;">Order Summary</h2>
-        <table cellpadding="0" cellspacing="0" class="table Summary_table table-striped" style="border: 2px solid #43b97e;">
-          <tr class="thead" style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
-            <td>File</td>
-            <td>Message</td>
-            <td>Deadline</td>
-            <td>Subject</td>
-          </tr>
-          <tr style="color: #000;">
-            <td><a href="{{order.assignment}}">Assignment File</a></td>
-            <td>{{order.desc}}</td>
-            <td>{{order.deadline}}</td>
-            <td>{{order.subject}}</td>
-          </tr>
-        </table>
+			<div class="auto-container">  
 				<div class="row">
 					<div class="col-12">
 						<div class="thankYou">
@@ -161,8 +146,8 @@ a{color: #43b97e;}
 		</section>
 	</div>
 	<div class="fitstrip"></div>
-<script src="js/jquery.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
 </html>
