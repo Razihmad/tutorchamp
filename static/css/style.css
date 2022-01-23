@@ -1662,7 +1662,7 @@ img{
 .banner-section{
 	position:relative;
 	overflow:hidden;
-	padding-top:50px;
+	padding-top:50px!important;
 	padding-bottom:90px;
 	border-bottom: 1px solid #efefef;
 }
