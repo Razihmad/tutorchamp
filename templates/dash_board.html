@@ -104,7 +104,6 @@
 				<li><a id="live_session" href="#"><i class="fa fa-video-camera"></i> Live Session</a></li>
 				<li><a id="project_lab" href="#"><i class="fa fa-bug"></i> Project Lab</a></li>
 				<li><a id="profile" href="#"><i class="fa fa-user"></i> Profile</a></li>
-				<li><a id="assignment_help" href="#"><i class="fa fa-file"></i> Assignment Help</a></li>
 				<li class="logout"><a id="" href="/logout/"><i class="fa fa-cog"></i> Logout</a></li>
 			</ul>
 		</div>
@@ -319,6 +318,7 @@
 						style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
 						<td>Assignment</td>
 						<td>Deadline</td>
+						<td>Duration</td>
 						<td>Assigned</td>
 						<td>Status</td>
 					</tr>
@@ -333,9 +333,9 @@
 						<td>No File</td>
 						{% endif %}
 						<td>{{detail.deadline}}</td>
+						<td>{{detail.duration}}</td>
 						<td>{{detail.assigned}}</td>
 						<td>{{detail.get_status_display}}</td>
-						<td>{{detail.duration}}</td>
 					</tr>
 					{% endif %}
 
