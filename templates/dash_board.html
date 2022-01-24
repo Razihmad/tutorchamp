@@ -182,15 +182,13 @@
 					{% if detail.duration is none %}
 					<tr style="color: black;">
 						{% if detail.assignment %}
-						<td><a href="{{detail.assignment.url}}" download="">Download</a> / <a
-							href="{{detail.assignment.url}}">Preview</a> </td>
+						<td><a href="{{detail.assignment.url}}">Preview</a> </td>
 							{% else %}
 							<td>No File</td>
 							{% endif %}
 							<td>{{detail.deadline}}</td>
 							<td>{{detail.assigned}}</td>
 							<td>{{detail.get_status_display}}</td>
-							
 						</tr>
 						{% endif %}
 
@@ -329,8 +327,7 @@
 					{% if detail.duration %}
 					<tr style="color: black;">
 						{% if detail.assignment %}
-						<td><a href="{{detail.assignment.url}}" download="">Download</a> / <a
-								href="{{detail.assignment.url}}">Preview</a> </td>
+						<td> <a href="{{detail.assignment.url}}">Preview</a> </td>
 						{% else %}
 						<td>No File</td>
 						{% endif %}
