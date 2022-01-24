@@ -5,3 +5,4 @@ env
 admin
 db.sqlite3
 migrations
+ip.txt
