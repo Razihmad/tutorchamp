@@ -3,3 +3,6 @@ __pycache__
 media
 env
 admin
+db.sqlite3
+migrations
+ip.txt

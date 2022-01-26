@@ -201,7 +201,7 @@
 
                         <!-- Modal body -->
                         <div class="modal-body pt-1">
-                            <form id="sign_up" class="commForm login_form loginF border-0 pt-0" method="POST" action="">
+                            <form id="sign_up" class="commForm login_form loginF border-0 pt-0" method="POST" action="/sign-up/">
                                 {% csrf_token %}
                                 <div class="text-center text-dark mb-2">
                                     <h5>Sign Up</h5>
@@ -454,18 +454,6 @@
     <script src="{% static 'js/validate.js' %}"></script>
     <script>
 
-        // $('.count').each(function () {
-        //     $(this).prop('Counter', 0).animate({
-        //         Counter: $(this).text()
-        //     }, {
-        //         duration: 10000,
-        //         easing: 'swing',
-        //         step: function (now) {
-        //             $(this).text(Math.ceil(now));
-        //         }
-        //     });
-        // });
-
     </script>
 
     <script>
@@ -503,11 +491,39 @@
 
     </script>
 
+    {% if user.is_authenticated %}
+
+    {% else %}
     <script>
+        $("#orderform").submit(function(e){
+            e.preventDefault();
+            var form = $("#orderform")[0];
+            var data = new FormData(form);
+            data.append("csrfmiddlewaretoken",'{{ csrf_token }}')
+            var actionurl = $("#orderform").attr('action');
+            $.ajax({
+                type:"POST",
+                url:actionurl,
+                data:data,
+                cache: false,
+                processData: false,
+                contentType: false,
+            })
+            .done(function(){
+                openModalFunction();
+            })
+            .fail(function(){
+                alert("somme error occured")
+            })
+        })
+
         function openModalFunction() {
           $("#myModal").css("display","block");
         }
     </script>
+    {% endif %}
+    
+
 
 </body>
 
