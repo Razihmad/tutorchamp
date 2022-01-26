@@ -230,8 +230,8 @@
                                     <div>OR</div>
                                 </div>
                                 <div class="btn_con">
-                                    <a href="" class="continue_btn continue_with_google"><img src="{% static 'images/google.png' %}"> <span class="txt">Continue with Google</span></a>
-                                    <a href="" class="continue_btn continue_with_fb"><img src="{% static 'images/fb.png' %}"> <span class="txt">Continue with Facebook</span></a>
+                                    <a href="{% url 'social:begin' 'google-oauth2' %}"  class="continue_btn continue_with_google"><img src="{% static 'images/google.png' %}"> <span class="txt">Continue with Google</span></a>
+                                    <a href="{% url 'social:begin' 'facebook' %}" class="continue_btn continue_with_fb"><img src="{% static 'images/fb.png' %}"> <span class="txt">Continue with Facebook</span></a>
                                 </div>
                             </form>
                             <form id="login_form" action="/login/" method="POST" id="" class="commForm login_form loginF border-0 pt-0">
@@ -273,8 +273,8 @@
                                     <div>OR</div>
                                 </div>
                                 <div class="btn_con">
-                                    <a href="" class="continue_btn continue_with_google"><img src="{% static 'images/google.png' %}"> <span class="txt">Continue with Google</span></a>
-                                    <a href="" class="continue_btn continue_with_fb"><img src="{% static 'images/fb.png' %}"> <span class="txt">Continue with Facebook</span></a>
+                                    <a href="{% url 'social:begin' 'google-oauth2' %}"  class="continue_btn continue_with_google"><img src="{% static 'images/google.png' %}"> <span class="txt">Continue with Google</span></a>
+                                    <a href="{% url 'social:begin' 'facebook' %}" class="continue_btn continue_with_fb"><img src="{% static 'images/fb.png' %}"> <span class="txt">Continue with Facebook</span></a>
                                 </div>
                                 
                             </form>
