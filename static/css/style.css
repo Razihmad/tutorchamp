@@ -144,9 +144,9 @@ h4{
 
 h5{
 	font-size: 20px;
-	color: #000;
+	color: #000; line-height: 26px;
 }
-
+.h_5{font-size: 20px!important; line-height: 26px;}
 h6{
 	font-size:18px;
 }
@@ -11494,6 +11494,12 @@ form.login_form h5 + p{    line-height: 24px;
 .rating_inner p a:hover{
     color: #43b97e;
 }
+.aj_a:hover{
+    color: #43b97e;
+}
+.aj_a{
+    text-decoration: underline;
+}
 input[name="deadline"]:after{content: "Deadline"; position: absolute; left: 9px; bottom: 8px; color: #a5a5a5; background: #fff;
     width: calc(100% - 40px);}
 input[name="deadline"]:focus:after{display: none;}
@@ -11503,3 +11509,22 @@ input[name="deadline"]:focus:after{display: none;}
     padding: 2px 8px;
     border-left: 3px solid #47bf7f;
     margin-top: 15px;}
+.inn_services .stats{max-width: 100%;
+    padding: 20px 15px 28px;
+    min-height: 392px;
+    margin-bottom: 32px;
+    box-shadow: 0 0 30px -13px #000!important;
+    border-radius: 24px;}
+.inn_services .stats div div{    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background: #f8c333;
+    border-radius: 100%;
+    padding: 7px;
+    box-sizing: content-box;
+    margin-bottom: 10px;}
+.inn_services .stats img {
+    width: auto;
+    margin: 0;
+    padding: 8px;
+}
