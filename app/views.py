@@ -1,7 +1,7 @@
 import random
 from django.contrib.messages.api import error
 from django.core import mail
-from django.http import request
+from django.http import JsonResponse, request
 from django.http.response import Http404, HttpResponse, HttpResponseBadRequest
 from django.http.response import Http404, HttpResponse
 from app.models import LabOrders, TutorEarnedDetail, TutorPaymenyDetails, TutorSolvedAssignment, TutorSolvedLabs, UserDetails, Orders, TutorRegister, Blog, TutorAccount,TutorBalance
@@ -251,7 +251,8 @@ def signup(request):
         try:
             User.objects.get(email=email)
             messages.info(request, 'This email is already registered')
-            return redirect('login')
+            data = {'status':'error','msg':'This email is already registered'}
+            return JsonResponse(data)
         except ObjectDoesNotExist:
             user = User(username=email, email=email)
             user.set_password(password)
@@ -274,7 +275,8 @@ def signup(request):
             messages.success(request, 'you have registered successfully')
             usr = authenticate(username=email,password=password)
             login(request,usr)
-            return redirect('new-user')
+            data = {'status':'ok','msg':'User created successfully'}
+            return JsonResponse(data)
 
     return render(request, 'signup.html')
 
@@ -345,11 +347,11 @@ def signin(request):
                 messages.success(request, f"Welcome Back {email}")
                 return redirect('old-user')
             else:
-                messages.error(request, "Account is not Active")
-                return redirect('home')
+                data = {'status':'error','msg':'Your Account has been deactivated'}
+                return JsonResponse(data)
         else:
-            messages.warning(request, "invalid email or password")
-            return redirect('/login/')
+            data = {'status':'error','msg':"Invalid email or password"}
+            return JsonResponse(data)
     return render(request, 'login.html')
 
 
