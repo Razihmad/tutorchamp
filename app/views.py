@@ -1,5 +1,4 @@
-from math import degrees
-from sre_parse import State
+import random
 from django.contrib.messages.api import error
 from django.core import mail
 from django.http import request
@@ -361,6 +360,8 @@ def logout_user(request):
 
 
 def onlyorders(request):
+    res = ''.join(random.choices(string.ascii_uppercase +
+                             string.digits, k=20))
     if request.method == 'POST':
         subject = request.POST.get('subject')
         desc = request.POST.get('Details')
@@ -374,11 +375,8 @@ def onlyorders(request):
                    assignment=assignment, user=user, status='Pending').save()
             return redirect('old-user')
         except:
-            if not request.session.session_key:
-                request.session.save()
-            session_key = request.session.session_key
-            request.session['session_key'] = session_key
-            new_user = User(username=session_key,email=session_key)
+            request.session['session_key'] = res
+            new_user = User(username=res,email=res)
             new_user.save()
             Orders(user=new_user,subject=subject,desc=desc,assignment=assignment,deadline=deadline,status='Pending').save()
             return redirect('signup')
