@@ -201,7 +201,7 @@
 
                         <!-- Modal body -->
                         <div class="modal-body pt-1">
-                            <form id="sign_up" class="commForm login_form loginF border-0 pt-0" method="POST" action="/sign-up/">
+                            <form id="sign_up"  class="commForm login_form loginF border-0 pt-0" method="POST" action="/sign-up/">
                                 {% csrf_token %}
                                 <div class="text-center text-dark mb-2">
                                     <h5>Sign Up</h5>
@@ -222,9 +222,7 @@
                                     <input type="submit" class="formBtn theme-btn btn-style-one" value="Sign Up">
                                     <a href="" class="theme-btn btn-style-one"><span class="txt">Sign Up</span></a>
                                 </div>
-                                {% for message in messages %}
-                                  <p class="err_msz">{{message}}</p>
-                                {% endfor %}
+                                  <p class="err_msz"></p>
                                 <p class="text-center mb-5">Already have an Account? <a style="color: #43b97e;" href="javascript:void(0)" id="login_to">Log In</a></p>
                                 <div class="line_">
                                     <div>OR</div>
@@ -266,9 +264,7 @@
                                     <input type="submit" class="formBtn theme-btn btn-style-one" value="Sign In">
                                     <a href="" class="theme-btn btn-style-one"><span class="txt">Sign In</span></a>
                                 </div>
-                                {% for message in messages  %}
-                                  <p class="epError">{{message}}</p>
-                                {% endfor %}
+                                  <p class="epError"></p>
                                 <div class="line_">
                                     <div>OR</div>
                                 </div>
@@ -521,9 +517,64 @@
           $("#myModal").css("display","block");
         }
     </script>
+    <script>
+        $('#login_form').submit(function(e){
+            e.preventDefault();
+            var form = $("#login_form")[0];
+            var data = new FormData(form);
+            data.append("csrfmiddlewaretoken",'{{ csrf_token }}')
+            var actionurl = $("#login_form").attr('action');
+            $.ajax({
+                type:"POST",
+                url:actionurl,
+                data:data,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success:function(data){
+                    if(data.status=='error'){
+                        var content = data.msg
+                        $('.epError').append(content)
+                    }
+                    else{
+                        window.location.href = window.location.origin+'/dashboard/old-user';
+                    }
+                }
+            })  
+        })
+        // sign_up
+        $('#sign_up').submit(function(e){
+            e.preventDefault();
+            var form = $("#sign_up")[0];
+            var data = new FormData(form);
+            data.append("csrfmiddlewaretoken",'{{ csrf_token }}')
+            var actionurl = $("#sign_up").attr('action');
+            $.ajax({
+                type:"POST",
+                url:actionurl,
+                data:data,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success:function(data){
+                    if(data.status=='error'){
+                        var content = data.msg
+                        console.log("asdjkf")
+                        $('.err_msz').text(content);
+                    }
+                    else{
+                        window.location.href = window.location.origin+'/dashboard/new-user';
+                    }
+                }
+            })  
+        })
+    </script>
     {% endif %}
     
+<script>
+    // login_form
 
+</script>
 
 </body>
 
