@@ -281,6 +281,7 @@ def signup(request):
                     messages.success(request, 'you have registered successfully')
                     usr = authenticate(username=email,password=password)
                     login(request,usr)
+                    data = {'status':'ok','msg':'User created successfully'}
                     return JsonResponse(data)
             else:    
                 messages.success(request, 'you have registered successfully')
