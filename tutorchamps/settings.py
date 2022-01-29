@@ -83,8 +83,12 @@ WSGI_APPLICATION = 'tutorchamps.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd103t2bi4dm4dt',
+        'HOST':'ec2-3-224-157-224.compute-1.amazonaws.com',
+        'USER':'hrlrfkzcmjkqpe',
+        'PORT':'5432',
+        'PASSWORD':'9f196432de8c7dbc5071e9f11d5e03f0ad623b67b19422834e2cc507cfa164c0'
     }
 }
 
