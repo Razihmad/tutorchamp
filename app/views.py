@@ -270,14 +270,28 @@ def signup(request):
                     order = Orders.objects.get(user=unknown_user)
                     order.user = user
                     order.save()
-                unknown_user.delete()
-                del request.session['session_key']
-            messages.success(request, 'you have registered successfully')
-            usr = authenticate(username=email,password=password)
-            login(request,usr)
-            data = {'status':'ok','msg':'User created successfully'}
-            return JsonResponse(data)
-
+                finally:
+                    unknown_user.delete()
+                    del request.session['session_key']
+                    send_mail(subject='Welcome to the TutorChamps!!',
+                        message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
+                        ' We are specialists in delivering the best quality assignment within the deadline. ' + 
+                        '\n Please use the below link and password to access the dashboard to proceed further  \n Regards, Team TutorChamps',
+                        from_email='admin@tutorchamps.com', recipient_list=[email]) 
+                    messages.success(request, 'you have registered successfully')
+                    usr = authenticate(username=email,password=password)
+                    login(request,usr)
+                    return JsonResponse(data)
+            else:    
+                messages.success(request, 'you have registered successfully')
+                usr = authenticate(username=email,password=password)
+                login(request,usr)
+                data = {'status':'ok','msg':'User created successfully'}
+                send_mail(subject='Welcome to the TutorChamps!!', message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
+                      ' We are specialists in delivering the best quality assignment within the deadline. ' + 
+                      '\n Please use the below link and password to access the dashboard to proceed further  \n Regards, Team TutorChamps',
+                      from_email='admin@tutorchamps.com', recipient_list=[email])
+                return JsonResponse(data)
     return render(request, 'signup.html')
 
 @login_required(login_url='/login/')
@@ -341,12 +355,21 @@ def signin(request):
                     except:
                         order = Orders.objects.get(user=unknown_user)
                         order.user = user
+                        id = order.pk
+                        id += 1000
+                        order.pk = id
                         order.save()
+                        send_mail(subject='Welcome to the TutorChamps!!',
+                        message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
+                        ' We are specialists in delivering the best quality assignment within the deadline. ' + 
+                        '\n Please use the below link and password to access the dashboard to proceed further  \n Regards, Team TutorChamps',
+                        from_email='admin@tutorchamps.com', recipient_list=[email])            
                     unknown_user.delete()
                     del request.session['session_key']
-                messages.success(request, f"Welcome Back {email}")
+                    messages.success(request, f"Welcome Back {email}")
                 return redirect('old-user')
             else:
+             
                 data = {'status':'error','msg':'Your Account has been deactivated'}
                 return JsonResponse(data)
         else:
