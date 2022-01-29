@@ -112,7 +112,7 @@
                         <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Give Your Grades A Boost.</li> 
                     </ul>
                 </div>
-                <form class="commForm login_form loginF" method="POST" action="">
+                <form id="sign_up" class="commForm login_form loginF" method="POST" action="">
         {% csrf_token %}
         <div class="text-center text-dark mb-2">
             <h5>Create An Account</h5>
@@ -132,9 +132,7 @@
             <input type="submit" class="formBtn theme-btn btn-style-one" value="Sign Up">
             <a href="" class="theme-btn btn-style-one"><span class="txt">Sign Up</span></a>
         </div>
-        {% for message in messages %}
-          <p class="err_msz">{{message}}</p>
-        {% endfor %}
+          <p class="err_msz"></p>
         <p class="text-center mb-5">Already have an Account? <a style="color: #43b97e;" href="/login/">Log In</a></p>
         <div class="line_">
             <div>OR</div>
@@ -151,5 +149,33 @@
         </section>  
     
     </div>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script>
+        $('#sign_up').submit(function(e){
+            e.preventDefault();
+            var form = $("#sign_up")[0];
+            var data = new FormData(form);
+            data.append("csrfmiddlewaretoken",'{{ csrf_token }}')
+            var actionurl = $("#sign_up").attr('action');
+            $.ajax({
+                type:"POST",
+                url:actionurl,
+                data:data,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success:function(data){
+                    if(data.status=='error'){
+                        var content = data.msg
+                        console.log("asdjkf")
+                        $('.err_msz').text(content);
+                    }
+                    else{
+                        window.location.href = window.location.origin+'/dashboard/new-user';
+                    }
+                }
+            })  
+        })
+    </script>
 </body>
 </html>

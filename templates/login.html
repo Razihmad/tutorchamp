@@ -141,7 +141,7 @@
                         <li><i style="color: #ffe00c;" class="fa fa-star"> </i> 100% Plagiarism Free Solutions.</li> 
                     </ul>
                 </div>
-                <form action="/login/" method="POST" id="" class="commForm login_form loginF">
+                <form action="/login/" method="POST" id="login_form" class="commForm login_form loginF">
         {% csrf_token %}
         <div class="text-center text-dark mb-2">
             <h5>Sign In</h5>
@@ -173,9 +173,7 @@
             <input type="submit" class="formBtn theme-btn btn-style-one" value="Sign In">
             <a href="" class="theme-btn btn-style-one"><span class="txt">Sign In</span></a>
         </div>
-        {% for message in messages  %}
-          <div class="err_msz_con"><p class="epError">{{message}}</p></div>
-        {% endfor %}
+          <div class="err_msz_con"><p class="epError"></p></div>
         <div class="line_">
             <div>OR</div>
         </div>
@@ -191,5 +189,32 @@
         </section>  
     
     </div>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script>
+        $('#login_form').submit(function(e){
+            e.preventDefault();
+            var form = $("#login_form")[0];
+            var data = new FormData(form);
+            data.append("csrfmiddlewaretoken",'{{ csrf_token }}')
+            var actionurl = $("#login_form").attr('action');
+            $.ajax({
+                type:"POST",
+                url:actionurl,
+                data:data,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success:function(data){
+                    if(data.status=='error'){
+                        var content = data.msg
+                        $('.epError').append(content)
+                    }
+                    else{
+                        window.location.href = window.location.origin+'/dashboard/old-user';
+                    }
+                }
+            })  
+        })
+    </script>
 </body>
 </html>
