@@ -579,7 +579,7 @@
 	.news-block .inner-box .lower-content .post-info li{font-size: 13px;}
 	h1{font-size: 28px!important; line-height: 45px!important;}
 	#counter-stats div h2+div{display: block!important;}
-	.stats{margin-bottom: 25px; min-height: 0; padding: 20px 12px 30px!important;}
+	.stats{margin: 0 auto 25px auto; min-height: 0; padding: 20px 12px 30px!important;}
 	.main-footer .pattern-layer-four{display: none;}
 	.main-footer .pattern-layer-one{display: none;}
 	.benefit-section .background-layer-two{left: -377px;
