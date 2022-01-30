@@ -222,6 +222,7 @@
 					
 					<tr class="thead"
 						style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
+						<td>Order ID</td>
 						<td>Assignment</td>
 						<td>Deadline</td>
 						<td>Assigned</td>
@@ -232,6 +233,7 @@
 					{% for detail in details %}
 					{% if detail.duration is none %}
 					<tr style="color: black;">
+						<td>{{detail.pk}}</td>
 						{% if detail.assignment %}
 						<td><a href="{{detail.assignment.url}}">Preview</a> </td>
 							{% else %}
@@ -252,24 +254,18 @@
 				<div class="col50">
 					<form class="commForm mt-3" method="POST" action="/profile/">
 						{% csrf_token %}
-						{% if user_detail.profile %}
-
-						<!-- <div class="userprof"><img style="    filter: grayscale(1);" src="{{user_detail.profile.url}}">
-						</div> -->
-						{% else %}
-						<!-- <div class="userprof"><img style="    filter: grayscale(1);"
-								src="/static/dashboard/images/profi.png"></div> -->
-						{% endif %}
-
 						<h2 class="text-dark text-left">{{user_detail.name}}</h2>
-
 						<div class="avatar-upload">
 					        <div class="avatar-edit">
 					            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
 					            <label for="imageUpload"><img title="Add profile photo" src="/static/images/camera.png"></label>
 					        </div>
 					        <div class="avatar-preview">
-					            <div id="imagePreview" style="background-image: url('../static/images/resource/author-6.jpg');">
+								{% if user_detail.profile %}
+					            <div id="imagePreview" style="background-image: url('{{user_detail.profile.url}}');">
+									{% else %}
+									<div id="imagePreview" style="background-image: url('');">
+										{% endif %}
 					            </div>
 					        </div>
 					    </div>
@@ -381,6 +377,7 @@
 				<table class="mt30 table table-striped" style="border: 2px solid #43b97e;">
 					<tr class="thead"
 						style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
+						<td>Order ID</td>
 						<td>Assignment</td>
 						<td>Deadline</td>
 						<td>Duration</td>
@@ -390,6 +387,7 @@
 					{% for detail in details %}
 					{% if detail.duration %}
 					<tr style="color: black;">
+						<td>{{detail.pk}}</td>
 						{% if detail.assignment %}
 						<td> <a href="{{detail.assignment.url}}">Preview</a> </td>
 						{% else %}
@@ -405,43 +403,6 @@
 					{% endfor %}
 				</table>
 			</div>
-			<!-- <div class="assignment_help_content">
-				<form class="commForm mt-3" method="POST" action="/asignment_order/" enctype="multipart/form-data">
-					{% csrf_token %}
-					<div class="flex_div">
-						<div class="col50">
-							<label>Instruction</label>
-							<textarea name="desc" id="description" class=""
-								placeholder="Please Enter Your Instruction Here"></textarea>
-						</div>
-						<div class="col50">
-							<label>Instruction</label>
-							<div class="attachFile">
-								<div class="addfile">
-									<label for="choose-fil" class="custom-file-upload">Add File</label>
-									<input name="files" type="file" id="choose-fil" style="display: none;" />
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="flex_div assignment_help_inner mt30">
-						<div class="">
-							<label>Subject Name</label>
-							<input class="input" required="" name="subject" type="text" placeholder="Subject Name">
-						</div>
-						<div class="">
-							<label>Choose Assignment Deadline</label>
-							<input required class="input date_time" type="datetime-local" id="birthdaytime" name="deadline" placeholder="Deadline" >
-						</div>
-						<div class="text-center psr mt-3">
-							<input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
-
-							<a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
-
-						</div>
-					</div>
-				</form>
-			</div> -->
 			<div class="project_lab_content">
 				<!-- lab form -->
 				<form class="commForm mt-3" method="POST" action="/lab_orders/" enctype="multipart/form-data">
@@ -506,6 +467,7 @@
 				<table class="mt30 table table-striped" style="border: 2px solid #43b97e;">
 					<tr class="thead"
 						style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
+						<td>Order ID</td>
 						<td>Lab Manual</td>
 						<td>Report Guidelines</td>
 						<td>Lab Data</td>
@@ -517,6 +479,7 @@
 					</tr>
 					{% for lab in labs %}
 					<tr style="color: black;">
+						<td>{{lab.pk}}</td>
 						<td><a href="{{lab.lab_manual.url}}">Preview</a></td>
 						<td><a href="{{lab.report_guidline.url}}">Preview</a></td>
 						<td><a href="{{lab.lab_data.url}}">Preview</a></td>
@@ -526,7 +489,6 @@
 						<td>{{lab.assigned}}</td>
 						<td>{{lab.status}}</td>
 					</tr>
-
 					{% endfor %}
 				</table>
 			</div>
