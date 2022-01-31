@@ -67,7 +67,10 @@
 		.psr {
 			position: relative;
 		}
-
+.homeContant .commForm{padding: 10px 24px 15px;}
+.head_content{text-align: center;padding-bottom: 5px;}
+.head_content h1{font-style: italic;
+    color: #47bf7f;}
 
 .avatar-upload {
   position: relative;
@@ -167,6 +170,10 @@
 		</div>
 		<div class="mainContent DashboardContent">
 			<div class="dTbale homeContant active_">
+				<div class="head_content">
+					<h1>Welcome to TutorChamps</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				</div>
 				<!-- home page form  -->
 				<form class="mb55 commForm mt-3 " method="POST" action="" enctype="multipart/form-data">
 					{% csrf_token %}
@@ -210,13 +217,15 @@
 							<input required class="input date_time" type="datetime-local" id="birthdaytime" name="deadline" placeholder="Deadline" >
 						</div>
 						<div class="text-center psr mt-3">
-							<input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
+							<input type="submit" class="formBtn theme-btn btn-style-one" value="Create A New Order Now">
 
-							<a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
+							<a href="" class="theme-btn btn-style-one"><span class="txt">Create A New Order Now</span></a>
 
 						</div>
 					</div>
 				</form>
+
+				<div class="inn_progrss"><span>In Progress (Assignments)</span> </div>
 
 				<table class="mt30 table table-striped" style="border: 2px solid #43b97e;">
 					
