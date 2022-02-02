@@ -281,6 +281,7 @@ def signup(request):
                     messages.success(request, 'you have registered successfully')
                     usr = authenticate(username=email,password=password)
                     login(request,usr)
+                    data = {'status':'ok','msg':'User created successfully'}
                     return JsonResponse(data)
             else:    
                 messages.success(request, 'you have registered successfully')
@@ -634,4 +635,26 @@ def asignment_order(request):
         Orders(user=user,desc=desc,assignment=assignment,subject=subject,deadline=deadline,status='Pending').save()
         return redirect('old-user')
     
-        
+def save_order(request,backend,user,response,*args,**kwargs):
+    email = user.email
+    if request.session.get('session_key'):
+        username = request.session['session_key']
+        unknown_user = User.objects.get(username=username)
+        try:
+            laborder = LabOrders.objects.get(user=unknown_user)
+            laborder.user = user
+            laborder.save()
+        except:
+            order = Orders.objects.get(user=unknown_user)
+            order.user = user
+            id = order.pk
+            id += 1000
+            order.pk = id
+            order.save()
+            send_mail(subject='Welcome to the TutorChamps!!',
+            message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
+            ' We are specialists in delivering the best quality assignment within the deadline. ' + 
+            '\n Please use the below link and password to access the dashboard to proceed further  \n Regards, Team TutorChamps',
+            from_email='admin@tutorchamps.com', recipient_list=[email])            
+        unknown_user.delete()
+        del request.session['session_key']
