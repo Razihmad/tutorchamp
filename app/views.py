@@ -356,8 +356,6 @@ def signin(request):
                     except:
                         order = Orders.objects.get(user=unknown_user)
                         order.user = user
-                        id = order.pk
-                        id += 1000
                         order.pk = id
                         order.save()
                         send_mail(subject='Welcome to the TutorChamps!!',
@@ -647,9 +645,6 @@ def save_order(request,backend,user,response,*args,**kwargs):
         except:
             order = Orders.objects.get(user=unknown_user)
             order.user = user
-            id = order.pk
-            id += 1000
-            order.pk = id
             order.save()
             send_mail(subject='Welcome to the TutorChamps!!',
             message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
