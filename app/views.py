@@ -323,6 +323,9 @@ def profile(request):
         user.save()
         user_detail = UserDetails.objects.get_or_create(user=user)
         user_detail = user_detail[0]
+        if request.FILES:
+            profile = request.FILES['profile']
+            user_detail.profile = profile
         user_detail.name = name
         user_detail.phone = phone
         user_detail.study_level = college
