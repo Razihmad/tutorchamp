@@ -34,7 +34,7 @@
 					<div class="sidebar-info-contents">
 						<div class="content-inner">
 							<div class="logo">
-								<a href="index-2.html"><img src="{% static 'images/logo-2.png' %}" alt="" /></a>
+								<a href="/"><img src="{% static 'images/logo-2.png' %}" alt="" /></a>
 							</div>
 							<div class="content-box">
 								<h2>About Us</h2>
@@ -80,8 +80,7 @@
 			</ul>
 			<div class="content-box">
 				<h2>Latest articles & news</h2>
-				<div class="text">Our blogs and articles are based on the latest trends in online education and have tips
-					and tricks that help the students in their exam preparation and writing skills.</div>
+				<div class="text">Interested in knowing about the latest trends in online education or online homework solutions? Want to learn some handy tips and tricks to improve your writing skills or be better prepared for the exam? Check our blogs now!</div>
 			</div>
 		</div>
 		<div class="outer-container">
@@ -99,7 +98,7 @@
 								<li>Education</li>
 								<li>Updated  Sep 26, 2019</li>
 							</ul>
-							<h4><a href="/blog/top-10-scholarships-for-college-students/">
+							<h4><a href="{% url 'blog-1' %}">
 								Top 10 Scholarships For College Students!
 								</a></h4>
 							<a href="{% url 'blog-1' %}" class="more">More <span class="fa fa-angle-double-right"></span></a>
