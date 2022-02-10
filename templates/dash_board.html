@@ -15,19 +15,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<style>
 		.thead td {
-			width: 25%;
+			width: auto;
 			border: 1px solid #fff;
 		}
 
 		tr td {
-			text-align: center;
+			text-align: center; vertical-align: middle!important;
 		}
 
 		header .profileDrop:after {
 			top: 19px;
 			right: -5px;
 		}
-
+		.chatIcon{max-width: 30px;
+    margin: 0 auto;
+    cursor: pointer;}
 		.pos_rel {
 			width: 100% !important;
 		}
@@ -44,7 +46,7 @@
 			font-size: 14px;
 			text-decoration: underline !important;
 		}
-
+		.edit_row button:focus{box-shadow: none;}
 		.secondStp {
 			display: none;
 		}
@@ -52,7 +54,6 @@
 		.customPopWidth {
 			max-width: 600px !important;
 			width: 100%;
-			top: 15%;
 		}
 
 		.wcMsz {
@@ -66,6 +67,58 @@
 		.psr {
 			position: relative;
 		}
+.homeContant .commForm{padding: 10px 24px 15px;}
+.head_content{text-align: center;padding-bottom: 5px;}
+.head_content h1{font-style: italic;
+    color: #47bf7f;}
+
+.avatar-upload {
+  position: relative;
+  max-width: 100px;
+  margin-bottom: 12px;
+}
+.avatar-upload .avatar-edit {
+    position: absolute;
+	right: -4px;
+	bottom: -2px;
+	z-index: 1;
+}
+.avatar-upload .avatar-edit input {
+  display: none;
+}
+.avatar-upload .avatar-edit input + label {
+  width: 34px;
+    height: 34px;
+    border-radius: 100%;
+    background: #ffffff;
+    box-shadow: 0px 2px 4px 0px rgb(0 0 0 / 12%);
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+}
+.avatar-upload:hover .avatar-edit input + label {opacity: 1;}
+.avatar-upload .avatar-edit input + label img{padding: 6px;}
+.avatar-upload .avatar-preview {
+    width: 110px;
+	height: 110px;
+	position: relative;
+	border-radius: 100%;
+	border: 4px solid #ffffff;
+	box-shadow: 1px 1px 15px #e0e0e0;
+}
+.avatar-upload .avatar-preview > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.EditTableModal .form_group > .pos_rel {
+    width: 47%!important;
+}
+
+
 
 		@media screen and (max-width: 767px) {
 			.dTbale {
@@ -117,8 +170,12 @@
 		</div>
 		<div class="mainContent DashboardContent">
 			<div class="dTbale homeContant active_">
+				<div class="head_content">
+					<h1>Welcome to TutorChamps</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				</div>
 				<!-- home page form  -->
-				<form class="mb55 commForm mt-3" method="POST" action="" enctype="multipart/form-data">
+				<form class="mb55 commForm mt-3 " method="POST" action="" enctype="multipart/form-data">
 					{% csrf_token %}
 					<div class="flex_div">
 						<div class="col3 pt7">
@@ -157,17 +214,18 @@
 						</div>
 						<div class="">
 							<label>Choose Assignment Deadline</label>
-							<input type="date" required="" class="input" name="deadline" id="birthday"
-								placeholder="Deadline">
+							<input required class="input date_time" type="datetime-local" id="birthdaytime" name="deadline" placeholder="Deadline" >
 						</div>
 						<div class="text-center psr mt-3">
-							<input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
+							<input type="submit" class="formBtn theme-btn btn-style-one" value="Create A New Order Now">
 
-							<a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
+							<a href="" class="theme-btn btn-style-one"><span class="txt">Create A New Order Now</span></a>
 
 						</div>
 					</div>
 				</form>
+
+				<div class="inn_progrss"><span>In Progress (Assignments)</span> </div>
 
 				<table class="mt30 table table-striped" style="border: 2px solid #43b97e;">
 					
@@ -177,6 +235,8 @@
 						<td>Deadline</td>
 						<td>Assigned</td>
 						<td>Status</td>
+						<td>Chat</td>
+						<td>Edit</td>
 					</tr>
 					{% for detail in details %}
 					{% if detail.duration is none %}
@@ -189,6 +249,8 @@
 							<td>{{detail.deadline}}</td>
 							<td>{{detail.assigned}}</td>
 							<td>{{detail.get_status_display}}</td>
+							<td><div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div></td>
+							<td><div class="edit_row"><button type="button" class="btn bg-white p-0" data-toggle="modal" data-target="#EditTableModal"><i class="fa fa-pencil"></i></button></div></td>
 						</tr>
 						{% endif %}
 
@@ -201,14 +263,26 @@
 						{% csrf_token %}
 						{% if user_detail.profile %}
 
-						<div class="userprof"><img style="    filter: grayscale(1);" src="{{user_detail.profile.url}}">
-						</div>
+						<!-- <div class="userprof"><img style="    filter: grayscale(1);" src="{{user_detail.profile.url}}">
+						</div> -->
 						{% else %}
-						<div class="userprof"><img style="    filter: grayscale(1);"
-								src="/static/dashboard/images/profi.png"></div>
+						<!-- <div class="userprof"><img style="    filter: grayscale(1);"
+								src="/static/dashboard/images/profi.png"></div> -->
 						{% endif %}
 
 						<h2 class="text-dark text-left">{{user_detail.name}}</h2>
+
+						<div class="avatar-upload">
+					        <div class="avatar-edit">
+					            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+					            <label for="imageUpload"><img title="Add profile photo" src="/static/images/camera.png"></label>
+					        </div>
+					        <div class="avatar-preview">
+					            <div id="imagePreview" style="background-image: url('../static/images/resource/author-6.jpg');">
+					            </div>
+					        </div>
+					    </div>
+
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
 						<div class="">
 							<label>Enter Your Name </label>
@@ -294,8 +368,7 @@
 					<div class="flex_div mt30">
 						<div class="">
 							<label>Choose Assignment Deadline</label>
-							<input type="date" required="" class="input" name="deadline" id="birthday"
-								placeholder="Deadline">
+							<input required class="input date_time" type="datetime-local" id="birthdaytime" name="deadline" placeholder="Deadline" >
 						</div>
 						<div class="">
 							<label>Duration in minutes</label>
@@ -367,8 +440,7 @@
 						</div>
 						<div class="">
 							<label>Choose Assignment Deadline</label>
-							<input type="date" required="" class="input" name="deadline" id="birthday"
-								placeholder="Deadline">
+							<input required class="input date_time" type="datetime-local" id="birthdaytime" name="deadline" placeholder="Deadline" >
 						</div>
 						<div class="text-center psr mt-3">
 							<input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
@@ -430,8 +502,7 @@
 						</div>
 						<div class="">
 							<label>Choose Assignment Deadline</label>
-							<input type="date" required="" class="input" name="deadline" id="birthday"
-								placeholder="Deadline">
+							<input required class="input date_time" type="datetime-local" id="birthdaytime" name="deadline" placeholder="Deadline" >
 						</div>
 						<div class="text-center psr mt-3">
 							<input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
@@ -471,12 +542,44 @@
 
 		</div>
 	</div>
-	<div class="modal" id="myModal">
+	<div class="modal EditTableModal" id="EditTableModal">
 		<div class="modal-dialog customPopWidth">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">×</button>
 				</div>
+				<form class="commForm mt-3 border-0" method="" enctype="multipart/form-data">
+		            <div class="form_group">
+		                <div class="twoField">
+		                    <div class="pos_rel">
+		                        <label>Your Subject/Course Code</label>
+		                        <input class="input" required name="subject" type="text"
+		                            placeholder="Eg. UNCC100 Self &amp; Community">
+		                    </div>
+		                    <div class="pos_rel">
+		                        <label for="birthdaytime">Choose Assignment Deadline</label>
+		                        <input required class="input date_time" type="datetime-local" id="birthdaytime" name="deadline" placeholder="Deadline" >
+		                    </div>
+		                </div>
+		    
+		                <div class="pos_rel">
+		                    <label>Your Message*</label>
+		                    <textarea name="Details" id="description" class="Detail"
+		                        placeholder="Write assignment description"></textarea>
+		                    <div>
+		                        <label for="files"></label>
+		                        <input type="file" name="files" id="files" multiple="" value="Add File">
+		                        <p id="file-name" class="fileName"></p>
+		                    </div>
+		                </div>
+		            </div>
+		            <div class="text-center psr mt-3">
+		                <input type="submit" class="formBtn theme-btn btn-style-one" value="Save changes">
+		    
+		                <a href="" class="theme-btn btn-style-one"><span class="txt">Save changes</span></a>
+		    
+		            </div>
+		        </form>
 			</div>
 		</div>
 	</div>
@@ -581,6 +684,32 @@
 			});
 		});
 	</script>
+
+
+	<script>
+        function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+            $('#imagePreview').hide();
+            $('#imagePreview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#imageUpload").change(function() {
+    readURL(this);
+});
+    </script>
+
+     <script>
+            $('#files').change(function() {
+				var i = $(this).prev('label').clone();
+				var file = $('#files')[0].files[0].name;
+				$(this).prev('label').text(file);
+			  });
+        </script>
 
 </body>
 
