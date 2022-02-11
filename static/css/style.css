@@ -4536,7 +4536,7 @@ header li.more:hover > a::before{opacity:0!important}
 .about{background:#f0faf5;padding:100px 0 80px}
 .about:before{content:'';position:absolute;width:calc(100% + 25px);-ms-transform:rotate(-2deg);transform:rotate(-2deg);background:#fafafb;bottom:auto;top:-60px;left:-6px;height:190px}
 .about .features__icon{background:#fff;box-shadow:0 10px 20px #000 0 2px 8px #000;border-radius:50%;width:80px;height:80px;display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;position:absolute;top:4px;left:20px}
-.about .features__item{padding:30px 30px 30px 126px}
+.about .features__item{padding:30px 30px 10px 126px; margin-bottom: 0;}
 .offerSec{background:#fff;box-shadow:0 10px 20px #000 0 2px 8px #000;border-radius:4px;padding:35px;display:flex;align-items:center;justify-content:space-around}
 .about h2{font-size:30px!important}
 .how-hire-left h2{line-height:initial}
@@ -4713,6 +4713,27 @@ input[name="deadline"]:focus:after{display:none}
 .input.removeAfter:after{display:none}
 .inn_progrss{margin-bottom:-10px}
 .inn_progrss span{display:inline-block;padding:2px 8px;border-left:3px solid #47bf7f;margin-top:15px}
-.inn_services .stats{max-width:100%;padding:20px 15px 28px;min-height:392px;margin-bottom:32px;box-shadow:0 0 30px -13px #000!important;border-radius:24px}
+.inn_services .stats{max-width:100%;padding:20px 15px 28px;min-height:250px;margin-bottom:32px;box-shadow:0 0 30px -13px #000!important;border-radius:24px}
 .inn_services .stats div div{display:inline-block;width:60px;height:60px;background:#f8c333;border-radius:100%;padding:7px;box-sizing:content-box;margin-bottom:10px}
 .inn_services .stats img{width:auto;margin:0;padding:8px}
+.inn_subject_sec li{    width: 19%;
+    background: #ddd;
+    margin-bottom: 15px;
+    display: inline-block;}
+.inn_subject_sec ul{display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; padding-top: 10px;}
+.inn_subject_sec ul a{    display: block;
+    padding: 50px 10px;
+    font-size: 20px;}
+.features_sec ul{    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;}
+.features_sec ul li{    width: 50%;
+    margin-bottom: 15px;
+    font-size: 18px;}
+/*.inn_subject_sec li:hover{transform: scale(.9);
+    box-shadow: 0 0 15px #00000085;
+    border-radius: 10px;}*/
+    
