@@ -16,8 +16,6 @@
     <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
     <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
     <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
-    <link rel="stylesheet" href="{% static 'css/jquery.bootstrap-touchspin.css' %}">
-    <link rel="stylesheet" href="{% static 'css/jquery.bootstrap-touchspin.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl.css' %}">
     <link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&amp;display=swap"
@@ -29,6 +27,19 @@
         {% block meta %}
           
         {% endblock meta %}
+
+<script>
+  //defer images
+function init() {
+var imgDefer = document.getElementsByTagName('img');
+for (var i=0; i<imgDefer.length; i++) {
+if(imgDefer[i].getAttribute('data-src')) {
+imgDefer[i].setAttribute('src',imgDefer[i].getAttribute('data-src'));
+} } }
+window.onload = init;
+</script>
+
+
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -436,20 +447,20 @@
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
-    <script src="{% static 'js/jquery.fancybox.js' %}"></script>
+    <!-- <script src="{% static 'js/jquery.fancybox.js' %}"></script> -->
     <script src="{% static 'js/appear.js' %}"></script>
     <script src="{% static 'js/parallax.min.js' %}"></script>
-    <script src="{% static 'js/tilt.jquery.min.js' %}"></script>
+    <script src="{% static 'js/tilt.jquery.min.js' %}" defer=""></script>
     <script src="{% static 'js/jquery.paroller.min.js' %}"></script>
     <script src="{% static 'js/owl.js' %}"></script>
 
-    <script src="{% static 'js/slider.min.js' %}"></script>
+    <script src="{% static 'js/slider.min.js' %}" defer=""></script>
     <script src="{% static 'js/wow.js' %}"></script>
     <script src="{% static 'js/nav-tool.js' %}"></script>
     <script src="{% static 'js/jquery-ui.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
-    <script src="{% static 'js/jquery.countdown.min.js' %}"></script>
-    <script src="{% static 'js/validate.js' %}"></script>
+    <!-- <script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'js/validate.js' %}"></script> -->
     <script>
 
         // $('.count').each(function () {
@@ -506,6 +517,9 @@
           $("#myModal").css("display","block");
         }
     </script>
+
+
+
 
 </body>
 
