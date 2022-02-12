@@ -195,7 +195,12 @@ class TutorBalance(models.Model):
         verbose_name = 'Balance'
         verbose_name_plural = 'Balances'
         
-
+class Questions(models.Model):
+    question = models.FileField()
+    subject = models.CharField(max_length=100,choices=(('Physics','Physics'),('Math','Math')))
+    tag = models.CharField(max_length=50,choices=(('Basic','Basic'),('Medium','Medium'),('Hard','Hard')))                  
+    def __str__(self):
+        return self.subject
 
 
 class Blog(models.Model):

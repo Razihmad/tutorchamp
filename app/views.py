@@ -4,7 +4,7 @@ from django.core import mail
 from django.http import JsonResponse, request
 from django.http.response import Http404, HttpResponse, HttpResponseBadRequest
 from django.http.response import Http404, HttpResponse
-from app.models import LabOrders, TutorEarnedDetail, TutorPaymenyDetails, TutorSolvedAssignment, TutorSolvedLabs, UserDetails, Orders, TutorRegister, Blog, TutorAccount,TutorBalance
+from app.models import LabOrders, Questions, TutorEarnedDetail, TutorPaymenyDetails, TutorSolvedAssignment, TutorSolvedLabs, UserDetails, Orders, TutorRegister, Blog, TutorAccount,TutorBalance
 from django.contrib.auth.models import User
 from django.core.checks import messages
 from django.shortcuts import redirect, render
@@ -21,6 +21,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.core.exceptions import ObjectDoesNotExist
 from django.core import serializers
+from django.core.mail import EmailMessage
 
 
 def password_reset_request(request):
@@ -447,12 +448,16 @@ def tutor_register(request):
         b = user[1]
         user = user[0]
         if b==True:
+            f = Questions.objects.get(subject=subject)
             tutor = TutorRegister(name=name,qualification_level=qualification_level, subject=subject,tutor=user)
-            send_mail(subject='Welcome to the TutorChamps!!',
-                      message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
+            email = EmailMessage(subject='Welcome to the TutorChamps!!',
+                      body=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
                       ' We are specialists in delivering the best quality assignment within the deadline. ' + 
                       '\n Please use the below link and password to access the dashboard to proceed further  \n Regards, Team TutorChamps',
-                      from_email='admin@tutorchamps.com', recipient_list=[email])
+                      from_email='admin@tutorchamps.com', to=[email])
+            f = f.question
+            email.attach(f.name,f.read())
+            email.send()
             tutor.save()
             x = TutorBalance(tutor=tutor,balance=0)
             x.save()
