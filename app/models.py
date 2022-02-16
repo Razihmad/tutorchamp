@@ -1,3 +1,5 @@
+from operator import truediv
+from pickle import TRUE
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
@@ -27,6 +29,7 @@ class UserDetails(models.Model):
 
 class Orders(models.Model):
     user= models.ForeignKey(User,on_delete=models.CASCADE)
+    order_id = models.CharField(unique=True,max_length=20,null=True,blank=True)
     subject = models.CharField(max_length=20)
     desc = models.CharField(max_length=500,null=True,blank=True)
     deadline = models.DateTimeField()
@@ -53,6 +56,7 @@ class Orders(models.Model):
         verbose_name_plural = 'Orders'
 class LabOrders(models.Model):
     user= models.ForeignKey(User,on_delete=models.CASCADE)
+    order_id = models.CharField(unique=True,null=True,blank=True,max_length=20)
     deadline = models.DateTimeField()
     subject = models.CharField(max_length=20)
     lab_manual = models.FileField(null=True,blank=True)

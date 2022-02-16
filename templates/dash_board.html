@@ -242,7 +242,7 @@
 					{% for detail in details %}
 					{% if detail.duration is none %}
 					<tr style="color: black;">
-						<td>{{detail.pk}}</td>
+						<td>{{detail.order_id}}</td>
 						{% if detail.assignment %}
 						<td><a href="{{detail.assignment.url}}">Preview</a> </td>
 							{% else %}
@@ -396,7 +396,7 @@
 					{% for detail in details %}
 					{% if detail.duration %}
 					<tr style="color: black;">
-						<td>{{detail.pk}}</td>
+						<td>{{detail.order_id}}</td>
 						{% if detail.assignment %}
 						<td> <a href="{{detail.assignment.url}}">Preview</a> </td>
 						{% else %}
@@ -488,7 +488,7 @@
 					</tr>
 					{% for lab in labs %}
 					<tr style="color: black;">
-						<td>{{lab.pk}}</td>
+						<td>{{lab.order_id}}</td>
 						<td><a href="{{lab.lab_manual.url}}">Preview</a></td>
 						<td><a href="{{lab.report_guidline.url}}">Preview</a></td>
 						<td><a href="{{lab.lab_data.url}}">Preview</a></td>

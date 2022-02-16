@@ -201,9 +201,13 @@ def dashboard_old(request):
         assignment = request.FILES['assignment']
         deadline = request.POST.get('deadline')
         subject = request.POST.get('subject')
-        Orders(user=user, status='Pending', desc=desc,reference_material=reference_material,assignment=assignment,
-             deadline=deadline,subject=subject).save()
-        
+        order = Orders(user=user, status='Pending', desc=desc,reference_material=reference_material,assignment=assignment,
+             deadline=deadline,subject=subject)
+        order.save()
+        id = order.pk
+        id += 1000
+        order.order_id = f'TC-HW-{id}'
+        order.save()
     return render(request, 'dash_board.html', {'details': details, 'user': user, 'user_detail': user_detail,'labs':labs})
 
 # lab order from the dashboard
@@ -221,9 +225,14 @@ def labordes(request):
         reference_material = request.FILES['reference_material']
         deadline = request.POST.get('deadline')
         subject = request.POST.get('subject')
-        LabOrders(user=user,reference_material=reference_material,
+        lab = LabOrders(user=user,reference_material=reference_material,
              deadline=deadline,subject=subject,lab_manual=lab_manual,report_guidline=report_guidline,
-             lab_data=lab_data,status='Pending',assigned=False).save()
+             lab_data=lab_data,status='Pending',assigned=False)
+        lab.save()
+        id = lab.pk
+        id +=1000
+        lab.order_id = f'TC-lab-{id}'
+        lab.save()
         return redirect('old-user')
         
         
@@ -241,8 +250,13 @@ def live_session_orders(request):
         deadline = request.POST.get('deadline')
         duration = request.POST.get('Duration')
         subject = request.POST.get('subject')
-        Orders(user=user, status='Pending', desc=desc,assignment=assignment,
-             deadline=deadline,subject=subject,duration=duration).save()
+        order = Orders(user=user, status='Pending', desc=desc,assignment=assignment,
+             deadline=deadline,subject=subject,duration=duration)
+        order.save()
+        id = order.pk
+        id +=1000
+        order.order_id = f'TC-HW-{id}'
+        order.save()
         return redirect('old-user')
 
 def signup(request):
@@ -266,10 +280,16 @@ def signup(request):
                 try:
                     laborder = LabOrders.objects.get(user=unknown_user)
                     laborder.user = user
+                    id = laborder.pk
+                    id +=1000
+                    laborder.order_id = f'TC-lab-{id}'
                     laborder.save()
                 except:
                     order = Orders.objects.get(user=unknown_user)
                     order.user = user
+                    id = order.pk
+                    id +=1000
+                    order.order_id = f'TC-HW-{id}'
                     order.save()
                 finally:
                     unknown_user.delete()
@@ -356,11 +376,16 @@ def signin(request):
                     try:
                         laborder = LabOrders.objects.get(user=unknown_user)
                         laborder.user = user
+                        id = laborder.pk
+                        id +=1000
+                        laborder.order_id = f'TC-lab-{id}'
                         laborder.save()
                     except:
                         order = Orders.objects.get(user=unknown_user)
                         order.user = user
-                        order.pk = id
+                        id = order.pk
+                        id +=1000
+                        order.order_id = f'TC-HW-{id}'
                         order.save()
                         send_mail(subject='Welcome to the TutorChamps!!',
                         message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
@@ -399,8 +424,13 @@ def onlyorders(request):
             user = request.user
             uname= user.username
             user = User.objects.get(username=uname)
-            Orders(subject=subject, desc=desc, deadline=deadline,
-                   assignment=assignment, user=user, status='Pending').save()
+            order = Orders(subject=subject, desc=desc, deadline=deadline,
+                   assignment=assignment, user=user, status='Pending')
+            order.save()
+            id = order.pk
+            id +=1000
+            order.order_id = f'TC-HW-{id}'
+            order.save()
             return redirect('old-user')
         except:
             request.session['session_key'] = res
@@ -424,11 +454,14 @@ def live_session(request):
             order = Orders(deadline=deadline, subject=subject, assignment=file,
                            duration=duration, desc=desc, user=user,status="Pending")
             order.save()
+            id = order.pk
+            id += 1000
+            order.order_id = f'TC-HW-{id}'
+            order.save()
             return redirect('old-user')
         except:
             if not request.session.session_key:
                 request.session.save()
-
             session_key = request.session.session_key
             request.session['session_key'] = session_key
             new_user = User(username=session_key,email=session_key)
