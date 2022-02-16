@@ -483,6 +483,11 @@ def tutor_register(request):
         if b==True:
             f = Questions.objects.get(subject=subject)
             tutor = TutorRegister(name=name,qualification_level=qualification_level, subject=subject,tutor=user)
+            tutor.save()
+            id = tutor.pk
+            id +=3000
+            tutor.unique_id = f'{subject[0:3]}-{id}'
+            tutor.save()
             email = EmailMessage(subject='Welcome to the TutorChamps!!',
                       body=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
                       ' We are specialists in delivering the best quality assignment within the deadline. ' + 
@@ -491,13 +496,12 @@ def tutor_register(request):
             f = f.question
             email.attach(f.name,f.read())
             email.send()
-            tutor.save()
             x = TutorBalance(tutor=tutor,balance=0)
             x.save()
             TutorAccount(tutor = tutor).save()
             return render(request,'thank-you.html')
         else:
-            messages.warning(request, 'you already have been registered')
+            messages.warning(request, 'already registered')
             return redirect('registration')
     return render(request, 'register.html')
 

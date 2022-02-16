@@ -1,5 +1,6 @@
 from operator import truediv
 from pickle import TRUE
+from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
@@ -80,6 +81,7 @@ class LabOrders(models.Model):
 
 class TutorRegister(models.Model):
     tutor = models.OneToOneField(User, on_delete=models.CASCADE)
+    unique_id = models.CharField(unique=True,null=True,blank=True,max_length=20)
     name = models.CharField(max_length=100)
     phone = models.CharField(max_length=13,null=True,blank=True)
     state = models.CharField(max_length=50,blank=True,null=True)
