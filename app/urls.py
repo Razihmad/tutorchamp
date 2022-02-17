@@ -24,7 +24,7 @@ urlpatterns = [
     path('logout/',views.logout_user,name='logout_user'),
     path('order/',views.onlyorders,name='onlyorders'),
     path('tutor/',views.tutor_login,name='tutor'),
-    path('tutor/dashboard/<str:id>/',views.tutor_dashboard,name='tutor-dashboard'),
+    path('tutor/dashboard/',views.tutor_dashboard,name='tutor-dashboard'),
     path('tutor/register/',views.tutor_register,name='registration'),
     path('essay-writing-services/',views.essay,name='essay'),
     path('live-sessions/',views.live_session,name='live'),
@@ -60,6 +60,6 @@ urlpatterns = [
     path('lab_orders/',views.labordes,name='lab_orders'),
     path("tutor_profile/", views.tutor_profile, name="tutor_profile"),
     path('asignment_order/',views.asignment_order,name='asignment_order'),
-    path('tutor_detail/<str:id>/',views.tutor_detail,name='tutor_detail'),
+    path('tutor_detail/',views.tutor_detail,name='tutor_detail'),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
