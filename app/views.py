@@ -514,7 +514,10 @@ def tutor_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return redirect('tutor-dashboard')
+                user = User.objects.get(username=username)
+                tutor = TutorRegister.objects.get(tutor=user)
+                id = tutor.unique_id
+                return redirect(f'/tutor/dashboard/{id}/')
             else:
                 messages.info(
                     request, 'Your account has been deactivated. Contact the Tutorchamps Team to reactivate your account.')
@@ -526,7 +529,7 @@ def tutor_login(request):
    
 
 @login_required(login_url='/tutor/')
-def tutor_dashboard(request):
+def tutor_dashboard(request,id):
     tutor = request.user
     tutor_register = TutorRegister.objects.get(tutor=tutor)
     tutor_balance = TutorBalance.objects.get(tutor=tutor_register)
@@ -549,7 +552,7 @@ def tutor_dashboard(request):
             messages.info(request,'pleaase check the account number')
             return redirect('tutor-dashboard')
     elif tutor_register.phone == None or tutor_register.degree==None:
-        return redirect('tutor_detail')
+        return redirect(f'/tutor_detail/{id}/')
     else:
         tutor_account = TutorAccount.objects.get(tutor=tutor_register)
         assignments = TutorSolvedAssignment.objects.filter(tutor=tutor_register)
@@ -561,7 +564,7 @@ def tutor_dashboard(request):
         
         
 @login_required(login_url='/tutor/')
-def tutor_detail(request):
+def tutor_detail(request,id):
     tutor = request.user
     if request.method=='POST':
         phone = request.POST.get('phone')
@@ -583,7 +586,7 @@ def tutor_detail(request):
         tutor_detail.college = college
         tutor_detail.degree = degree
         tutor_detail.save()
-        return redirect('tutor-dashboard')
+        return redirect(f'/tutor/dashboard/{id}/')
     return render(request,'tutor_detail.html')
     
 @login_required(login_url='/tutor/')

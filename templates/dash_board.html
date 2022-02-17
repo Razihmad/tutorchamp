@@ -234,10 +234,8 @@
 						<td>Order ID</td>
 						<td>Assignment</td>
 						<td>Deadline</td>
-						<td>Assigned</td>
 						<td>Status</td>
 						<td>Chat</td>
-						<td>Edit</td>
 					</tr>
 					{% for detail in details %}
 					{% if detail.duration is none %}
@@ -249,10 +247,8 @@
 							<td>No File</td>
 							{% endif %}
 							<td>{{detail.deadline}}</td>
-							<td>{{detail.assigned}}</td>
 							<td>{{detail.get_status_display}}</td>
 							<td><div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div></td>
-							<td><div class="edit_row"><button type="button" class="btn bg-white p-0" data-toggle="modal" data-target="#EditTableModal"><i class="fa fa-pencil"></i></button></div></td>
 						</tr>
 						{% endif %}
 
@@ -297,7 +293,7 @@
 						</div>
 						<div class="pos_rel">
 							<label>University/College</label>
-							<input class="input" required="" name="College" type="text" placeholder="niversity/College"
+							<input class="input" required="" name="College" type="text" placeholder="University/College"
 								value="{{user_detail.study_level}}">
 						</div>
 						<div>
@@ -356,7 +352,7 @@
 							<div class="attachFile">
 								<div class="addfile">
 									<label for="live_f" class="custom-file-upload">Add File</label>
-									<input name="ref_material" type="file" id="live_f" />
+									<input required name="ref_material" type="file" id="live_f" />
 								</div>
 							</div>
 						</div>
@@ -368,7 +364,7 @@
 						</div>
 						<div class="">
 							<label>Duration in minutes</label>
-							<input class="input" required="" name="Duration" type="text"
+							<input class="input" required name="Duration" type="text"
 								placeholder="Duration in minutes">
 						</div>
 						<div class="">
@@ -390,7 +386,6 @@
 						<td>Assignment</td>
 						<td>Deadline</td>
 						<td>Duration</td>
-						<td>Assigned</td>
 						<td>Status</td>
 					</tr>
 					{% for detail in details %}
@@ -404,7 +399,6 @@
 						{% endif %}
 						<td>{{detail.deadline}}</td>
 						<td>{{detail.duration}}</td>
-						<td>{{detail.assigned}}</td>
 						<td>{{detail.get_status_display}}</td>
 					</tr>
 					{% endif %}
@@ -468,7 +462,7 @@
 						<div class="text-center psr mt-3">
 							<input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
 
-							<a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
+							<a href="" class="theme-btn btn-style-one"><span class="txt">Create A New Order</span></a>
 
 						</div>
 					</div>
@@ -483,7 +477,6 @@
 						<td>Reference Materials</td>
 						<td>Deadline</td>
 						<td>Subject</td>
-						<td>Assigned</td>
 						<td>Status</td>
 					</tr>
 					{% for lab in labs %}
@@ -495,7 +488,6 @@
 						<td><a href="{{lab.reference_material.url}}">Preview</a></td>
 						<td>{{lab.deadline}}</td>
 						<td>{{lab.subject}}</td>
-						<td>{{lab.assigned}}</td>
 						<td>{{lab.status}}</td>
 					</tr>
 					{% endfor %}
