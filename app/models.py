@@ -1,6 +1,3 @@
-from operator import truediv
-from pickle import TRUE
-from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
@@ -73,12 +70,12 @@ class LabOrders(models.Model):
     status = models.CharField(max_length=100,choices=CHOICES)
     submission_date = models.DateField(default=date.today())
     assigned = models.BooleanField(default=False)
-    def __str__(self) -> str:
+    
+    def __str__(self):
         return str(self.pk)
 
 
             
-
 class TutorRegister(models.Model):
     tutor = models.OneToOneField(User, on_delete=models.CASCADE)
     unique_id = models.CharField(unique=True,null=True,blank=True,max_length=20)
@@ -96,7 +93,7 @@ class TutorRegister(models.Model):
 
 
     def __str__(self):
-        return self.tutor.email
+        return str(self.unique_id)
 
     class Meta:
         db_table = ''
@@ -143,7 +140,7 @@ class TutorAccount(models.Model):
 
 
     def __str__(self):
-        return self.pan_number
+        return self.tutor.tutor.username
 
         
     class Meta:

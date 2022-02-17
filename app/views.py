@@ -498,7 +498,8 @@ def tutor_register(request):
             email.send()
             x = TutorBalance(tutor=tutor,balance=0)
             x.save()
-            TutorAccount(tutor = tutor).save()
+            account = TutorAccount(tutor = tutor)
+            account.save()
             return render(request,'thank-you.html')
         else:
             messages.warning(request, 'already registered')
