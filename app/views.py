@@ -576,7 +576,6 @@ def tutor_detail(request,id):
         branch = request.POST.get('branch')
         college = request.POST.get('college')
         college_id = request.FILES['college_id']
-        print(phone)
         tutor_detail = TutorRegister.objects.get(tutor=tutor)
         tutor_detail.phone = phone
         tutor_detail.college_id = college_id
@@ -587,7 +586,7 @@ def tutor_detail(request,id):
         tutor_detail.college = college
         tutor_detail.degree = degree
         tutor_detail.save()
-        return redirect(f'/tutor/dashboard/{id}/')
+        return redirect(f'/tutor/dashboard/{id}')
     return render(request,'tutor_detail.html')
     
 @login_required(login_url='/tutor/')
