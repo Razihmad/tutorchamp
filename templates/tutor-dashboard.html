@@ -762,36 +762,36 @@
 										</div>
 										<div class="pos_rel">
 											<label>PAN number</label>
-											<input class="input pan_card" type="text" placeholder="PAN card number"
+											<input required class="input pan_card" type="text" placeholder="PAN card number"
 												name="pan_card" id="pan_card" maxlength="10" minlength="10" value="{{tutor_account.pan_number}}" >
 										</div>
 									</div>
 									<div class="form_group">
 										<div class="pos_rel">
 											<label>Name on PAN</label>
-											<input class="input" required="" name="pan_name" type="text"
+											<input required class="input" required="" name="pan_name" type="text"
 												placeholder="Salman Khan" value="{{tutor_account.name_on_pan}}">
 										</div>
 										<div class="pos_rel">
 											<label>Name in Account</label>
-											<input class="input" required="" name="name_in_account" type="text"
+											<input required class="input" required="" name="name_in_account" type="text"
 												placeholder="Name in Account" value="{{tutor_account.name_in_account}}">
 										</div>
 									</div>
 									<div class="form_group">
 										<div class="pos_rel">
 											<label>Bank Account Number</label>
-											<input name="account_number" id="account_number" class="input" type="text"
+											<input required name="account_number" id="account_number" class="input" type="text"
 												placeholder="Account Number" value="{{tutor_account.account_number}}">
 										</div>
 										<div class="pos_rel px_15">
 											<label>Confirm Account Number</label>
-											<input name="confirm_bank_account" id="confirm_account_number" class="input"
+											<input required name="confirm_bank_account" id="confirm_account_number" class="input"
 												type="text" placeholder="Confirm Account Number" value="{{tutor_account.account_number}}">
 										</div>
 										<div class="pos_rel">
 											<label>IFSC Code</label>
-											<input name="ifsc" id="ifsc_code" class="input" type="text"
+											<input required name="ifsc" id="ifsc_code" class="input" type="text"
 												placeholder="Enter IFSC Code" value="{{tutor_account.ifsc}}">
 										</div>
 									</div>
