@@ -234,25 +234,21 @@
 						<td>Order ID</td>
 						<td>Assignment</td>
 						<td>Deadline</td>
-						<td>Assigned</td>
 						<td>Status</td>
 						<td>Chat</td>
-						<td>Edit</td>
 					</tr>
 					{% for detail in details %}
 					{% if detail.duration is none %}
 					<tr style="color: black;">
-						<td>{{detail.pk}}</td>
+						<td>{{detail.order_id}}</td>
 						{% if detail.assignment %}
 						<td><a href="{{detail.assignment.url}}">Preview</a> </td>
 							{% else %}
 							<td>No File</td>
 							{% endif %}
 							<td>{{detail.deadline}}</td>
-							<td>{{detail.assigned}}</td>
 							<td>{{detail.get_status_display}}</td>
 							<td><div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div></td>
-							<td><div class="edit_row"><button type="button" class="btn bg-white p-0" data-toggle="modal" data-target="#EditTableModal"><i class="fa fa-pencil"></i></button></div></td>
 						</tr>
 						{% endif %}
 
@@ -261,12 +257,12 @@
 			</div>
 			<div class="profileContent">
 				<div class="col50">
-					<form class="commForm mt-3" method="POST" action="/profile/">
+					<form class="commForm mt-3" method="POST" action="/profile/" enctype="multipart/form-data">
 						{% csrf_token %}
 						<h2 class="text-dark text-left">{{user_detail.name}}</h2>
 						<div class="avatar-upload">
 					        <div class="avatar-edit">
-					            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+					            <input type='file' id="imageUpload" name="profile" accept=".png, .jpg, .jpeg" />
 					            <label for="imageUpload"><img title="Add profile photo" src="/static/images/camera.png"></label>
 					        </div>
 					        <div class="avatar-preview">
@@ -297,7 +293,7 @@
 						</div>
 						<div class="pos_rel">
 							<label>University/College</label>
-							<input class="input" required="" name="College" type="text" placeholder="niversity/College"
+							<input class="input" required="" name="College" type="text" placeholder="University/College"
 								value="{{user_detail.study_level}}">
 						</div>
 						<div>
@@ -356,7 +352,7 @@
 							<div class="attachFile">
 								<div class="addfile">
 									<label for="live_f" class="custom-file-upload">Add File</label>
-									<input name="ref_material" type="file" id="live_f" />
+									<input required name="ref_material" type="file" id="live_f" />
 								</div>
 							</div>
 						</div>
@@ -368,7 +364,7 @@
 						</div>
 						<div class="">
 							<label>Duration in minutes</label>
-							<input class="input" required="" name="Duration" type="text"
+							<input class="input" required name="Duration" type="text"
 								placeholder="Duration in minutes">
 						</div>
 						<div class="">
@@ -390,13 +386,12 @@
 						<td>Assignment</td>
 						<td>Deadline</td>
 						<td>Duration</td>
-						<td>Assigned</td>
 						<td>Status</td>
 					</tr>
 					{% for detail in details %}
 					{% if detail.duration %}
 					<tr style="color: black;">
-						<td>{{detail.pk}}</td>
+						<td>{{detail.order_id}}</td>
 						{% if detail.assignment %}
 						<td> <a href="{{detail.assignment.url}}">Preview</a> </td>
 						{% else %}
@@ -404,7 +399,6 @@
 						{% endif %}
 						<td>{{detail.deadline}}</td>
 						<td>{{detail.duration}}</td>
-						<td>{{detail.assigned}}</td>
 						<td>{{detail.get_status_display}}</td>
 					</tr>
 					{% endif %}
@@ -422,7 +416,7 @@
 							<div class="attachFile">
 								<div class="addfile">
 									<label for="labm" class="custom-file-upload">Add File</label>
-									<input name="lab_manual" type="file" id="labm"
+									<input name="lab_manual" type="file" id="labm" required
 										accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png"
 										style="display: none;" />
 								</div>
@@ -433,7 +427,7 @@
 							<div class="attachFile">
 								<div class="addfile">
 									<label for="report" class="custom-file-upload">Add File</label>
-									<input name="report_guideline" type="file" id="report" style="display: none;" />
+									<input required name="report_guideline" type="file" id="report" style="display: none;" />
 								</div>
 							</div>
 						</div>
@@ -442,7 +436,7 @@
 							<div class="attachFile">
 								<div class="addfile">
 									<label for="labd" class="custom-file-upload">Add File</label>
-									<input name="lab_data" type="file" id="labd" style="display: none;" />
+									<input required name="lab_data" type="file" id="labd" style="display: none;" />
 								</div>
 							</div>
 						</div>
@@ -451,7 +445,7 @@
 							<div class="attachFile">
 								<div class="addfile">
 									<label for="ref" class="custom-file-upload">Add File</label>
-									<input name="reference_material" type="file" id="ref" style="display: none;" />
+									<input required name="reference_material" type="file" id="ref" style="display: none;" />
 								</div>
 							</div>
 						</div>
@@ -468,7 +462,7 @@
 						<div class="text-center psr mt-3">
 							<input type="submit" class="formBtn theme-btn btn-style-one" value="Get Solution Now">
 
-							<a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
+							<a href="" class="theme-btn btn-style-one"><span class="txt">Create A New Order</span></a>
 
 						</div>
 					</div>
@@ -483,19 +477,17 @@
 						<td>Reference Materials</td>
 						<td>Deadline</td>
 						<td>Subject</td>
-						<td>Assigned</td>
 						<td>Status</td>
 					</tr>
 					{% for lab in labs %}
 					<tr style="color: black;">
-						<td>{{lab.pk}}</td>
+						<td>{{lab.order_id}}</td>
 						<td><a href="{{lab.lab_manual.url}}">Preview</a></td>
 						<td><a href="{{lab.report_guidline.url}}">Preview</a></td>
 						<td><a href="{{lab.lab_data.url}}">Preview</a></td>
 						<td><a href="{{lab.reference_material.url}}">Preview</a></td>
 						<td>{{lab.deadline}}</td>
 						<td>{{lab.subject}}</td>
-						<td>{{lab.assigned}}</td>
 						<td>{{lab.status}}</td>
 					</tr>
 					{% endfor %}

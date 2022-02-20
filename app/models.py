@@ -1,6 +1,3 @@
-from os import truncate
-from pyexpat import model
-from statistics import mode
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
@@ -30,6 +27,7 @@ class UserDetails(models.Model):
 
 class Orders(models.Model):
     user= models.ForeignKey(User,on_delete=models.CASCADE)
+    order_id = models.CharField(unique=True,max_length=20,null=True,blank=True)
     subject = models.CharField(max_length=20)
     desc = models.CharField(max_length=500,null=True,blank=True)
     deadline = models.DateTimeField()
@@ -56,6 +54,7 @@ class Orders(models.Model):
         verbose_name_plural = 'Orders'
 class LabOrders(models.Model):
     user= models.ForeignKey(User,on_delete=models.CASCADE)
+    order_id = models.CharField(unique=True,null=True,blank=True,max_length=20)
     deadline = models.DateTimeField()
     subject = models.CharField(max_length=20)
     lab_manual = models.FileField(null=True,blank=True)
@@ -71,14 +70,15 @@ class LabOrders(models.Model):
     status = models.CharField(max_length=100,choices=CHOICES)
     submission_date = models.DateField(default=date.today())
     assigned = models.BooleanField(default=False)
-    def __str__(self) -> str:
+    
+    def __str__(self):
         return str(self.pk)
 
 
             
-
 class TutorRegister(models.Model):
     tutor = models.OneToOneField(User, on_delete=models.CASCADE)
+    unique_id = models.CharField(unique=True,null=True,blank=True,max_length=20)
     name = models.CharField(max_length=100)
     phone = models.CharField(max_length=13,null=True,blank=True)
     state = models.CharField(max_length=50,blank=True,null=True)
@@ -93,7 +93,7 @@ class TutorRegister(models.Model):
 
 
     def __str__(self):
-        return self.tutor.email
+        return str(self.unique_id)
 
     class Meta:
         db_table = ''
@@ -140,7 +140,7 @@ class TutorAccount(models.Model):
 
 
     def __str__(self):
-        return self.pan_number
+        return self.tutor.tutor.username
 
         
     class Meta:
@@ -198,7 +198,17 @@ class TutorBalance(models.Model):
         verbose_name = 'Balance'
         verbose_name_plural = 'Balances'
         
-
+class Questions(models.Model):
+    question = models.FileField()
+    subject = models.CharField(max_length=100,choices=(('Physics','Physics'),('Maths','Maths'),
+                                                       ('Chemistry','Chemistry'),('Science','Science'),('English','English'),
+                                                       ('Accounting','Accounting'),('Economics','Economics'),
+                        ('Biology','Biology'),('Programming','Programming'),('Essay Writing','Essay Writing'),
+                        ('Statistics','Statistics'),('Computer Science','Computer Science'),('Nursing','Nursing'),('Case Study Writing','Case Study Writing'),
+                        ('Electrical','Electrical'),('Mechanical','Mechanical'),('Finance','Finance'),('Civil Engineering','Civil Engineering')))
+    tag = models.CharField(max_length=50,choices=(('Basic','Basic'),('Medium','Medium'),('Hard','Hard')))                  
+    def __str__(self):
+        return self.subject
 
 
 class Blog(models.Model):

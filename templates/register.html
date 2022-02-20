@@ -89,6 +89,13 @@
         top: -60px;
         left: 104px;
     }
+    .errormsg{
+        position: absolute;
+    top: 58px;
+    color: red;
+    font-size: 13px;
+    left: 10px
+    }
 
     </style>
 </head>
@@ -128,7 +135,7 @@
                         </div>
                         <div class="pos_rel">
                             {% for message in messages %}
-                              <p>{{message}}</p>
+                              <p class='errormsg'>{{message}}</p>
                             {% endfor %}
                             <label>Enter Your Email </label>
                             <input required name="email" type="email" class="input" placeholder="Enter Email">
@@ -152,16 +159,22 @@
                                 <option value="Physics">Physics</option>  
                                 <option value="Case Study Writing">Case Study Writing</option>
                                 <option value="Chemistry">Chemistry </option>
-                                <option value="Math">Math</option>
+                                <option value="Maths">Maths</option>
                                 <option value="Science">Science </option>
                                 <option value="English">English</option>
                                 <option value="Programming">Programming</option>
+                                <option value="Finance">Finance</option>
                                 <option value="Biology">Biology </option>
-                                <option value="Engineering">Engineering </option>
+                                <option value="Civil Engineering">Civil Engineering </option>
                                 <option value="Computer Science">Computer Science </option>
+                                <option value="Mechanical">Mechanical Engineering </option>
+                                <option value="Electrical">Electrical Engineering </option>
                                 <option value="Statistics">Statistics </option>
                                 <option value="Accounting">Accounting</option>
                                 <option value="Economics">Economics</option>
+                                <option value="Management">Management</option>
+                                <option value="Nursing">Nursing</option>
+                                
                             </select>
                         </div>
                     </div>

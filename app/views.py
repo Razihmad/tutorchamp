@@ -4,7 +4,7 @@ from django.core import mail
 from django.http import JsonResponse, request
 from django.http.response import Http404, HttpResponse, HttpResponseBadRequest
 from django.http.response import Http404, HttpResponse
-from app.models import LabOrders, TutorEarnedDetail, TutorPaymenyDetails, TutorSolvedAssignment, TutorSolvedLabs, UserDetails, Orders, TutorRegister, Blog, TutorAccount,TutorBalance
+from app.models import LabOrders, Questions, TutorEarnedDetail, TutorPaymenyDetails, TutorSolvedAssignment, TutorSolvedLabs, UserDetails, Orders, TutorRegister, Blog, TutorAccount,TutorBalance
 from django.contrib.auth.models import User
 from django.core.checks import messages
 from django.shortcuts import redirect, render
@@ -21,6 +21,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.core.exceptions import ObjectDoesNotExist
 from django.core import serializers
+from django.core.mail import EmailMessage
 
 
 def password_reset_request(request):
@@ -200,9 +201,13 @@ def dashboard_old(request):
         assignment = request.FILES['assignment']
         deadline = request.POST.get('deadline')
         subject = request.POST.get('subject')
-        Orders(user=user, status='Pending', desc=desc,reference_material=reference_material,assignment=assignment,
-             deadline=deadline,subject=subject).save()
-        
+        order = Orders(user=user, status='Pending', desc=desc,reference_material=reference_material,assignment=assignment,
+             deadline=deadline,subject=subject)
+        order.save()
+        id = order.pk
+        id += 1000
+        order.order_id = f'TC-HW-{id}'
+        order.save()
     return render(request, 'dash_board.html', {'details': details, 'user': user, 'user_detail': user_detail,'labs':labs})
 
 # lab order from the dashboard
@@ -220,9 +225,14 @@ def labordes(request):
         reference_material = request.FILES['reference_material']
         deadline = request.POST.get('deadline')
         subject = request.POST.get('subject')
-        LabOrders(user=user,reference_material=reference_material,
+        lab = LabOrders(user=user,reference_material=reference_material,
              deadline=deadline,subject=subject,lab_manual=lab_manual,report_guidline=report_guidline,
-             lab_data=lab_data,status='Pending',assigned=False).save()
+             lab_data=lab_data,status='Pending',assigned=False)
+        lab.save()
+        id = lab.pk
+        id +=1000
+        lab.order_id = f'TC-lab-{id}'
+        lab.save()
         return redirect('old-user')
         
         
@@ -240,8 +250,13 @@ def live_session_orders(request):
         deadline = request.POST.get('deadline')
         duration = request.POST.get('Duration')
         subject = request.POST.get('subject')
-        Orders(user=user, status='Pending', desc=desc,assignment=assignment,
-             deadline=deadline,subject=subject,duration=duration).save()
+        order = Orders(user=user, status='Pending', desc=desc,assignment=assignment,
+             deadline=deadline,subject=subject,duration=duration)
+        order.save()
+        id = order.pk
+        id +=1000
+        order.order_id = f'TC-HW-{id}'
+        order.save()
         return redirect('old-user')
 
 def signup(request):
@@ -265,10 +280,16 @@ def signup(request):
                 try:
                     laborder = LabOrders.objects.get(user=unknown_user)
                     laborder.user = user
+                    id = laborder.pk
+                    id +=1000
+                    laborder.order_id = f'TC-lab-{id}'
                     laborder.save()
                 except:
                     order = Orders.objects.get(user=unknown_user)
                     order.user = user
+                    id = order.pk
+                    id +=1000
+                    order.order_id = f'TC-HW-{id}'
                     order.save()
                 finally:
                     unknown_user.delete()
@@ -323,6 +344,9 @@ def profile(request):
         user.save()
         user_detail = UserDetails.objects.get_or_create(user=user)
         user_detail = user_detail[0]
+        if request.FILES:
+            profile = request.FILES['profile']
+            user_detail.profile = profile
         user_detail.name = name
         user_detail.phone = phone
         user_detail.study_level = college
@@ -352,13 +376,16 @@ def signin(request):
                     try:
                         laborder = LabOrders.objects.get(user=unknown_user)
                         laborder.user = user
+                        id = laborder.pk
+                        id +=1000
+                        laborder.order_id = f'TC-lab-{id}'
                         laborder.save()
                     except:
                         order = Orders.objects.get(user=unknown_user)
                         order.user = user
                         id = order.pk
-                        id += 1000
-                        order.pk = id
+                        id +=1000
+                        order.order_id = f'TC-HW-{id}'
                         order.save()
                         send_mail(subject='Welcome to the TutorChamps!!',
                         message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
@@ -397,8 +424,13 @@ def onlyorders(request):
             user = request.user
             uname= user.username
             user = User.objects.get(username=uname)
-            Orders(subject=subject, desc=desc, deadline=deadline,
-                   assignment=assignment, user=user, status='Pending').save()
+            order = Orders(subject=subject, desc=desc, deadline=deadline,
+                   assignment=assignment, user=user, status='Pending')
+            order.save()
+            id = order.pk
+            id +=1000
+            order.order_id = f'TC-HW-{id}'
+            order.save()
             return redirect('old-user')
         except:
             request.session['session_key'] = res
@@ -422,11 +454,14 @@ def live_session(request):
             order = Orders(deadline=deadline, subject=subject, assignment=file,
                            duration=duration, desc=desc, user=user,status="Pending")
             order.save()
+            id = order.pk
+            id += 1000
+            order.order_id = f'TC-HW-{id}'
+            order.save()
             return redirect('old-user')
         except:
             if not request.session.session_key:
                 request.session.save()
-
             session_key = request.session.session_key
             request.session['session_key'] = session_key
             new_user = User(username=session_key,email=session_key)
@@ -446,19 +481,28 @@ def tutor_register(request):
         b = user[1]
         user = user[0]
         if b==True:
+            f = Questions.objects.get(subject=subject)
             tutor = TutorRegister(name=name,qualification_level=qualification_level, subject=subject,tutor=user)
-            send_mail(subject='Welcome to the TutorChamps!!',
-                      message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
+            tutor.save()
+            id = tutor.pk
+            id +=3000
+            tutor.unique_id = f'{subject[0:3]}-{id}'
+            tutor.save()
+            email = EmailMessage(subject='Welcome to the TutorChamps!!',
+                      body=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
                       ' We are specialists in delivering the best quality assignment within the deadline. ' + 
                       '\n Please use the below link and password to access the dashboard to proceed further  \n Regards, Team TutorChamps',
-                      from_email='admin@tutorchamps.com', recipient_list=[email])
-            tutor.save()
+                      from_email='admin@tutorchamps.com', to=[email])
+            f = f.question
+            email.attach(f.name,f.read())
+            email.send()
             x = TutorBalance(tutor=tutor,balance=0)
             x.save()
-            TutorAccount(tutor = tutor).save()
+            account = TutorAccount(tutor = tutor)
+            account.save()
             return render(request,'thank-you.html')
         else:
-            messages.warning(request, 'you already have been registered')
+            messages.warning(request, 'already registered')
             return redirect('registration')
     return render(request, 'register.html')
 
@@ -471,7 +515,10 @@ def tutor_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return redirect('tutor-dashboard')
+                user = User.objects.get(username=username)
+                tutor = TutorRegister.objects.get(tutor=user)
+                id = tutor.unique_id
+                return redirect('/tutor/dashboard/')
             else:
                 messages.info(
                     request, 'Your account has been deactivated. Contact the Tutorchamps Team to reactivate your account.')
@@ -506,7 +553,7 @@ def tutor_dashboard(request):
             messages.info(request,'pleaase check the account number')
             return redirect('tutor-dashboard')
     elif tutor_register.phone == None or tutor_register.degree==None:
-        return redirect('tutor_detail')
+        return redirect('/tutor_detail/')
     else:
         tutor_account = TutorAccount.objects.get(tutor=tutor_register)
         assignments = TutorSolvedAssignment.objects.filter(tutor=tutor_register)
@@ -529,7 +576,6 @@ def tutor_detail(request):
         branch = request.POST.get('branch')
         college = request.POST.get('college')
         college_id = request.FILES['college_id']
-        print(phone)
         tutor_detail = TutorRegister.objects.get(tutor=tutor)
         tutor_detail.phone = phone
         tutor_detail.college_id = college_id
@@ -540,7 +586,7 @@ def tutor_detail(request):
         tutor_detail.college = college
         tutor_detail.degree = degree
         tutor_detail.save()
-        return redirect('tutor-dashboard')
+        return redirect(f'/tutor/dashboard/{id}')
     return render(request,'tutor_detail.html')
     
 @login_required(login_url='/tutor/')
@@ -647,9 +693,6 @@ def save_order(request,backend,user,response,*args,**kwargs):
         except:
             order = Orders.objects.get(user=unknown_user)
             order.user = user
-            id = order.pk
-            id += 1000
-            order.pk = id
             order.save()
             send_mail(subject='Welcome to the TutorChamps!!',
             message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
