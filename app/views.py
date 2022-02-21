@@ -492,7 +492,7 @@ def tutor_register(request):
             tutor.unique_id = f'{subject[0:3]}-{id}'
             tutor.save()
             c = {
-                'user':email
+                'user':name
             }
             email_msg = render_to_string('tutor_email.txt',c)
             email = EmailMessage(subject='Welcome to TutorChamps || Complete the test',body=email_msg,from_email='admin@tutorchamps.com',to=[email])
