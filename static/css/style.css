@@ -4438,7 +4438,7 @@ header li.more:hover > a::before{opacity:0!important}
 .orderForm .commForm{padding:30px 20px;border-radius:25px;box-shadow:0 0 30px -15px #000}
 .commForm{background:#fff;border:1px solid #e9e9e9;padding:20px 26px 26px;border-radius:15px;z-index:9;position:relative;top:10px}
 .commForm .input{display:block;padding:6px 8px;font-size:14px;border:1px solid #ccc;width:100%;outline:none;border-radius:4px;margin-bottom:15px;position:relative}
-.commForm .form_group{display:flex;align-items:flex-start;justify-content:space-between}
+.commForm .form_group{/* display:flex; *//* align-items:flex-start; *//* justify-content:space-between */}
 .commForm .pos_rel{width:47%;position:relative}
 .commForm .pos_rel label{font-size:13px;display:block;text-transform:capitalize;color:#383838;margin-bottom:2px}
 .commForm .pos_rel .input{display:block;padding:6px 8px;font-size:14px;border:1px solid #ccc;width:100%;outline:none;border-radius:4px;margin-bottom:15px}
@@ -4492,7 +4492,7 @@ header li.more:hover > a::before{opacity:0!important}
 .reviewMain::after{content:"";position:absolute;right:-120px;width:270px;height:300px;z-index:1;background:url(/static/images/rocket.svg) right top no-repeat;bottom:35px;filter:grayscale(1) brightness(0);opacity:.4}
 .rvwSub2{width:100%}
 .starRevw{text-align:center;width:auto;display:inline-block;margin:20px auto}
-.subReview h3{font-size:26px;margin:5px 0 0;padding:0 0 5px;text-transform:uppercase}
+.subReview h3{font-size:26px;margin:5px 0 0;padding:0 0 5px;text-transform:capitalize;}
 .subReview .ord-cod{font-size:13px;color:#000;margin:0 0 20px;border-bottom:solid 1px #ccc;padding:0 0 13px}
 .subReview .mesg{font-size:14px;color:#666;line-height:22px}
 .subReview .sub-Cty{text-align:right;font-size:13px;color:#666;margin:5px 0 0;display:inline-block;width:100%;font-style:italic}
@@ -4534,7 +4534,6 @@ header li.more:hover > a::before{opacity:0!important}
 .ordPage:before{content:"";position:absolute;right:-13px;width:258px;height:176px;z-index:-1;background:url(/static/images/bg-dot.png);border-radius:100%;bottom:-167px}
 .services.ordPage:before{display:none}
 .about{background:#f0faf5;padding:100px 0 80px}
-.about:before{content:'';position:absolute;width:calc(100% + 25px);-ms-transform:rotate(-2deg);transform:rotate(-2deg);background:#fafafb;bottom:auto;top:-60px;left:-6px;height:190px}
 .about .features__icon{background:#fff;box-shadow:0 10px 20px #000 0 2px 8px #000;border-radius:50%;width:80px;height:80px;display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;position:absolute;top:4px;left:20px}
 .about .features__item{padding:30px 30px 10px 126px; margin-bottom: 0;}
 .offerSec{background:#fff;box-shadow:0 10px 20px #000 0 2px 8px #000;border-radius:4px;padding:35px;display:flex;align-items:center;justify-content:space-around}
@@ -4736,4 +4735,44 @@ input[name="deadline"]:focus:after{display:none}
 /*.inn_subject_sec li:hover{transform: scale(.9);
     box-shadow: 0 0 15px #00000085;
     border-radius: 10px;}*/
-    
+.star-rating {
+  display:flex;
+  flex-direction: row-reverse;
+  font-size:1.5em;
+  justify-content: space-between;
+  padding:0 .2em;
+  text-align:center;
+  max-width: 242px;
+}
+
+.star-rating input {
+  display:none;
+}
+
+.star-rating label {
+  color: #fff;
+  cursor:pointer;
+  background: #d4d4d4;
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  text-align: center;
+  line-height: 36px;
+border-radius: 5px;
+}
+
+.star-rating :checked ~ label {
+  color: #fff;
+  background: #32a067;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {background: #43b97e;}
+.rating_form > div > label{    color: #454554;
+    font-size: 16px;
+    display: block;
+    font-weight: 600;
+    width: 100%; margin-top: 15px;}
+.rating_form{max-width: 700px;
+    margin: 0 auto 55px;
+    box-shadow: 1px 1px 15px #e0e0e0; width: 95%;}
