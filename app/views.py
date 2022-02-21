@@ -481,7 +481,10 @@ def tutor_register(request):
         b = user[1]
         user = user[0]
         if b==True:
-            f = Questions.objects.get(subject=subject)
+            hard = Questions.objects.filter(subject=subject,tag='Hard')
+            basic = Questions.objects.filter(subject=subject,tag='Basic')
+            hard = random.choice(hard)
+            basic = random.choice(basic)
             tutor = TutorRegister(name=name,qualification_level=qualification_level, subject=subject,tutor=user)
             tutor.save()
             id = tutor.pk
@@ -493,8 +496,10 @@ def tutor_register(request):
                       ' We are specialists in delivering the best quality assignment within the deadline. ' + 
                       '\n Please use the below link and password to access the dashboard to proceed further  \n Regards, Team TutorChamps',
                       from_email='admin@tutorchamps.com', to=[email])
-            f = f.question
-            email.attach(f.name,f.read())
+            hard = hard.question
+            basic = basic.question
+            email.attach(hard.name,hard.read())
+            email.attach(basic.name,basic.read())
             email.send()
             x = TutorBalance(tutor=tutor,balance=0)
             x.save()
