@@ -491,11 +491,11 @@ def tutor_register(request):
             id +=3000
             tutor.unique_id = f'{subject[0:3]}-{id}'
             tutor.save()
-            email = EmailMessage(subject='Welcome to the TutorChamps!!',
-                      body=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
-                      ' We are specialists in delivering the best quality assignment within the deadline. ' + 
-                      '\n Please use the below link and password to access the dashboard to proceed further  \n Regards, Team TutorChamps',
-                      from_email='admin@tutorchamps.com', to=[email])
+            c = {
+                'user':email
+            }
+            email_msg = render_to_string('tutor_email.txt',c)
+            email = EmailMessage(subject='Welcome to TutorChamps || Complete the test',body=email_msg,from_email='admin@tutorchamps.com',to=[email])
             hard = hard.question
             basic = basic.question
             email.attach(hard.name,hard.read())

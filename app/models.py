@@ -221,3 +221,18 @@ class Blog(models.Model):
         managed = True
         verbose_name = 'Blog'
         verbose_name_plural = 'Blogs'
+        
+class Reviews(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    content = models.CharField(max_length=1000)
+    rating = models.IntegerField()
+    city = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.user.username
+    
+    class Meta:
+        db_table = ''
+        managed = True
+        verbose_name = 'Review'
+        verbose_name_plural = 'Reviews'
