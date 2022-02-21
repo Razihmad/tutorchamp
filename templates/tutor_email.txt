@@ -1,5 +1,5 @@
 {% autoescape off %}
-Dear {% user %}
+Dear {{user}}
 
 Thanks for registering at TutorChamps. 
 
