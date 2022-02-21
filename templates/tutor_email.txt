@@ -1,0 +1,19 @@
+{% autoescape off %}
+Dear {% user %}
+
+Thanks for registering at TutorChamps. 
+
+To become a tutor at TutorChamps, you are requested to complete the attached test file within 24 hours. Please make sure that you complete the test within time as we value people a lot who believe in meeting the deadlines.
+
+Although, we know that we are nobody to judge you but we are very particular about the standards we have set in our organization for being a tutor so take it as a simple onboarding process.
+
+Our onboarding process is one of the quickest and hassle-free. 
+
+Here you go.
+
+PFA the test file:
+
+Sincerely,
+The Tutorchamps Team
+
+{% endautoescape %}
