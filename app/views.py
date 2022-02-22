@@ -80,13 +80,17 @@ def reviews(request):
     if request.method=="POST":
         if request.user.is_authenticated:
             content = request.POST.get('content')
-            rating = request.POST.get('rating')
+            rating = int(request.POST.get('rating'))
+            r = '' 
+            for i in range(1,rating+1):
+                r += str(i)
             user = request.user
             Reviews(user=user,content=content,rating=rating).save()
         else:
             messages.info(request,'Please Login First')
             return redirect('reviews')
-    return render(request, 'reviews.html')
+    reviews = Reviews.objects.all()
+    return render(request, 'reviews.html',{'reviews':reviews})
 
 
 def about(request):

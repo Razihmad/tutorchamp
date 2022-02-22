@@ -202,8 +202,8 @@ class Questions(models.Model):
     question = models.FileField()
     subject = models.CharField(max_length=100,choices=(('Physics','Physics'),('Maths','Maths'),
                                                        ('Chemistry','Chemistry'),('Science','Science'),('English','English'),
-                                                       ('Accounting','Accounting'),('Economics','Economics'),
-                        ('Biology','Biology'),('Programming','Programming'),('Essay Writing','Essay Writing'),
+                                                       ('Accounting','Accounting'),('Economics','Economics'),('Management','Management'),
+                        ('Biology','Biology'),('Programming','Programming'),('Essay Writing','Essay Writing'),('Chemical Engineering','Chemical Engineering'),
                         ('Statistics','Statistics'),('Computer Science','Computer Science'),('Nursing','Nursing'),('Case Study Writing','Case Study Writing'),
                         ('Electrical','Electrical'),('Mechanical','Mechanical'),('Finance','Finance'),('Civil Engineering','Civil Engineering')))
     def __str__(self):
@@ -229,7 +229,7 @@ class Blog(models.Model):
 class Reviews(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     content = models.CharField(max_length=1000)
-    rating = models.IntegerField()
+    rating = models.CharField(max_length=10)
 
     def __str__(self):
         return self.user.username
