@@ -4,7 +4,7 @@ from django.core import mail
 from django.http import JsonResponse, request
 from django.http.response import Http404, HttpResponse, HttpResponseBadRequest
 from django.http.response import Http404, HttpResponse
-from app.models import LabOrders, Questions, TutorEarnedDetail, TutorPaymenyDetails, TutorSolvedAssignment, TutorSolvedLabs, UserDetails, Orders, TutorRegister, Blog, TutorAccount,TutorBalance
+from app.models import LabOrders, Questions, Reviews, TutorEarnedDetail, TutorPaymenyDetails, TutorSolvedAssignment, TutorSolvedLabs, UserDetails, Orders, TutorRegister, Blog, TutorAccount,TutorBalance
 from django.contrib.auth.models import User
 from django.core.checks import messages
 from django.shortcuts import redirect, render
@@ -76,8 +76,12 @@ def features(request):
 
 
 def reviews(request):
-    if request.method=="POST":
-        pass
+    if request.method=="POST" and request.user.is_authenticated:
+        content = request.POST.get('content')
+        rating = int(request.POST.get('rating'))
+        user = request.user
+        Reviews(user=user,content=content,rating=rating).save()
+            
     return render(request, 'reviews.html')
 
 
