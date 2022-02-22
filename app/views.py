@@ -481,10 +481,8 @@ def tutor_register(request):
         b = user[1]
         user = user[0]
         if b==True:
-            hard = Questions.objects.filter(subject=subject,tag='Hard')
-            basic = Questions.objects.filter(subject=subject,tag='Basic')
+            hard = Questions.objects.filter(subject=subject)
             hard = random.choice(hard)
-            basic = random.choice(basic)
             tutor = TutorRegister(name=name,qualification_level=qualification_level, subject=subject,tutor=user)
             tutor.save()
             id = tutor.pk
@@ -496,10 +494,7 @@ def tutor_register(request):
             }
             email_msg = render_to_string('tutor_email.txt',c)
             email = EmailMessage(subject='Welcome to TutorChamps || Complete the test',body=email_msg,from_email='admin@tutorchamps.com',to=[email])
-            hard = hard.question
-            basic = basic.question
             email.attach(hard.name,hard.read())
-            email.attach(basic.name,basic.read())
             email.send()
             x = TutorBalance(tutor=tutor,balance=0)
             x.save()
