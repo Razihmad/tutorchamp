@@ -508,6 +508,7 @@ def tutor_register(request):
             }
             email_msg = render_to_string('tutor_email.txt',c)
             email = EmailMessage(subject='Welcome to TutorChamps || Complete the test',body=email_msg,from_email='admin@tutorchamps.com',to=[email])
+            hard = hard.question
             email.attach(hard.name,hard.read())
             email.send()
             x = TutorBalance(tutor=tutor,balance=0)
