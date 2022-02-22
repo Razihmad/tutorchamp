@@ -201,11 +201,12 @@ class TutorBalance(models.Model):
 class Questions(models.Model):
     question = models.FileField()
     subject = models.CharField(max_length=100,choices=(('Physics','Physics'),('Maths','Maths'),('Essay Writing','Essay Writing'),
-                                                       ('Chemistry','Chemistry'),('Science','Science'),('English','English'),
-                                                       ('Accounting','Accounting'),('Economics','Economics'),('Management','Management'),
-                        ('Biology','Biology'),('Programming','Programming'),('Essay Writing','Essay Writing'),('Chemical Engineering','Chemical Engineering'),
-                        ('Statistics','Statistics'),('Computer Science','Computer Science'),('Nursing','Nursing'),('Case Study Writing','Case Study Writing'),
-                        ('Electrical','Electrical'),('Mechanical','Mechanical'),('Finance','Finance'),('Civil Engineering','Civil Engineering')))
+                                                       ('Chemistry','Chemistry'),('Accounting','Accounting'),
+                                                       ('Economics','Economics'),('Management','Management'),
+                        ('Biology','Biology'),('Chemical Engineering','Chemical Engineering'),
+                        ('Computer Science','Computer Science'),('Nursing','Nursing'),
+                        ('Electrical','Electrical'),('Mechanical','Mechanical'),
+                        ('Finance','Finance'),('Civil Engineering','Civil Engineering')))
     def __str__(self):
         return self.subject
 
