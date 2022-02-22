@@ -4,7 +4,7 @@ from django.core import mail
 from django.http import JsonResponse, request
 from django.http.response import Http404, HttpResponse, HttpResponseBadRequest
 from django.http.response import Http404, HttpResponse
-from app.models import LabOrders, Questions, TutorEarnedDetail, TutorPaymenyDetails, TutorSolvedAssignment, TutorSolvedLabs, UserDetails, Orders, TutorRegister, Blog, TutorAccount,TutorBalance
+from app.models import LabOrders, Questions, Reviews, TutorEarnedDetail, TutorPaymenyDetails, TutorSolvedAssignment, TutorSolvedLabs, UserDetails, Orders, TutorRegister, Blog, TutorAccount,TutorBalance
 from django.contrib.auth.models import User
 from django.core.checks import messages
 from django.shortcuts import redirect, render
@@ -44,9 +44,14 @@ def password_reset_request(request):
                         'protocol': 'http',
                     }
                     email = render_to_string(email_template_name, c)
+                    connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
+                                             use_tls=True,port=587,username='admin@tutorchamps.com',password='admnQ1au1227@23#&')
+                    connection.open()
                     try:
-                        send_mail(subject, email, 'admin@tutorchamps.com',
+                        email = EmailMessage(subject, email, 'admin@tutorchamps.com',
                                   [user.email], fail_silently=False)
+                        connection.send_messages([email])
+                        connection.close()
                     except BadHeaderError:
                         return HttpResponse('Invalid header found.')
                     return redirect("/password_reset/done/")
@@ -76,6 +81,15 @@ def features(request):
 
 
 def reviews(request):
+    if request.method=="POST":
+        if request.user.is_authenticated:
+            content = request.POST.get('content')
+            rating = request.POST.get('rating')
+            user = request.user
+            Reviews(user=user,content=content,rating=rating).save()
+        else:
+            messages.info(request,'Please Login First')
+            return redirect('reviews')
     return render(request, 'reviews.html')
 
 
@@ -298,7 +312,7 @@ def signup(request):
                         message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
                         ' We are specialists in delivering the best quality assignment within the deadline. ' + 
                         '\n Please use the below link and password to access the dashboard to proceed further  \n Regards, Team TutorChamps',
-                        from_email='admin@tutorchamps.com', recipient_list=[email]) 
+                        from_email='help@tutorchamps.com', recipient_list=[email]) 
                     messages.success(request, 'you have registered successfully')
                     usr = authenticate(username=email,password=password)
                     login(request,usr)
@@ -312,7 +326,7 @@ def signup(request):
                 send_mail(subject='Welcome to the TutorChamps!!', message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
                       ' We are specialists in delivering the best quality assignment within the deadline. ' + 
                       '\n Please use the below link and password to access the dashboard to proceed further  \n Regards, Team TutorChamps',
-                      from_email='admin@tutorchamps.com', recipient_list=[email])
+                      from_email='help@tutorchamps.com', recipient_list=[email])
                 return JsonResponse(data)
     return render(request, 'signup.html')
 
@@ -391,7 +405,7 @@ def signin(request):
                         message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
                         ' We are specialists in delivering the best quality assignment within the deadline. ' + 
                         '\n Please use the below link and password to access the dashboard to proceed further  \n Regards, Team TutorChamps',
-                        from_email='admin@tutorchamps.com', recipient_list=[email])            
+                        from_email='help@tutorchamps.com', recipient_list=[email])            
                     unknown_user.delete()
                     del request.session['session_key']
                     messages.success(request, f"Welcome Back {email}")
@@ -481,10 +495,8 @@ def tutor_register(request):
         b = user[1]
         user = user[0]
         if b==True:
-            hard = Questions.objects.filter(subject=subject,tag='Hard')
-            basic = Questions.objects.filter(subject=subject,tag='Basic')
+            hard = Questions.objects.filter(subject=subject)
             hard = random.choice(hard)
-            basic = random.choice(basic)
             tutor = TutorRegister(name=name,qualification_level=qualification_level, subject=subject,tutor=user)
             tutor.save()
             id = tutor.pk
@@ -495,12 +507,14 @@ def tutor_register(request):
                 'user':name
             }
             email_msg = render_to_string('tutor_email.txt',c)
-            email = EmailMessage(subject='Welcome to TutorChamps || Complete the test',body=email_msg,from_email='admin@tutorchamps.com',to=[email])
+            connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
+                                             use_tls=True,port=587,username='tutors@tutorchamps.com',password='TutrsQ1au1227@23#&')
+            connection.open()
+            email = EmailMessage(subject='Welcome to TutorChamps || Complete the test',body=email_msg,from_email='tutors@tutorchamps.com',to=[email])
             hard = hard.question
-            basic = basic.question
             email.attach(hard.name,hard.read())
-            email.attach(basic.name,basic.read())
-            email.send()
+            connection.send_messages([email])
+            connection.close()
             x = TutorBalance(tutor=tutor,balance=0)
             x.save()
             account = TutorAccount(tutor = tutor)
@@ -688,6 +702,7 @@ def asignment_order(request):
     
 def save_order(request,backend,user,response,*args,**kwargs):
     email = user.email
+    print(email)
     if request.session.get('session_key'):
         username = request.session['session_key']
         unknown_user = User.objects.get(username=username)
@@ -698,11 +713,14 @@ def save_order(request,backend,user,response,*args,**kwargs):
         except:
             order = Orders.objects.get(user=unknown_user)
             order.user = user
+            id = order.pk
+            id += 3000
+            order.order_id = f'TC-HW-{id}'
             order.save()
             send_mail(subject='Welcome to the TutorChamps!!',
             message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
             ' We are specialists in delivering the best quality assignment within the deadline. ' + 
             '\n Please use the below link and password to access the dashboard to proceed further  \n Regards, Team TutorChamps',
-            from_email='admin@tutorchamps.com', recipient_list=[email])            
+            from_email='help@tutorchamps.com', recipient_list=[email])            
         unknown_user.delete()
         del request.session['session_key']

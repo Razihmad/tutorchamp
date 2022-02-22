@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from decouple import config
+from django import conf
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -82,12 +83,9 @@ WSGI_APPLICATION = 'tutorchamps.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd103t2bi4dm4dt',
-        'HOST':'ec2-3-224-157-224.compute-1.amazonaws.com',
-        'USER':'hrlrfkzcmjkqpe',
-        'PORT':'5432',
-        'PASSWORD':'9f196432de8c7dbc5071e9f11d5e03f0ad623b67b19422834e2cc507cfa164c0'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+
     }
 }
 
@@ -150,12 +148,18 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/old-user'
-SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/dashboard/new_user'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/dashboard/new-user'
 # if DEBUG==False:
 #     STATIC_ROOT = os.path.join(BASE_DIR,'static')
 # else:
 #     STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),]
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/dashboard/new-user'
+if DEBUG==False:
+    STATIC_ROOT = os.path.join(BASE_DIR,'static')
+else:
+    STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),]
+
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 SOCIAL_AUTH_FACEBOOK_KEY = config('SOCIAL_AUTH_FACEBOOK_KEY') 
