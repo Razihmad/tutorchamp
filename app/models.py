@@ -230,7 +230,6 @@ class Reviews(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     content = models.CharField(max_length=1000)
     rating = models.IntegerField()
-    city = models.CharField(max_length=100)
 
     def __str__(self):
         return self.user.username

@@ -76,6 +76,8 @@ def features(request):
 
 
 def reviews(request):
+    if request.method=="POST":
+        pass
     return render(request, 'reviews.html')
 
 

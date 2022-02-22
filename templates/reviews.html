@@ -528,7 +528,7 @@
 
                     </div>
 				</div>
-				<div class="col-md-6">
+		<div class="col-md-6">
 					<div class="subReview">
                         <div class="rvwSub1">
                            <div class="qtIcon"> <svg id="quote" viewBox="0 0 508.044 508.044"><path d="M0.108,352.536c0,66.794,54.144,120.938,120.937,120.938c66.794,0,120.938-54.144,120.938-120.938 s-54.144-120.937-120.938-120.937c-13.727,0-26.867,2.393-39.168,6.61C109.093,82.118,230.814-18.543,117.979,64.303 C-7.138,156.17-0.026,348.84,0.114,352.371C0.114,352.426,0.108,352.475,0.108,352.536z"></path><path d="M266.169,352.536c0,66.794,54.144,120.938,120.938,120.938s120.938-54.144,120.938-120.938S453.9,231.599,387.106,231.599 c-13.728,0-26.867,2.393-39.168,6.61C375.154,82.118,496.875-18.543,384.04,64.303C258.923,156.17,266.034,348.84,266.175,352.371 C266.175,352.426,266.169,352.475,266.169,352.536z"></path></svg></div>
@@ -570,5 +570,37 @@
 			console.log(r)
 		</script>
 	</div>
+
 	
+<div class="review_form_con">
+	<form class="commForm mt-3 rating_form">
+    <div class="">
+    	<label>Rate your recent experience</label>
+        <div class="star-rating">
+		  <input type="radio" id="5-stars" name="rating" value="5" />
+		  <label for="5-stars" class="star">&#9733;</label>
+		  <input type="radio" id="4-stars" name="rating" value="4" />
+		  <label for="4-stars" class="star">&#9733;</label>
+		  <input type="radio" id="3-stars" name="rating" value="3" />
+		  <label for="3-stars" class="star">&#9733;</label>
+		  <input type="radio" id="2-stars" name="rating" value="2" />
+		  <label for="2-stars" class="star">&#9733;</label>
+		  <input type="radio" id="1-star" name="rating" value="1" />
+		  <label for="1-star" class="star">&#9733;</label>
+		</div>
+    </div>
+    <div class="">
+    	<label>Tell us about your experience</label>
+    	<textarea  name="content" id="" class="Detail" placeholder="More Detailed reviews get more visiblity..." required></textarea>
+    	
+    </div>
+    <div class="text-center psr mt-3">
+        <input type="submit" class="formBtn theme-btn btn-style-one" value="Submit Review" >
+
+        <a href="" class="theme-btn btn-style-one"><span class="txt">Submit Review</span></a>
+
+    </div>
+</form>
+</div>
+
 {% endblock body %}
