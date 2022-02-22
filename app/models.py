@@ -209,6 +209,11 @@ class Questions(models.Model):
     def __str__(self):
         return self.subject
 
+    class Meta:
+        db_table = ''
+        managed = True
+        verbose_name = 'Question'
+        verbose_name_plural = 'Questions'
 
 class Blog(models.Model):
     title = models.CharField(max_length=500)
