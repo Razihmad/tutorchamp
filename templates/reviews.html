@@ -573,8 +573,14 @@
 
 	
 <div class="review_form_con">
-	<form class="commForm mt-3 rating_form">
+	<form class="commForm mt-3 rating_form" method="post">
+		{% csrf_token %}
     <div class="">
+		{% for message in messages  %}
+		  <script>
+			  alert("{{message}}")
+		  </script>
+		{% endfor %}
     	<label>Rate your recent experience</label>
         <div class="star-rating">
 		  <input type="radio" id="5-stars" name="rating" value="5" />
@@ -591,7 +597,7 @@
     </div>
     <div class="">
     	<label>Tell us about your experience</label>
-    	<textarea name="" id="" class="Detail" placeholder="More Detailed reviews get more visiblity..." required></textarea>
+    	<textarea name="content" id="" class="Detail" placeholder="More Detailed reviews get more visiblity..." required></textarea>
     	
     </div>
     <div class="text-center psr mt-3">

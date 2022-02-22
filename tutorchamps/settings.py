@@ -81,12 +81,8 @@ WSGI_APPLICATION = 'tutorchamps.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': config('ENGINE'),
-        'NAME': config('NAME'),                      
-        'USER': config('USER'),
-        'PASSWORD': config('PASSWORD'),
-        'HOST':config("HOST"),
-        'PORT': config('PORT'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
 
     }
 }
@@ -150,7 +146,7 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/old-user'
-SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/dashboard/new_user'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/dashboard/new-user'
 if DEBUG==False:
     STATIC_ROOT = os.path.join(BASE_DIR,'static')
 else:
