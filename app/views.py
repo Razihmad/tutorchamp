@@ -1,3 +1,4 @@
+from decouple import config
 import random
 from django.contrib.messages.api import error
 from django.core import mail
@@ -45,7 +46,7 @@ def password_reset_request(request):
                     }
                     email = render_to_string(email_template_name, c)
                     connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
-                                             use_tls=True,port=587,username='admin@tutorchamps.com',password='admnQ1au1227@23#&')
+                                             use_tls=True,port=587,username='admin@tutorchamps.com',password=config('adminPassword'))
                     connection.open()
                     try:
                         email = EmailMessage(subject, email, 'admin@tutorchamps.com',
@@ -497,9 +498,13 @@ def tutor_register(request):
         qualification_level = request.POST.get('level')
         subject = request.POST.get('subject')
         user = User.objects.get_or_create(username=email,email=email)
+        password = 'tutors.tc@123'
         b = user[1]
         user = user[0]
         if b==True:
+            user.set_password(password)
+            user.is_active = False
+            user.save()
             hard = Questions.objects.filter(subject=subject)
             hard = random.choice(hard)
             tutor = TutorRegister(name=name,qualification_level=qualification_level, subject=subject,tutor=user)
@@ -513,7 +518,7 @@ def tutor_register(request):
             }
             email_msg = render_to_string('tutor_email.txt',c)
             connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
-                                             use_tls=True,port=587,username='tutors@tutorchamps.com',password='TutrsQ1au1227@23#&')
+                                             use_tls=True,port=587,username='tutors@tutorchamps.com',password=config('tutorPassword'))
             connection.open()
             email = EmailMessage(subject='Welcome to TutorChamps || Complete the test',body=email_msg,from_email='tutors@tutorchamps.com',to=[email])
             hard = hard.question
@@ -610,7 +615,7 @@ def tutor_detail(request):
         tutor_detail.college = college
         tutor_detail.degree = degree
         tutor_detail.save()
-        return redirect(f'/tutor/dashboard/{id}')
+        return redirect('/tutor/dashboard/')
     return render(request,'tutor_detail.html')
     
 @login_required(login_url='/tutor/')
