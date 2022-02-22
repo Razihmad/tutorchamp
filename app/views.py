@@ -498,6 +498,7 @@ def tutor_register(request):
         user = user[0]
         if b==True:
             user.set_password(password)
+            user.is_active = False
             user.save()
             hard = Questions.objects.filter(subject=subject)
             hard = random.choice(hard)
@@ -609,7 +610,7 @@ def tutor_detail(request):
         tutor_detail.college = college
         tutor_detail.degree = degree
         tutor_detail.save()
-        return redirect(f'/tutor/dashboard/{id}')
+        return redirect('/tutor/dashboard/')
     return render(request,'tutor_detail.html')
     
 @login_required(login_url='/tutor/')
