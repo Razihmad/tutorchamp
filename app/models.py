@@ -200,7 +200,7 @@ class TutorBalance(models.Model):
         
 class Questions(models.Model):
     question = models.FileField()
-    subject = models.CharField(max_length=100,choices=(('Physics','Physics'),('Maths','Maths'),
+    subject = models.CharField(max_length=100,choices=(('Physics','Physics'),('Maths','Maths'),('Essay Writing','Essay Writing'),
                                                        ('Chemistry','Chemistry'),('Science','Science'),('English','English'),
                                                        ('Accounting','Accounting'),('Economics','Economics'),('Management','Management'),
                         ('Biology','Biology'),('Programming','Programming'),('Essay Writing','Essay Writing'),('Chemical Engineering','Chemical Engineering'),
