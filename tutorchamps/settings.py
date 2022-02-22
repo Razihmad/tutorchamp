@@ -82,12 +82,11 @@ WSGI_APPLICATION = 'tutorchamps.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': config('ENGINE'),
-        'NAME': config('NAME'),                      
-        'USER': config('USER'),
-        'PASSWORD': config('PASSWORD'),
+        'NAME': config('NAME'),
+        'USER':config('USER'),
         'HOST':config("HOST"),
-        'PORT': config('PORT'),
-
+        'PASSWORD':config('PASSWORD'),
+        'PORT':config('PORT'),
     }
 }
 
@@ -150,7 +149,7 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/old-user'
-SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/dashboard/new_user'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/dashboard/new-user'
 if DEBUG==False:
     STATIC_ROOT = os.path.join(BASE_DIR,'static')
 else:

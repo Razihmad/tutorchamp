@@ -76,12 +76,16 @@ def features(request):
 
 
 def reviews(request):
-    if request.method=="POST" and request.user.is_authenticated:
-        content = request.POST.get('content')
-        rating = int(request.POST.get('rating'))
-        user = request.user
-        Reviews(user=user,content=content,rating=rating).save()
             
+    if request.method=="POST":
+        if request.user.is_authenticated:
+            content = request.POST.get('content')
+            rating = request.POST.get('rating')
+            user = request.user
+            Reviews(user=user,content=content,rating=rating).save()
+        else:
+            messages.info(request,'Please Login First')
+            return redirect('reviews')
     return render(request, 'reviews.html')
 
 
