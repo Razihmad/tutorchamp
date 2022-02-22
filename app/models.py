@@ -206,7 +206,6 @@ class Questions(models.Model):
                         ('Biology','Biology'),('Programming','Programming'),('Essay Writing','Essay Writing'),
                         ('Statistics','Statistics'),('Computer Science','Computer Science'),('Nursing','Nursing'),('Case Study Writing','Case Study Writing'),
                         ('Electrical','Electrical'),('Mechanical','Mechanical'),('Finance','Finance'),('Civil Engineering','Civil Engineering')))
-    tag = models.CharField(max_length=50,choices=(('Basic','Basic'),('Medium','Medium'),('Hard','Hard')))                  
     def __str__(self):
         return self.subject
 
