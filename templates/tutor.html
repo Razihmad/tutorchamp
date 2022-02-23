@@ -121,7 +121,6 @@
                                     <li><a href="#work-description">Work Description</a></li>
                                     <li><a href="#testimonials">Testimonial</a></li>
                                     <li><a href="#faqs">FAQs</a></li>
-                                    {% comment %} <a href="" class="sign_up header_login_btn theme-btn btn-style-one"><span class="txt">Sign In</span> </a> {% endcomment %}
                                 </ul>
                             </div>
                         </nav>
@@ -160,97 +159,6 @@
                 </nav>
             </div><!-- End Mobile Menu -->
 
-            <div class="modal" id="myModal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header border-0 pt-2">
-                            <button type="button" class="close pb-0" data-dismiss="modal">×</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body pt-1">
-                            <form id="sign_up" class="commForm login_form loginF border-0 pt-0" method="POST" action="">
-                                {% csrf_token %}
-                                <div class="text-center text-dark mb-2">
-                                    <h5>Sign Up</h5>
-                                    <P>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor.</P>
-                                </div>
-                                <div class="form-group loginField login">
-                                    <img src="{% static 'images/uName.svg' %}" alt="User Name">
-                                    <input class="form-control" type="email" name="email" placeholder="Email"
-                                        id="email">
-                                </div>
-                                <div class="form-group loginField login">
-                                    <img src="{% static 'images/password_Img.svg' %}" alt="password">
-                                    <input class="form-control" type="password" name="password" placeholder="Create Password"
-                                        id="password">
-                                </div>
-                                <div class="text-center psr mt-3">
-                                    <input type="submit" class="formBtn theme-btn btn-style-one" value="Sign Up">
-                                    <a href="" class="theme-btn btn-style-one"><span class="txt">Sign Up</span></a>
-                                </div>
-                                {% for message in messages %}
-                                  <p class="err_msz">{{message}}</p>
-                                {% endfor %}
-                                <p class="text-center mb-5">Already have an Account? <a style="color: #43b97e;" href="javascript:void(0)" id="login_to">Log In</a></p>
-                                <div class="line_">
-                                    <div>OR</div>
-                                </div>
-                                <div class="btn_con">
-                                    <a href="" class="continue_btn continue_with_google"><img src="{% static 'images/google.png' %}"> <span class="txt">Continue with Google</span></a>
-                                    <a href="" class="continue_btn continue_with_fb"><img src="{% static 'images/fb.png' %}"> <span class="txt">Continue with Facebook</span></a>
-                                </div>
-                            </form>
-                            <form id="login_form" action="" method="POST" id="" class="commForm login_form loginF border-0 pt-0">
-                                {% csrf_token %}
-                                <div class="text-center text-dark mb-2">
-                                    <h5>Sign in</h5>
-                                    <p>Sign in to get your assignments solved and get trained live sessions from our experts.</p>
-                                </div>
-                                <div class="form-group loginField login">
-                                    <img src="{% static 'images/uName.svg' %}" alt="User Name">
-                                    <input class="form-control" type="email" name="email" placeholder="Email"
-                                        id="email">
-                                </div>
-                                <div class="form-group loginField login">
-                                    <img src="{% static 'images/password_Img.svg' %}" alt="password">
-                                    <input class="form-control" type="password" name="password" placeholder="Password"
-                                        id="password">
-                                </div>
-                                <div class="row mt-3 login" style="display: flex;">
-                                    <div class="col-6 pr-0 col-sm-6">
-                                        <div class="checkbox_box">
-                                            <div style="font-size: 13px;">New User? <a href="javascript:void(0)" id="new_user" class="text-bold"><b style="color: #43b97e;">Start Here.</b> </a> </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-sm-6 text-center">
-                                        <div class="forgotpas">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-center psr mt-3 mb-4 pb-2">
-                                    <input type="submit" class="formBtn theme-btn btn-style-one" value="Sign In">
-                                    <a href="" class="theme-btn btn-style-one"><span class="txt">Sign In</span></a>
-                                </div>
-                                {% for message in messages  %}
-                                  <p class="epError">{{message}}</p>
-                                {% endfor %}
-                                <div class="line_">
-                                    <div>OR</div>
-                                </div>
-                                <div class="btn_con">
-                                    <a href="" class="continue_btn continue_with_google"><img src="{% static 'images/google.png' %}"> <span class="txt">Continue with Google</span></a>
-                                    <a href="" class="continue_btn continue_with_fb"><img src="{% static 'images/fb.png' %}"> <span class="txt">Continue with Facebook</span></a>
-                                </div>
-                                
-                            </form>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </header>
 	
 	<!-- Banner Section -->
@@ -285,7 +193,7 @@
 							<div class="text-center"><img style="max-width: 80px;" src="{% static 'images/RectLogo.jpg' %}"> </div>
 							<h2 class="text-dark text-center mb-3">Sign in and get to work</h2>
 							{% for message in messages %}
-							<p class="alert alert-success">{{message}}</p>
+							<p class="alert alert-warning">{{message}}</p>
 							  
 							{% endfor %}
                             <div class="form_group">

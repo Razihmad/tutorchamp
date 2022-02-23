@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app.models import Orders, TutorEarnedDetail, TutorPaymenyDetails, TutorSolvedLabs, UserDetails,TutorRegister,Blog,TutorSolvedAssignment,TutorAccount,LabOrders,TutorBalance
+from app.models import Orders, Questions, Reviews, TutorEarnedDetail, TutorPaymenyDetails, TutorSolvedLabs, UserDetails,TutorRegister,Blog,TutorSolvedAssignment,TutorAccount,LabOrders,TutorBalance
 @admin.register(UserDetails)
 class UserDetailsAdmin(admin.ModelAdmin):
     list_display = ['user','phone','study_level','assignment_reference_style']
@@ -28,3 +28,6 @@ admin.site.register(TutorSolvedAssignment)
 admin.site.register(TutorSolvedLabs)
 admin.site.register(TutorPaymenyDetails)
 admin.site.register(TutorEarnedDetail)
+admin.site.register(Questions)
+
+admin.site.register(Reviews)
