@@ -493,7 +493,7 @@ def tutor_register(request):
         qualification_level = request.POST.get('level')
         subject = request.POST.get('subject')
         user = User.objects.get_or_create(username=email,email=email)
-        password = 'tutors.tc@123'
+        password = config('tutorspassword')
         b = user[1]
         user = user[0]
         if b==True:
@@ -551,7 +551,14 @@ def tutor_login(request):
             messages.error(request, 'Invalid email or password')
             return redirect('tutor')
     return render(request, 'tutor.html')
-   
+
+
+@login_required(login_url='/tutor/')
+def tutor_logout(request):
+    logout(request)
+    return redirect('/tutor/')
+
+    
 
 @login_required(login_url='/tutor/')
 def tutor_dashboard(request):
