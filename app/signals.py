@@ -25,7 +25,7 @@ def presaveSignal(sender,instance,**kwargs):
                 connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
                                                  use_tls=True,port=587,username='tutors@tutorchamps.com',password=config('tutorPassword'))
                 connection.open()
-                email = EmailMessage(subject='Best of luck for next time',body=email_msg,from_email='tutors@tutorchamps.com',to=[email])
+                email = EmailMessage(subject='Congratulations || You have nailed it',body=email_msg,from_email='tutors@tutorchamps.com',to=[email])
                 connection.send_messages([email])
                 connection.close()
 
