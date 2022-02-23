@@ -1,3 +1,4 @@
+from decouple import config
 import random
 from django.contrib.messages.api import error
 from django.core import mail
@@ -45,7 +46,7 @@ def password_reset_request(request):
                     }
                     email = render_to_string(email_template_name, c)
                     connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
-                                             use_tls=True,port=587,username='admin@tutorchamps.com',password='admnQ1au1227@23#&')
+                                             use_tls=True,port=587,username='admin@tutorchamps.com',password=config('adminPassword'))
                     connection.open()
                     try:
                         email = EmailMessage(subject, email, 'admin@tutorchamps.com',
@@ -129,7 +130,7 @@ def project(request):
             uname = user.username
             user = User.objects.get(username=uname)
             LabOrders(user=user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
-                   deadline=deadline, reference_material=reference_material,status='Pending',assigned=False).save()
+                   deadline=deadline, reference_material=reference_material,status='Awaiting Confirmation',assigned=False).save()
             return redirect('old-user')
         except:
             if not request.session.session_key:
@@ -139,7 +140,7 @@ def project(request):
             new_user = User(username=session_key,email=session_key)
             new_user.save()
             LabOrders(user=new_user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
-                   deadline=deadline, reference_material=reference_material,status='Pending',assigned=False).save()
+                   deadline=deadline, reference_material=reference_material,status='Awaiting Confirmation',assigned=False).save()
             return redirect('signup')
     return render(request, 'project.html')
 
@@ -215,7 +216,7 @@ def dashboard_old(request):
         assignment = request.FILES['assignment']
         deadline = request.POST.get('deadline')
         subject = request.POST.get('subject')
-        order = Orders(user=user, status='Pending', desc=desc,reference_material=reference_material,assignment=assignment,
+        order = Orders(user=user, status='Awaiting Confirmation', desc=desc,reference_material=reference_material,assignment=assignment,
              deadline=deadline,subject=subject)
         order.save()
         id = order.pk
@@ -241,7 +242,7 @@ def labordes(request):
         subject = request.POST.get('subject')
         lab = LabOrders(user=user,reference_material=reference_material,
              deadline=deadline,subject=subject,lab_manual=lab_manual,report_guidline=report_guidline,
-             lab_data=lab_data,status='Pending',assigned=False)
+             lab_data=lab_data,status='Awaiting Confirmation',assigned=False)
         lab.save()
         id = lab.pk
         id +=1000
@@ -264,7 +265,7 @@ def live_session_orders(request):
         deadline = request.POST.get('deadline')
         duration = request.POST.get('Duration')
         subject = request.POST.get('subject')
-        order = Orders(user=user, status='Pending', desc=desc,assignment=assignment,
+        order = Orders(user=user, status='Awaiting Confirmation', desc=desc,assignment=assignment,
              deadline=deadline,subject=subject,duration=duration)
         order.save()
         id = order.pk
@@ -439,7 +440,7 @@ def onlyorders(request):
             uname= user.username
             user = User.objects.get(username=uname)
             order = Orders(subject=subject, desc=desc, deadline=deadline,
-                   assignment=assignment, user=user, status='Pending')
+                   assignment=assignment, user=user, status='Awaiting Confirmation')
             order.save()
             id = order.pk
             id +=1000
@@ -450,7 +451,7 @@ def onlyorders(request):
             request.session['session_key'] = res
             new_user = User(username=res,email=res)
             new_user.save()
-            Orders(user=new_user,subject=subject,desc=desc,assignment=assignment,deadline=deadline,status='Pending').save()
+            Orders(user=new_user,subject=subject,desc=desc,assignment=assignment,deadline=deadline,status='Awaiting Confirmation').save()
             return redirect('signup')
 
 
@@ -480,7 +481,7 @@ def live_session(request):
             request.session['session_key'] = session_key
             new_user = User(username=session_key,email=session_key)
             new_user.save()
-            Orders(deadline=deadline,subject=subject,assignment=file,duration=duration,user=new_user,desc=desc,status='Pending').save()
+            Orders(deadline=deadline,subject=subject,assignment=file,duration=duration,user=new_user,desc=desc,status='Awaiting Confirmation').save()
             return redirect('signup')
     return render(request, 'live-session.html')
 
@@ -492,9 +493,13 @@ def tutor_register(request):
         qualification_level = request.POST.get('level')
         subject = request.POST.get('subject')
         user = User.objects.get_or_create(username=email,email=email)
+        password = config('tutorspassword')
         b = user[1]
         user = user[0]
         if b==True:
+            user.set_password(password)
+            user.is_active = False
+            user.save()
             hard = Questions.objects.filter(subject=subject)
             hard = random.choice(hard)
             tutor = TutorRegister(name=name,qualification_level=qualification_level, subject=subject,tutor=user)
@@ -508,7 +513,7 @@ def tutor_register(request):
             }
             email_msg = render_to_string('tutor_email.txt',c)
             connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
-                                             use_tls=True,port=587,username='tutors@tutorchamps.com',password='TutrsQ1au1227@23#&')
+                                             use_tls=True,port=587,username='tutors@tutorchamps.com',password=config('tutorPassword'))
             connection.open()
             email = EmailMessage(subject='Welcome to TutorChamps || Complete the test',body=email_msg,from_email='tutors@tutorchamps.com',to=[email])
             hard = hard.question
@@ -546,7 +551,14 @@ def tutor_login(request):
             messages.error(request, 'Invalid email or password')
             return redirect('tutor')
     return render(request, 'tutor.html')
-   
+
+
+@login_required(login_url='/tutor/')
+def tutor_logout(request):
+    logout(request)
+    return redirect('/tutor/')
+
+    
 
 @login_required(login_url='/tutor/')
 def tutor_dashboard(request):
@@ -605,7 +617,7 @@ def tutor_detail(request):
         tutor_detail.college = college
         tutor_detail.degree = degree
         tutor_detail.save()
-        return redirect(f'/tutor/dashboard/{id}')
+        return redirect('/tutor/dashboard/')
     return render(request,'tutor_detail.html')
     
 @login_required(login_url='/tutor/')
@@ -697,7 +709,7 @@ def asignment_order(request):
         assignment = request.FILES['files']
         subject = request.POST.get('subject')
         deadline = request.POST.get('deadline')
-        Orders(user=user,desc=desc,assignment=assignment,subject=subject,deadline=deadline,status='Pending').save()
+        Orders(user=user,desc=desc,assignment=assignment,subject=subject,deadline=deadline,status='Awaiting Confirmation').save()
         return redirect('old-user')
     
 def save_order(request,backend,user,response,*args,**kwargs):

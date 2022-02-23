@@ -1,0 +1,13 @@
+{% autoescape off %}
+Dear {{username}}
+
+We would like to thank you for the time and effort you put in to complete the test. Unfortunately, you could not make it this time.
+
+You could turn up for our test after 1 month as this is not the end of your journey with TutorChamps. 
+
+Thanks for applying!
+
+Sincerely,
+The Tutorchamps Team
+
+{% endautoescape %}
