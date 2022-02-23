@@ -168,7 +168,7 @@ window.onload = init;
                                     {% if user.is_authenticated %}
                                     <a href="/logout/" class="header_login_btn theme-btn btn-style-one">
                                         <span class="txt">Sign Out</span></a>
-                                    <a href="/dashboard/old-user" class="sign_up header_login_btn theme-btn btn-style-one"><span class="txt">Dashboard</span> </a>
+                                    <a href="/dashboard/old-user/" class="sign_up header_login_btn theme-btn btn-style-one"><span class="txt">Dashboard</span> </a>
                                     {% else %}
                                     <a href="/login/" class="header_login_btn theme-btn btn-style-one">
                                         <span class="txt">Log In</span>
@@ -570,6 +570,7 @@ window.onload = init;
             var data = new FormData(form);
             data.append("csrfmiddlewaretoken",'{{ csrf_token }}')
             var actionurl = $("#sign_up").attr('action');
+            console.log("form submitted")
             $.ajax({
                 type:"POST",
                 url:actionurl,
@@ -578,14 +579,15 @@ window.onload = init;
                 processData: false,
                 contentType: false,
                 success:function(data){
-                    if(data.status=='error'){
-                        var content = data.msg
-                        console.log("asdjkf")
-                        $('.err_msz').text(content);
+                    if(data.status=="ok"){
+                        console.log("successfull registered")
+                        window.location.href = window.location.origin+'/dashboard/new-user/';
                     }
                     else{
-                        window.location.href = window.location.origin+'/dashboard/new-user';
+                        var content = data.msg
+                        $('.err_msz').append(content)
                     }
+             
                 }
             })  
         })
