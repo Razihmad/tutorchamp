@@ -7,7 +7,7 @@ from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.core import mail
 from decouple import config
-from app.models import TutorRegister
+from app.models import Orders, TutorRegister
 
 
 @receiver(pre_save,sender=User)
@@ -48,3 +48,47 @@ def predeleteSignal(sender,instance,**kwargs):
     email = EmailMessage(subject='Best of luck for next time',body=email_msg,from_email='tutors@tutorchamps.com',to=[email])
     connection.send_messages([email])
     connection.close()
+    
+    
+@receiver(post_save,sender=Orders)
+def mailforOrder(sender,instance,created,**kwargs):
+    if created:
+        user = instance.user
+        email = user.email
+        orderId = instance.order_id
+        c = {
+            'id':orderId,
+            'username':user.username,
+        }
+        content = render_to_string('order.txt',c)
+        email = EmailMessage(subject="some subject",body=content,from_email='help@tutorchamps.com',to=[email])
+        email.send(fail_silently=True)
+
+
+@receiver(pre_save,sender=Orders)
+def statusUpdated(sender,instance,**kwargs):
+    c = {
+        'id':instance.order_id,
+    }
+    user = instance.user
+    email = user.email
+    if instance.id != None:
+        prevorder = Orders.objects.get(id=instance.id)
+        if prevorder.status != instance.status:
+            if instance.status =='Assignment Completed':
+                content = render_to_string('comp_assignment.txt',c)
+                email = EmailMessage(subject="subject",body=content,from_email='help@tutorchamps.com',to=[email])
+                email.send()
+            if instance.status =='Order Rejected':
+                content = render_to_string('comp_assignment.txt',c)
+                email = EmailMessage(subject="subject",body=content,from_email='help@tutorchamps.com',to=[email])
+                email.send()
+            if instance.status =='Order Confimed':
+                content = render_to_string('comp_assignment.txt',c)
+                email = EmailMessage(subject="subject",body=content,from_email='help@tutorchamps.com',to=[email])
+                email.send()
+            if instance.status =='Assignment Completed':
+                content = render_to_string('comp_assignment.txt',c)
+                email = EmailMessage(subject="subject",body=content,from_email='help@tutorchamps.com',to=[email])
+                email.send()
+

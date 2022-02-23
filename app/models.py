@@ -33,11 +33,14 @@ class Orders(models.Model):
     deadline = models.DateTimeField()
     assignment = models.FileField(null=True,blank=True)
     duration = models.CharField(max_length=100,null=True,blank=True)
-    Pending = 'Pending'
-    Completed = 'Completed'
     CHOICES = (
-        (Pending,'Pending'),
-        (Completed,'Completed')
+        ('Awaiting Confirmation','Awaiting Confirmation'),
+        ('Order Confimed','Order Confimed'),
+        ('Order Rejected','Order Rejected'),
+        ('Assignment In Progress','Assignment In Progress'),
+        ('Review Your Assignment','Review Your Assignment'),
+        ('Assignment Under Revision','Assignment Under Revision'),
+        ('Assignment Completed','Assignment Completed'),
     )
     status = models.CharField(max_length=100,choices=CHOICES)
     submission_date = models.DateField(default=date.today())

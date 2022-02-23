@@ -130,7 +130,7 @@ def project(request):
             uname = user.username
             user = User.objects.get(username=uname)
             LabOrders(user=user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
-                   deadline=deadline, reference_material=reference_material,status='Pending',assigned=False).save()
+                   deadline=deadline, reference_material=reference_material,status='Awaiting Confirmation',assigned=False).save()
             return redirect('old-user')
         except:
             if not request.session.session_key:
@@ -140,7 +140,7 @@ def project(request):
             new_user = User(username=session_key,email=session_key)
             new_user.save()
             LabOrders(user=new_user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
-                   deadline=deadline, reference_material=reference_material,status='Pending',assigned=False).save()
+                   deadline=deadline, reference_material=reference_material,status='Awaiting Confirmation',assigned=False).save()
             return redirect('signup')
     return render(request, 'project.html')
 
@@ -216,7 +216,7 @@ def dashboard_old(request):
         assignment = request.FILES['assignment']
         deadline = request.POST.get('deadline')
         subject = request.POST.get('subject')
-        order = Orders(user=user, status='Pending', desc=desc,reference_material=reference_material,assignment=assignment,
+        order = Orders(user=user, status='Awaiting Confirmation', desc=desc,reference_material=reference_material,assignment=assignment,
              deadline=deadline,subject=subject)
         order.save()
         id = order.pk
@@ -242,7 +242,7 @@ def labordes(request):
         subject = request.POST.get('subject')
         lab = LabOrders(user=user,reference_material=reference_material,
              deadline=deadline,subject=subject,lab_manual=lab_manual,report_guidline=report_guidline,
-             lab_data=lab_data,status='Pending',assigned=False)
+             lab_data=lab_data,status='Awaiting Confirmation',assigned=False)
         lab.save()
         id = lab.pk
         id +=1000
@@ -265,7 +265,7 @@ def live_session_orders(request):
         deadline = request.POST.get('deadline')
         duration = request.POST.get('Duration')
         subject = request.POST.get('subject')
-        order = Orders(user=user, status='Pending', desc=desc,assignment=assignment,
+        order = Orders(user=user, status='Awaiting Confirmation', desc=desc,assignment=assignment,
              deadline=deadline,subject=subject,duration=duration)
         order.save()
         id = order.pk
@@ -440,7 +440,7 @@ def onlyorders(request):
             uname= user.username
             user = User.objects.get(username=uname)
             order = Orders(subject=subject, desc=desc, deadline=deadline,
-                   assignment=assignment, user=user, status='Pending')
+                   assignment=assignment, user=user, status='Awaiting Confirmation')
             order.save()
             id = order.pk
             id +=1000
@@ -451,7 +451,7 @@ def onlyorders(request):
             request.session['session_key'] = res
             new_user = User(username=res,email=res)
             new_user.save()
-            Orders(user=new_user,subject=subject,desc=desc,assignment=assignment,deadline=deadline,status='Pending').save()
+            Orders(user=new_user,subject=subject,desc=desc,assignment=assignment,deadline=deadline,status='Awaiting Confirmation').save()
             return redirect('signup')
 
 
@@ -481,7 +481,7 @@ def live_session(request):
             request.session['session_key'] = session_key
             new_user = User(username=session_key,email=session_key)
             new_user.save()
-            Orders(deadline=deadline,subject=subject,assignment=file,duration=duration,user=new_user,desc=desc,status='Pending').save()
+            Orders(deadline=deadline,subject=subject,assignment=file,duration=duration,user=new_user,desc=desc,status='Awaiting Confirmation').save()
             return redirect('signup')
     return render(request, 'live-session.html')
 
@@ -709,7 +709,7 @@ def asignment_order(request):
         assignment = request.FILES['files']
         subject = request.POST.get('subject')
         deadline = request.POST.get('deadline')
-        Orders(user=user,desc=desc,assignment=assignment,subject=subject,deadline=deadline,status='Pending').save()
+        Orders(user=user,desc=desc,assignment=assignment,subject=subject,deadline=deadline,status='Awaiting Confirmation').save()
         return redirect('old-user')
     
 def save_order(request,backend,user,response,*args,**kwargs):
