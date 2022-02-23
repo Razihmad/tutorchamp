@@ -1,0 +1,20 @@
+{% autoescape off %}
+Dear {{username}}
+
+Good things happen to those who hustle.
+
+You have successfully passed our test and joined the elite club of our TutorChamps. 
+
+Now, please use the below link and login credentials to complete the onboarding process:
+
+https://tutorchamps.com/tutor/
+
+Login Credentials
+Username: {{email}}
+Password: tutors@tc$123#
+All the best for your new earning journey.
+
+Sincerely,
+The Tutorchamps Team
+
+{% endautoescape %}

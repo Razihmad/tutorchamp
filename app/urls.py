@@ -1,4 +1,3 @@
-from os import name
 from django.urls import path
 from app import views
 from django.conf import settings
@@ -22,6 +21,7 @@ urlpatterns = [
     path('dashboard/old-user',views.dashboard_old,name='old-user'),
     path("dashboard/new-user", views.dashboard_old, name="new-user"),
     path('logout/',views.logout_user,name='logout_user'),
+    path('tutor-logout/',views.tutor_logout,name='tutor logout'),
     path('order/',views.onlyorders,name='onlyorders'),
     path('tutor/',views.tutor_login,name='tutor'),
     path('tutor/dashboard/',views.tutor_dashboard,name='tutor-dashboard'),
