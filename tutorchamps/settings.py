@@ -148,8 +148,8 @@ MEDIA_DIR = os.path.join(BASE_DIR,'media')
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/dashboard/old-user'
-SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/dashboard/new-user'
+LOGIN_REDIRECT_URL = '/dashboard/old-user/'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/dashboard/new-user/'
 if DEBUG==False:
     STATIC_ROOT = os.path.join(BASE_DIR,'static')
 else:
