@@ -8,7 +8,7 @@ class UserDetailsAdmin(admin.ModelAdmin):
 
 @admin.register(Orders)
 class OrdersAdmin(admin.ModelAdmin):
-    list_display = ['pk','user','subject','deadline']
+    list_display = ['order_id','user','subject','deadline']
     search_fields = ['deadline','subject']
 
     def image_img(self):
