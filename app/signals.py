@@ -17,7 +17,7 @@ def presaveSignal(sender,instance,**kwargs):
         if prev.is_active==False:
             if instance.is_active==True:
                 c = {
-                    'username':instance.username,
+                    'username':instance.first_name,
                     'email':instance.email,
                 }
                 email=instance.email

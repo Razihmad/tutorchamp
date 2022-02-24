@@ -492,7 +492,7 @@ def tutor_register(request):
         email = email.lower()
         qualification_level = request.POST.get('level')
         subject = request.POST.get('subject')
-        user = User.objects.get_or_create(username=email,email=email)
+        user = User.objects.get_or_create(username=email,email=email,first_name=name)
         password = config('tutorspassword')
         b = user[1]
         user = user[0]
