@@ -49,7 +49,8 @@ class Orders(models.Model):
 
 
     def __str__(self):
-        return str(self.pk)
+        return self.order_id
+    
     class Meta:
         db_table = ''
         managed = True
@@ -64,18 +65,21 @@ class LabOrders(models.Model):
     lab_data = models.FileField(null=True,blank=True)
     report_guidline = models.FileField(null=True,blank=True)
     reference_material = models.FileField(null=True,blank=True)
-    Pending = 'Pending'
-    Completed = 'Completed'
     CHOICES = (
-        (Pending,'Pending'),
-        (Completed,'Completed')
+        ('Awaiting Confirmation','Awaiting Confirmation'),
+        ('Order Confimed','Order Confimed'),
+        ('Order Rejected','Order Rejected'),
+        ('Assignment In Progress','Assignment In Progress'),
+        ('Review Your Assignment','Review Your Assignment'),
+        ('Assignment Under Revision','Assignment Under Revision'),
+        ('Assignment Completed','Assignment Completed'),
     )
     status = models.CharField(max_length=100,choices=CHOICES)
     submission_date = models.DateField(default=date.today())
     assigned = models.BooleanField(default=False)
     
     def __str__(self):
-        return str(self.pk)
+        return self.order_id
 
 
             
@@ -209,7 +213,7 @@ class Questions(models.Model):
                         ('Biology','Biology'),('Programming','Programming'),('Essay Writing','Essay Writing'),
                         ('Statistics','Statistics'),('Computer Science','Computer Science'),('Nursing','Nursing'),('Case Study Writing','Case Study Writing'),
                         ('Electrical','Electrical'),('Mechanical','Mechanical'),('Finance','Finance'),('Civil Engineering','Civil Engineering')))
-    tag = models.CharField(max_length=50,choices=(('Basic','Basic'),('Medium','Medium'),('Hard','Hard')))                  
+
     def __str__(self):
         return self.subject
 
