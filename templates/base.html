@@ -512,12 +512,17 @@ window.onload = init;
 
     {% else %}
     <script>
+        function openModalFunction() {
+            $("#myModal").css("display","block");
+          }
+
         $("#orderform").submit(function(e){
             e.preventDefault();
             var form = $("#orderform")[0];
             var data = new FormData(form);
             data.append("csrfmiddlewaretoken",'{{ csrf_token }}')
             var actionurl = $("#orderform").attr('action');
+            openModalFunction();
             $.ajax({
                 type:"POST",
                 url:actionurl,
@@ -526,17 +531,9 @@ window.onload = init;
                 processData: false,
                 contentType: false,
             })
-            .done(function(){
-                openModalFunction();
-            })
-            .fail(function(){
-                alert("somme error occured")
-            })
         })
 
-        function openModalFunction() {
-          $("#myModal").css("display","block");
-        }
+    
     </script>
     <script>
         $('#login_form').submit(function(e){
@@ -555,7 +552,7 @@ window.onload = init;
                 success:function(data){
                     if(data.status=='error'){
                         var content = data.msg
-                        $('.epError').append(content)
+                        $('.epError').text(content)
                     }
                     else{
                         window.location.href = window.location.origin+'/dashboard/old-user/';
