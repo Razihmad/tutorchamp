@@ -234,6 +234,7 @@
 						<td>Order ID</td>
 						<td>Assignment</td>
 						<td>Deadline</td>
+						<td>Subject</td>
 						<td>Status</td>
 						<td>Chat</td>
 					</tr>
@@ -247,6 +248,7 @@
 							<td>No File</td>
 							{% endif %}
 							<td>{{detail.deadline}}</td>
+							<td>{{detail.subject}}</td>
 							<td>{{detail.get_status_display}}</td>
 							<td><div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div></td>
 						</tr>
@@ -386,7 +388,9 @@
 						<td>Assignment</td>
 						<td>Deadline</td>
 						<td>Duration</td>
+						<td>Subject</td>
 						<td>Status</td>
+						<td>Chat</td>
 					</tr>
 					{% for detail in details %}
 					{% if detail.duration %}
@@ -399,7 +403,9 @@
 						{% endif %}
 						<td>{{detail.deadline}}</td>
 						<td>{{detail.duration}}</td>
+						<td>{{detail.subject}}</td>
 						<td>{{detail.get_status_display}}</td>
+						<td><div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div></td>
 					</tr>
 					{% endif %}
 
@@ -471,24 +477,18 @@
 					<tr class="thead"
 						style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
 						<td>Order ID</td>
-						<td>Lab Manual</td>
-						<td>Report Guidelines</td>
-						<td>Lab Data</td>
-						<td>Reference Materials</td>
 						<td>Deadline</td>
 						<td>Subject</td>
 						<td>Status</td>
+						<td>Chat</td>
 					</tr>
 					{% for lab in labs %}
 					<tr style="color: black;">
 						<td>{{lab.order_id}}</td>
-						<td><a href="{{lab.lab_manual.url}}">Preview</a></td>
-						<td><a href="{{lab.report_guidline.url}}">Preview</a></td>
-						<td><a href="{{lab.lab_data.url}}">Preview</a></td>
-						<td><a href="{{lab.reference_material.url}}">Preview</a></td>
 						<td>{{lab.deadline}}</td>
 						<td>{{lab.subject}}</td>
 						<td>{{lab.status}}</td>
+						<td><div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div></td>
 					</tr>
 					{% endfor %}
 				</table>

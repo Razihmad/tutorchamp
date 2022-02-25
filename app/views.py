@@ -314,11 +314,6 @@ def signup(request):
                 finally:
                     unknown_user.delete()
                     del request.session['session_key']
-                    send_mail(subject='Welcome to the TutorChamps!!',
-                        message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
-                        ' We are specialists in delivering the best quality assignment within the deadline. ' + 
-                        '\n Please use the below link and password to access the dashboard to proceed further  \n Regards, Team TutorChamps',
-                        from_email='help@tutorchamps.com', recipient_list=[email]) 
                     messages.success(request, 'you have registered successfully')
                     usr = authenticate(username=email,password=password)
                     login(request,usr)
@@ -406,12 +401,7 @@ def signin(request):
                         id = order.pk
                         id +=1000
                         order.order_id = f'TC-HW-{id}'
-                        order.save()
-                        send_mail(subject='Welcome to the TutorChamps!!',
-                        message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
-                        ' We are specialists in delivering the best quality assignment within the deadline. ' + 
-                        '\n Please use the below link and password to access the dashboard to proceed further  \n Regards, Team TutorChamps',
-                        from_email='help@tutorchamps.com', recipient_list=[email])            
+                        order.save()          
                     unknown_user.delete()
                     del request.session['session_key']
                     messages.success(request, f"Welcome Back {email}")
@@ -733,11 +723,6 @@ def save_order(request,backend,user,response,*args,**kwargs):
             id = order.pk
             id += 3000
             order.order_id = f'TC-HW-{id}'
-            order.save()
-            send_mail(subject='Welcome to the TutorChamps!!',
-            message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
-            ' We are specialists in delivering the best quality assignment within the deadline. ' + 
-            '\n Please use the below link and password to access the dashboard to proceed further  \n Regards, Team TutorChamps',
-            from_email='help@tutorchamps.com', recipient_list=[email])            
+            order.save()         
         unknown_user.delete()
         del request.session['session_key']

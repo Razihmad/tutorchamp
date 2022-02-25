@@ -56,19 +56,37 @@ def mailforOrder(sender,instance,created,**kwargs):
         user = instance.user
         email = user.email
         orderId = instance.order_id
+        subject = instance.subject
         c = {
             'id':orderId,
             'username':user.username,
         }
         content = render_to_string('order.txt',c)
         email = EmailMessage(subject="Created",body=content,from_email='help@tutorchamps.com',to=[email])
-        email.send()
+        tutors = TutorRegister.objects.filter(subject=subject)
+        c = {
+            'order_id':orderId,
+            'deadline':instance.deadline,
+        }
+        connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
+                                         use_tls=True,port=587,username='tutors@tutorchamps.com',password=config('tutorPassword'))
+        connection.open()
+        
+        email_msg = render_to_string('order_to_tutors.txt',c)
+        for tutor in tutors:
+            user = tutor.tutor
+            emailid = user.email
+            email = EmailMessage(subject='New Order Has Arrived',body=email_msg,from_email='tutors@tutorchamps.com',to=[emailid])
+            connection.send_messages([email])
+            connection.close()        
+            email.send()
+        
 
 
 @receiver(pre_save,sender=Orders)
 def statusUpdated(sender,instance,**kwargs):
     c = {
-        'id':instance.order_id,
+        'orderId':instance.order_id,
     }
     user = instance.user
     email = user.email
@@ -87,4 +105,11 @@ def statusUpdated(sender,instance,**kwargs):
                 content = render_to_string('comp_assignment.txt',c)
                 email = EmailMessage(subject="confirmed",body=content,from_email='help@tutorchamps.com',to=[email])
                 email.send()
-
+            elif instance.status =='Assignment In Progress':
+                content = render_to_string('comp_assignment.txt',c)
+                email = EmailMessage(subject="confirmed",body=content,from_email='help@tutorchamps.com',to=[email])
+                email.send()
+            elif instance.status =='Assignment Under Revision':
+                content = render_to_string('comp_assignment.txt',c)
+                email = EmailMessage(subject="confirmed",body=content,from_email='help@tutorchamps.com',to=[email])
+                email.send()
