@@ -25,7 +25,7 @@ def presaveSignal(sender,instance,**kwargs):
                 connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
                                                  use_tls=True,port=587,username='tutors@tutorchamps.com',password=config('tutorPassword'))
                 connection.open()
-                email = EmailMessage(subject='Congratulations || You have nailed it',body=email_msg,from_email='tutors@tutorchamps.com',to=[email])
+                email = EmailMessage(subject='Congratulations || You have nailed it',body=email_msg,from_email='TutorChamps Tutors Support <tutors@tutorchamps.com>',to=[email])
                 connection.send_messages([email])
                 connection.close()
 
@@ -45,7 +45,7 @@ def predeleteSignal(sender,instance,**kwargs):
     connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
                                      use_tls=True,port=587,username='tutors@tutorchamps.com',password=config('tutorPassword'))
     connection.open()
-    email = EmailMessage(subject='Best of luck for next time',body=email_msg,from_email='tutors@tutorchamps.com',to=[email])
+    email = EmailMessage(subject='Best of luck for next time',body=email_msg,from_email='TutorChamps Tutors Support <tutors@tutorchamps.com>',to=[email])
     connection.send_messages([email])
     connection.close()
     
@@ -62,7 +62,7 @@ def mailforOrder(sender,instance,created,**kwargs):
             'username':user.username,
         }
         content = render_to_string('order.txt',c)
-        email = EmailMessage(subject="Created",body=content,from_email='help@tutorchamps.com',to=[email])
+        email = EmailMessage(subject="Created",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
         tutors = TutorRegister.objects.filter(subject=subject)
         c = {
             'order_id':orderId,
@@ -95,21 +95,21 @@ def statusUpdated(sender,instance,**kwargs):
         if prevorder.status != instance.status:
             if instance.status =='Assignment Completed':
                 content = render_to_string('comp_assignment.txt',c)
-                email = EmailMessage(subject="completed",body=content,from_email='help@tutorchamps.com',to=[email])
+                email = EmailMessage(subject="completed",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
                 email.send()
             elif instance.status =='Order Rejected':
                 content = render_to_string('comp_assignment.txt',c)
-                email = EmailMessage(subject="rejected",body=content,from_email='help@tutorchamps.com',to=[email])
+                email = EmailMessage(subject="rejected",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
                 email.send()
             elif instance.status =='Order Confimed':
                 content = render_to_string('comp_assignment.txt',c)
-                email = EmailMessage(subject="confirmed",body=content,from_email='help@tutorchamps.com',to=[email])
+                email = EmailMessage(subject="confirmed",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
                 email.send()
             elif instance.status =='Assignment In Progress':
                 content = render_to_string('comp_assignment.txt',c)
-                email = EmailMessage(subject="confirmed",body=content,from_email='help@tutorchamps.com',to=[email])
+                email = EmailMessage(subject="confirmed",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
                 email.send()
             elif instance.status =='Assignment Under Revision':
                 content = render_to_string('comp_assignment.txt',c)
-                email = EmailMessage(subject="confirmed",body=content,from_email='help@tutorchamps.com',to=[email])
+                email = EmailMessage(subject="confirmed",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
                 email.send()

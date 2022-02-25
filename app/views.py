@@ -49,7 +49,7 @@ def password_reset_request(request):
                                              use_tls=True,port=587,username='admin@tutorchamps.com',password=config('adminPassword'))
                     connection.open()
                     try:
-                        email = EmailMessage(subject, email, 'admin@tutorchamps.com',
+                        email = EmailMessage(subject, email, 'TutorChamps Admin <admin@tutorchamps.com>',
                                   [user.email], fail_silently=False)
                         connection.send_messages([email])
                         connection.close()
@@ -502,10 +502,10 @@ def tutor_register(request):
                 'user':name
             }
             email_msg = render_to_string('tutor_email.txt',c)
-            connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
-                                             use_tls=True,port=587,username='tutors@tutorchamps.com',password=config('tutorPassword'))
+            connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',name="TutorChamps",
+                                             use_tls=True,port=587,username='tutor@tutorchamps.com',password=config('tutorPassword'))
             connection.open()
-            email = EmailMessage(subject='Welcome to TutorChamps || Complete the test',body=email_msg,from_email='tutors@tutorchamps.com',to=[email])
+            email = EmailMessage(subject='Welcome to TutorChamps || Complete the test',body=email_msg,from_email='TutorChamps Tutors Support <tutors@tutorchamps.com>',to=[email])
             hard = hard.question
             email.attach(hard.name,hard.read())
             connection.send_messages([email])
