@@ -171,15 +171,15 @@
 		<div class="mainContent DashboardContent">
 			<div class="dTbale homeContant active_">
 				<div class="head_content">
-					<h1>Welcome to TutorChamps</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					<h1>Welcome to the TutorChamps!</h1>
+					<p>TutorChamps is committed to provide best homework solutions to its students 24/7 and always puts students on top priority. Our mission is to make students perform better in their academics and achieve their goals with certainty.</p>
 				</div>
 				<!-- home page form  -->
 				<form class="mb55 commForm mt-3 " method="POST" action="" enctype="multipart/form-data">
 					{% csrf_token %}
 					<div class="flex_div">
 						<div class="col3 pt7">
-							<label>Instruction</label>
+							<label>Instructions</label>
 							<textarea name="desc" id="description" class=""
 								placeholder="Please Enter Your Instruction Here"></textarea>
 						</div>
@@ -277,7 +277,7 @@
 					        </div>
 					    </div>
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
+						<p>Edit/update your details here</p>
 						<div class="">
 							<label>Enter Your Name </label>
 							<input type="name" name="nae" class="input" placeholder="Enter Name" required=""
@@ -315,7 +315,7 @@
 					<form class="commForm mt-3" method="POST" action="{% url 'reset_password' %}">
 						{% csrf_token %}
 						<h2 class="text-dark text-left">Password</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
+						<p>Create new password here</p>
 						<div class="">
 							<label>Current Password</label>
 							<input class="input" type="password" name="password" placeholder="Current Password"
@@ -345,7 +345,7 @@
 					{% csrf_token %}
 					<div class="flex_div">
 						<div class="col50">
-							<label>Instruction</label>
+							<label>Instructions</label>
 							<textarea name="desc" id="description" class=""
 								placeholder="Please Enter Your Instruction Here"></textarea>
 						</div>
