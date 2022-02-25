@@ -86,7 +86,7 @@ def mailforOrder(sender,instance,created,**kwargs):
 @receiver(pre_save,sender=Orders)
 def statusUpdated(sender,instance,**kwargs):
     c = {
-        'id':instance.order_id,
+        'orderId':instance.order_id,
     }
     user = instance.user
     email = user.email
@@ -105,4 +105,11 @@ def statusUpdated(sender,instance,**kwargs):
                 content = render_to_string('comp_assignment.txt',c)
                 email = EmailMessage(subject="confirmed",body=content,from_email='help@tutorchamps.com',to=[email])
                 email.send()
-
+            elif instance.status =='Assignment In Progress':
+                content = render_to_string('comp_assignment.txt',c)
+                email = EmailMessage(subject="confirmed",body=content,from_email='help@tutorchamps.com',to=[email])
+                email.send()
+            elif instance.status =='Assignment Under Revision':
+                content = render_to_string('comp_assignment.txt',c)
+                email = EmailMessage(subject="confirmed",body=content,from_email='help@tutorchamps.com',to=[email])
+                email.send()
