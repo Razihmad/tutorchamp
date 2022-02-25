@@ -49,8 +49,8 @@ def password_reset_request(request):
                                              use_tls=True,port=587,username='admin@tutorchamps.com',password=config('adminPassword'))
                     connection.open()
                     try:
-                        email = EmailMessage(subject, email, 'TutorChamps Admin <admin@tutorchamps.com>',
-                                  [user.email], fail_silently=False)
+                        email = EmailMessage(subject=subject, body=email, from_email='TutorChamps Admin <admin@tutorchamps.com>',
+                                  to=[user.email])
                         connection.send_messages([email])
                         connection.close()
                     except BadHeaderError:
