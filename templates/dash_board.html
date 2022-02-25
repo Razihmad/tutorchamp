@@ -249,7 +249,7 @@
 							{% endif %}
 							<td>{{detail.deadline}}</td>
 							<td>{{detail.subject}}</td>
-							<td>{{detail.get_status_display}}</td>
+							<td class="{{detail.status}}">{{detail.get_status_display}}</td>
 							<td><div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div></td>
 						</tr>
 						{% endif %}
@@ -404,7 +404,7 @@
 						<td>{{detail.deadline}}</td>
 						<td>{{detail.duration}}</td>
 						<td>{{detail.subject}}</td>
-						<td>{{detail.get_status_display}}</td>
+						<td class="{{detail.status}}">{{detail.get_status_display}}</td>
 						<td><div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div></td>
 					</tr>
 					{% endif %}
@@ -487,7 +487,7 @@
 						<td>{{lab.order_id}}</td>
 						<td>{{lab.deadline}}</td>
 						<td>{{lab.subject}}</td>
-						<td>{{lab.status}}</td>
+						<td class="{{lab.status}}">{{lab.status}}</td>
 						<td><div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div></td>
 					</tr>
 					{% endfor %}
