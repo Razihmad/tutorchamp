@@ -68,18 +68,18 @@ def mailforOrder(sender,instance,created,**kwargs):
             'order_id':orderId,
             'deadline':instance.deadline,
         }
-        connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
-                                         use_tls=True,port=587,username='tutors@tutorchamps.com',password=config('tutorPassword'))
-        connection.open()
+        # connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
+        #                                  use_tls=True,port=587,username='tutors@tutorchamps.com',password=config('tutorPassword'))
+        # connection.open()
         
-        email_msg = render_to_string('order_to_tutors.txt',c)
-        for tutor in tutors:
-            user = tutor.tutor
-            emailid = user.email
-            email = EmailMessage(subject='New Order Has Arrived',body=email_msg,from_email='tutors@tutorchamps.com',to=[emailid])
-            connection.send_messages([email])
-            connection.close()        
-            email.send()
+        # email_msg = render_to_string('order_to_tutors.txt',c)
+        # for tutor in tutors:
+        #     user = tutor.tutor
+        #     emailid = user.email
+        #     email = EmailMessage(subject='New Order Has Arrived',body=email_msg,from_email='tutors@tutorchamps.com',to=[emailid])
+        #     connection.send_messages([email])
+        #     connection.close()        
+        #     email.send()
         
 
 
