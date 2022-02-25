@@ -503,7 +503,7 @@ def tutor_register(request):
             }
             email_msg = render_to_string('tutor_email.txt',c)
             connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',name="TutorChamps",
-                                             use_tls=True,port=587,username='tutor@tutorchamps.com',password=config('tutorPassword'))
+                                             use_tls=True,port=587,username='tutors@tutorchamps.com',password=config('tutorPassword'))
             connection.open()
             email = EmailMessage(subject='Welcome to TutorChamps || Complete the test',body=email_msg,from_email='TutorChamps Tutors Support <tutors@tutorchamps.com>',to=[email])
             hard = hard.question
