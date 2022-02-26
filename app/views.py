@@ -123,6 +123,8 @@ def dissert(request):
 
 
 def project(request):
+    res = ''.join(random.choices(string.ascii_uppercase +
+                             string.digits, k=20))
     if request.method == "POST":
         subject = request.POST.get('subject')
         deadline = request.POST.get('deadline')
@@ -138,14 +140,17 @@ def project(request):
                    deadline=deadline, reference_material=reference_material,status='Awaiting Confirmation',assigned=False).save()
             return redirect('old-user')
         except:
-            if not request.session.session_key:
-                request.session.save()
-            session_key = request.session.session_key
-            request.session['session_key'] = session_key
-            new_user = User(username=session_key,email=session_key)
+            request.session['session_key'] = res
+            print(res)
+            new_user = User(username=res,email=res)
             new_user.save()
-            LabOrders(user=new_user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
-                   deadline=deadline, reference_material=reference_material,status='Awaiting Confirmation',assigned=False).save()
+            labOrder = LabOrders(user=new_user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
+                   deadline=deadline, reference_material=reference_material,status='Awaiting Confirmation',assigned=False)
+            labOrder.save()
+            id = labOrder.pk
+            id += 1000
+            labOrder.order_id = f'TC-lab-{id}'
+            labOrder.save()
             return redirect('signup')
     return render(request, 'project.html')
 
@@ -298,6 +303,7 @@ def signup(request):
                 username = request.session['session_key']
                 unknown_user = User.objects.get(username=username)
                 try:
+                    print(username)
                     laborder = LabOrders.objects.get(user=unknown_user)
                     laborder.user = user
                     id = laborder.pk
@@ -446,11 +452,19 @@ def onlyorders(request):
             request.session['session_key'] = res
             new_user = User(username=res,email=res)
             new_user.save()
-            Orders(user=new_user,subject=subject,desc=desc,assignment=assignment,deadline=deadline,status='Awaiting Confirmation').save()
+            order = Orders(user=new_user,subject=subject,desc=desc,assignment=assignment,deadline=deadline,status='Awaiting Confirmation')
+            order.save()
+            id = order.pk
+            id +=1000
+            order.order_id = f'TC-HW-{id}'
+            order.save()
             return redirect('signup')
 
 
 def live_session(request):
+    res = ''.join(random.choices(string.ascii_uppercase +
+                             string.digits, k=20))
+    
     if request.method == 'POST':
         deadline = request.POST.get('deadline')
         subject = request.POST.get('subject')
@@ -470,13 +484,14 @@ def live_session(request):
             order.save()
             return redirect('old-user')
         except:
-            if not request.session.session_key:
-                request.session.save()
-            session_key = request.session.session_key
-            request.session['session_key'] = session_key
-            new_user = User(username=session_key,email=session_key)
+            request.session['session_key'] = res
+            new_user = User(username=res,email=res)
             new_user.save()
-            Orders(deadline=deadline,subject=subject,assignment=file,duration=duration,user=new_user,desc=desc,status='Awaiting Confirmation').save()
+            order = Orders(deadline=deadline,subject=subject,assignment=file,duration=duration,user=new_user,desc=desc,status='Awaiting Confirmation')
+            id = order.pk
+            id +=1000
+            order.order_id = f'TC-LS-{id}'
+            order.save()
             return redirect('signup')
     return render(request, 'live-session.html')
 
@@ -501,6 +516,7 @@ def tutor_register(request):
             tutor.save()
             id = tutor.pk
             id +=3000
+            subject = subject.upper()
             tutor.unique_id = f'{subject[0:3]}-{id}'
             tutor.save()
             c = {
