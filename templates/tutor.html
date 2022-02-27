@@ -27,9 +27,9 @@
     <link rel="stylesheet" href="{% static 'css/custom-animate.css' %}">
     <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
     <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
-    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
     <link rel="stylesheet" href="{% static 'css/jquery.bootstrap-touchspin.css' %}">
-    <link rel="stylesheet" href="{% static 'css/jquery.bootstrap-touchspin.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.bootstrap-touchspin.css' %}"> -->
     <link rel="stylesheet" href="{% static 'css/owl.css' %}">
     <link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&amp;display=swap"
@@ -49,6 +49,7 @@
     })(window,document,'script','dataLayer','GTM-NVND638');</script>
     <!-- End Google Tag Manager -->
 <style>
+	.commForm.loginF{max-width: 470px; margin: 0 auto;}
     .header_login_btn.btn-style-one .txt:before {
     left: -22px;
     width: 16px;
@@ -69,8 +70,8 @@
     margin-top: 10px;}
     @media only screen and (max-width: 767px) {
       .social-box{margin-bottom: 30px;}
+      .mobile-nav-toggler{display: none!important;}
     }
-
 </style>
 </head>
 
@@ -188,7 +189,7 @@
 				<!-- Content Column -->
 				<div class="content-column col-lg-5 col-sm-12">
 					<div class="inner-column banner_con">
-						<form class="commForm mt-3" method="POST" action="">
+						<form class="commForm loginF mt-3" method="POST" action="">
 							{% csrf_token %}
 							<div class="text-center"><img style="max-width: 80px;" src="{% static 'images/RectLogo.jpg' %}"> </div>
 							<h2 class="text-dark text-center mb-3">Sign in and get to work</h2>
@@ -196,15 +197,21 @@
 							<p class="alert alert-warning">{{message}}</p>
 							  
 							{% endfor %}
-                            <div class="form_group">
-                                <input style="height: 47px;" name="email" type="email" class="input" required placeholder=" Enter Your Email">
-                            </div>
+                            <div class="form-group loginField login">
+					            <img src="{% static 'images/uName.svg' %}" alt="User Name">
+					            <input class="form-control" type="email" name="email" placeholder="Email"
+					                id="email">
+					        </div>
+					        
                             <div class=" w-100 text-right" style="padding: 0 0 15px;">
-								<a href="/password_reset/">Forgot password?</a>
+								<a data-toggle="modal" data-target="#myModal" href="Javascript:void(0);">Forgot password?</a>
 							</div>
-                            <div class="form_group">
-                                <input style="height: 47px;" class="input" type="password" required name="password" placeholder="Password">
-                            </div>
+                            <div class="form-group loginField login">
+					            <img src="{% static 'images/password_Img.svg' %}" alt="password">
+					            <input class="form-control" type="password" name="password" placeholder="Password"
+					                id="password">
+					            <i onclick="changeInputType()" class="show_password_icon fa fa-eye"></i>
+					        </div>
                             <div class="text-center psr mt-3">
                               <input class="formBtn theme-btn btn-style-one" type="submit" value="Sign in">
                               <a href="" class="theme-btn btn-style-one"><span class="txt">Sign in</span></a>                    
@@ -273,7 +280,7 @@
 				<div class="col-md-12 col-sm-12 text-center text-dark pb-5">
 					<h2>Perks of Online Tutoring</h2>
 				</div>
-				<div class="col-md-6 col-sm-12 pt-3">
+				<div class="col-md-6 col-sm-12 pt-3 mb-3">
 					<img src="{% static 'images/benefits.svg' %}">
 				</div>
 				<div class="col-md-6 col-sm-12">
@@ -634,24 +641,63 @@
 
     </div>
 
+
+<div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header border-0 pt-2">
+                            <button type="button" class="close pb-0" data-dismiss="modal">×</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body pt-1">
+                            <div id="reset_psw" class="reset_psw commForm mb-3">
+                                <h1 class="text-center font-weight-bold mt-3">Reset Password</h1>
+                                 <p class="text-center mb-4 p-0">Forgotten your password? Enter your email address below, and we'll email instructions for setting a new one.</p>
+                                 <form method="POST">
+                                    <div id="div_id_email" class="control-group"> 
+                                        <label for="id_email" class="control-label mb-1 requiredField">
+                                    Your Email<span class="asteriskField">*</span> </label> 
+                                        <div class="controls"> 
+                                            <input type="email" name="email" autocomplete="email" maxlength="254" class="emailinput input" required="" placeholder="Enter Your Email" id="id_email"> 
+                                        </div> 
+                                    </div>
+                                    <div class="text-center psr mt-3">
+                                        <input type="submit" class="formBtn theme-btn btn-style-one" value="Send Email" >
+                                        <a href="" class="theme-btn mt-3 btn-style-one">
+                                            <span class="txt">Send Email</span>
+                                        </a>
+                                    </div>
+                                 </form>
+                           </div>
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+    <!-- 
     <script src="{% static 'js/jquery.fancybox.js' %}"></script>
     <script src="{% static 'js/appear.js' %}"></script>
     <script src="{% static 'js/parallax.min.js' %}"></script>
-    <script src="{% static 'js/tilt.jquery.min.js' %}"></script>
+    <script src="{% static 'js/tilt.jquery.min.js' %}"></script> -->
     <script src="{% static 'js/jquery.paroller.min.js' %}"></script>
     <script src="{% static 'js/owl.js' %}"></script>
-
-    <script src="{% static 'js/slider.min.js' %}"></script>
+	<script src="{% static 'js/script.js' %}"></script>
+    <!-- <script src="{% static 'js/slider.min.js' %}"></script>
     <script src="{% static 'js/wow.js' %}"></script>
     <script src="{% static 'js/nav-tool.js' %}"></script>
     <script src="{% static 'js/jquery-ui.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
     <script src="{% static 'js/jquery.countdown.min.js' %}"></script>
-    <script src="{% static 'js/validate.js' %}"></script>
+    <script src="{% static 'js/validate.js' %}"></script> -->
     
 
     
@@ -664,6 +710,28 @@
           });
         }); 
     </script>
+<script>
+$(document).on('click', 'a[href^="#"]', function (event) {
+    event.preventDefault();
+    $('html, body').animate({
+        scrollTop: $($.attr(this, 'href')).offset().top + -100
+    });
+});
+</script>
+
+<script>
+        function changeInputType() {
+        $(".show_password_icon").toggleClass("fa-eye-slash");
+          var x = document.getElementById("password");
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+        }
+    </script>
+
+
 </body>
 
 </html>

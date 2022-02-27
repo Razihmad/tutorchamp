@@ -82,7 +82,6 @@ def features(request):
 
 
 def reviews(request):
-            
     if request.method=="POST":
         if request.user.is_authenticated:
             content = request.POST.get('content')
@@ -214,8 +213,6 @@ def management(request):
 @login_required(login_url='/login/')
 def dashboard_old(request):
     user = request.user
-    uname= user.username
-    user = User.objects.get(username=uname)
     user_detail = UserDetails.objects.get_or_create(user=user)
     user_detail = user_detail[0]
     details = Orders.objects.filter(user=user)
@@ -265,8 +262,6 @@ def labordes(request):
 @login_required(login_url='/login/')
 def live_session_orders(request):
     user = request.user
-    uname= user.username
-    user = User.objects.get(username=uname)
     user_detail = UserDetails.objects.get_or_create(user=user)
     user_detail = user_detail[0]
     if request.method == 'POST':
@@ -280,7 +275,7 @@ def live_session_orders(request):
         order.save()
         id = order.pk
         id +=1000
-        order.order_id = f'TC-HW-{id}'
+        order.order_id = f'TC-LS-{id}'
         order.save()
         return redirect('old-user')
 
@@ -477,19 +472,17 @@ def live_session(request):
         file = request.FILES['files']
         duration = request.POST.get('duration')
         desc = request.POST.get('Details')
-        try:
+        if request.user:
             user = request.user
-            uname= user.username
-            user = User.objects.get(username=uname)
             order = Orders(deadline=deadline, subject=subject, assignment=file,
                            duration=duration, desc=desc, user=user,status="Pending")
             order.save()
             id = order.pk
             id += 1000
-            order.order_id = f'TC-HW-{id}'
+            order.order_id = f'TC-LS-{id}'
             order.save()
             return redirect('old-user')
-        except:
+        else:
             request.session['session_key'] = res
             new_user = User(username=res,email=res)
             new_user.save()

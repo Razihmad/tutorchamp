@@ -377,7 +377,7 @@
 										<td style="width: 20%;">Amount</td>
 									</tr>
 									{% for assignment in assignments %}
-									  
+									{% if lab.status == "Completed" %}
 									<tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
 										<td style="width: 20%;">{{assignment.order.pk}}</td>
 										<td style="width: 20%;">{{assignment.order.subject}}</td>
@@ -385,6 +385,7 @@
 										<td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
 										<td style="width: 20%;color: #43b97e;">{{assignment.amount}}</td>
 									</tr>
+									{% endif %}
 									{% endfor %}
 							
 							
@@ -409,7 +410,8 @@
 										<td style="width: 20%;">Amount</td>
 									</tr>
 									{% for lab in labs %}
-									  
+									{% if lab.status == "Completed" %}
+							
 									<tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
 										<td style="width: 20%;">{{lab.labs.pk}}</td>
 										<td style="width: 20%;">{{lab.labs.subject}}</td>
@@ -417,6 +419,11 @@
 										<td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
 										<td style="width: 20%;color: #43b97e;">{{lab.amount}}</td>
 									</tr>
+									{% endif %}
+									  
+									  
+									
+										
 									{% endfor %}
 									
 
