@@ -508,3 +508,15 @@ $(".LBtn").click(function(){
 //     }); 
 
 // });
+
+
+$("input[name='deadline']").click(function(){
+  $(this).addClass("removeAfter");
+});
+
+ $("#view_more").click(function(){
+	$("#all_blog_post").addClass("blog_height");
+	$(this).hide();
+});
+
+

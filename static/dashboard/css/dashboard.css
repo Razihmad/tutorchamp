@@ -95,6 +95,7 @@
     background-size: cover;
     background-repeat: no-repeat;
   padding: 4px;
+  position: relative;
   color: #fff!important;
   font-size: 11px!important;
     cursor: pointer;
@@ -103,8 +104,15 @@
     display: flex;
     align-items: flex-end;
     width: 100%;
-    justify-content: center;
+    justify-content: center; white-space: nowrap;
 }
+.addAfter{justify-content: flex-start;}
+.addAfter:after{content: "..."; position: absolute;
+    right: 0px;
+    height: 20px;
+    background: #47bf7f;
+    bottom: 7px;
+    padding-right: 12px;}
 .assignment_help_inner>div{width: 33%; max-width: 310px;}
 .profileContent, .live_session_content, .homeContant, .project_lab_content, .assignment_help_content, .Update_subject_content{height: 0;overflow: hidden;}
 .active_{height: auto!important; background: none;}
@@ -145,11 +153,14 @@
     .profileContent .col50, .col50{width: 100%;}
     .DashboardContent .commForm h2+p{line-height: 22px;}
 }
-
-
-
-
-
+.Rejected{position: relative; color: #ff0000;}
+.Completed{color: #28a745;}
+.Progress{color: #f49025;}
+.Review{color: #d0f600;}
+.Confimed{color: #007bff;}
+.Confirmation{color: #ffc107;}
+.Revision{color: #ffa500;}
+.Pending{color: #90ee90;}
 
 
 

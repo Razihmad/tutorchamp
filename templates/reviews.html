@@ -88,7 +88,7 @@
 			</div>
 	</div>
 
-	<div class="reviewMain">
+	<div class="reviewMain" id="all_review">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
@@ -552,25 +552,16 @@
 				</div>
 			</div>
 		</div>
-		<script src="{% static 'js/jquery.js'%}"></script>
-		<script>
-			var t = 0;
-			$('.starRevw').each(function(i,obj){
-				t++;
-			})
-			var s=0;
-			$('.star').each(function(i,obj){
-				s++;
-			})
-			var r = (s/t).toFixed(2);
-			$('#ratingdone').text(r);
-			$('#total').text(t);
-			console.log(t)
-			console.log(r)
-			console.log(r)
-		</script>
 	</div>
 
+	<div class="text-center mb-5 pt-3 col-12">
+		<a id="view_all" href="javascript:void(0)" class="theme-btn btn-style-one">
+			<span class="txt">View All Reviews</span>
+		</a>
+	</div>
+
+
+		
 	
 <div class="review_form_con">
 	<form class="commForm mt-3 rating_form" method="post">
@@ -609,4 +600,32 @@
 </form>
 </div>
 
+<script src="{% static 'js/jquery.js'%}"></script>
+	<script>
+		var t = 0;
+		$('.starRevw').each(function(i,obj){
+			t++;
+		})
+		var s=0;
+		$('.star').each(function(i,obj){
+			s++;
+		})
+		var r = (s/t).toFixed(2);
+		$('#ratingdone').text(r);
+		$('#total').text(t);
+		console.log(t)
+		console.log(r)
+		console.log(r)
+	</script>
+	<script>
+		$("#view_all").click(function(){
+        	$("#all_review").addClass("review_height");
+        	$(this).hide();
+        });
+	</script>
+
 {% endblock body %}
+
+
+
+
