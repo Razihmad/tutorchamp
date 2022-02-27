@@ -61,5 +61,6 @@ urlpatterns = [
     path("tutor_profile/", views.tutor_profile, name="tutor_profile"),
     path('asignment_order/',views.asignment_order,name='asignment_order'),
     path('tutor_detail/',views.tutor_detail,name='tutor_detail'),
+    path('thank-you/<int:id>/',views.thanks,name='thank you'),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

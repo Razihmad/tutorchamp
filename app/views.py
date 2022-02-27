@@ -378,42 +378,49 @@ def signin(request):
         email = request.POST.get('email')
         email = email.lower()
         password = request.POST.get('password')
-        user = authenticate(username=email, password=password)
-        if user:
-            if user.is_active:
-                login(request, user)
-                usr = request.user
-                uname= usr.username
-                user = User.objects.get(username=uname)
-                detail = UserDetails.objects.get_or_create(user=user)
-                if request.session.get('session_key'):
-                    username = request.session['session_key']
-                    unknown_user = User.objects.get(username=username)
-                    try:
-                        laborder = LabOrders.objects.get(user=unknown_user)
-                        laborder.user = user
-                        id = laborder.pk
-                        id +=1000
-                        laborder.order_id = f'TC-lab-{id}'
-                        laborder.save()
-                    except:
-                        order = Orders.objects.get(user=unknown_user)
-                        order.user = user
-                        id = order.pk
-                        id +=1000
-                        order.order_id = f'TC-HW-{id}'
-                        order.save()          
-                    unknown_user.delete()
-                    del request.session['session_key']
-                    messages.success(request, f"Welcome Back {email}")
-                return redirect('old-user')
+        user = User.objects.get(username=email,email=email)
+        
+        try:
+            tutor = TutorRegister.objects.get(tutor=user)
+            data = {'status':'error','msg':'Your Are Not Allowed To Use Student Dashboard'}
+            return JsonResponse(data)            
+        except:  
+            user = authenticate(username=email, password=password)
+            if user:
+                if user.is_active:
+                    login(request, user)
+                    usr = request.user
+                    uname= usr.username
+                    user = User.objects.get(username=uname)
+                    detail = UserDetails.objects.get_or_create(user=user)
+                    if request.session.get('session_key'):
+                        username = request.session['session_key']
+                        unknown_user = User.objects.get(username=username)
+                        try:
+                            laborder = LabOrders.objects.get(user=unknown_user)
+                            laborder.user = user
+                            id = laborder.pk
+                            id +=1000
+                            laborder.order_id = f'TC-lab-{id}'
+                            laborder.save()
+                        except:
+                            order = Orders.objects.get(user=unknown_user)
+                            order.user = user
+                            id = order.pk
+                            id +=1000
+                            order.order_id = f'TC-HW-{id}'
+                            order.save()          
+                        unknown_user.delete()
+                        del request.session['session_key']
+                        messages.success(request, f"Welcome Back {email}")
+                    return redirect('old-user')
+                else:
+                
+                    data = {'status':'error','msg':'Your Account has been deactivated'}
+                    return JsonResponse(data)
             else:
-             
-                data = {'status':'error','msg':'Your Account has been deactivated'}
+                data = {'status':'error','msg':"Invalid email or password"}
                 return JsonResponse(data)
-        else:
-            data = {'status':'error','msg':"Invalid email or password"}
-            return JsonResponse(data)
     return render(request, 'login.html')
 
 
@@ -530,12 +537,14 @@ def tutor_register(request):
             x.save()
             account = TutorAccount(tutor = tutor)
             account.save()
-            return render(request,'thank-you.html')
+            return redirect(f'/thank-you/{id}/')
         else:
             messages.warning(request, 'already registered')
             return redirect('registration')
     return render(request, 'register.html')
 
+def thanks(request,id):
+    return render(request,'thank-you.html')
 
 def tutor_login(request):
     if request.method == 'POST':
