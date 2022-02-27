@@ -4488,7 +4488,7 @@ header li.more:hover > a::before{opacity:0!important}
 .qtIcon svg{width:55px;height:55px;fill:#43b97e}
 .starRevw svg{display:block;margin:0 auto 9px;width:20px;height:20px}
 .reviewMain{padding:70px 0 0;position:relative}
-.reviewMain::before{position:absolute;content:"";background:url(/static//images/bean.svg) left center no-repeat;width:610px;height:460px;left:-490px;z-index:-1;background-size:100% 100%;top:200px;transform:rotate(170deg)}
+/*.reviewMain::before{position:absolute;content:"";background:url(/static//images/bean.svg) left center no-repeat;width:610px;height:460px;left:-490px;z-index:-1;background-size:100% 100%;top:200px;transform:rotate(170deg)}*/
 .reviewMain::after{content:"";position:absolute;right:-120px;width:270px;height:300px;z-index:1;background:url(/static/images/rocket.svg) right top no-repeat;bottom:35px;filter:grayscale(1) brightness(0);opacity:.4}
 .rvwSub2{width:100%}
 .starRevw{text-align:center;width:auto;display:inline-block;margin:20px auto}
@@ -4776,3 +4776,10 @@ border-radius: 5px;
 .rating_form{max-width: 700px;
     margin: 0 auto 55px;
     box-shadow: 1px 1px 15px #e0e0e0; width: 95%;}
+#all_review{height: 1965px;
+    overflow: hidden;
+    margin-bottom: 20px;}
+.review_height{height: auto!important; margin-bottom: 20px!important;}
+#all_blog_post{overflow: hidden; height: 1235px;}
+.blog_height{height: auto!important;}
+.show_password_icon{position: absolute; right: 25px;  top: 10px; font-size: 22px!important; cursor: pointer; color: #737373;}

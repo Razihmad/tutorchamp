@@ -117,6 +117,10 @@
 .EditTableModal .form_group > .pos_rel {
     width: 47%!important;
 }
+.col3 {
+    width: 32%!important;
+    max-width: 100%!important;
+}
 
 
 
@@ -180,7 +184,7 @@
 					<div class="flex_div">
 						<div class="col3 pt7">
 							<label>Instruction</label>
-							<textarea name="desc" id="description" class=""
+							<textarea name="desc" id="" class=""
 								placeholder="Please Enter Your Instruction Here"></textarea>
 						</div>
 
@@ -188,8 +192,8 @@
 							<label>Question files</label>
 							<div class="attachFile">
 								<div class="addfile">
-									<label for="reffile" class="custom-file-upload">Add File</label>
-									<input name="assignment" type="file" id="reffile"
+									<label for="qfile" class="custom-file-upload">Add File </label>
+									<input name="assignment" type="file" id="qfile"
 										accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png"
 										style="display: none;">
 								</div>
@@ -344,17 +348,31 @@
 				<form class="commForm mt-3" method="POST" action="/live_session_orders/" enctype="multipart/form-data">
 					{% csrf_token %}
 					<div class="flex_div">
-						<div class="col50">
+						<div class="col3 pt7">
 							<label>Instruction</label>
-							<textarea name="desc" id="description" class=""
+							<textarea name="desc" id="" class=""
 								placeholder="Please Enter Your Instruction Here"></textarea>
 						</div>
-						<div class="col50">
-							<label>Add file</label>
+
+						<div class="col3">
+							<label>Question files</label>
 							<div class="attachFile">
 								<div class="addfile">
-									<label for="live_f" class="custom-file-upload">Add File</label>
-									<input required name="ref_material" type="file" id="live_f" />
+									<label for="reffile" class="custom-file-upload">Add File </label>
+									<input name="assignment" type="file" id="reffile"
+										accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png"
+										style="display: none;">
+								</div>
+							</div>
+						</div>
+						<div class="col3">
+							<label>Reference Materials</label>
+							<div class="attachFile">
+								<div class="addfile">
+									<label for="choose-file" class="custom-file-upload">Add File</label>
+									<input name="reference_material" type="file" id="choose-file"
+										accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png"
+										style="display: none;">
 								</div>
 							</div>
 						</div>
@@ -550,9 +568,14 @@
 		});
 
 		$('#reffile').change(function () {
-			var i = $(this).prev('label').clone();
+			var i = $(this).prev('.custom-file-upload').clone();
 			var file = $('#reffile')[0].files[0].name;
-			$(this).prev('label').text(file);
+			$(this).prev('.custom-file-upload').text(file);
+		});
+		$('#qfile').change(function () {
+			var i = $(this).prev('.custom-file-upload').clone();
+			var file = $('#qfile')[0].files[0].name;
+			$(this).prev('.custom-file-upload').text(file);
 		});
 		$('#report').change(function () {
 			var i = $(this).prev('label').clone();
@@ -637,6 +660,14 @@
 				$('.sidebar').toggleClass("open");
 			});
 		});
+
+	$("input[name='deadline']").click(function(){
+	  $(this).addClass("removeAfter");
+	});
+	$(".custom-file-upload").click(function(){
+	  $(this).addClass("addAfter");
+	});
+	
 	</script>
 
 
