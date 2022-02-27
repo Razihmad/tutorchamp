@@ -259,7 +259,7 @@
 			</div>
 			<div class="profileContent">
 				<div class="col50">
-					<form class="commForm mt-3" method="POST" action="/profile/" enctype="multipart/form-data">
+					<form class="commForm mt-3" id="profile_form" method="POST" action="/profile/" enctype="multipart/form-data">
 						{% csrf_token %}
 						<h2 class="text-dark text-left">{{user_detail.name}}</h2>
 						<div class="avatar-upload">
@@ -341,7 +341,7 @@
 			</div>
 			<div class="live_session_content">
 				<!-- live session form -->
-				<form class="commForm mt-3" method="POST" action="/live_session_orders/" enctype="multipart/form-data">
+				<form class="commForm mt-3" id="ls_order" method="POST" action="/live_session_orders/" enctype="multipart/form-data">
 					{% csrf_token %}
 					<div class="flex_div">
 						<div class="col50">
@@ -663,6 +663,52 @@ $("#imageUpload").change(function() {
 				var file = $('#files')[0].files[0].name;
 				$(this).prev('label').text(file);
 			  });
+
+
+			  $('#profile_form').submit(function(e){
+				  e.preventDefault();
+				  var form = $('#profile_form')[0];
+				  var form_data = new FormData(form);
+				  form_data.append("csrfmiddlewaretoken",'{{ csrf_token }}')
+				  var actionurl = $("#profile_form").attr("action");
+				  $.ajax({
+					  type:"POST",
+					  url:actionurl,
+					  data:form_data,
+					  cache: false,
+					  processData: false,
+					  contentType: false,
+				  })
+				.done(function(){
+					alert("detail updated successfully")
+				})
+			  })
+
+			  $('#ls_order').submit(function(e){
+				e.preventDefault();
+				var form = $('#ls_order')[0];
+				var form_data = new FormData(form);
+				form_data.append("csrfmiddlewaretoken",'{{ csrf_token }}')
+				var actionurl = $("#ls_order").attr("action");
+				$.ajax({
+					type:"POST",
+					url:actionurl,
+					data:form_data,
+					cache: false,
+					processData: false,
+					contentType: false,
+					success:function(data){
+						$("#ls_order").trigger('reset');
+					}
+				})
+				.done(function(){
+					alert("order created successfully");
+				})
+				.fail(function(){
+					console.log("some error")
+				})
+
+			})
         </script>
 
 </body>

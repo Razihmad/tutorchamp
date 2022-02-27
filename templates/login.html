@@ -207,7 +207,7 @@
                 success:function(data){
                     if(data.status=='error'){
                         var content = data.msg
-                        $('.epError').append(content)
+                        $('.epError').text(content)
                     }
                     else{
                         window.location.href = window.location.origin+'/dashboard/old-user';

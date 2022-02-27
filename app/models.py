@@ -86,7 +86,7 @@ class LabOrders(models.Model):
 class TutorRegister(models.Model):
     tutor = models.OneToOneField(User, on_delete=models.CASCADE)
     unique_id = models.CharField(unique=True,null=True,blank=True,max_length=20)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100,null=True,blank=True)
     phone = models.CharField(max_length=13,null=True,blank=True)
     state = models.CharField(max_length=50,blank=True,null=True)
     city = models.CharField(max_length=60,blank=True,null=True)
