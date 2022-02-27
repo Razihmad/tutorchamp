@@ -202,9 +202,10 @@
                         <!-- Modal body -->
                         <div class="modal-body pt-1">
                             <div id="reset_psw" class="reset_psw commForm mb-3">
-                                <h1 class="text-center font-weight-bold mt-3">Reset Password</h1>
-                                 <p class="text-center mb-5 p-0">Forgotten your password? Enter your email address below, and we'll email instructions for setting a new one.</p>
-                                 <form method="POST">
+                                <h1 class="text-center font-weight-bold mt-3" id="h">Reset Password</h1>
+                                 <p class="text-center mb-5 p-0" id="cont">Forgotten your password? Enter your email address below, and we'll email instructions for setting a new one.</p>
+                                 <form method="POST" id="reset" action="/password_reset/">
+                                     {% csrf_token %}
                                     <div id="div_id_email" class="control-group"> 
                                         <label for="id_email" class="control-label mb-1 requiredField">
                                     Your Email<span class="asteriskField">*</span> </label> 
@@ -265,6 +266,37 @@
             x.type = "password";
           }
         }
+
+        $('#reset').submit(function(e){
+            e.preventDefault();
+            var form = $('#reset')[0];
+            var form_data = new FormData(form);
+            form_data.append("csrfmiddlewaretoken",'{{ csrf_token }}')
+            var actionurl = $("#reset").attr("action");
+            $.ajax({
+                type:"POST",
+                url:actionurl,
+                data:form_data,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success:function(data){
+                    if(data.status=="success"){
+                        $("#h").text("Password reset sent")
+                        $("#cont").text(data.message)
+                        $("#reset").css("display","none");
+                    }
+                }
+                
+            })
+            .done(function(){
+                console.log("done")
+            })
+            .fail(function(){
+                console.log("fail")
+            })
+            
+        })
     </script>
 </body>
 </html>

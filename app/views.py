@@ -27,35 +27,36 @@ from django.core.mail import EmailMessage
 
 def password_reset_request(request):
     if request.method == "POST":
-        password_reset_form = PasswordResetForm(request.POST)
-        if password_reset_form.is_valid():
-            data = password_reset_form.cleaned_data['email'].lower()
-            associated_users = User.objects.filter(Q(email=data))
-            if associated_users.exists():
-                for user in associated_users:
-                    subject = "Password Reset Requested"
-                    email_template_name = "password_reset_email.txt"
-                    c = {
-                        "email": user.email,
-                        'domain': '127.0.0.1:8000',
-                        'site_name': 'Website',
-                        "uid": urlsafe_base64_encode(force_bytes(user.pk)),
-                        "user": user,
-                        'token': default_token_generator.make_token(user),
-                        'protocol': 'http',
-                    }
-                    email = render_to_string(email_template_name, c)
-                    connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
-                                             use_tls=True,port=587,username='admin@tutorchamps.com',password=config('adminPassword'))
-                    connection.open()
-                    try:
-                        email = EmailMessage(subject=subject, body=email, from_email='TutorChamps Admin <admin@tutorchamps.com>',
-                                  to=[user.email])
-                        connection.send_messages([email])
-                        connection.close()
-                    except BadHeaderError:
-                        return HttpResponse('Invalid header found.')
-                    return redirect("/password_reset/done/")
+        email = request.POST.get('email')
+        data = email.lower()
+        associated_users = User.objects.filter(Q(email=data))
+        if associated_users.exists():
+            for user in associated_users:
+                subject = "Password Reset Requested"
+                email_template_name = "password_reset_email.txt"
+                c = {
+                    "email": user.email,
+                    'domain': '127.0.0.1:8000',
+                    'site_name': 'Website',
+                    "uid": urlsafe_base64_encode(force_bytes(user.pk)),
+                    "user": user,
+                    'token': default_token_generator.make_token(user),
+                    'protocol': 'http',
+                }
+                email = render_to_string(email_template_name, c)
+                connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
+                                         use_tls=True,port=587,username='admin@tutorchamps.com',password=config('adminPassword'))
+                connection.open()
+                try:
+                    email = EmailMessage(subject=subject, body=email, from_email='TutorChamps Admin <admin@tutorchamps.com>',
+                              to=[user.email])
+                    connection.send_messages([email])
+                    connection.close()
+                except BadHeaderError:
+                    return HttpResponse('Invalid header found.')
+                msg = {"status":"success","message":"We've emailed you instructions for setting your password, if an account exists with the email you entered. You should receive them shortly."+
+                       "If you don't receive an email, please make sure you've entered the address you registered with, and check your spam folder."}
+                return JsonResponse(data=msg)
 
     password_reset_form = PasswordResetForm()
     return render(request=request, template_name="password_reset.html", context={"password_reset_form": password_reset_form})
