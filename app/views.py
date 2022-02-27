@@ -378,8 +378,7 @@ def signin(request):
         email = request.POST.get('email')
         email = email.lower()
         password = request.POST.get('password')
-        user = User.objects.get(username=email,email=email)
-        
+        user = User.objects.get(username=email)
         try:
             tutor = TutorRegister.objects.get(tutor=user)
             data = {'status':'error','msg':'Your Are Not Allowed To Use Student Dashboard'}
@@ -566,7 +565,18 @@ def tutor_login(request):
             messages.error(request, 'Invalid email or password')
             return redirect('tutor')
     return render(request, 'tutor.html')
-
+def password_reset(request):
+    if request.method=='POST':
+        user = request.user
+        username = user.username
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confm_password')
+        user.set_password(password)
+        user.save()
+        u = authenticate(username=username,password=password)
+        login(request,u)
+        messages.success(request,'Password changes successfully')
+        return redirect('tutor-dashboard')
 
 @login_required(login_url='/tutor/')
 def tutor_logout(request):
