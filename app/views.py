@@ -549,22 +549,29 @@ def tutor_login(request):
     if request.method == 'POST':
         username = request.POST.get('email')
         password = request.POST.get('password')
-        user = authenticate(username=username, password=password)
-        if user:
-            if user.is_active:
-                login(request, user)
-                user = User.objects.get(username=username)
-                tutor = TutorRegister.objects.get(tutor=user)
-                id = tutor.unique_id
-                return redirect('/tutor/dashboard/')
-            else:
-                messages.info(
-                    request, 'Your account has been deactivated. Contact the Tutorchamps Team to reactivate your account.')
-                return redirect('tutor')
-        else:
-            messages.error(request, 'Invalid email or password')
+        user = User.objects.get(username=username)
+        try:
+            UserDetails.objects.get(user=user)
+            messages.error(request,"You are not allowed to access Tutor dashboard")
             return redirect('tutor')
+        except:
+            user = authenticate(username=username, password=password)
+            if user:
+                if user.is_active:
+                    login(request, user)
+                    user = User.objects.get(username=username)
+                    tutor = TutorRegister.objects.get(tutor=user)
+                    id = tutor.unique_id
+                    return redirect('/tutor/dashboard/')
+                else:
+                    messages.info(
+                        request, 'Your account has been deactivated. Contact the Tutorchamps Team to reactivate your account.')
+                    return redirect('tutor')
+            else:
+                messages.error(request, 'Invalid email or password')
+                return redirect('tutor')
     return render(request, 'tutor.html')
+
 def password_reset(request):
     if request.method=='POST':
         user = request.user
