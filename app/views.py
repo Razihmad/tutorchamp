@@ -294,7 +294,7 @@ def signup(request):
             user = User(username=email, email=email)
             user.set_password(password)
             user.save()
-            user_detail = UserDetails(user=user)
+            user_detail = UserDetails(user=user,user_type="Student")
             user_detail.save()
             if request.session.get('session_key'):
                 username = request.session['session_key']
@@ -382,37 +382,42 @@ def signin(request):
         password = request.POST.get('password')          
         user = authenticate(username=email, password=password)
         if user:
-            
-            if user.is_active:
-                login(request, user)
-                usr = request.user
-                uname= usr.username
-                user = User.objects.get(username=uname)
-                detail = UserDetails.objects.get_or_create(user=user)
-                if request.session.get('session_key'):
-                    username = request.session['session_key']
-                    unknown_user = User.objects.get(username=username)
-                    try:
-                        laborder = LabOrders.objects.get(user=unknown_user)
-                        laborder.user = user
-                        id = laborder.pk
-                        id +=1000
-                        laborder.order_id = f'TC-lab-{id}'
-                        laborder.save()
-                    except:
-                        order = Orders.objects.get(user=unknown_user)
-                        order.user = user
-                        id = order.pk
-                        id +=1000
-                        order.order_id = f'TC-HW-{id}'
-                        order.save()          
-                    unknown_user.delete()
-                    del request.session['session_key']
-                    messages.success(request, f"Welcome Back {email}")
-                return redirect('old-user')
+            new_user = User.objects.get(username=email)
+            userdetail = UserDetails.objects.get(user=new_user)
+            if userdetail.user_type=="Student":
+                if user.is_active:
+                    login(request, user)
+                    usr = request.user
+                    uname= usr.username
+                    user = User.objects.get(username=uname)
+                    detail = UserDetails.objects.get_or_create(user=user)
+                    if request.session.get('session_key'):
+                        username = request.session['session_key']
+                        unknown_user = User.objects.get(username=username)
+                        try:
+                            laborder = LabOrders.objects.get(user=unknown_user)
+                            laborder.user = user
+                            id = laborder.pk
+                            id +=1000
+                            laborder.order_id = f'TC-lab-{id}'
+                            laborder.save()
+                        except:
+                            order = Orders.objects.get(user=unknown_user)
+                            order.user = user
+                            id = order.pk
+                            id +=1000
+                            order.order_id = f'TC-HW-{id}'
+                            order.save()          
+                        unknown_user.delete()
+                        del request.session['session_key']
+                        messages.success(request, f"Welcome Back {email}")
+                    return redirect('old-user')
+                else:
+                
+                    data = {'status':'error','msg':'Your Account has been deactivated'}
+                    return JsonResponse(data)
             else:
-            
-                data = {'status':'error','msg':'Your Account has been deactivated'}
+                data = {"status":"error","msg":"Not Allowed"}
                 return JsonResponse(data)
         else:
             data = {'status':'error','msg':"Invalid email or password"}
@@ -502,6 +507,7 @@ def tutor_register(request):
         password = config('tutorspassword')
         b = user[1]
         user = user[0]
+        UserDetails(user=user,user_type="Tutor").save()
         if b==True:
             user.set_password(password)
             user.is_active = False
@@ -546,16 +552,22 @@ def tutor_login(request):
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
         if user:
-            if user.is_active:
-                login(request, user)
-                user = User.objects.get(username=username)
-                tutor = TutorRegister.objects.get(tutor=user)
-                id = tutor.unique_id
-                return redirect('/tutor/dashboard/')
+            new_user = User.objects.get(username=username)
+            user_detail = UserDetails.objects.get(user=new_user)
+            if user_detail.user_type=="Tutor":
+                if user.is_active:
+                    login(request, user)
+                    user = User.objects.get(username=username)
+                    tutor = TutorRegister.objects.get(tutor=user)
+                    id = tutor.unique_id
+                    return redirect('/tutor/dashboard/')
+                else:
+                    messages.info(
+                        request, 'Your account has been deactivated. Contact the Tutorchamps Team to reactivate your account.')
+                    return redirect('tutor')
             else:
-                messages.info(
-                    request, 'Your account has been deactivated. Contact the Tutorchamps Team to reactivate your account.')
-                return redirect('tutor')
+                messages.info(request,"not allowed")
+                return redirect("tutor")
         else:
             messages.error(request, 'Invalid email or password')
             return redirect('tutor')
