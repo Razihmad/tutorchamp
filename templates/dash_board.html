@@ -369,8 +369,8 @@
 							<label>Reference Materials</label>
 							<div class="attachFile">
 								<div class="addfile">
-									<label for="choose-file" class="custom-file-upload">Add File</label>
-									<input name="reference_material" type="file" id="choose-file"
+									<label for="reference_material" class="custom-file-upload">Add File</label>
+									<input required name="reference_material" type="file" id="reference_material"
 										accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png"
 										style="display: none;">
 								</div>
@@ -570,6 +570,11 @@
 		$('#reffile').change(function () {
 			var i = $(this).prev('.custom-file-upload').clone();
 			var file = $('#reffile')[0].files[0].name;
+			$(this).prev('.custom-file-upload').text(file);
+		});
+		$('#reference_material').change(function () {
+			var i = $(this).prev('.custom-file-upload').clone();
+			var file = $('#reference_material')[0].files[0].name;
 			$(this).prev('.custom-file-upload').text(file);
 		});
 		$('#qfile').change(function () {

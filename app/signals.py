@@ -57,12 +57,6 @@ def mailforOrder(sender,instance,created,**kwargs):
         email = user.email
         orderId = instance.order_id
         subject = instance.subject
-        c = {
-            'id':orderId,
-            'username':user.username,
-        }
-        content = render_to_string('order.txt',c)
-        email = EmailMessage(subject="Created",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
         tutors = TutorRegister.objects.filter(subject=subject)
         c = {
             'order_id':orderId,
@@ -72,11 +66,11 @@ def mailforOrder(sender,instance,created,**kwargs):
         #                                  use_tls=True,port=587,username='tutors@tutorchamps.com',password=config('tutorPassword'))
         # connection.open()
         
-        # email_msg = render_to_string('order_to_tutors.txt',c)
+        # # email_msg = render_to_string('order_to_tutors.txt',c)
         # for tutor in tutors:
         #     user = tutor.tutor
         #     emailid = user.email
-        #     email = EmailMessage(subject='New Order Has Arrived',body=email_msg,from_email='tutors@tutorchamps.com',to=[emailid])
+        #     email = EmailMessage(subject='New Order Has Arrived',body="email_ms",from_email='tutors@tutorchamps.com',to=[emailid])
         #     connection.send_messages([email])
         #     connection.close()        
         #     email.send()
@@ -113,3 +107,5 @@ def statusUpdated(sender,instance,**kwargs):
                 content = render_to_string('comp_assignment.txt',c)
                 email = EmailMessage(subject="confirmed",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
                 email.send()
+                
+    
