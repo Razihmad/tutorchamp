@@ -216,6 +216,9 @@ def dashboard_old(request):
     user = request.user
     user_detail = UserDetails.objects.get_or_create(user=user)
     user_detail = user_detail[0]
+    if user_detail.user_type=="Tutor":
+        return redirect("tutor-dashboard")
+    
     details = Orders.objects.filter(user=user)
     labs = LabOrders.objects.filter(user=user)
     if request.method == 'POST':
