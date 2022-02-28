@@ -4,6 +4,7 @@ from datetime import date
 
 class UserDetails(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user_type = models.CharField(max_length=100,choices=(("Student","Student"),("Tutor","Tutor")))
     profile = models.ImageField(null=True,blank=True)
     name = models.CharField(max_length=100)
     phone = models.CharField(max_length=20)
