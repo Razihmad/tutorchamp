@@ -114,7 +114,7 @@
     bottom: 7px;
     padding-right: 12px;}
 .assignment_help_inner>div{width: 33%; max-width: 310px;}
-.profileContent, .live_session_content, .homeContant, .project_lab_content, .assignment_help_content, .Update_subject_content{height: 0;overflow: hidden;}
+.profileContent, .live_session_content, .homeContant, .project_lab_content, .assignment_help_content, .Update_subject_content, .notifications_table{height: 0;overflow: hidden;}
 .active_{height: auto!important; background: none;}
 .active_ .commForm{margin-bottom: 15px;}
 .sidebar_menu li:first-child a.active{background: none!important;}
