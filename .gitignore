@@ -5,3 +5,5 @@ env
 admin
 ip.txt
 fake.py
+migrations
+db.sqlite3
