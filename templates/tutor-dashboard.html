@@ -844,10 +844,10 @@
 							<td style="width: 20%;"><a href="{{order.assignment.url}}">Preview</a></td>
 							<td style="width: 20%;">{{order.deadline}}</td>
 							<td style="width: 20%;">{{order.amount}}</td>
-							<td style="width: 20%;"><form action="/interest/" method="post">
+							<td style="width: 20%;"><form action="/interest/" method="post" id="interest">
 								{% csrf_token %}
 								<input type="text" name="order_id" id="order_id" value="{{order.order_id}}" style="display: none;">
-								<input type="submit" value="Interested">
+								<input id="b" type="submit" value="Interested">
 							</form></td>
 						</tr>
 						{% endfor %}
@@ -1043,6 +1043,25 @@
 				$('.static_t span').hide();
 			});
 		});
+		
+		$("#interest").submit(function(e){
+			e.preventDefault();
+			var form = $("#interest")[0];
+			var data = new FormData(form)
+			data.append("csrfmiddlewaretoken",'{{ csrf_token }}')
+            var actionurl = $("#interest").attr('action');
+			$.ajax({
+				type:"POST",
+				url:actionurl,
+				data:data,
+                cache: false,
+                processData: false,
+                contentType: false,
+				success:function(data){
+					alert(data['msg'])
+				}
+			})
+		})
 	</script>
 
 
