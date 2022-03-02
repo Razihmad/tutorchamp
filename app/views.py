@@ -652,7 +652,8 @@ def interest(request):
         email = EmailMessage(subject='tutor interest has com',body=email_msg,from_email='TutorChamps Tutors Support <tutors@tutorchamps.com>',to=['adm.tutorchamps@gmail.com'])
         connection.send_messages([email])
         connection.close()
-        return redirect("tutor-dashboard")
+        data = {'msg':'interest shows successfully'}
+        return JsonResponse(data)
             
 
 @login_required(login_url='/tutor/')
