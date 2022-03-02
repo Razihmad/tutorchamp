@@ -2,8 +2,7 @@
 __pycache__
 media
 env
-admin
-ip.txt
 fake.py
 migrations
 db.sqlite3
+admin
