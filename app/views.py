@@ -500,11 +500,14 @@ def tutor_register(request):
         email = email.lower()
         qualification_level = request.POST.get('level')
         subject = request.POST.get('subject')
-        user = User.objects.get_or_create(username=email,email=email,first_name=name)
+        user = User.objects.get_or_create(username=email)
         password = config('tutorspassword')
         b = user[1]
         user = user[0]
         if b==True:
+            user.email=email
+            user.first_name=name
+            user.save()
             UserDetails(user=user,user_type="Tutor").save()
             user.set_password(password)
             user.is_active = False
