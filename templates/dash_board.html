@@ -175,8 +175,8 @@
 		<div class="mainContent DashboardContent">
 			<div class="dTbale homeContant active_">
 				<div class="head_content">
-					<h1>Welcome to the TutorChamps!</h1>
-					<p>TutorChamps is committed to provide best homework solutions to its students 24/7 and always puts students on top priority. Our mission is to make students perform better in their academics and achieve their goals with certainty.</p>
+					<h1>Welcome to TutorChamps</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 				</div>
 				<!-- home page form  -->
 				<form class="mb55 commForm mt-3 " method="POST" action="" enctype="multipart/form-data">
@@ -263,7 +263,7 @@
 			</div>
 			<div class="profileContent">
 				<div class="col50">
-					<form class="commForm mt-3" id="profile_form" method="POST" action="/profile/" enctype="multipart/form-data">
+					<form class="commForm mt-3" method="POST" action="/profile/" enctype="multipart/form-data">
 						{% csrf_token %}
 						<h2 class="text-dark text-left">{{user_detail.name}}</h2>
 						<div class="avatar-upload">
@@ -281,7 +281,7 @@
 					        </div>
 					    </div>
 
-						<p>Edit/update your details here</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
 						<div class="">
 							<label>Enter Your Name </label>
 							<input type="name" name="nae" class="input" placeholder="Enter Name" required=""
@@ -319,7 +319,7 @@
 					<form class="commForm mt-3" method="POST" action="{% url 'reset_password' %}">
 						{% csrf_token %}
 						<h2 class="text-dark text-left">Password</h2>
-						<p>Create new password here</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
 						<div class="">
 							<label>Current Password</label>
 							<input class="input" type="password" name="password" placeholder="Current Password"
@@ -345,7 +345,7 @@
 			</div>
 			<div class="live_session_content">
 				<!-- live session form -->
-				<form class="commForm mt-3" id="ls_order" method="POST" action="/live_session_orders/" enctype="multipart/form-data">
+				<form class="commForm mt-3" method="POST" action="/live_session_orders/" enctype="multipart/form-data">
 					{% csrf_token %}
 					<div class="flex_div">
 						<div class="col3 pt7">
@@ -369,8 +369,8 @@
 							<label>Reference Materials</label>
 							<div class="attachFile">
 								<div class="addfile">
-									<label for="reference_material" class="custom-file-upload">Add File</label>
-									<input required name="reference_material" type="file" id="reference_material"
+									<label for="choose-file" class="custom-file-upload">Add File</label>
+									<input name="reference_material" type="file" id="choose-file"
 										accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png"
 										style="display: none;">
 								</div>
@@ -572,11 +572,6 @@
 			var file = $('#reffile')[0].files[0].name;
 			$(this).prev('.custom-file-upload').text(file);
 		});
-		$('#reference_material').change(function () {
-			var i = $(this).prev('.custom-file-upload').clone();
-			var file = $('#reference_material')[0].files[0].name;
-			$(this).prev('.custom-file-upload').text(file);
-		});
 		$('#qfile').change(function () {
 			var i = $(this).prev('.custom-file-upload').clone();
 			var file = $('#qfile')[0].files[0].name;
@@ -699,52 +694,6 @@ $("#imageUpload").change(function() {
 				var file = $('#files')[0].files[0].name;
 				$(this).prev('label').text(file);
 			  });
-
-
-			  $('#profile_form').submit(function(e){
-				  e.preventDefault();
-				  var form = $('#profile_form')[0];
-				  var form_data = new FormData(form);
-				  form_data.append("csrfmiddlewaretoken",'{{ csrf_token }}')
-				  var actionurl = $("#profile_form").attr("action");
-				  $.ajax({
-					  type:"POST",
-					  url:actionurl,
-					  data:form_data,
-					  cache: false,
-					  processData: false,
-					  contentType: false,
-				  })
-				.done(function(){
-					alert("detail updated successfully")
-				})
-			  })
-
-			  $('#ls_order').submit(function(e){
-				e.preventDefault();
-				var form = $('#ls_order')[0];
-				var form_data = new FormData(form);
-				form_data.append("csrfmiddlewaretoken",'{{ csrf_token }}')
-				var actionurl = $("#ls_order").attr("action");
-				$.ajax({
-					type:"POST",
-					url:actionurl,
-					data:form_data,
-					cache: false,
-					processData: false,
-					contentType: false,
-					success:function(data){
-						$("#ls_order").trigger('reset');
-					}
-				})
-				.done(function(){
-					alert("order created successfully");
-				})
-				.fail(function(){
-					console.log("some error")
-				})
-
-			})
         </script>
 
 </body>
