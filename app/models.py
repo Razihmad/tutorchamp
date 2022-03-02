@@ -48,7 +48,7 @@ class Orders(models.Model):
     submission_date = models.DateField(default=date.today())
     assigned = models.BooleanField(default=False)
     reference_material = models.ImageField(null=True,blank=True)
-
+    amount = models.IntegerField(default=0)
 
     def __str__(self):
         return self.order_id
@@ -79,6 +79,7 @@ class LabOrders(models.Model):
     status = models.CharField(max_length=100,choices=CHOICES)
     submission_date = models.DateField(default=date.today())
     assigned = models.BooleanField(default=False)
+    amount = models.IntegerField(default=0)
     
     def __str__(self):
         return self.order_id

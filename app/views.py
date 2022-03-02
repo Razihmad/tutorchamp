@@ -603,6 +603,7 @@ def tutor_dashboard(request):
     subject = tutor_register.subject
     tutor_balance = TutorBalance.objects.get(tutor=tutor_register)
     orders = Orders.objects.filter(subject=subject,assigned=False,status='Order Confirmed')
+    print(orders)
     if request.method == "POST":
         pan_number = request.POST.get('pan_card')
         name_on_pan = request.POST.get('pan_name')
@@ -630,7 +631,7 @@ def tutor_dashboard(request):
         earned = TutorEarnedDetail.objects.filter(tutor=tutor_register)
         payment_history  = TutorPaymenyDetails.objects.filter(tutor= tutor_register)
         return render(request, 'tutor-dashboard.html',{'tutor_register': tutor_register,'tutor': tutor,'earned':earned,'payment_history':payment_history,
-                    'b':tutor_balance.balance,'tutor_account':tutor_account,'assignments':assignments,'labs':labs })
+                    'b':tutor_balance.balance,'tutor_account':tutor_account,'assignments':assignments,'labs':labs,'orders':orders })
         
         
 @login_required(login_url='/tutor/')
