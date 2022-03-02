@@ -62,6 +62,7 @@ urlpatterns = [
     path('asignment_order/',views.asignment_order,name='asignment_order'),
     path('tutor_detail/',views.tutor_detail,name='tutor_detail'),
     path('thank-you/<int:id>/',views.thanks,name='thank you'),
-    path('reset-tutor-password/',views.password_reset,name='tutor_reset_password')
+    path('reset-tutor-password/',views.password_reset,name='tutor_reset_password'),
+    path('interest/',views.interest,name='interset'),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

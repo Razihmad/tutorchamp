@@ -95,7 +95,7 @@ def statusUpdated(sender,instance,**kwargs):
                 content = render_to_string('comp_assignment.txt',c)
                 email = EmailMessage(subject="rejected",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
                 email.send()
-            elif instance.status =='Order Confimed':
+            elif instance.status =='Order Confirmed':
                 content = render_to_string('comp_assignment.txt',c)
                 email = EmailMessage(subject="confirmed",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
                 email.send()
