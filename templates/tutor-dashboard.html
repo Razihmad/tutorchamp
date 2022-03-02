@@ -363,7 +363,7 @@
 					<div id="menu1" class="tab-pane fade active show">
 						<form class="commForm" method="" action="">
 							<div class="flex_div search_box">
-								<h2>Homework Assignment</h2>
+								<h2>Homework</h2>
 								<input type="search" placeholder="Search Here ..." class="input search" name="">
 							</div>
 							<table class="table table-striped" style="border: 2px solid #43b97e;">
@@ -377,14 +377,16 @@
 										<td style="width: 20%;">Amount</td>
 									</tr>
 									{% for assignment in assignments %}
-									  
-									<tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
-										<td style="width: 20%;">{{assignment.order.pk}}</td>
-										<td style="width: 20%;">{{assignment.order.subject}}</td>
-										<td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
-										<td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
-										<td style="width: 20%;color: #43b97e;">{{assignment.amount}}</td>
-									</tr>
+									  {% if assignment.status == "Completed" %}
+										
+									  <tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
+										  <td style="width: 20%;">{{assignment.order.pk}}</td>
+										  <td style="width: 20%;">{{assignment.order.subject}}</td>
+										  <td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
+										  <td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
+										  <td style="width: 20%;color: #43b97e;">{{assignment.amount}}</td>
+										</tr>
+										{% endif %}
 									{% endfor %}
 							
 							
@@ -409,14 +411,16 @@
 										<td style="width: 20%;">Amount</td>
 									</tr>
 									{% for lab in labs %}
-									  
-									<tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
-										<td style="width: 20%;">{{lab.labs.pk}}</td>
-										<td style="width: 20%;">{{lab.labs.subject}}</td>
-										<td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
-										<td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
-										<td style="width: 20%;color: #43b97e;">{{lab.amount}}</td>
-									</tr>
+									  {% if lab.status == "Completed" %}
+										
+									  <tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
+										  <td style="width: 20%;">{{lab.labs.pk}}</td>
+										  <td style="width: 20%;">{{lab.labs.subject}}</td>
+										  <td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
+										  <td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
+										  <td style="width: 20%;color: #43b97e;">{{lab.amount}}</td>
+										</tr>
+										{% endif %}
 									{% endfor %}
 									
 
@@ -607,10 +611,6 @@
 
 					<div id="tab_1" class="tab-pane fade active show">
 						<form class="commForm" method="" action="">
-							<div class="flex_div search_box">
-								<h2>Homework Assignment</h2>
-								<input type="search" placeholder="Search Here ..." class="input search" name="">
-							</div>
 							<table class="table table-striped" style="border: 2px solid #43b97e;">
 								<tbody>
 									<tr class="thead"
@@ -622,6 +622,7 @@
 										<td style="width: 20%;">Amount</td>
 									</tr>
 									{% for assignment in assignments %}
+									{% if assignment.status == "Pending" %}
 									  
 									<tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
 										<td style="width: 20%;">{{assignment.order.pk}}</td>
@@ -630,6 +631,7 @@
 										<td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
 										<td style="width: 20%;color: #43b97e;">{{assignment.amount}}</td>
 									</tr>
+									{% endif %}
 									{% endfor %}
 							
 							
@@ -639,10 +641,6 @@
 					</div>
 					<div id="tab_2" class="tab-pane fade">
 						<form class="commForm" method="" action="">
-							<div class="flex_div search_box">
-								<h2>Lab</h2>
-								<input type="search" placeholder="Search Here ..." class="input search" name="">
-							</div>
 							<table class="table table-striped" style="border: 2px solid #43b97e;">
 								<tbody>
 									<tr class="thead"
@@ -654,14 +652,16 @@
 										<td style="width: 20%;">Amount</td>
 									</tr>
 									{% for lab in labs %}
-									  
-									<tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
-										<td style="width: 20%;">{{lab.labs.pk}}</td>
-										<td style="width: 20%;">{{lab.labs.subject}}</td>
-										<td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
-										<td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
-										<td style="width: 20%;color: #43b97e;">{{lab.amount}}</td>
-									</tr>
+									  {% if lab.status == "Pending" %}
+										
+									  <tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
+										  <td style="width: 20%;">{{lab.labs.pk}}</td>
+										  <td style="width: 20%;">{{lab.labs.subject}}</td>
+										  <td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
+										  <td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
+										  <td style="width: 20%;color: #43b97e;">{{lab.amount}}</td>
+										</tr>
+										{% endif %}
 									{% endfor %}
 									
 
