@@ -6,6 +6,4 @@ admin
 ip.txt
 fake.py
 fake.py
-migrations
-db.sqlite3
 admin
