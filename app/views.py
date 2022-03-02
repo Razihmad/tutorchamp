@@ -603,7 +603,6 @@ def tutor_dashboard(request):
     subject = tutor_register.subject
     tutor_balance = TutorBalance.objects.get(tutor=tutor_register)
     orders = Orders.objects.filter(subject=subject,assigned=False,status='Order Confirmed')
-    print(orders)
     if request.method == "POST":
         pan_number = request.POST.get('pan_card')
         name_on_pan = request.POST.get('pan_name')
@@ -632,8 +631,30 @@ def tutor_dashboard(request):
         payment_history  = TutorPaymenyDetails.objects.filter(tutor= tutor_register)
         return render(request, 'tutor-dashboard.html',{'tutor_register': tutor_register,'tutor': tutor,'earned':earned,'payment_history':payment_history,
                     'b':tutor_balance.balance,'tutor_account':tutor_account,'assignments':assignments,'labs':labs,'orders':orders })
-        
-        
+
+@login_required(login_url='/tutor/')    
+def interest(request):
+    if request.method=="POST":
+        user = request.user
+        email = user.email
+        tutor = TutorRegister.objects.get(tutor=user)
+        tutor_id = tutor.unique_id
+        order_id = request.POST.get('order_id')
+        c = {
+                'email':email,
+                'tutor_id':tutor_id,
+                'order_id':order_id,
+            }
+        email_msg = render_to_string('tutor_email.txt',c)
+        connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',name="TutorChamps",
+                                          use_tls=True,port=587,username='tutors@tutorchamps.com',password=config('tutorPassword'))
+        connection.open()
+        email = EmailMessage(subject='tutor interest has com',body=email_msg,from_email='TutorChamps Tutors Support <tutors@tutorchamps.com>',to=['adm.tutorchamps@gmail.com'])
+        connection.send_messages([email])
+        connection.close()
+        return redirect("tutor-dashboard")
+            
+
 @login_required(login_url='/tutor/')
 def tutor_detail(request):
     tutor = request.user
