@@ -600,7 +600,9 @@ def tutor_logout(request):
 def tutor_dashboard(request):
     tutor = request.user
     tutor_register = TutorRegister.objects.get(tutor=tutor)
+    subject = tutor_register.subject
     tutor_balance = TutorBalance.objects.get(tutor=tutor_register)
+    orders = Orders.objects.filter(subject=subject,assigned=False,status='Order Confirmed')
     if request.method == "POST":
         pan_number = request.POST.get('pan_card')
         name_on_pan = request.POST.get('pan_name')

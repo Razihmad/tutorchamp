@@ -37,7 +37,7 @@ class Orders(models.Model):
     duration = models.CharField(max_length=100,null=True,blank=True)
     CHOICES = (
         ('Awaiting Confirmation','Awaiting Confirmation'),
-        ('Order Confimed','Order Confimed'),
+        ('Order Confirmed','Order Confirmed'),
         ('Order Rejected','Order Rejected'),
         ('Assignment In Progress','Assignment In Progress'),
         ('Review Your Assignment','Review Your Assignment'),
@@ -69,7 +69,7 @@ class LabOrders(models.Model):
     reference_material = models.FileField(null=True,blank=True)
     CHOICES = (
         ('Awaiting Confirmation','Awaiting Confirmation'),
-        ('Order Confimed','Order Confimed'),
+        ('Order Confirmed','Order Confirmed'),
         ('Order Rejected','Order Rejected'),
         ('Assignment In Progress','Assignment In Progress'),
         ('Review Your Assignment','Review Your Assignment'),
