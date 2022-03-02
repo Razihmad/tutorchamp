@@ -366,8 +366,7 @@
 					<div id="menu1" class="tab-pane fade active show">
 						<form class="commForm" method="" action="">
 							<div class="flex_div search_box">
-								<h2>Homework</h2>
-								<input type="search" placeholder="Search Here ..." class="input search" name="">
+								<h2> Completed Homework</h2>
 							</div>
 							<table class="table table-striped" style="border: 2px solid #43b97e;">
 								<tbody>
@@ -400,8 +399,7 @@
 					<div id="menu3" class="tab-pane fade">
 						<form class="commForm" method="" action="">
 							<div class="flex_div search_box">
-								<h2>Lab</h2>
-								<input type="search" placeholder="Search Here ..." class="input search" name="">
+								<h2> Completed Lab</h2>
 							</div>
 							<table class="table table-striped" style="border: 2px solid #43b97e;">
 								<tbody>
@@ -496,124 +494,6 @@
 						</div>
 					</form>
 				</div>
-				<div class="Update_subject_content">
-					<div class="main_sub_con">
-						<div class="main_sub_con_inner">
-							<span>Group A</span>
-							<p>You can select subjects from only one Department in this group</p>
-							<ul class="nav nav-tabs border-0">
-								<li><a data-toggle="tab" href="#subject_1"><img
-											src="/static/dashboard/images/electronic.png"> Electronics And Communication
-										Engineering</a> </li>
-								<li><a data-toggle="tab" href="#subject_2"><img
-											src="/static/dashboard/images/electronic.png"> Electronics And Communication
-										Engineering</a> </li>
-								<li><a data-toggle="tab" href="#subject_3"><img
-											src="/static/dashboard/images/electronic.png"> Electronics And Communication
-										Engineering</a> </li>
-							</ul>
-						</div>
-					</div>
-					<div class="sub_subject_con">
-						<div class="static_t">
-							<span>Chose Branch to Select<span> Coresponding Subjects</span> </span>
-						</div>
-						<div class="sub_subj_contnt">
-							<form>
-								<div class="tab-content">
-									<div id="subject_1" class="tab-pane fade">
-										<p>You can select subjects from only one Department in this group</p>
-										<div class="checkbox_outer">
-											<input type="checkbox" id="c_plus" name="c_plus" value="">
-											<label for="c_plus"> c/c++</label>
-										</div>
-										<div class="checkbox_outer">
-											<input type="checkbox" id="java" name="java" value="">
-											<label for="java"> Java</label>
-										</div>
-										<div class="checkbox_outer">
-											<input type="checkbox" id="basic_ec" name="basic_ec" value="">
-											<label for="basic_ec"> Basic EC</label>
-										</div>
-										<div class="checkbox_outer">
-											<input type="checkbox" id="matlab" name="matlab" value="">
-											<label for="matlab"> matlab</label>
-										</div>
-									</div>
-									<div id="subject_2" class="tab-pane fade">
-										<p>You can select subjects from only one Department in this group</p>
-										<div class="checkbox_outer">
-											<input type="checkbox" id="c_plus" name="c_plus" value="">
-											<label for="c_plus"> c/c++</label>
-										</div>
-										<div class="checkbox_outer">
-											<input type="checkbox" id="basic_ec" name="basic_ec" value="">
-											<label for="basic_ec"> Basic EC</label>
-										</div>
-									</div>
-									<div id="subject_3" class="tab-pane fade">
-										<p>You can select subjects from only one Department in this group</p>
-										<div class="checkbox_outer">
-											<input type="checkbox" id="c_plus" name="c_plus" value="">
-											<label for="c_plus"> c/c++</label>
-										</div>
-										<div class="checkbox_outer">
-											<input type="checkbox" id="java" name="java" value="">
-											<label for="java"> Java</label>
-										</div>
-										<div class="checkbox_outer">
-											<input type="checkbox" id="basic_ec" name="basic_ec" value="">
-											<label for="basic_ec"> Basic EC</label>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-					<div class="selected_subject_con">
-						<form class="commForm p-3" method="" action="">
-							<div class="pb-3"><span><i style="color: #47bf7f;" class="fa fa-check-circle"
-										aria-hidden="true"></i> Selected Subjects</span></div>
-
-							<div class="form_group">
-								<div class="">
-									<label>Electronic and Communication Engineering</label>
-									<input class="input" required="" name="subject" type="text">
-								</div>
-							</div>
-							<div class="form_group">
-								<div class="">
-									<label>CHemical Engineering</label>
-									<input class="input" required="" name="subject" type="text">
-								</div>
-							</div>
-							<div class="form_group">
-								<div class="">
-									<label>Electrical Engineering</label>
-									<input class="input" required="" name="subject" type="text">
-								</div>
-							</div>
-							<div class="form_group">
-								<div class="">
-									<label>Civil Engineering</label>
-									<input class="input" required="" name="subject" type="text">
-								</div>
-							</div>
-							<div class="form_group">
-								<div class="">
-									<label>Mechanical Engineering</label>
-									<input class="input" required="" name="subject" type="text">
-								</div>
-							</div>
-							<div class="text-center psr mt-3">
-								<input type="submit" class="formBtn theme-btn btn-style-one" value="Update Subject">
-
-								<a href="" class="theme-btn btn-style-one"><span class="txt">Update Subject</span></a>
-
-							</div>
-						</form>
-					</div>
-				</div>
 			</div>
 
 			<div class="live_session_content">
@@ -626,11 +506,14 @@
 
 					<div id="tab_1" class="tab-pane fade active show">
 						<form class="commForm" method="" action="">
+							<div class="flex_div search_box">
+								<h2> Pending Homework</h2>
+							</div>
 							<table class="table table-striped" style="border: 2px solid #43b97e;">
 								<tbody>
 									<tr class="thead"
 										style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
-										<td style="width: 20%;">ID</td>
+										<td style="width: 20%;">Order ID</td>
 										<td style="width: 20%;">Subject</td>
 										<td style="width: 20%;">Deadline</td>
 										<td style="width: 20%;">Time</td>
@@ -656,6 +539,9 @@
 					</div>
 					<div id="tab_2" class="tab-pane fade">
 						<form class="commForm" method="" action="">
+							<div class="flex_div search_box">
+								<h2> Pending Lab</h2>
+							</div>
 							<table class="table table-striped" style="border: 2px solid #43b97e;">
 								<tbody>
 									<tr class="thead"
