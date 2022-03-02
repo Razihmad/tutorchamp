@@ -322,6 +322,9 @@
 			width: 100%;
 			height: 43px;
 		}
+		#confm_password{
+			width: 100%;
+		}
 	</style>
 </head>
 
@@ -380,7 +383,7 @@
 									  {% if assignment.status == "Completed" %}
 										
 									  <tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
-										  <td style="width: 20%;">{{assignment.order.pk}}</td>
+										  <td style="width: 20%;">{{assignment.order.order_id}}</td>
 										  <td style="width: 20%;">{{assignment.order.subject}}</td>
 										  <td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
 										  <td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
@@ -414,7 +417,7 @@
 									  {% if lab.status == "Completed" %}
 										
 									  <tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
-										  <td style="width: 20%;">{{lab.labs.pk}}</td>
+										  <td style="width: 20%;">{{lab.labs.order_id}}</td>
 										  <td style="width: 20%;">{{lab.labs.subject}}</td>
 										  <td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
 										  <td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
@@ -436,8 +439,8 @@
 						{% csrf_token %}
 						<div class="userprof"><img style="    filter: grayscale(1);"
 								src="/static/dashboard/images/profi.png"></div>
-						<h2 class="text-dark text-left">Ajay Test</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
+						<h2 class="text-dark text-left">{{tutor_register.name}}</h2>
+						<p>Edit/update your details here</p>
 						<div class="">
 							<label>Enter Your Name </label>
 							<input type="name" name="nae" class="input"  placeholder="Enter Name"
@@ -472,12 +475,24 @@
 					</form>
 				</div>
 				<div class="col50">
-					<form class="commForm text-center mt-3">
-						<p style="line-height: 24px; margin-bottom: 26px;">No subject selected. Please select subjects
-							to start getting assignment</p>
-						<div class="psr text-center mt-3">
-							<a href="javascript:void(0)" class="change_sub" id="change_sub"><span class="txt">Change
-									Subject <i style="padding-left: 5px;" class="fa fa-pencil"></i></span></a>
+					<form class="commForm mt-3" method="POST" action="{% url 'tutor_reset_password' %}">
+						{% csrf_token %}
+						<h2 class="text-dark text-left">Password</h2>
+						<p>Create new password here</p>
+						<div class="">
+							<label>New Password</label>
+							<input class="input" type="password" name="password" placeholder="New Password" id="">
+						</div>
+						<div class="" id="confm_password">
+							<label>Confirm Password</label>
+							<input class="input" type="password" name="confm_password" placeholder="Confirm Password"
+								id="">
+						</div>
+						<div class="psr mt-3">
+							<input type="submit" class="formBtn theme-btn btn-style-one" value="Update">
+
+							<a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
+
 						</div>
 					</form>
 				</div>
@@ -625,7 +640,7 @@
 									{% if assignment.status == "Pending" %}
 									  
 									<tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
-										<td style="width: 20%;">{{assignment.order.pk}}</td>
+										<td style="width: 20%;">{{assignment.order.order_id}}</td>
 										<td style="width: 20%;">{{assignment.order.subject}}</td>
 										<td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
 										<td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
@@ -655,7 +670,7 @@
 									  {% if lab.status == "Pending" %}
 										
 									  <tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
-										  <td style="width: 20%;">{{lab.labs.pk}}</td>
+										  <td style="width: 20%;">{{lab.labs.order_id}}</td>
 										  <td style="width: 20%;">{{lab.labs.subject}}</td>
 										  <td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
 										  <td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
