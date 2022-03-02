@@ -136,8 +136,12 @@ def project(request):
             user = request.user
             uname = user.username
             user = User.objects.get(username=uname)
-            LabOrders(user=user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
+            lab = LabOrders(user=user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
                    deadline=deadline, reference_material=reference_material,status='Awaiting Confirmation',assigned=False).save()
+            id = lab.pk
+            id +=1000
+            lab.order_id = f'TC-lab-{id}'
+            lab.save()
             return redirect('old-user')
         except:
             request.session['session_key'] = res
@@ -303,19 +307,12 @@ def signup(request):
                 username = request.session['session_key']
                 unknown_user = User.objects.get(username=username)
                 try:
-                    print(username)
                     laborder = LabOrders.objects.get(user=unknown_user)
                     laborder.user = user
-                    id = laborder.pk
-                    id +=1000
-                    laborder.order_id = f'TC-lab-{id}'
                     laborder.save()
                 except:
                     order = Orders.objects.get(user=unknown_user)
                     order.user = user
-                    id = order.pk
-                    id +=1000
-                    order.order_id = f'TC-HW-{id}'
                     order.save()
                 finally:
                     unknown_user.delete()
@@ -390,9 +387,7 @@ def signin(request):
             if userdetail.user_type=="Student":
                 if user.is_active:
                     login(request, user)
-                    usr = request.user
-                    uname= usr.username
-                    user = User.objects.get(username=uname)
+                    user = request.user
                     detail = UserDetails.objects.get_or_create(user=user)
                     if request.session.get('session_key'):
                         username = request.session['session_key']
@@ -407,10 +402,7 @@ def signin(request):
                         except:
                             order = Orders.objects.get(user=unknown_user)
                             order.user = user
-                            id = order.pk
-                            id +=1000
-                            order.order_id = f'TC-HW-{id}'
-                            order.save()          
+                            order.save()        
                         unknown_user.delete()
                         del request.session['session_key']
                         messages.success(request, f"Welcome Back {email}")
@@ -470,17 +462,18 @@ def onlyorders(request):
 def live_session(request):
     res = ''.join(random.choices(string.ascii_uppercase +
                              string.digits, k=20))
-    
+    b = request.user.is_authenticated
     if request.method == 'POST':
         deadline = request.POST.get('deadline')
         subject = request.POST.get('subject')
         file = request.FILES['files']
         duration = request.POST.get('duration')
         desc = request.POST.get('Details')
-        if request.user:
+        
+        if b:
             user = request.user
             order = Orders(deadline=deadline, subject=subject, assignment=file,
-                           duration=duration, desc=desc, user=user,status="Pending")
+                           duration=duration, desc=desc, user=user,status="Awaiting Confirmation")
             order.save()
             id = order.pk
             id += 1000
@@ -491,12 +484,13 @@ def live_session(request):
             request.session['session_key'] = res
             new_user = User(username=res,email=res)
             new_user.save()
+            print(new_user)
             order = Orders(deadline=deadline,subject=subject,assignment=file,duration=duration,user=new_user,desc=desc,status='Awaiting Confirmation')
+            order.save()
             id = order.pk
             id +=1000
             order.order_id = f'TC-LS-{id}'
             order.save()
-            return redirect('signup')
     return render(request, 'live-session.html')
 
 def tutor_register(request):

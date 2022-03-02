@@ -321,11 +321,6 @@
 						<h2 class="text-dark text-left">Password</h2>
 						<p>Create new password here</p>
 						<div class="">
-							<label>Current Password</label>
-							<input class="input" type="password" name="password" placeholder="Current Password"
-								id="password">
-						</div>
-						<div class="">
 							<label>New Password</label>
 							<input class="input" type="password" name="password" placeholder="New Password" id="">
 						</div>
@@ -369,8 +364,8 @@
 							<label>Reference Materials</label>
 							<div class="attachFile">
 								<div class="addfile">
-									<label for="choose-file" class="custom-file-upload">Add File</label>
-									<input name="reference_material" type="file" id="choose-file"
+									<label for="ref_mat" class="custom-file-upload">Add File</label>
+									<input name="reference_material" type="file" id="ref_mat"
 										accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png"
 										style="display: none;">
 								</div>
@@ -595,6 +590,11 @@
 		$('#ref').change(function () {
 			var i = $(this).prev('label').clone();
 			var file = $('#ref')[0].files[0].name;
+			$(this).prev('label').text(file);
+		});
+		$('#ref_mat').change(function () {
+			var i = $(this).prev('label').clone();
+			var file = $('#ref_mat')[0].files[0].name;
 			$(this).prev('label').text(file);
 		});
 		$('#live_f').change(function () {
