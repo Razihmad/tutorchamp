@@ -504,8 +504,8 @@ def tutor_register(request):
         password = config('tutorspassword')
         b = user[1]
         user = user[0]
-        UserDetails(user=user,user_type="Tutor").save()
         if b==True:
+            UserDetails(user=user,user_type="Tutor").save()
             user.set_password(password)
             user.is_active = False
             user.save()
