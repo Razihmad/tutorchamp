@@ -233,15 +233,13 @@
 </div>
 
 
-{% if user.is_authenticated %}
-
 <div class="text-center mb-5 pt-3 col-12">
 	<a id="view_all" href="javascript:void(0)" class="theme-btn btn-style-one">
 		<span class="txt">View All Reviews</span>
 	</a>
 </div>
 
-
+{% if user.is_authenticated %}
 <div class="review_form_con">
 	<form class="commForm mt-3 rating_form" method="post">
 		{% csrf_token %}

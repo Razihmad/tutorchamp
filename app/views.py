@@ -24,6 +24,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.core import serializers
 from django.core.mail import EmailMessage
 
+from app.serializers import LabSerializers, OrderSerializers
+
 
 def password_reset_request(request):
     if request.method == "POST":
@@ -136,8 +138,12 @@ def project(request):
             user = request.user
             uname = user.username
             user = User.objects.get(username=uname)
-            LabOrders(user=user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
+            lab = LabOrders(user=user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
                    deadline=deadline, reference_material=reference_material,status='Awaiting Confirmation',assigned=False).save()
+            id = lab.pk
+            id +=1000
+            lab.order_id = f'TC-lab-{id}'
+            lab.save()
             return redirect('old-user')
         except:
             request.session['session_key'] = res
@@ -234,7 +240,11 @@ def dashboard_old(request):
         id += 1000
         order.order_id = f'TC-HW-{id}'
         order.save()
+        serializers = OrderSerializers(order)
+        return JsonResponse(serializers.data)
     return render(request, 'dash_board.html', {'details': details, 'user': user, 'user_detail': user_detail,'labs':labs})
+
+
 
 # lab order from the dashboard
 @login_required(login_url='/login/')
@@ -259,7 +269,8 @@ def labordes(request):
         id +=1000
         lab.order_id = f'TC-lab-{id}'
         lab.save()
-        return redirect('old-user')
+        serializers = LabSerializers(lab)
+        return JsonResponse(serializers.data)
         
         
 # live session ordes from the dashboard 
@@ -282,7 +293,8 @@ def live_session_orders(request):
         id +=1000
         order.order_id = f'TC-LS-{id}'
         order.save()
-        return redirect('old-user')
+        serializers = OrderSerializers(order)
+        return JsonResponse(serializers.data)
 
 def signup(request):
     if request.method == 'POST':
@@ -303,19 +315,12 @@ def signup(request):
                 username = request.session['session_key']
                 unknown_user = User.objects.get(username=username)
                 try:
-                    print(username)
                     laborder = LabOrders.objects.get(user=unknown_user)
                     laborder.user = user
-                    id = laborder.pk
-                    id +=1000
-                    laborder.order_id = f'TC-lab-{id}'
                     laborder.save()
                 except:
                     order = Orders.objects.get(user=unknown_user)
                     order.user = user
-                    id = order.pk
-                    id +=1000
-                    order.order_id = f'TC-HW-{id}'
                     order.save()
                 finally:
                     unknown_user.delete()
@@ -390,9 +395,7 @@ def signin(request):
             if userdetail.user_type=="Student":
                 if user.is_active:
                     login(request, user)
-                    usr = request.user
-                    uname= usr.username
-                    user = User.objects.get(username=uname)
+                    user = request.user
                     detail = UserDetails.objects.get_or_create(user=user)
                     if request.session.get('session_key'):
                         username = request.session['session_key']
@@ -407,10 +410,7 @@ def signin(request):
                         except:
                             order = Orders.objects.get(user=unknown_user)
                             order.user = user
-                            id = order.pk
-                            id +=1000
-                            order.order_id = f'TC-HW-{id}'
-                            order.save()          
+                            order.save()        
                         unknown_user.delete()
                         del request.session['session_key']
                         messages.success(request, f"Welcome Back {email}")
@@ -470,17 +470,18 @@ def onlyorders(request):
 def live_session(request):
     res = ''.join(random.choices(string.ascii_uppercase +
                              string.digits, k=20))
-    
+    b = request.user.is_authenticated
     if request.method == 'POST':
         deadline = request.POST.get('deadline')
         subject = request.POST.get('subject')
         file = request.FILES['files']
         duration = request.POST.get('duration')
         desc = request.POST.get('Details')
-        if request.user:
+        
+        if b:
             user = request.user
             order = Orders(deadline=deadline, subject=subject, assignment=file,
-                           duration=duration, desc=desc, user=user,status="Pending")
+                           duration=duration, desc=desc, user=user,status="Awaiting Confirmation")
             order.save()
             id = order.pk
             id += 1000
@@ -491,12 +492,13 @@ def live_session(request):
             request.session['session_key'] = res
             new_user = User(username=res,email=res)
             new_user.save()
+            print(new_user)
             order = Orders(deadline=deadline,subject=subject,assignment=file,duration=duration,user=new_user,desc=desc,status='Awaiting Confirmation')
+            order.save()
             id = order.pk
             id +=1000
             order.order_id = f'TC-LS-{id}'
             order.save()
-            return redirect('signup')
     return render(request, 'live-session.html')
 
 def tutor_register(request):
@@ -506,12 +508,15 @@ def tutor_register(request):
         email = email.lower()
         qualification_level = request.POST.get('level')
         subject = request.POST.get('subject')
-        user = User.objects.get_or_create(username=email,email=email,first_name=name)
+        user = User.objects.get_or_create(username=email)
         password = config('tutorspassword')
         b = user[1]
         user = user[0]
-        UserDetails(user=user,user_type="Tutor").save()
         if b==True:
+            user.email=email
+            user.first_name=name
+            user.save()
+            UserDetails(user=user,user_type="Tutor").save()
             user.set_password(password)
             user.is_active = False
             user.save()
@@ -652,7 +657,8 @@ def interest(request):
         email = EmailMessage(subject='tutor interest has com',body=email_msg,from_email='TutorChamps Tutors Support <tutors@tutorchamps.com>',to=['adm.tutorchamps@gmail.com'])
         connection.send_messages([email])
         connection.close()
-        return redirect("tutor-dashboard")
+        data = {'msg':'interest shows successfully'}
+        return JsonResponse(data)
             
 
 @login_required(login_url='/tutor/')

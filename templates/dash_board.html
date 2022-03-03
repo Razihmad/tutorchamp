@@ -179,7 +179,7 @@
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 				</div>
 				<!-- home page form  -->
-				<form class="mb55 commForm mt-3 " method="POST" action="" enctype="multipart/form-data">
+				<form class="mb55 commForm mt-3 " id="hwform" method="POST" action="{% url 'old-user' %}" enctype="multipart/form-data">
 					{% csrf_token %}
 					<div class="flex_div">
 						<div class="col3 pt7">
@@ -231,7 +231,7 @@
 
 				<div class="inn_progrss"><span>In Progress (Assignments)</span> </div>
 
-				<table class="mt30 table table-striped" style="border: 2px solid #43b97e;">
+				<table class="mt30 table table-striped" id="hwdata" style="border: 2px solid #43b97e;">
 					
 					<tr class="thead"
 						style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
@@ -321,11 +321,6 @@
 						<h2 class="text-dark text-left">Password</h2>
 						<p>Create new password here</p>
 						<div class="">
-							<label>Current Password</label>
-							<input class="input" type="password" name="password" placeholder="Current Password"
-								id="password">
-						</div>
-						<div class="">
 							<label>New Password</label>
 							<input class="input" type="password" name="password" placeholder="New Password" id="">
 						</div>
@@ -345,7 +340,7 @@
 			</div>
 			<div class="live_session_content">
 				<!-- live session form -->
-				<form class="commForm mt-3" method="POST" action="/live_session_orders/" enctype="multipart/form-data">
+				<form class="commForm mt-3" id="lsform" method="POST" action="/live_session_orders/" enctype="multipart/form-data">
 					{% csrf_token %}
 					<div class="flex_div">
 						<div class="col3 pt7">
@@ -369,8 +364,8 @@
 							<label>Reference Materials</label>
 							<div class="attachFile">
 								<div class="addfile">
-									<label for="choose-file" class="custom-file-upload">Add File</label>
-									<input name="reference_material" type="file" id="choose-file"
+									<label for="ref_mat" class="custom-file-upload">Add File</label>
+									<input name="reference_material" type="file" id="ref_mat"
 										accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png"
 										style="display: none;">
 								</div>
@@ -399,7 +394,7 @@
 						</div>
 					</div>
 				</form>
-				<table class="mt30 table table-striped" style="border: 2px solid #43b97e;">
+				<table class="mt30 table table-striped" id="lsdata" style="border: 2px solid #43b97e;">
 					<tr class="thead"
 						style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
 						<td>Order ID</td>
@@ -432,7 +427,7 @@
 			</div>
 			<div class="project_lab_content">
 				<!-- lab form -->
-				<form class="commForm mt-3" method="POST" action="/lab_orders/" enctype="multipart/form-data">
+				<form class="commForm mt-3" id="labform" method="POST" action="/lab_orders/" enctype="multipart/form-data">
 					{% csrf_token %}
 					<div class="flex_div">
 						<div class="col4">
@@ -491,7 +486,7 @@
 						</div>
 					</div>
 				</form>
-				<table class="mt30 table table-striped" style="border: 2px solid #43b97e;">
+				<table class="mt30 table table-striped" id="labdata" style="border: 2px solid #43b97e;">
 					<tr class="thead"
 						style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
 						<td>Order ID</td>
@@ -597,6 +592,11 @@
 			var file = $('#ref')[0].files[0].name;
 			$(this).prev('label').text(file);
 		});
+		$('#ref_mat').change(function () {
+			var i = $(this).prev('label').clone();
+			var file = $('#ref_mat')[0].files[0].name;
+			$(this).prev('label').text(file);
+		});
 		$('#live_f').change(function () {
 			var i = $(this).prev('label').clone();
 			var file = $('#live_f')[0].files[0].name;
@@ -687,6 +687,26 @@ $("#imageUpload").change(function() {
     readURL(this);
 });
     </script>
+	<!--  -->
+							<!--  -->
+	<script>
+function getdata(){
+	$.ajax({
+		type:"GET",
+		url:'/getdata/',
+		success:function(data){
+		for(let i=0; i<data.length;i++){
+			var order_id = data[i].order_id
+			var deadline = data[i].deadline
+			var subject = data[i].subject
+			var status = data[i].status
+			var temp = '<tr><td>'+order_id+'</td><td>'+deadline+'</td><td>'+subject+'</td><td>'+status+'</td><td>'+'<div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
+			$("#labdata tr:last").after(temp)
+		}
+		}
+	})
+}
+	</script>
 
      <script>
             $('#files').change(function() {
@@ -695,6 +715,85 @@ $("#imageUpload").change(function() {
 				$(this).prev('label').text(file);
 			  });
         </script>
+		<script>
+			$("#hwform").submit(function(e){
+				e.preventDefault();
+				var form = $("#hwform")[0];
+				var data = new FormData(form);
+				data.append("csrfmiddlewaretoken",'{{ csrf_token }}')
+				var actionurl = $("#hwform").attr('action');
+				$.ajax({
+					type:"POST",
+					url:actionurl,
+					data:data,
+					cache: false,
+					processData: false,
+					contentType: false,
+					success:function(data){
+						var order_id = data.order_id
+						var assignment = data.assignment
+						var deadline = data.deadline
+						var subject = data.subject
+						var status = data.status
+						var temp = '<tr><td>'+order_id+'</td>'+'<td>'+'<a href='+assignment+'>'+'Preview' +'</a>' +'</td>'+'<td>'+deadline+'</td><td>'+subject+'</td>'+'<td class='+`${status}`+'>' +status+'</td>'+'<td>'+'<div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
+						$("#hwdata tr:last").after(temp)
+						$('#hwform').trigger('reset')
+					}
+				})
+			})
+			$("#lsform").submit(function(e){
+				e.preventDefault();
+				var form = $("#lsform")[0];
+				var data = new FormData(form);
+				data.append("csrfmiddlewaretoken",'{{ csrf_token }}')
+				var actionurl = $("#lsform").attr('action');
+				$.ajax({
+					type:"POST",
+					url:actionurl,
+					data:data,
+					cache: false,
+					processData: false,
+					contentType: false,
+					success:function(data){
+						var order_id = data.order_id
+						var assignment = data.assignment
+						var duration = data.duration
+						var deadline = data.deadline
+						var subject = data.subject
+						var status = data.status
+						var temp = '<tr><td>'+order_id+'</td>'+'<td>'+'<a href='+assignment+'>'+'Preview' +'</a>' +'</td>'+'<td>'+deadline+'</td>'+'<td>'+duration +'</td>' +'<td>'+subject+'</td>'+'<td class='+`${status}`+'>' +status+'</td>'+'<td>'+'<div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
+							$("#lsdata tr:last").after(temp)
+						$('#lsform').trigger('reset')
+					}
+			
+				})
+			})
+			
+			$("#labform").submit(function(e){
+				e.preventDefault();
+				var form = $("#labform")[0];
+				var data = new FormData(form);
+				data.append("csrfmiddlewaretoken",'{{ csrf_token }}')
+				var actionurl = $("#labform").attr('action');
+				$.ajax({
+					type:"POST",
+					url:actionurl,
+					data:data,
+					cache: false,
+					processData: false,
+					contentType: false,
+					success:function(data){
+						var order_id = data.order_id
+						var deadline = data.deadline
+						var subject = data.subject
+						var status = data.status
+						var temp = '<tr><td>'+order_id+'</td><td>'+deadline+'</td><td>'+subject+'</td>'+'<td class='+`${status}`+'>' +status+'</td>'+'<td>'+'<div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
+						$("#labdata tr:last").after(temp)
+						$('#labform').trigger('reset')
+					}
+				})
+			})
+		</script>
 
 </body>
 

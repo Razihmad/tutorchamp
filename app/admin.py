@@ -31,3 +31,6 @@ admin.site.register(TutorEarnedDetail)
 admin.site.register(Questions)
 
 admin.site.register(Reviews)
+
+admin.site.site_header  =  "Tutorchamps Admin"  
+admin.site.index_title  =  "TutorChamps Admin"
