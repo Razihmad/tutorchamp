@@ -33,7 +33,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'app',
     'social_django',
-    'crispy_forms',    
+    'crispy_forms',  
+    'rest_framework'  
 ]
 SESSION_SAVE_EVERY_REQUEST = True
 MIDDLEWARE = [
@@ -82,7 +83,7 @@ WSGI_APPLICATION = 'tutorchamps.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME':str(os.path.join( BASE_DIR, 'db.sqlite3'))
     }
 }
 
