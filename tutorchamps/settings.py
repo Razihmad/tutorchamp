@@ -33,7 +33,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'app',
     'social_django',
-    'crispy_forms',    
+    'crispy_forms',  
+    'rest_framework'  
 ]
 SESSION_SAVE_EVERY_REQUEST = True
 MIDDLEWARE = [

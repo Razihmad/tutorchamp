@@ -24,6 +24,8 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.core import serializers
 from django.core.mail import EmailMessage
 
+from app.serializers import LabSerializers, OrderSerializers
+
 
 def password_reset_request(request):
     if request.method == "POST":
@@ -238,7 +240,11 @@ def dashboard_old(request):
         id += 1000
         order.order_id = f'TC-HW-{id}'
         order.save()
+        serializers = OrderSerializers(order)
+        return JsonResponse(serializers.data)
     return render(request, 'dash_board.html', {'details': details, 'user': user, 'user_detail': user_detail,'labs':labs})
+
+
 
 # lab order from the dashboard
 @login_required(login_url='/login/')
@@ -263,7 +269,8 @@ def labordes(request):
         id +=1000
         lab.order_id = f'TC-lab-{id}'
         lab.save()
-        return redirect('old-user')
+        serializers = LabSerializers(lab)
+        return JsonResponse(serializers.data)
         
         
 # live session ordes from the dashboard 
@@ -286,7 +293,8 @@ def live_session_orders(request):
         id +=1000
         order.order_id = f'TC-LS-{id}'
         order.save()
-        return redirect('old-user')
+        serializers = OrderSerializers(order)
+        return JsonResponse(serializers.data)
 
 def signup(request):
     if request.method == 'POST':

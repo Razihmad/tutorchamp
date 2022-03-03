@@ -159,6 +159,9 @@
 .Review{color: #d0f600;}
 .Confimed{color: #007bff;}
 .Confirmation{color: #ffc107;}
+.Awaiting{
+    color: #ffc107;
+}
 .Revision{color: #ffa500;}
 .Pending{color: #90ee90;}
 
