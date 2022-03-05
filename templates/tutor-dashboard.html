@@ -14,6 +14,7 @@
 	<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<style>
+		.notifications_table{margin-top: 30px}
 		.noti_icon_box {
 			position: absolute;
 			top: 5px;
@@ -160,7 +161,6 @@
 		}
 
 		.live_session_content form {
-			max-width: 75%;
 			width: 100%;
 		}
 
@@ -322,6 +322,9 @@
 			width: 100%;
 			height: 43px;
 		}
+		#confm_password{
+			width: 100%;
+		}
 	</style>
 </head>
 
@@ -363,8 +366,7 @@
 					<div id="menu1" class="tab-pane fade active show">
 						<form class="commForm" method="" action="">
 							<div class="flex_div search_box">
-								<h2>Homework Assignment</h2>
-								<input type="search" placeholder="Search Here ..." class="input search" name="">
+								<h2> Completed Homework</h2>
 							</div>
 							<table class="table table-striped" style="border: 2px solid #43b97e;">
 								<tbody>
@@ -377,14 +379,16 @@
 										<td style="width: 20%;">Amount</td>
 									</tr>
 									{% for assignment in assignments %}
-									  
-									<tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
-										<td style="width: 20%;">{{assignment.order.pk}}</td>
-										<td style="width: 20%;">{{assignment.order.subject}}</td>
-										<td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
-										<td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
-										<td style="width: 20%;color: #43b97e;">{{assignment.amount}}</td>
-									</tr>
+									  {% if assignment.status == "Completed" %}
+										
+									  <tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
+										  <td style="width: 20%;">{{assignment.order.order_id}}</td>
+										  <td style="width: 20%;">{{assignment.order.subject}}</td>
+										  <td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
+										  <td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
+										  <td style="width: 20%;color: #43b97e;">{{assignment.amount}}</td>
+										</tr>
+										{% endif %}
 									{% endfor %}
 							
 							
@@ -395,8 +399,7 @@
 					<div id="menu3" class="tab-pane fade">
 						<form class="commForm" method="" action="">
 							<div class="flex_div search_box">
-								<h2>Lab</h2>
-								<input type="search" placeholder="Search Here ..." class="input search" name="">
+								<h2> Completed Lab</h2>
 							</div>
 							<table class="table table-striped" style="border: 2px solid #43b97e;">
 								<tbody>
@@ -409,14 +412,16 @@
 										<td style="width: 20%;">Amount</td>
 									</tr>
 									{% for lab in labs %}
-									  
-									<tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
-										<td style="width: 20%;">{{lab.labs.pk}}</td>
-										<td style="width: 20%;">{{lab.labs.subject}}</td>
-										<td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
-										<td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
-										<td style="width: 20%;color: #43b97e;">{{lab.amount}}</td>
-									</tr>
+									  {% if lab.status == "Completed" %}
+										
+									  <tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
+										  <td style="width: 20%;">{{lab.labs.order_id}}</td>
+										  <td style="width: 20%;">{{lab.labs.subject}}</td>
+										  <td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
+										  <td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
+										  <td style="width: 20%;color: #43b97e;">{{lab.amount}}</td>
+										</tr>
+										{% endif %}
 									{% endfor %}
 									
 
@@ -432,8 +437,8 @@
 						{% csrf_token %}
 						<div class="userprof"><img style="    filter: grayscale(1);"
 								src="/static/dashboard/images/profi.png"></div>
-						<h2 class="text-dark text-left">Ajay Test</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing</p>
+						<h2 class="text-dark text-left">{{tutor_register.name}}</h2>
+						<p>Edit/update your details here</p>
 						<div class="">
 							<label>Enter Your Name </label>
 							<input type="name" name="nae" class="input"  placeholder="Enter Name"
@@ -468,199 +473,102 @@
 					</form>
 				</div>
 				<div class="col50">
-					<form class="commForm text-center mt-3">
-						<p style="line-height: 24px; margin-bottom: 26px;">No subject selected. Please select subjects
-							to start getting assignment</p>
-						<div class="psr text-center mt-3">
-							<a href="javascript:void(0)" class="change_sub" id="change_sub"><span class="txt">Change
-									Subject <i style="padding-left: 5px;" class="fa fa-pencil"></i></span></a>
+					<form class="commForm mt-3" method="POST" action="{% url 'tutor_reset_password' %}">
+						{% csrf_token %}
+						<h2 class="text-dark text-left">Password</h2>
+						<p>Create new password here</p>
+						<div class="">
+							<label>New Password</label>
+							<input class="input" type="password" name="password" placeholder="New Password" id="">
+						</div>
+						<div class="" id="confm_password">
+							<label>Confirm Password</label>
+							<input class="input" type="password" name="confm_password" placeholder="Confirm Password"
+								id="">
+						</div>
+						<div class="psr mt-3">
+							<input type="submit" class="formBtn theme-btn btn-style-one" value="Update">
+
+							<a href="" class="theme-btn btn-style-one"><span class="txt">Update</span></a>
+
 						</div>
 					</form>
-				</div>
-				<div class="Update_subject_content">
-					<div class="main_sub_con">
-						<div class="main_sub_con_inner">
-							<span>Group A</span>
-							<p>You can select subjects from only one Department in this group</p>
-							<ul class="nav nav-tabs border-0">
-								<li><a data-toggle="tab" href="#subject_1"><img
-											src="/static/dashboard/images/electronic.png"> Electronics And Communication
-										Engineering</a> </li>
-								<li><a data-toggle="tab" href="#subject_2"><img
-											src="/static/dashboard/images/electronic.png"> Electronics And Communication
-										Engineering</a> </li>
-								<li><a data-toggle="tab" href="#subject_3"><img
-											src="/static/dashboard/images/electronic.png"> Electronics And Communication
-										Engineering</a> </li>
-							</ul>
-						</div>
-					</div>
-					<div class="sub_subject_con">
-						<div class="static_t">
-							<span>Chose Branch to Select<span> Coresponding Subjects</span> </span>
-						</div>
-						<div class="sub_subj_contnt">
-							<form>
-								<div class="tab-content">
-									<div id="subject_1" class="tab-pane fade">
-										<p>You can select subjects from only one Department in this group</p>
-										<div class="checkbox_outer">
-											<input type="checkbox" id="c_plus" name="c_plus" value="">
-											<label for="c_plus"> c/c++</label>
-										</div>
-										<div class="checkbox_outer">
-											<input type="checkbox" id="java" name="java" value="">
-											<label for="java"> Java</label>
-										</div>
-										<div class="checkbox_outer">
-											<input type="checkbox" id="basic_ec" name="basic_ec" value="">
-											<label for="basic_ec"> Basic EC</label>
-										</div>
-										<div class="checkbox_outer">
-											<input type="checkbox" id="matlab" name="matlab" value="">
-											<label for="matlab"> matlab</label>
-										</div>
-									</div>
-									<div id="subject_2" class="tab-pane fade">
-										<p>You can select subjects from only one Department in this group</p>
-										<div class="checkbox_outer">
-											<input type="checkbox" id="c_plus" name="c_plus" value="">
-											<label for="c_plus"> c/c++</label>
-										</div>
-										<div class="checkbox_outer">
-											<input type="checkbox" id="basic_ec" name="basic_ec" value="">
-											<label for="basic_ec"> Basic EC</label>
-										</div>
-									</div>
-									<div id="subject_3" class="tab-pane fade">
-										<p>You can select subjects from only one Department in this group</p>
-										<div class="checkbox_outer">
-											<input type="checkbox" id="c_plus" name="c_plus" value="">
-											<label for="c_plus"> c/c++</label>
-										</div>
-										<div class="checkbox_outer">
-											<input type="checkbox" id="java" name="java" value="">
-											<label for="java"> Java</label>
-										</div>
-										<div class="checkbox_outer">
-											<input type="checkbox" id="basic_ec" name="basic_ec" value="">
-											<label for="basic_ec"> Basic EC</label>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-					<div class="selected_subject_con">
-						<form class="commForm p-3" method="" action="">
-							<div class="pb-3"><span><i style="color: #47bf7f;" class="fa fa-check-circle"
-										aria-hidden="true"></i> Selected Subjects</span></div>
-
-							<div class="form_group">
-								<div class="">
-									<label>Electronic and Communication Engineering</label>
-									<input class="input" required="" name="subject" type="text">
-								</div>
-							</div>
-							<div class="form_group">
-								<div class="">
-									<label>CHemical Engineering</label>
-									<input class="input" required="" name="subject" type="text">
-								</div>
-							</div>
-							<div class="form_group">
-								<div class="">
-									<label>Electrical Engineering</label>
-									<input class="input" required="" name="subject" type="text">
-								</div>
-							</div>
-							<div class="form_group">
-								<div class="">
-									<label>Civil Engineering</label>
-									<input class="input" required="" name="subject" type="text">
-								</div>
-							</div>
-							<div class="form_group">
-								<div class="">
-									<label>Mechanical Engineering</label>
-									<input class="input" required="" name="subject" type="text">
-								</div>
-							</div>
-							<div class="text-center psr mt-3">
-								<input type="submit" class="formBtn theme-btn btn-style-one" value="Update Subject">
-
-								<a href="" class="theme-btn btn-style-one"><span class="txt">Update Subject</span></a>
-
-							</div>
-						</form>
-					</div>
 				</div>
 			</div>
 
 			<div class="live_session_content">
-				<div class="flex_div">
-					<form class="commForm" method="" action="">
-						<div class="flex_div search_box">
-							<h2>Homework Assignment</h2>
-							<input type="search" placeholder="Search Here ..." class="input search" name="">
-						</div>
-						<table class="table table-striped" style="border: 2px solid #43b97e;">
-							<tbody>
-								<tr class="thead"
-									style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
-									<td style="width: 20%;">ID</td>
-									<td style="width: 20%;">Subject</td>
-									<td style="width: 20%;">Deadline</td>
-									<td style="width: 20%;">Time</td>
-									<td style="width: 20%;">Amount</td>
-								</tr>
+				<ul style="margin: 0 0 -10px 20px;" class="nav nav-tabs border-0">
+					<li class=""><a data-toggle="tab" class="active" href="#tab_1">Assignments</a></li>
+					<li><a data-toggle="tab" href="#tab_2">lab</a></li>
+				</ul>
 
-								<tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
-									<td style="width: 20%;">55640</td>
-									<td style="width: 20%;">XYZ</td>
-									<td style="width: 20%;color:#43b97e;">Oct 10th</td>
-									<td style="width: 20%;color:#43b97e;">02 : 00 pm</td>
-									<td style="width: 20%;color: #43b97e;">1450</td>
-								</tr>
+				<div class="tab-content">
 
-							</tbody>
-						</table>
-					</form>
-					<div class="customCountDown">
-						Timer Here ....
+					<div id="tab_1" class="tab-pane fade active show">
+						<form class="commForm" method="" action="">
+							<div class="flex_div search_box">
+								<h2> Pending Homework</h2>
+							</div>
+							<table class="table table-striped" style="border: 2px solid #43b97e;">
+								<tbody>
+									<tr class="thead"
+										style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
+										<td style="width: 20%;">Order ID</td>
+										<td style="width: 20%;">Subject</td>
+										<td style="width: 20%;">Deadline</td>
+										<td style="width: 20%;">Time</td>
+										<td style="width: 20%;">Amount</td>
+									</tr>
+									{% for assignment in assignments %}
+									{% if assignment.status == "Pending" %}
+									  
+									<tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
+										<td style="width: 20%;">{{assignment.order.order_id}}</td>
+										<td style="width: 20%;">{{assignment.order.subject}}</td>
+										<td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
+										<td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
+										<td style="width: 20%;color: #43b97e;">{{assignment.amount}}</td>
+									</tr>
+									{% endif %}
+									{% endfor %}
+							
+							
+								</tbody>
+							</table>
+						</form>
 					</div>
-				</div>
-				<div class="flex_div" style="margin-top: 25px;">
-					<form class="commForm" method="" action="">
-						{% csrf_token %}
-						<div class="flex_div search_box">
-							<h2>Live Session </h2>
-							<input type="search" placeholder="Search Here ..." class="input search" name="">
-						</div>
-						<table class="table table-striped" style="border: 2px solid #43b97e;">
-							<tbody>
-								<tr class="thead"
-									style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
-									<td style="width: 20%;">ID</td>
-									<td style="width: 20%;">Subject</td>
-									<td style="width: 20%;">Date</td>
-									<td style="width: 20%;">Start Time</td>
-									<td style="width: 20%;">Duration</td>
-								</tr>
+					<div id="tab_2" class="tab-pane fade">
+						<form class="commForm" method="" action="">
+							<div class="flex_div search_box">
+								<h2> Pending Lab</h2>
+							</div>
+							<table class="table table-striped" style="border: 2px solid #43b97e;">
+								<tbody>
+									<tr class="thead"
+										style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
+										<td style="width: 20%;">ID</td>
+										<td style="width: 20%;">Subject</td>
+										<td style="width: 20%;">Deadline</td>
+										<td style="width: 20%;">Time</td>
+										<td style="width: 20%;">Amount</td>
+									</tr>
+									{% for lab in labs %}
+									  {% if lab.status == "Pending" %}
+										
+									  <tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
+										  <td style="width: 20%;">{{lab.labs.order_id}}</td>
+										  <td style="width: 20%;">{{lab.labs.subject}}</td>
+										  <td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
+										  <td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
+										  <td style="width: 20%;color: #43b97e;">{{lab.amount}}</td>
+										</tr>
+										{% endif %}
+									{% endfor %}
+									
 
-								<tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
-									<td style="width: 20%;">ID</td>
-									<td style="width: 20%;">Subject</td>
-									<td style="width: 20%; color:#43b97e;">Date</td>
-									<td style="width: 20%; color:#43b97e;">Start Time</td>
-									<td style="width: 20%;">Duration</td>
-								</tr>
-
-							</tbody>
-						</table>
-					</form>
-					<div class="customCountDown">
-						Timer Here ....
+								</tbody>
+							</table>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -688,8 +596,7 @@
 							<input type="submit" class="theme-btn btn-style-one txt" value="Redeem">
 						</div>
 				</form>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. </p>
+				<p style="text-align: center;">Please update your account details completely so that there is no problem while redeeming your amount.</p>
 				<div class="dTbale Payment_content">
 					<ul style="margin: 0 0 -10px 20px;" class="nav nav-tabs border-0">
 						<li class=""><a data-toggle="tab" class="" href="#tutor_payments">Tutor Payments</a></li>
@@ -807,9 +714,35 @@
 				</div>
 			</div>
 		</div>
+		<div class="notifications_table">
+				<table class="table table-striped" style="border: 2px solid #43b97e;">
+					<tbody>
+						<tr class="thead" style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
+							<td style="width: 20%;">ID</td>
+							<td style="width: 20%;">Assignment</td>
+							<td style="width: 20%;">Deadline</td>
+							<td style="width: 20%;">Amount</td>
+							<td style="width: 20%;">Interest</td>
+						</tr>
+						{% for order in orders %}
+						<tr style="font-size: 15px;color: #000;border-top: none;width: 100%;text-align: center;">
+							<td style="width: 20%;">{{order.order_id}}</td>
+							<td style="width: 20%;"><a href="{{order.assignment.url}}">Preview</a></td>
+							<td style="width: 20%;">{{order.deadline}}</td>
+							<td style="width: 20%;">{{order.amount}}</td>
+							<td style="width: 20%;"><form action="/interest/" method="post" id="interest">
+								{% csrf_token %}
+								<input type="text" name="order_id" id="order_id" value="{{order.order_id}}" style="display: none;">
+								<input id="b" type="submit" value="Interested">
+							</form></td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
 		<div class="noti_icon_box">
 			<span><i style="color: #ffe00c;" class="fa fa-comment"></i></span>
-			<span><i class="fa fa-bell"></i></span>
+			<span id="notifications"><i class="fa fa-bell"></i></span>
 		</div>
 	</div>
 	</div>
@@ -898,6 +831,8 @@
 		</div>
 	</div>
 
+
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -917,13 +852,28 @@
 			$(".live_session_content").removeClass("active_");
 			$("#instructions_content").removeClass("active_");
 			$(".project_lab_content").removeClass("active_");
+			$(".notifications_table").removeClass("active_");
+
 		});
+		$("#notifications").click(function () {
+			$(".homeContant").removeClass("active_");
+			$(".profileContent").removeClass("active_");
+			$(".live_session_content").removeClass("active_");
+			$("#instructions_content").removeClass("active_");
+			$(".project_lab_content").removeClass("active_");
+			$('.sidebar_menu ul li a').removeClass("active");
+			$(".notifications_table").addClass("active_");
+			
+		});
+		
 		$("#profile").click(function () {
 			$(".profileContent").addClass("active_");
 			$(".homeContant").removeClass("active_");
 			$(".live_session_content").removeClass("active_");
 			$("#instructions_content").removeClass("active_");
 			$(".project_lab_content").removeClass("active_");
+			$(".notifications_table").removeClass("active_");
+
 		});
 		$("#live_session").click(function () {
 			$(".live_session_content").addClass("active_");
@@ -931,6 +881,8 @@
 			$(".homeContant").removeClass("active_");
 			$("#instructions_content").removeClass("active_");
 			$(".project_lab_content").removeClass("active_");
+			$(".notifications_table").removeClass("active_");
+
 		});
 		$("#instruction").click(function () {
 			$("#instructions_content").addClass("active_");
@@ -938,6 +890,8 @@
 			$(".homeContant").removeClass("active_");
 			$(".live_session_content").removeClass("active_");
 			$(".project_lab_content").removeClass("active_");
+			$(".notifications_table").removeClass("active_");
+
 		});
 		$("#project_lab").click(function () {
 			$(".project_lab_content").addClass("active_");
@@ -945,6 +899,8 @@
 			$(".homeContant").removeClass("active_");
 			$(".live_session_content").removeClass("active_");
 			$("#instructions_content").removeClass("active_");
+			$(".notifications_table").removeClass("active_");
+			
 		});
 
 		$("#change_sub").click(function () {
@@ -973,6 +929,25 @@
 				$('.static_t span').hide();
 			});
 		});
+		
+		$("#interest").submit(function(e){
+			e.preventDefault();
+			var form = $("#interest")[0];
+			var data = new FormData(form)
+			data.append("csrfmiddlewaretoken",'{{ csrf_token }}')
+            var actionurl = $("#interest").attr('action');
+			$.ajax({
+				type:"POST",
+				url:actionurl,
+				data:data,
+                cache: false,
+                processData: false,
+                contentType: false,
+				success:function(data){
+					alert(data['msg'])
+				}
+			})
+		})
 	</script>
 
 

@@ -7,7 +7,7 @@
 <meta name="description" content="Login to get all your assignments/homework solved instantly from subject expert tutors." />
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://tutorchamps.com/login/" />
-
+<link rel="shortcut icon" href="../static/images/favicon.png" type="image/x-icon">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
@@ -156,6 +156,7 @@
             <img src="{% static 'images/password_Img.svg' %}" alt="password">
             <input class="form-control" type="password" name="password" placeholder="Password"
                 id="password">
+            <i onclick="changeInputType()" class="show_password_icon fa fa-eye"></i>
         </div>
         <div class="row mt-3 login" style="display: flex;">
             <div class="col-6 pr-0 col-sm-6">
@@ -165,7 +166,7 @@
             </div>
             <div class="col-6 col-sm-6 text-center">
                 <div class="forgotpas">
-                    <a style="font-size: 13px; color: #43b97e;" href="/password_reset/" id="fp" class="fp">Forgot Password?</a>
+                    <a data-toggle="modal" data-target="#myModal" style="font-size: 13px; color: #43b97e;" href="javascript:void(0)" id="" class="fp">Forgot Password?</a>
                 </div>
             </div>
         </div>
@@ -189,7 +190,46 @@
         </section>  
     
     </div>
+
+
+    <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header border-0 pt-2">
+                            <button type="button" class="close pb-0" data-dismiss="modal">×</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body pt-1">
+                            <div id="reset_psw" class="reset_psw commForm mb-3">
+                                <h1 class="text-center font-weight-bold mt-3" id="h">Reset Password</h1>
+                                 <p class="text-center mb-5 p-0" id="cont">Forgotten your password? Enter your email address below, and we'll email instructions for setting a new one.</p>
+                                 <form method="POST" id="reset" action="/password_reset/">
+                                     {% csrf_token %}
+                                    <div id="div_id_email" class="control-group"> 
+                                        <label for="id_email" class="control-label mb-1 requiredField">
+                                    Your Email<span class="asteriskField">*</span> </label> 
+                                        <div class="controls"> 
+                                            <input type="email" name="email" autocomplete="email" maxlength="254" class="emailinput input" required="" placeholder="Enter Your Email" id="id_email"> 
+                                        </div> 
+                                    </div>
+                                    <div class="text-center psr mt-3">
+                                        <input type="submit" class="formBtn theme-btn btn-style-one" value="Send Email" >
+                                        <a href="" class="theme-btn mt-3 btn-style-one">
+                                            <span class="txt">Send Email</span>
+                                        </a>
+                                    </div>
+                                 </form>
+                           </div>
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
     <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         $('#login_form').submit(function(e){
             e.preventDefault();
@@ -207,13 +247,55 @@
                 success:function(data){
                     if(data.status=='error'){
                         var content = data.msg
-                        $('.epError').append(content)
+                        $('.epError').text(content)
                     }
                     else{
                         window.location.href = window.location.origin+'/dashboard/old-user';
                     }
                 }
             })  
+        })
+    </script>
+    <script>
+        function changeInputType() {
+        $(".show_password_icon").toggleClass("fa-eye-slash");
+          var x = document.getElementById("password");
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+        }
+
+        $('#reset').submit(function(e){
+            e.preventDefault();
+            var form = $('#reset')[0];
+            var form_data = new FormData(form);
+            form_data.append("csrfmiddlewaretoken",'{{ csrf_token }}')
+            var actionurl = $("#reset").attr("action");
+            $.ajax({
+                type:"POST",
+                url:actionurl,
+                data:form_data,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success:function(data){
+                    if(data.status=="success"){
+                        $("#h").text("Password reset sent")
+                        $("#cont").text(data.message)
+                        $("#reset").css("display","none");
+                    }
+                }
+                
+            })
+            .done(function(){
+                console.log("done")
+            })
+            .fail(function(){
+                console.log("fail")
+            })
+            
         })
     </script>
 </body>

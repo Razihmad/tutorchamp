@@ -33,7 +33,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'app',
     'social_django',
-    'crispy_forms',    
+    'crispy_forms',  
+    'rest_framework'  
 ]
 SESSION_SAVE_EVERY_REQUEST = True
 MIDDLEWARE = [
@@ -84,8 +85,7 @@ WSGI_APPLICATION = 'tutorchamps.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-
+        'NAME':str(os.path.join( BASE_DIR, 'db.sqlite3'))
     }
 }
 
@@ -147,14 +147,8 @@ MEDIA_DIR = os.path.join(BASE_DIR,'media')
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/dashboard/old-user'
-SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/dashboard/new-user'
-# if DEBUG==False:
-#     STATIC_ROOT = os.path.join(BASE_DIR,'static')
-# else:
-#     STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),]
-STATIC_ROOT = os.path.join(BASE_DIR,'static')
-SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/dashboard/new-user'
+LOGIN_REDIRECT_URL = '/dashboard/old-user/'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/dashboard/new-user/'
 if DEBUG==False:
     STATIC_ROOT = os.path.join(BASE_DIR,'static')
 else:

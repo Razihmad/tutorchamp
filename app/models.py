@@ -1,9 +1,11 @@
+from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
 
 class UserDetails(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user_type = models.CharField(max_length=100,choices=(("Student","Student"),("Tutor","Tutor")))
     profile = models.ImageField(null=True,blank=True)
     name = models.CharField(max_length=100)
     phone = models.CharField(max_length=20)
@@ -35,7 +37,7 @@ class Orders(models.Model):
     duration = models.CharField(max_length=100,null=True,blank=True)
     CHOICES = (
         ('Awaiting Confirmation','Awaiting Confirmation'),
-        ('Order Confimed','Order Confimed'),
+        ('Order Confirmed','Order Confirmed'),
         ('Order Rejected','Order Rejected'),
         ('Assignment In Progress','Assignment In Progress'),
         ('Review Your Assignment','Review Your Assignment'),
@@ -46,10 +48,11 @@ class Orders(models.Model):
     submission_date = models.DateField(default=date.today())
     assigned = models.BooleanField(default=False)
     reference_material = models.ImageField(null=True,blank=True)
-
+    amount = models.IntegerField(default=0)
 
     def __str__(self):
-        return str(self.pk)
+        return self.order_id
+    
     class Meta:
         db_table = ''
         managed = True
@@ -64,25 +67,29 @@ class LabOrders(models.Model):
     lab_data = models.FileField(null=True,blank=True)
     report_guidline = models.FileField(null=True,blank=True)
     reference_material = models.FileField(null=True,blank=True)
-    Pending = 'Pending'
-    Completed = 'Completed'
     CHOICES = (
-        (Pending,'Pending'),
-        (Completed,'Completed')
+        ('Awaiting Confirmation','Awaiting Confirmation'),
+        ('Order Confirmed','Order Confirmed'),
+        ('Order Rejected','Order Rejected'),
+        ('Assignment In Progress','Assignment In Progress'),
+        ('Review Your Assignment','Review Your Assignment'),
+        ('Assignment Under Revision','Assignment Under Revision'),
+        ('Assignment Completed','Assignment Completed'),
     )
     status = models.CharField(max_length=100,choices=CHOICES)
     submission_date = models.DateField(default=date.today())
     assigned = models.BooleanField(default=False)
+    amount = models.IntegerField(default=0)
     
     def __str__(self):
-        return str(self.pk)
+        return self.order_id
 
 
             
 class TutorRegister(models.Model):
     tutor = models.OneToOneField(User, on_delete=models.CASCADE)
     unique_id = models.CharField(unique=True,null=True,blank=True,max_length=20)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100,null=True,blank=True)
     phone = models.CharField(max_length=13,null=True,blank=True)
     state = models.CharField(max_length=50,blank=True,null=True)
     city = models.CharField(max_length=60,blank=True,null=True)
@@ -203,16 +210,21 @@ class TutorBalance(models.Model):
         
 class Questions(models.Model):
     question = models.FileField()
-    subject = models.CharField(max_length=100,choices=(('Physics','Physics'),('Maths','Maths'),
-                                                       ('Chemistry','Chemistry'),('Science','Science'),('English','English'),
-                                                       ('Accounting','Accounting'),('Economics','Economics'),
-                        ('Biology','Biology'),('Programming','Programming'),('Essay Writing','Essay Writing'),
-                        ('Statistics','Statistics'),('Computer Science','Computer Science'),('Nursing','Nursing'),('Case Study Writing','Case Study Writing'),
-                        ('Electrical','Electrical'),('Mechanical','Mechanical'),('Finance','Finance'),('Civil Engineering','Civil Engineering')))
-    tag = models.CharField(max_length=50,choices=(('Basic','Basic'),('Medium','Medium'),('Hard','Hard')))                  
+    subject = models.CharField(max_length=100,choices=(('Physics','Physics'),('Maths','Maths'),('Essay Writing','Essay Writing'),
+                                                       ('Chemistry','Chemistry'),('Accounting','Accounting'),
+                                                       ('Economics','Economics'),('Management','Management'),
+                        ('Biology','Biology'),('Chemical Engineering','Chemical Engineering'),
+                        ('Computer Science','Computer Science'),('Nursing','Nursing'),
+                        ('Electrical','Electrical'),('Mechanical','Mechanical'),
+                        ('Finance','Finance'),('Civil Engineering','Civil Engineering')))
     def __str__(self):
         return self.subject
 
+    class Meta:
+        db_table = ''
+        managed = True
+        verbose_name = 'Question'
+        verbose_name_plural = 'Questions'
 
 class Blog(models.Model):
     title = models.CharField(max_length=500)
@@ -228,8 +240,7 @@ class Blog(models.Model):
 class Reviews(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     content = models.CharField(max_length=1000)
-    rating = models.IntegerField()
-    city = models.CharField(max_length=100)
+    rating = models.CharField(max_length=10)
 
     def __str__(self):
         return self.user.username

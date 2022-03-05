@@ -66,7 +66,7 @@
     color: red;
     text-align: center;
     text-transform: capitalize;
-    margin: -35px 0 40px 0;}
+    margin: -20px 0 15px 0;}
     .loginField img {
 	    filter: grayscale(1);
 	}
@@ -127,6 +127,7 @@
             <img src="{% static 'images/password_Img.svg' %}" alt="password">
             <input class="form-control" type="password" name="password" placeholder="Create Password"
                 id="password">
+            <i onclick="changeInputType()" class="show_password_icon fa fa-eye"></i>
         </div>
         <div class="text-center psr mt-3">
             <input type="submit" class="formBtn theme-btn btn-style-one" value="Sign Up">
@@ -176,6 +177,18 @@
                 }
             })  
         })
+    </script>
+
+    <script>
+        function changeInputType() {
+        $(".show_password_icon").toggleClass("fa-eye-slash");
+          var x = document.getElementById("password");
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+        }
     </script>
 </body>
 </html>

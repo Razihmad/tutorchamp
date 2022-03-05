@@ -24,38 +24,41 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.core import serializers
 from django.core.mail import EmailMessage
 
+from app.serializers import LabSerializers, OrderSerializers
+
 
 def password_reset_request(request):
     if request.method == "POST":
-        password_reset_form = PasswordResetForm(request.POST)
-        if password_reset_form.is_valid():
-            data = password_reset_form.cleaned_data['email'].lower()
-            associated_users = User.objects.filter(Q(email=data))
-            if associated_users.exists():
-                for user in associated_users:
-                    subject = "Password Reset Requested"
-                    email_template_name = "password_reset_email.txt"
-                    c = {
-                        "email": user.email,
-                        'domain': '127.0.0.1:8000',
-                        'site_name': 'Website',
-                        "uid": urlsafe_base64_encode(force_bytes(user.pk)),
-                        "user": user,
-                        'token': default_token_generator.make_token(user),
-                        'protocol': 'http',
-                    }
-                    email = render_to_string(email_template_name, c)
-                    connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
-                                             use_tls=True,port=587,username='admin@tutorchamps.com',password=config('adminPassword'))
-                    connection.open()
-                    try:
-                        email = EmailMessage(subject, email, 'admin@tutorchamps.com',
-                                  [user.email], fail_silently=False)
-                        connection.send_messages([email])
-                        connection.close()
-                    except BadHeaderError:
-                        return HttpResponse('Invalid header found.')
-                    return redirect("/password_reset/done/")
+        email = request.POST.get('email')
+        data = email.lower()
+        associated_users = User.objects.filter(Q(email=data))
+        if associated_users.exists():
+            for user in associated_users:
+                subject = "Password Reset Requested"
+                email_template_name = "password_reset_email.txt"
+                c = {
+                    "email": user.email,
+                    'domain': '127.0.0.1:8000',
+                    'site_name': 'Website',
+                    "uid": urlsafe_base64_encode(force_bytes(user.pk)),
+                    "user": user,
+                    'token': default_token_generator.make_token(user),
+                    'protocol': 'http',
+                }
+                email = render_to_string(email_template_name, c)
+                connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
+                                         use_tls=True,port=587,username='admin@tutorchamps.com',password=config('adminPassword'))
+                connection.open()
+                try:
+                    email = EmailMessage(subject=subject, body=email, from_email='TutorChamps Admin <admin@tutorchamps.com>',
+                              to=[user.email])
+                    connection.send_messages([email])
+                    connection.close()
+                except BadHeaderError:
+                    return HttpResponse('Invalid header found.')
+                msg = {"status":"success","message":"We've emailed you instructions for setting your password, if an account exists with the email you entered. You should receive them shortly."+
+                       "If you don't receive an email, please make sure you've entered the address you registered with, and check your spam folder."}
+                return JsonResponse(data=msg)
 
     password_reset_form = PasswordResetForm()
     return render(request=request, template_name="password_reset.html", context={"password_reset_form": password_reset_form})
@@ -85,13 +88,17 @@ def reviews(request):
     if request.method=="POST":
         if request.user.is_authenticated:
             content = request.POST.get('content')
-            rating = request.POST.get('rating')
+            rating = int(request.POST.get('rating'))
+            r = '' 
+            for i in range(1,rating+1):
+                r += str(i)
             user = request.user
-            Reviews(user=user,content=content,rating=rating).save()
+            Reviews(user=user,content=content,rating=r).save()
         else:
             messages.info(request,'Please Login First')
             return redirect('reviews')
-    return render(request, 'reviews.html')
+    reviews = Reviews.objects.all()
+    return render(request, 'reviews.html',{'reviews':reviews})
 
 
 def about(request):
@@ -118,6 +125,8 @@ def dissert(request):
 
 
 def project(request):
+    res = ''.join(random.choices(string.ascii_uppercase +
+                             string.digits, k=20))
     if request.method == "POST":
         subject = request.POST.get('subject')
         deadline = request.POST.get('deadline')
@@ -129,18 +138,25 @@ def project(request):
             user = request.user
             uname = user.username
             user = User.objects.get(username=uname)
-            LabOrders(user=user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
+            lab = LabOrders(user=user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
                    deadline=deadline, reference_material=reference_material,status='Awaiting Confirmation',assigned=False).save()
+            id = lab.pk
+            id +=1000
+            lab.order_id = f'TC-lab-{id}'
+            lab.save()
             return redirect('old-user')
         except:
-            if not request.session.session_key:
-                request.session.save()
-            session_key = request.session.session_key
-            request.session['session_key'] = session_key
-            new_user = User(username=session_key,email=session_key)
+            request.session['session_key'] = res
+            print(res)
+            new_user = User(username=res,email=res)
             new_user.save()
-            LabOrders(user=new_user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
-                   deadline=deadline, reference_material=reference_material,status='Awaiting Confirmation',assigned=False).save()
+            labOrder = LabOrders(user=new_user, subject=subject, lab_data=lab_data, lab_manual=lab_manual, report_guidline=report_guidline,
+                   deadline=deadline, reference_material=reference_material,status='Awaiting Confirmation',assigned=False)
+            labOrder.save()
+            id = labOrder.pk
+            id += 1000
+            labOrder.order_id = f'TC-lab-{id}'
+            labOrder.save()
             return redirect('signup')
     return render(request, 'project.html')
 
@@ -204,10 +220,11 @@ def management(request):
 @login_required(login_url='/login/')
 def dashboard_old(request):
     user = request.user
-    uname= user.username
-    user = User.objects.get(username=uname)
     user_detail = UserDetails.objects.get_or_create(user=user)
     user_detail = user_detail[0]
+    if user_detail.user_type=="Tutor":
+        return redirect("tutor-dashboard")
+    
     details = Orders.objects.filter(user=user)
     labs = LabOrders.objects.filter(user=user)
     if request.method == 'POST':
@@ -223,7 +240,11 @@ def dashboard_old(request):
         id += 1000
         order.order_id = f'TC-HW-{id}'
         order.save()
+        serializers = OrderSerializers(order)
+        return JsonResponse(serializers.data)
     return render(request, 'dash_board.html', {'details': details, 'user': user, 'user_detail': user_detail,'labs':labs})
+
+
 
 # lab order from the dashboard
 @login_required(login_url='/login/')
@@ -248,31 +269,32 @@ def labordes(request):
         id +=1000
         lab.order_id = f'TC-lab-{id}'
         lab.save()
-        return redirect('old-user')
+        serializers = LabSerializers(lab)
+        return JsonResponse(serializers.data)
         
         
 # live session ordes from the dashboard 
 @login_required(login_url='/login/')
 def live_session_orders(request):
     user = request.user
-    uname= user.username
-    user = User.objects.get(username=uname)
     user_detail = UserDetails.objects.get_or_create(user=user)
     user_detail = user_detail[0]
     if request.method == 'POST':
         desc = request.POST.get('desc')
-        assignment = request.FILES['ref_material']
+        assignment = request.FILES['assignment']
         deadline = request.POST.get('deadline')
         duration = request.POST.get('Duration')
         subject = request.POST.get('subject')
+        reference_material = request.FILES['reference_material']
         order = Orders(user=user, status='Awaiting Confirmation', desc=desc,assignment=assignment,
-             deadline=deadline,subject=subject,duration=duration)
+             deadline=deadline,subject=subject,duration=duration,reference_material=reference_material)
         order.save()
         id = order.pk
         id +=1000
-        order.order_id = f'TC-HW-{id}'
+        order.order_id = f'TC-LS-{id}'
         order.save()
-        return redirect('old-user')
+        serializers = OrderSerializers(order)
+        return JsonResponse(serializers.data)
 
 def signup(request):
     if request.method == 'POST':
@@ -287,7 +309,7 @@ def signup(request):
             user = User(username=email, email=email)
             user.set_password(password)
             user.save()
-            user_detail = UserDetails(user=user)
+            user_detail = UserDetails(user=user,user_type="Student")
             user_detail.save()
             if request.session.get('session_key'):
                 username = request.session['session_key']
@@ -295,25 +317,14 @@ def signup(request):
                 try:
                     laborder = LabOrders.objects.get(user=unknown_user)
                     laborder.user = user
-                    id = laborder.pk
-                    id +=1000
-                    laborder.order_id = f'TC-lab-{id}'
                     laborder.save()
                 except:
                     order = Orders.objects.get(user=unknown_user)
                     order.user = user
-                    id = order.pk
-                    id +=1000
-                    order.order_id = f'TC-HW-{id}'
                     order.save()
                 finally:
                     unknown_user.delete()
                     del request.session['session_key']
-                    send_mail(subject='Welcome to the TutorChamps!!',
-                        message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
-                        ' We are specialists in delivering the best quality assignment within the deadline. ' + 
-                        '\n Please use the below link and password to access the dashboard to proceed further  \n Regards, Team TutorChamps',
-                        from_email='help@tutorchamps.com', recipient_list=[email]) 
                     messages.success(request, 'you have registered successfully')
                     usr = authenticate(username=email,password=password)
                     login(request,usr)
@@ -376,44 +387,40 @@ def signin(request):
     if request.method == "POST":
         email = request.POST.get('email')
         email = email.lower()
-        password = request.POST.get('password')
+        password = request.POST.get('password')          
         user = authenticate(username=email, password=password)
         if user:
-            if user.is_active:
-                login(request, user)
-                usr = request.user
-                uname= usr.username
-                user = User.objects.get(username=uname)
-                detail = UserDetails.objects.get_or_create(user=user)
-                if request.session.get('session_key'):
-                    username = request.session['session_key']
-                    unknown_user = User.objects.get(username=username)
-                    try:
-                        laborder = LabOrders.objects.get(user=unknown_user)
-                        laborder.user = user
-                        id = laborder.pk
-                        id +=1000
-                        laborder.order_id = f'TC-lab-{id}'
-                        laborder.save()
-                    except:
-                        order = Orders.objects.get(user=unknown_user)
-                        order.user = user
-                        id = order.pk
-                        id +=1000
-                        order.order_id = f'TC-HW-{id}'
-                        order.save()
-                        send_mail(subject='Welcome to the TutorChamps!!',
-                        message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
-                        ' We are specialists in delivering the best quality assignment within the deadline. ' + 
-                        '\n Please use the below link and password to access the dashboard to proceed further  \n Regards, Team TutorChamps',
-                        from_email='help@tutorchamps.com', recipient_list=[email])            
-                    unknown_user.delete()
-                    del request.session['session_key']
-                    messages.success(request, f"Welcome Back {email}")
-                return redirect('old-user')
+            new_user = User.objects.get(username=email)
+            userdetail = UserDetails.objects.get(user=new_user)
+            if userdetail.user_type=="Student":
+                if user.is_active:
+                    login(request, user)
+                    user = request.user
+                    detail = UserDetails.objects.get_or_create(user=user)
+                    if request.session.get('session_key'):
+                        username = request.session['session_key']
+                        unknown_user = User.objects.get(username=username)
+                        try:
+                            laborder = LabOrders.objects.get(user=unknown_user)
+                            laborder.user = user
+                            id = laborder.pk
+                            id +=1000
+                            laborder.order_id = f'TC-lab-{id}'
+                            laborder.save()
+                        except:
+                            order = Orders.objects.get(user=unknown_user)
+                            order.user = user
+                            order.save()        
+                        unknown_user.delete()
+                        del request.session['session_key']
+                        messages.success(request, f"Welcome Back {email}")
+                    return redirect('old-user')
+                else:
+                
+                    data = {'status':'error','msg':'Your Account has been deactivated'}
+                    return JsonResponse(data)
             else:
-             
-                data = {'status':'error','msg':'Your Account has been deactivated'}
+                data = {"status":"error","msg":"Not Allowed"}
                 return JsonResponse(data)
         else:
             data = {'status':'error','msg':"Invalid email or password"}
@@ -434,7 +441,10 @@ def onlyorders(request):
         subject = request.POST.get('subject')
         desc = request.POST.get('Details')
         deadline = request.POST.get('deadline')
-        assignment = request.FILES['files']
+        if request.FILES:
+            assignment = request.FILES['files']
+        else:
+            assignment = None
         try:
             user = request.user
             uname= user.username
@@ -451,38 +461,47 @@ def onlyorders(request):
             request.session['session_key'] = res
             new_user = User(username=res,email=res)
             new_user.save()
-            Orders(user=new_user,subject=subject,desc=desc,assignment=assignment,deadline=deadline,status='Awaiting Confirmation').save()
+            order = Orders(user=new_user,subject=subject,desc=desc,assignment=assignment,deadline=deadline,status='Awaiting Confirmation')
+            order.save()
+            id = order.pk
+            id +=1000
+            order.order_id = f'TC-HW-{id}'
+            order.save()
             return redirect('signup')
 
 
 def live_session(request):
+    res = ''.join(random.choices(string.ascii_uppercase +
+                             string.digits, k=20))
+    b = request.user.is_authenticated
     if request.method == 'POST':
         deadline = request.POST.get('deadline')
         subject = request.POST.get('subject')
         file = request.FILES['files']
         duration = request.POST.get('duration')
         desc = request.POST.get('Details')
-        try:
+        
+        if b:
             user = request.user
-            uname= user.username
-            user = User.objects.get(username=uname)
             order = Orders(deadline=deadline, subject=subject, assignment=file,
-                           duration=duration, desc=desc, user=user,status="Pending")
+                           duration=duration, desc=desc, user=user,status="Awaiting Confirmation")
             order.save()
             id = order.pk
             id += 1000
-            order.order_id = f'TC-HW-{id}'
+            order.order_id = f'TC-LS-{id}'
             order.save()
             return redirect('old-user')
-        except:
-            if not request.session.session_key:
-                request.session.save()
-            session_key = request.session.session_key
-            request.session['session_key'] = session_key
-            new_user = User(username=session_key,email=session_key)
+        else:
+            request.session['session_key'] = res
+            new_user = User(username=res,email=res)
             new_user.save()
-            Orders(deadline=deadline,subject=subject,assignment=file,duration=duration,user=new_user,desc=desc,status='Awaiting Confirmation').save()
-            return redirect('signup')
+            print(new_user)
+            order = Orders(deadline=deadline,subject=subject,assignment=file,duration=duration,user=new_user,desc=desc,status='Awaiting Confirmation')
+            order.save()
+            id = order.pk
+            id +=1000
+            order.order_id = f'TC-LS-{id}'
+            order.save()
     return render(request, 'live-session.html')
 
 def tutor_register(request):
@@ -492,11 +511,15 @@ def tutor_register(request):
         email = email.lower()
         qualification_level = request.POST.get('level')
         subject = request.POST.get('subject')
-        user = User.objects.get_or_create(username=email,email=email)
+        user = User.objects.get_or_create(username=email)
         password = config('tutorspassword')
         b = user[1]
         user = user[0]
         if b==True:
+            user.email=email
+            user.first_name=name
+            user.save()
+            UserDetails(user=user,user_type="Tutor").save()
             user.set_password(password)
             user.is_active = False
             user.save()
@@ -506,16 +529,17 @@ def tutor_register(request):
             tutor.save()
             id = tutor.pk
             id +=3000
+            subject = subject.upper()
             tutor.unique_id = f'{subject[0:3]}-{id}'
             tutor.save()
             c = {
                 'user':name
             }
             email_msg = render_to_string('tutor_email.txt',c)
-            connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
+            connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',name="TutorChamps",
                                              use_tls=True,port=587,username='tutors@tutorchamps.com',password=config('tutorPassword'))
             connection.open()
-            email = EmailMessage(subject='Welcome to TutorChamps || Complete the test',body=email_msg,from_email='tutors@tutorchamps.com',to=[email])
+            email = EmailMessage(subject='Welcome to TutorChamps || Complete the test',body=email_msg,from_email='TutorChamps Tutors Support <tutors@tutorchamps.com>',to=[email])
             hard = hard.question
             email.attach(hard.name,hard.read())
             connection.send_messages([email])
@@ -524,12 +548,14 @@ def tutor_register(request):
             x.save()
             account = TutorAccount(tutor = tutor)
             account.save()
-            return render(request,'thank-you.html')
+            return redirect(f'/thank-you/{id}/')
         else:
             messages.warning(request, 'already registered')
             return redirect('registration')
     return render(request, 'register.html')
 
+def thanks(request,id):
+    return render(request,'thank-you.html')
 
 def tutor_login(request):
     if request.method == 'POST':
@@ -537,21 +563,39 @@ def tutor_login(request):
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
         if user:
-            if user.is_active:
-                login(request, user)
-                user = User.objects.get(username=username)
-                tutor = TutorRegister.objects.get(tutor=user)
-                id = tutor.unique_id
-                return redirect('/tutor/dashboard/')
+            new_user = User.objects.get(username=username)
+            user_detail = UserDetails.objects.get(user=new_user)
+            if user_detail.user_type=="Tutor":
+                if user.is_active:
+                    login(request, user)
+                    user = User.objects.get(username=username)
+                    tutor = TutorRegister.objects.get(tutor=user)
+                    id = tutor.unique_id
+                    return redirect('/tutor/dashboard/')
+                else:
+                    messages.info(
+                        request, 'Your account has been deactivated. Contact the Tutorchamps Team to reactivate your account.')
+                    return redirect('tutor')
             else:
-                messages.info(
-                    request, 'Your account has been deactivated. Contact the Tutorchamps Team to reactivate your account.')
-                return redirect('tutor')
+                messages.info(request,"not allowed")
+                return redirect("tutor")
         else:
             messages.error(request, 'Invalid email or password')
             return redirect('tutor')
     return render(request, 'tutor.html')
 
+def password_reset(request):
+    if request.method=='POST':
+        user = request.user
+        username = user.username
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confm_password')
+        user.set_password(password)
+        user.save()
+        u = authenticate(username=username,password=password)
+        login(request,u)
+        messages.success(request,'Password changes successfully')
+        return redirect('tutor-dashboard')
 
 @login_required(login_url='/tutor/')
 def tutor_logout(request):
@@ -564,7 +608,9 @@ def tutor_logout(request):
 def tutor_dashboard(request):
     tutor = request.user
     tutor_register = TutorRegister.objects.get(tutor=tutor)
+    subject = tutor_register.subject
     tutor_balance = TutorBalance.objects.get(tutor=tutor_register)
+    orders = Orders.objects.filter(subject=subject,assigned=False,status='Order Confirmed')
     if request.method == "POST":
         pan_number = request.POST.get('pan_card')
         name_on_pan = request.POST.get('pan_name')
@@ -592,9 +638,32 @@ def tutor_dashboard(request):
         earned = TutorEarnedDetail.objects.filter(tutor=tutor_register)
         payment_history  = TutorPaymenyDetails.objects.filter(tutor= tutor_register)
         return render(request, 'tutor-dashboard.html',{'tutor_register': tutor_register,'tutor': tutor,'earned':earned,'payment_history':payment_history,
-                    'b':tutor_balance.balance,'tutor_account':tutor_account,'assignments':assignments,'labs':labs })
-        
-        
+                    'b':tutor_balance.balance,'tutor_account':tutor_account,'assignments':assignments,'labs':labs,'orders':orders })
+
+@login_required(login_url='/tutor/')    
+def interest(request):
+    if request.method=="POST":
+        user = request.user
+        email = user.email
+        tutor = TutorRegister.objects.get(tutor=user)
+        tutor_id = tutor.unique_id
+        order_id = request.POST.get('order_id')
+        c = {
+                'email':email,
+                'tutor_id':tutor_id,
+                'order_id':order_id,
+            }
+        email_msg = render_to_string('tutor_email.txt',c)
+        connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',name="TutorChamps",
+                                          use_tls=True,port=587,username='tutors@tutorchamps.com',password=config('tutorPassword'))
+        connection.open()
+        email = EmailMessage(subject='tutor interest has com',body=email_msg,from_email='TutorChamps Tutors Support <tutors@tutorchamps.com>',to=['adm.tutorchamps@gmail.com'])
+        connection.send_messages([email])
+        connection.close()
+        data = {'msg':'interest shows successfully'}
+        return JsonResponse(data)
+            
+
 @login_required(login_url='/tutor/')
 def tutor_detail(request):
     tutor = request.user
@@ -728,11 +797,6 @@ def save_order(request,backend,user,response,*args,**kwargs):
             id = order.pk
             id += 3000
             order.order_id = f'TC-HW-{id}'
-            order.save()
-            send_mail(subject='Welcome to the TutorChamps!!',
-            message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
-            ' We are specialists in delivering the best quality assignment within the deadline. ' + 
-            '\n Please use the below link and password to access the dashboard to proceed further  \n Regards, Team TutorChamps',
-            from_email='help@tutorchamps.com', recipient_list=[email])            
+            order.save()         
         unknown_user.delete()
         del request.session['session_key']

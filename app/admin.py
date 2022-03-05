@@ -8,7 +8,7 @@ class UserDetailsAdmin(admin.ModelAdmin):
 
 @admin.register(Orders)
 class OrdersAdmin(admin.ModelAdmin):
-    list_display = ['pk','user','subject','deadline']
+    list_display = ['order_id','user','subject','deadline']
     search_fields = ['deadline','subject']
 
     def image_img(self):
@@ -31,3 +31,6 @@ admin.site.register(TutorEarnedDetail)
 admin.site.register(Questions)
 
 admin.site.register(Reviews)
+
+admin.site.site_header  =  "Tutorchamps Admin"  
+admin.site.index_title  =  "TutorChamps Admin"

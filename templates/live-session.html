@@ -89,11 +89,6 @@
 	                                <div class="pos_rel">
 	                                    <label>Your Message*</label>
 	                                    <textarea name="Details" id="description" class="Detail" required="" placeholder="Write Session description"></textarea>
-	                                    <!-- <div> 
-											<label for="files" class="custom-file-upload" id="choose-file-label">Add File</label>                                   	
-	                                    	<input type="file" name="files" id="files"  required="" value="Add File">
-	                                    	
-	                                    </div> -->
 	                                    <div>
 					                        <input type="file" name="files" id="files" multiple="" value="Add File">
 					                        <p id="file-name" class="fileName"></p>
@@ -144,13 +139,6 @@
 			</div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<!-- <script>
-		$('#files').change(function() {
-			var i = $(this).prev('label').clone();
-			var file = $('#files')[0].files[0].name;
-			$(this).prev('label').text(file);
-		  });
-	</script> -->
 	<script>
             var input = document.getElementById('files');
             var info_area = document.getElementById('file-name');

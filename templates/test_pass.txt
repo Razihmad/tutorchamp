@@ -9,9 +9,10 @@ Now, please use the below link and login credentials to complete the onboarding 
 
 https://tutorchamps.com/tutor/
 
-Login Credentials
+Login Credentials:
 Username: {{email}}
 Password: tutors@tc$123#
+
 All the best for your new earning journey.
 
 Sincerely,
