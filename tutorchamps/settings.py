@@ -37,7 +37,6 @@ INSTALLED_APPS = [
 ]
 SESSION_SAVE_EVERY_REQUEST = True
 MIDDLEWARE = [
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -46,6 +45,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 SITE_ID = 6
 ROOT_URLCONF = 'tutorchamps.urls'
