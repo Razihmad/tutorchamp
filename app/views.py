@@ -441,7 +441,10 @@ def onlyorders(request):
         subject = request.POST.get('subject')
         desc = request.POST.get('Details')
         deadline = request.POST.get('deadline')
-        assignment = request.FILES['files']
+        if request.FILES:
+            assignment = request.FILES['files']
+        else:
+            assignment = None
         try:
             user = request.user
             uname= user.username
