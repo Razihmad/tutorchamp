@@ -1,1 +1,1 @@
-web : gunicorn tutorchamps.wsgi
+web:gunicorn tutorchamps.wsgi
