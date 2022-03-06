@@ -34,8 +34,19 @@ INSTALLED_APPS = [
     'app',
     'social_django',
     'crispy_forms',  
-    'rest_framework'  
+    'rest_framework' ,
+      'django_chatter',
+ 
 ]
+CHANNEL_LAYERS = {
+  'default': {
+      'BACKEND': 'channels_redis.core.RedisChannelLayer',
+      'CONFIG': {
+          "hosts": [('127.0.0.1', 6379)],
+      },
+  },
+}
+ASGI_APPLICATION = 'tutorchamps.routing.application'
 SESSION_SAVE_EVERY_REQUEST = True
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
