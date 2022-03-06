@@ -16,7 +16,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(config('DEBUG')))
 
-ALLOWED_HOSTS = ['tutorchamps.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 APPEND_SLASH = True
 
 # Application definition
@@ -39,13 +39,13 @@ SESSION_SAVE_EVERY_REQUEST = True
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 SITE_ID = 6
 ROOT_URLCONF = 'tutorchamps.urls'
