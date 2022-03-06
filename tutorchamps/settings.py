@@ -147,10 +147,10 @@ MEDIA_URL = '/media/'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/old-user/'
 SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/dashboard/new-user/'
-if DEBUG==False:
-    STATIC_ROOT = os.path.join(BASE_DIR,'static')
-else:
-    STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),]
+# if DEBUG==False:
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+# else:
+    # STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),]
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
