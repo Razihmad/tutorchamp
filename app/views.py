@@ -306,7 +306,8 @@ def signup(request):
             data = {'status':'error','msg':'This email is already registered'}
             return JsonResponse(data)
         except ObjectDoesNotExist:
-            user = User(username=email, email=email)
+            # uname = email.replace('@','_')
+            user = User(username=email.replace('@','_'), email=email)
             user.set_password(password)
             user.save()
             user_detail = UserDetails(user=user,user_type="Student")
@@ -332,7 +333,7 @@ def signup(request):
                     return JsonResponse(data)
             else:    
                 messages.success(request, 'you have registered successfully')
-                usr = authenticate(username=email,password=password)
+                usr = authenticate(username=email.replace("@","_"),password=password)
                 login(request,usr)
                 data = {'status':'ok','msg':'User created successfully'}
                 send_mail(subject='Welcome to the TutorChamps!!', message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
@@ -388,7 +389,7 @@ def signin(request):
         email = request.POST.get('email')
         email = email.lower()
         password = request.POST.get('password')          
-        user = authenticate(username=email, password=password)
+        user = authenticate(username=email.replace('@','_'), password=password)
         if user:
             new_user = User.objects.get(username=email)
             userdetail = UserDetails.objects.get(user=new_user)
