@@ -23,7 +23,7 @@ from django.utils.encoding import force_bytes
 from django.core.exceptions import ObjectDoesNotExist
 from django.core import serializers
 from django.core.mail import EmailMessage
-
+from django_chatter.models import Room
 from app.serializers import LabSerializers, OrderSerializers
 
 
@@ -306,9 +306,15 @@ def signup(request):
             data = {'status':'error','msg':'This email is already registered'}
             return JsonResponse(data)
         except ObjectDoesNotExist:
-            user = User(username=email, email=email)
+            user = User(username=email.replace('@','_'), email=email)
             user.set_password(password)
             user.save()
+            admin = User.objects.get(username='admin')
+            room = Room()
+            room.save()
+            room.members.add(user)
+            room.members.add(admin)
+            room.save()
             user_detail = UserDetails(user=user,user_type="Student")
             user_detail.save()
             if request.session.get('session_key'):
@@ -332,7 +338,7 @@ def signup(request):
                     return JsonResponse(data)
             else:    
                 messages.success(request, 'you have registered successfully')
-                usr = authenticate(username=email,password=password)
+                usr = authenticate(username=email.replace("@","_"),password=password)
                 login(request,usr)
                 data = {'status':'ok','msg':'User created successfully'}
                 send_mail(subject='Welcome to the TutorChamps!!', message=f'Dear {email} \n Thanks for contacting TutorChamps! You are at the right place for your requirements.' +
@@ -388,7 +394,7 @@ def signin(request):
         email = request.POST.get('email')
         email = email.lower()
         password = request.POST.get('password')          
-        user = authenticate(username=email, password=password)
+        user = authenticate(username=email.replace('@','_'), password=password)
         if user:
             new_user = User.objects.get(username=email)
             userdetail = UserDetails.objects.get(user=new_user)

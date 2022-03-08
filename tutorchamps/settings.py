@@ -30,13 +30,26 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
     'django.contrib.sites',
+    'channels',
     'app',
     'social_django',
     'crispy_forms',  
     'rest_framework' ,
+    'django_chatter',
+
  
 ]
-
+CHANNEL_LAYERS = {
+  'default': {
+      'BACKEND': 'channels_redis.core.RedisChannelLayer',
+      'CONFIG': {
+          "hosts": [('127.0.0.1', 6379)],
+      },
+  },
+}
+ASGI_APPLICATION = 'tutorchamps.routing.application'
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
 SESSION_SAVE_EVERY_REQUEST = True
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -76,8 +89,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-WSGI_APPLICATION = 'tutorchamps.wsgi.application'
-
+# WSGI_APPLICATION = 'tutorchamps.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -159,3 +171,4 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 SOCIAL_AUTH_FACEBOOK_KEY = config('SOCIAL_AUTH_FACEBOOK_KEY') 
 SOCIAL_AUTH_FACEBOOK_SECRET = config('SOCIAL_AUTH_FACEBOOK_SECRET')
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"    
