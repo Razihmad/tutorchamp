@@ -26,10 +26,13 @@
 			<!--AI==========================================================
 				This inherits the list of chats that a user belongs to.
 			===========================================================AI-->
+			{% if request.user.is_staff %}
+			  
 			<div class="chatroom-list-container chat-subsection">
 				{% include 'django_chatter/chatroom-list.html' %}
 			</div>
-
+			
+			{% endif %}
 			<!--AI==========================================================
 				The following contains the chat dialog div properties
 			===========================================================AI-->
