@@ -17,17 +17,16 @@
 	for users as well as the name of the chatroom.
 	===========================================================AI-->
 	<div class="chatroom-list-title">Chats</div>
-	<div class="search">
+	<!-- <div class="search">
 		<form class="search-form" action="{% url 'django_chatter:get_chat_url' %}" method="post">
 			{% csrf_token %}
-			<!-- <input id = "searchbar" placeholder = "Username"></input>
-			<button id = "user-selected">Go</button><br /> -->
+		
 			<select class="select-chat-user" name="target_user">
 				<option></option>
 			</select>
 			<button type="submit" name="button" class="select-chat-button">Go</button>
 		</form>
-	</div>
+	</div> -->
 
 <!--AI==========================================================
 	The following block represents the list of chatrooms at the left
@@ -73,6 +72,7 @@
 
 	{% endfor %}
 </div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
 	var get_user_url = '{% url "django_chatter:users_list" %}';

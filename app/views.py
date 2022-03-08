@@ -23,7 +23,7 @@ from django.utils.encoding import force_bytes
 from django.core.exceptions import ObjectDoesNotExist
 from django.core import serializers
 from django.core.mail import EmailMessage
-
+from django_chatter.models import Room
 from app.serializers import LabSerializers, OrderSerializers
 
 
@@ -306,10 +306,15 @@ def signup(request):
             data = {'status':'error','msg':'This email is already registered'}
             return JsonResponse(data)
         except ObjectDoesNotExist:
-            # uname = email.replace('@','_')
             user = User(username=email.replace('@','_'), email=email)
             user.set_password(password)
             user.save()
+            admin = User.objects.get(username='admin')
+            room = Room()
+            room.save()
+            room.members.add(user)
+            room.members.add(admin)
+            room.save()
             user_detail = UserDetails(user=user,user_type="Student")
             user_detail.save()
             if request.session.get('session_key'):
