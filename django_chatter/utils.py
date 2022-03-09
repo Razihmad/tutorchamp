@@ -140,10 +140,10 @@ def create_room(user_list):
         rooms = rooms.filter(members = member)
     if rooms.exists():
         room = rooms[0]
-        return room.id
+        return room
     else:
         room = Room()
         room.save()
         room.members.set(user_list)
         room.save()
-        return room.id
+        return room

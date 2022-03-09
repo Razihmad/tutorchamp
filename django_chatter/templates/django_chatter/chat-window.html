@@ -41,7 +41,13 @@
 					<div class="back-button-container">
 						<img id="back-button" src="{% static 'img/left-arrow.svg' %}">
 					</div>
+					  
+					{% if request.user.is_staff %}
 					<div>{{room_name}}</div>
+						
+					{% else %}
+						<div>TutorChamps Support</div>
+					{% endif %}
 				</div>
 				<div id = "chat-dialog">
 					<!--AI==========================================================

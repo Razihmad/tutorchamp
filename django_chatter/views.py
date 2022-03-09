@@ -74,6 +74,7 @@ class ChatRoomView(LoginRequiredMixin, TemplateView):
 			logger.exception("\n\nException in django_chatter.views.ChatRoomView:\n")
 			raise Http404("Sorry! What you're looking for isn't here.")
 		all_members = room.members.all()
+
 		if user in all_members:
 			latest_messages_curr_room = room.message_set.all()[:50]
 			if latest_messages_curr_room.exists():
@@ -83,8 +84,15 @@ class ChatRoomView(LoginRequiredMixin, TemplateView):
 				room_name = "Notes to Yourself"
 			elif all_members.count() == 2:
 				room_name = all_members.exclude(pk=user.pk)[0]
+				for member in all_members:
+					if member.is_staff==False:
+						room_name = member.username
 			else:
-				room_name = room.__str__()
+				room_name = all_members.exclude(pk=user.pk)[0]
+				for member in all_members:
+					if member.is_staff==False:
+						room_name = member.username
+      
 			context['room_uuid_json'] = kwargs.get('uuid')
 			context['latest_messages_curr_room'] = latest_messages_curr_room
 			context['room_name'] = room_name

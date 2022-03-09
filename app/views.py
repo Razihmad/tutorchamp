@@ -25,6 +25,7 @@ from django.core import serializers
 from django.core.mail import EmailMessage
 from django_chatter.models import Room
 from app.serializers import LabSerializers, OrderSerializers
+from django_chatter.utils import create_room
 
 
 def password_reset_request(request):
@@ -309,11 +310,9 @@ def signup(request):
             user = User(username=email.replace('@','_'), email=email)
             user.set_password(password)
             user.save()
-            admin = User.objects.get(username='admin')
-            room = Room()
-            room.save()
+            staff = User.objects.filter(groups__name='Students Help')            
+            room = create_room(staff)
             room.members.add(user)
-            room.members.add(admin)
             room.save()
             user_detail = UserDetails(user=user,user_type="Student")
             user_detail.save()
