@@ -82,11 +82,9 @@ class ChatRoomView(LoginRequiredMixin, TemplateView):
 				message.recipients.add(user)
 			if all_members.count() == 1:
 				room_name = "Notes to Yourself"
-			elif all_members.count() == 2:
-				room_name = all_members.exclude(pk=user.pk)[0]
-				for member in all_members:
-					if member.is_staff==False:
-						room_name = member.username
+			# elif all_members.count() == 2:
+			# 	room_name = all_members.exclude(pk=user.pk)[0]
+			# 	room_name = room_name[0].username
 			else:
 				room_name = all_members.exclude(pk=user.pk)[0]
 				for member in all_members:
