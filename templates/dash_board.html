@@ -265,7 +265,7 @@
 				<div class="col50">
 					<form class="commForm mt-3" method="POST" action="/profile/" enctype="multipart/form-data">
 						{% csrf_token %}
-						<h2 class="text-dark text-left">{{user_detail.name}}</h2>
+						<h2 class="text-dark text-left" id="user_name">{{user_detail.name}}</h2>
 						<div class="avatar-upload">
 					        <div class="avatar-edit">
 					            <input type='file' id="imageUpload" name="profile" accept=".png, .jpg, .jpeg" />
@@ -794,7 +794,6 @@ function getdata(){
 				})
 			})
 		</script>
-
 </body>
 
 </html>
