@@ -4782,4 +4782,4 @@ border-radius: 5px;
 .review_height{height: auto!important; margin-bottom: 20px!important;}
 #all_blog_post{overflow: hidden; height: 1235px;}
 .blog_height{height: auto!important;}
-.show_password_icon{position: absolute; right: 25px;  top: 10px; font-size: 22px!important; cursor: pointer; color: #737373;}
+.show_password_icon, .show_CPassword_icon, .log_password{position: absolute; right: 25px;  top: 10px; font-size: 22px!important; cursor: pointer; color: #737373;}
