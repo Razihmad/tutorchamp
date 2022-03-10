@@ -121,7 +121,7 @@
     width: 32%!important;
     max-width: 100%!important;
 }
-
+.show_password_icon, .show_CPassword_icon{top: 32px;}
 
 
 		@media screen and (max-width: 767px) {
@@ -320,14 +320,17 @@
 						{% csrf_token %}
 						<h2 class="text-dark text-left">Password</h2>
 						<p>Create new password here</p>
-						<div class="">
+						<div class="" style="position: relative;">
 							<label>New Password</label>
-							<input class="input" type="password" name="password" placeholder="New Password" id="">
+							<input class="input" type="password" name="password" placeholder="New Password" id="password">
+							<i onclick="changeInputType()" class="show_password_icon fa fa-eye"></i>
 						</div>
 						<div class="pos_rel">
 							<label>Confirm Password</label>
 							<input class="input" type="password" name="confm_password" placeholder="Confirm Password"
-								id="">
+								id="con_password">
+							<i onclick="changeInputType2()" class="show_CPassword_icon fa fa-eye"></i>
+
 						</div>
 						<div class="psr mt-3">
 							<input type="submit" class="formBtn theme-btn btn-style-one" value="Update">
@@ -794,6 +797,29 @@ function getdata(){
 				})
 			})
 		</script>
+
+		<script>
+        function changeInputType() {
+        $(this).toggleClass("fa-eye-slash");
+          var x = document.getElementById("password");
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+        }
+
+        function changeInputType2() {
+        $(".show_CPassword_icon").toggleClass("fa-eye-slash");
+          var ConfirmPassword = document.getElementById("con_password");
+          if (ConfirmPassword.type === "password") {
+            ConfirmPassword.type = "text";
+          } else {
+            ConfirmPassword.type = "password";
+          }
+        }
+    </script>
+
 </body>
 
 </html>

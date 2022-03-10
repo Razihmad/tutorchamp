@@ -239,6 +239,7 @@ window.onload = init;
                                     <img src="{% static 'images/password_Img.svg' %}" alt="password">
                                     <input class="form-control" type="password" name="password" placeholder="Create Password"
                                         id="password">
+                                    <i onclick="changeInputType()" class="show_password_icon fa fa-eye"></i>
                                 </div>
                                 <div class="text-center psr mt-3">
                                     <input type="submit" class="formBtn theme-btn btn-style-one" value="Sign Up">
@@ -268,7 +269,8 @@ window.onload = init;
                                 <div class="form-group loginField login">
                                     <img src="{% static 'images/password_Img.svg' %}" alt="password">
                                     <input class="form-control" type="password" name="password" placeholder="Password"
-                                        id="password">
+                                        id="logInPassword">
+                                    <i onclick="changeInputType2()" class="log_password fa fa-eye"></i>
                                 </div>
                                 <div class="row mt-3 login" style="display: flex;">
                                     <div class="col-6 pr-0 col-sm-6">
@@ -618,6 +620,29 @@ window.onload = init;
             })  
         })
     </script>
+    <script>
+        function changeInputType() {
+        $(".show_password_icon").toggleClass("fa-eye-slash");
+          var x = document.getElementById("password");
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+        }
+
+        function changeInputType2() {
+        $(".log_password").toggleClass("fa-eye-slash");
+          var lp = document.getElementById("logInPassword");
+          if (lp.type === "password") {
+            lp.type = "text";
+          } else {
+            lp.type = "password";
+          }
+        }
+    </script>
+
+
     {% endif %}
     
 <!--Add the following script at the bottom of the web page (before </body></html>)-->
