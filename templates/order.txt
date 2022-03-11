@@ -1,6 +1,22 @@
 {% autoescape off %}
+Dear {{user}}
 
 
+Thank you for choosing TutorChamps. Your order has been created successfully. Your order summary is as:
+
+
+Subject: {{subject}}
+Order Id: {{order_id}}
+Deadline: {{deadline}}
+
+
+Please allow us some time to confirm your order. Our team has already working on this. We will get back to you shortly. 
+
+
+Best,
+
+
+TutorChamps Students Support Team
 Sincerely,
 The Tutorchamps Team
 
