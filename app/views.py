@@ -360,10 +360,28 @@ def signup(request):
                     laborder = LabOrders.objects.get(user=unknown_user)
                     laborder.user = user
                     laborder.save()
+                    c = {
+                        'user':user.username,
+                        'order_id':laborder.order_id,
+                        'subject':laborder.subject
+                    }
+                    order_id = laborder.order_id
+                    email_msg = render_to_string('order.txt',c)
+                    mail = EmailMessage(subject=f'Order Created - {order_id}',body=email_msg,from_email='TutorChamps Student Support <help@tutorchamps.com>',to=[email,'help@tutorchamps.com'])
+                    mail.send()
                 except:
                     order = Orders.objects.get(user=unknown_user)
                     order.user = user
                     order.save()
+                    c = {
+                        'user':user.username,
+                        'order_id':order.order_id,
+                        'subject':order.subject
+                    }
+                    order_id = order.order_id
+                    email_msg = render_to_string('order.txt',c)
+                    mail = EmailMessage(subject=f'Order Created - {order_id}',body=email_msg,from_email='TutorChamps Student Support <help@tutorchamps.com>',to=[email,'help@tutorchamps.com'])
+                    mail.send()
                 finally:
                     unknown_user.delete()
                     del request.session['session_key']
@@ -378,13 +396,10 @@ def signup(request):
                 login(request,usr)
                 data = {'status':'ok','msg':'User created successfully'}
                 c = {
-                    'user':user.username,
-                    'order_id':order.order_id,
-                    'subject':order.subject
+                    'user':user.username
                 }
-                order_id = order.order_id
-                email_msg = render_to_string('order.txt',c)
-                mail = EmailMessage(subject=f'Order Created - {order_id}',body=email_msg,from_email='TutorChamps Student Support <help@tutorchamps.com>',to=[email,'help@tutorchamps.com'])
+                email_msg = render_to_string('signup.txt',c)
+                mail = EmailMessage(subject='Welcome to TutorChamps',body=email_msg,from_email='TutorChamps Student Support <help@tutorchamps.com>',to=[email])
                 mail.send()
                 return JsonResponse(data)
     return render(request, 'signup.html')

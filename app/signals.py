@@ -29,6 +29,7 @@ def presaveSignal(sender,instance,**kwargs):
                 connection.send_messages([email])
                 connection.close()
 
+    
 
 @receiver(post_delete,sender=TutorRegister)
 def predeleteSignal(sender,instance,**kwargs):
@@ -62,50 +63,54 @@ def mailforOrder(sender,instance,created,**kwargs):
             'order_id':orderId,
             'deadline':instance.deadline,
         }
-        # connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
-        #                                  use_tls=True,port=587,username='tutors@tutorchamps.com',password=config('tutorPassword'))
-        # connection.open()
-        
-        # # email_msg = render_to_string('order_to_tutors.txt',c)
-        # for tutor in tutors:
-        #     user = tutor.tutor
-        #     emailid = user.email
-        #     email = EmailMessage(subject='New Order Has Arrived',body="email_ms",from_email='tutors@tutorchamps.com',to=[emailid])
-        #     connection.send_messages([email])
-        #     connection.close()        
-        #     email.send()
+
         
 
 
 @receiver(pre_save,sender=Orders)
 def statusUpdated(sender,instance,**kwargs):
     c = {
-        'orderId':instance.order_id,
+        'order_id':instance.order_id,
+        'user':instance.user.username
     }
+    order_id = instance.order_id
     user = instance.user
     email = user.email
     if instance.id != None:
         prevorder = Orders.objects.get(id=instance.id)
+        
         if prevorder.status != instance.status:
             if instance.status =='Assignment Completed':
-                content = render_to_string('comp_assignment.txt',c)
-                email = EmailMessage(subject="completed",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
+                content = render_to_string('order_completed.txt',c)
+                email = EmailMessage(subject="Assignment Completed",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
+                file = instance.completed_assignment
+                email.attach(file.name,file.read())
                 email.send()
             elif instance.status =='Order Rejected':
-                content = render_to_string('comp_assignment.txt',c)
-                email = EmailMessage(subject="rejected",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
+                content = render_to_string('order_rejected.txt',c)
+                email = EmailMessage(subject="Order Rejected",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
                 email.send()
             elif instance.status =='Order Confirmed':
-                content = render_to_string('comp_assignment.txt',c)
-                email = EmailMessage(subject="confirmed",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
+                content = render_to_string('order_confirmed.txt',c)
+                email = EmailMessage(subject=f"Order Confirmed - {order_id}",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
+                email.send()
+            elif instance.status == 'Payment Done':
+                content = render_to_string('payment.txt',c)
+                email = EmailMessage(subject="Payment Received",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
                 email.send()
             elif instance.status =='Assignment In Progress':
                 content = render_to_string('comp_assignment.txt',c)
                 email = EmailMessage(subject="confirmed",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
                 email.send()
             elif instance.status =='Assignment Under Revision':
-                content = render_to_string('comp_assignment.txt',c)
-                email = EmailMessage(subject="confirmed",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
+                content = render_to_string('order_review.txt',c)
+                email = EmailMessage(subject="Review Your Assignment",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
+                email.send()
+            elif instance.status == 'Review Your Assignment':
+                content = render_to_string('order_review.txt',c)
+                email = EmailMessage(subject="Review Your Assignment-",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
+                file = instance.completed_assignment
+                email.attach(file.name,file.read())
                 email.send()
                 
     

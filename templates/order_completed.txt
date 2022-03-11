@@ -1,0 +1,23 @@
+{% autoescape off %}
+Dear {{user}}
+
+Congratulations!
+
+Here you go with your completed assignment with order Id {{order_id}}. 
+
+
+We request you to please rate our service if you have a great experience with us. 
+
+https://tutorchamps.com/review/
+
+{google listing link}
+
+
+PFA
+
+
+Best,
+
+
+TutorChamps Students Support Team
+{% endautoescape %}
