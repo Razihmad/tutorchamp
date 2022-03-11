@@ -51,7 +51,7 @@ class Orders(models.Model):
     assigned = models.BooleanField(default=False)
     reference_material = models.ImageField(null=True,blank=True)
     amount = models.IntegerField(default=0)
-    completed_assignment = models.FileField()
+    assignment_completed_file = models.FileField()
 
     def __str__(self):
         return self.order_id
