@@ -1,0 +1,17 @@
+{% autoescape off %}
+
+Dear {{user}}
+
+
+
+We are so sorry to inform you that we will not be able to accept your order due to the unavailability of the Tutors. We will keep you posted if in case there is any update on this. 
+
+
+
+Best,
+
+
+
+TutorChamps Students Support Team
+
+{% endautoescape %}
