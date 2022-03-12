@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app.models import Orders, Questions, Reviews, TutorEarnedDetail, TutorPaymenyDetails, TutorSolvedLabs, UserDetails,TutorRegister,Blog,TutorSolvedAssignment,TutorAccount,LabOrders,TutorBalance
+from app.models import Orders, Questions, Reviews, TutorEarnedDetail, TutorPaymenyDetails, TutorSolvedLabs, UserDetails,TutorRegister,TutorSolvedAssignment,TutorAccount,LabOrders,TutorBalance
 @admin.register(UserDetails)
 class UserDetailsAdmin(admin.ModelAdmin):
     list_display = ['user','phone','study_level','assignment_reference_style']
@@ -19,11 +19,21 @@ class OrdersAdmin(admin.ModelAdmin):
     image_img.short_description = 'Thumb'
     image_img.allow_tags = True
 
-admin.site.register(TutorBalance)
+@admin.register(TutorBalance)
+class TutorBalance(admin.ModelAdmin):
+    list_display = ['tutor']
+    search_fields = ['tutor']
+     
 admin.site.register(LabOrders)
-admin.site.register(TutorRegister)
-admin.site.register(TutorAccount)
-admin.site.register(Blog)
+@admin.register(TutorRegister)
+class TutorRegisterAdmin(admin.ModelAdmin):
+    list_display = ['unique_id','tutor','subject']
+    search_fields = ['unique_id','subject']
+@admin.register(TutorAccount)
+class TutorAccountAdmin(admin.ModelAdmin):
+    list_display = ['tutor','pan_number','name_on_pan']
+    search_fields = ['tutor','pan_number','name_on_pan']
+    
 admin.site.register(TutorSolvedAssignment)
 admin.site.register(TutorSolvedLabs)
 admin.site.register(TutorPaymenyDetails)
