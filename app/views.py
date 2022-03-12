@@ -645,6 +645,12 @@ def tutor_dashboard(request):
         return render(request, 'tutor-dashboard.html',{'tutor_register': tutor_register,'tutor': tutor,'earned':earned,'payment_history':payment_history,
                     'b':tutor_balance.balance,'tutor_account':tutor_account,'assignments':assignments,'labs':labs,'orders':orders })
 
+def tutordashboardtesting(request):
+    return render(request,'tutor-dashboard.html')
+
+def thank(request):
+    return render(request,'thank-you.html')
+
 @login_required(login_url='/tutor/')    
 def interest(request):
     if request.method=="POST":
