@@ -1,0 +1,9 @@
+Watching for file changes with StatReloader
+[32mHTTP GET /dashboard/new-user/ 302 [0.03, 127.0.0.1:60104][0m
+[mHTTP GET /login/?next=/dashboard/new-user/ 200 [0.03, 127.0.0.1:60104][0m
+[mHTTP GET / 200 [0.02, 127.0.0.1:60104][0m
+[32mHTTP POST /order/ 302 [0.04, 127.0.0.1:60104][0m
+[mHTTP GET /sign-up/ 200 [0.02, 127.0.0.1:60104][0m
+[mHTTP POST /sign-up/ 200 [3.36, 127.0.0.1:60104][0m
+[mHTTP GET /dashboard/new-user/ 200 [0.02, 127.0.0.1:60104][0m
+[mHTTP GET /dashboard/new-user/ 200 [0.02, 127.0.0.1:60104][0m

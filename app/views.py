@@ -386,7 +386,7 @@ def signup(request):
                     unknown_user.delete()
                     del request.session['session_key']
                     messages.success(request, 'you have registered successfully')
-                    usr = authenticate(username=email,password=password)
+                    usr = authenticate(username=uname,password=password)
                     login(request,usr)
                     data = {'status':'ok','msg':'User created successfully'}
                     return JsonResponse(data)
