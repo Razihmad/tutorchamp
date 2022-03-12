@@ -254,7 +254,7 @@
 							<td>{{detail.deadline}}</td>
 							<td>{{detail.subject}}</td>
 							<td class="{{detail.status}}">{{detail.get_status_display}}</td>
-							<td><div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div></td>
+							<td><div class="chatIcon main_chat_icon"><img src="/static/dashboard/images/chat.png"></div></td>
 						</tr>
 						{% endif %}
 
@@ -421,7 +421,7 @@
 						<td>{{detail.duration}}</td>
 						<td>{{detail.subject}}</td>
 						<td class="{{detail.status}}">{{detail.get_status_display}}</td>
-						<td><div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div></td>
+						<td><div class="chatIcon main_chat_icon"><img src="/static/dashboard/images/chat.png"></div></td>
 					</tr>
 					{% endif %}
 
@@ -504,7 +504,7 @@
 						<td>{{lab.deadline}}</td>
 						<td>{{lab.subject}}</td>
 						<td class="{{lab.status}}">{{lab.status}}</td>
-						<td><div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div></td>
+						<td><div class="chatIcon main_chat_icon"><img src="/static/dashboard/images/chat.png"></div></td>
 					</tr>
 					{% endfor %}
 				</table>
@@ -552,6 +552,11 @@
 		        </form>
 			</div>
 		</div>
+	</div>
+
+
+	<div class="chat_box">
+		<h3>ChatBox</h3>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -663,6 +668,11 @@
 				$('.sidebar').toggleClass("open");
 			});
 		});
+		$(document).ready(function () {
+			$('.main_chat_icon').click(function () {
+				$('.chat_box').addClass("open");
+			});
+		});
 
 	$("input[name='deadline']").click(function(){
 	  $(this).addClass("removeAfter");
@@ -703,7 +713,7 @@ function getdata(){
 			var deadline = data[i].deadline
 			var subject = data[i].subject
 			var status = data[i].status
-			var temp = '<tr><td>'+order_id+'</td><td>'+deadline+'</td><td>'+subject+'</td><td>'+status+'</td><td>'+'<div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
+			var temp = '<tr><td>'+order_id+'</td><td>'+deadline+'</td><td>'+subject+'</td><td>'+status+'</td><td>'+'<div class="chatIcon main_chat_icon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
 			$("#labdata tr:last").after(temp)
 		}
 		}
@@ -738,7 +748,7 @@ function getdata(){
 						var deadline = data.deadline
 						var subject = data.subject
 						var status = data.status
-						var temp = '<tr><td>'+order_id+'</td>'+'<td>'+'<a href='+assignment+'>'+'Preview' +'</a>' +'</td>'+'<td>'+deadline+'</td><td>'+subject+'</td>'+'<td class='+`${status}`+'>' +status+'</td>'+'<td>'+'<div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
+						var temp = '<tr><td>'+order_id+'</td>'+'<td>'+'<a href='+assignment+'>'+'Preview' +'</a>' +'</td>'+'<td>'+deadline+'</td><td>'+subject+'</td>'+'<td class='+`${status}`+'>' +status+'</td>'+'<td>'+'<div class="chatIcon main_chat_icon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
 						$("#hwdata tr:last").after(temp)
 						$('#hwform').trigger('reset')
 					}
@@ -764,7 +774,7 @@ function getdata(){
 						var deadline = data.deadline
 						var subject = data.subject
 						var status = data.status
-						var temp = '<tr><td>'+order_id+'</td>'+'<td>'+'<a href='+assignment+'>'+'Preview' +'</a>' +'</td>'+'<td>'+deadline+'</td>'+'<td>'+duration +'</td>' +'<td>'+subject+'</td>'+'<td class='+`${status}`+'>' +status+'</td>'+'<td>'+'<div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
+						var temp = '<tr><td>'+order_id+'</td>'+'<td>'+'<a href='+assignment+'>'+'Preview' +'</a>' +'</td>'+'<td>'+deadline+'</td>'+'<td>'+duration +'</td>' +'<td>'+subject+'</td>'+'<td class='+`${status}`+'>' +status+'</td>'+'<td>'+'<div class="chatIcon main_chat_icon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
 							$("#lsdata tr:last").after(temp)
 						$('#lsform').trigger('reset')
 					}
@@ -790,7 +800,7 @@ function getdata(){
 						var deadline = data.deadline
 						var subject = data.subject
 						var status = data.status
-						var temp = '<tr><td>'+order_id+'</td><td>'+deadline+'</td><td>'+subject+'</td>'+'<td class='+`${status}`+'>' +status+'</td>'+'<td>'+'<div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
+						var temp = '<tr><td>'+order_id+'</td><td>'+deadline+'</td><td>'+subject+'</td>'+'<td class='+`${status}`+'>' +status+'</td>'+'<td>'+'<div class="chatIcon main_chat_icon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
 						$("#labdata tr:last").after(temp)
 						$('#labform').trigger('reset')
 					}

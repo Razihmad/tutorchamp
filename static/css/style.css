@@ -4783,3 +4783,18 @@ border-radius: 5px;
 #all_blog_post{overflow: hidden; height: 1235px;}
 .blog_height{height: auto!important;}
 .show_password_icon, .show_CPassword_icon, .log_password{position: absolute; right: 25px;  top: 10px; font-size: 22px!important; cursor: pointer; color: #737373;}
+.chat_box.open{display: block!important;}
+.chat_box{    position: fixed;
+    bottom: 15px;
+    right: 10px;
+    min-width: 300px;
+    background: #fff;
+    z-index: 999;
+    box-shadow: 0 0 10px #919191;
+    min-height: 300px;
+    border-radius: 10px;
+    padding: 10px;
+    display: none;
+}
+
+
