@@ -229,16 +229,6 @@ class Questions(models.Model):
         verbose_name = 'Question'
         verbose_name_plural = 'Questions'
 
-class Blog(models.Model):
-    title = models.CharField(max_length=500)
-
-
-
-    class Meta:
-        db_table = ''
-        managed = True
-        verbose_name = 'Blog'
-        verbose_name_plural = 'Blogs'
         
 class Reviews(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
