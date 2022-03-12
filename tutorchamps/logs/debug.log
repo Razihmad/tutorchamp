@@ -1,0 +1,4 @@
+Watching for file changes with StatReloader
+[mHTTP GET / 200 [0.15, 127.0.0.1:57275][0m
+[36mHTTP GET /static/css/style.css 304 [0.00, 127.0.0.1:57275][0m
+[36mHTTP GET /static/images/logo.png 304 [0.00, 127.0.0.1:57275][0m
