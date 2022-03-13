@@ -2,5 +2,7 @@
 __pycache__
 media
 env
+migrations
+db.sqlite3
 admin
 logs
