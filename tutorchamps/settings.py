@@ -178,7 +178,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': config("filename")
+            'filename': os.path.join(BASE_DIR,'logs/debug.log')
         },
     },
     'root': {

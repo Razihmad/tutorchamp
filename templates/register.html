@@ -109,6 +109,13 @@
     font-size: 13px;
     left: 10px
     }
+    #msg{
+        position: absolute;
+        color: #e31b1bd4;;
+        text-align: center;
+        left: 55px;
+        top: 1px;
+    }
 
     </style>
     <!-- Google Tag Manager -->
@@ -149,8 +156,10 @@
                 {% csrf_token %}
                
                 <div class="first_step">
+                    <p id="msg"><b>We are currently hiring only from India right now</b></p>
                     <h3 class="text-dark text-center">Register Here</h3>
                     <p>You just need to share your basic info to start the process to be a TutorChamp:</p>
+                    
                     <div class="form_group">
                         <div class="pos_rel">
 
