@@ -642,9 +642,6 @@ def tutor_login(request):
             if user_detail.user_type=="Tutor":
                 if user.is_active:
                     login(request, user)
-                    user = User.objects.get(username=username)
-                    tutor = TutorRegister.objects.get(tutor=user)
-                    id = tutor.unique_id
                     return redirect('/tutor/dashboard/')
                 else:
                     messages.info(
