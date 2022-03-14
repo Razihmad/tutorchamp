@@ -363,7 +363,9 @@ def signup(request):
                     c = {
                         'user':user.username,
                         'order_id':laborder.order_id,
-                        'subject':laborder.subject
+                        'subject':laborder.subject,
+                        'deadline':laborder.deadline
+                        
                     }
                     order_id = laborder.order_id
                     email_msg = render_to_string('order.txt',c)
@@ -471,6 +473,16 @@ def signin(request):
                             id +=1000
                             laborder.order_id = f'TC-lab-{id}'
                             laborder.save()
+                            c = {
+                                'user':user.username,
+                                'order_id':laborder.order_id,
+                                'subject':laborder.subject,
+                                'deadline':laborder.deadline,
+                            }
+                            order_id = laborder.order_id
+                            email_msg = render_to_string('order.txt',c)
+                            mail = EmailMessage(subject=f'Order Created - {order_id}',body=email_msg,from_email='TutorChamps Student Support <help@tutorchamps.com>',to=[email,'help@tutorchamps.com'])
+                            mail.send()  
                         except:
                             order = Orders.objects.get(user=unknown_user)
                             order.user = user
@@ -478,7 +490,8 @@ def signin(request):
                             c = {
                                 'user':user.username,
                                 'order_id':order.order_id,
-                                'subject':order.subject
+                                'subject':order.subject,
+                                'deadline':order.deadline,
                             }
                             order_id = order.order_id
                             email_msg = render_to_string('order.txt',c)
