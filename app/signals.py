@@ -16,10 +16,11 @@ def presaveSignal(sender,instance,**kwargs):
         prev = User.objects.get(id=instance.id)
         if prev.is_active==False:
             if instance.is_active==True:
+                tutor = TutorRegister.objects.get(tutor=prev)
                 c = {
                     'username':instance.first_name,
                     'email':instance.email,
-                    'unique_id':instance.unique_id
+                    'unique_id':tutor.unique_id
                 }
                 email=instance.email
                 email_msg = render_to_string('test_pass.txt',c)
