@@ -19,6 +19,7 @@ def presaveSignal(sender,instance,**kwargs):
                 c = {
                     'username':instance.first_name,
                     'email':instance.email,
+                    'unique_id':instance.unique_id
                 }
                 email=instance.email
                 email_msg = render_to_string('test_pass.txt',c)

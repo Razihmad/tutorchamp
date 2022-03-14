@@ -12,7 +12,7 @@ https://tutorchamps.com/tutor/
 Login Credentials:
 Username: {{email}}
 Password: tutors@tc$123#
-
+Your Unique Id: {{unique_id}}
 All the best for your new earning journey.
 
 Sincerely,
