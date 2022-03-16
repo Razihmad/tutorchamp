@@ -93,7 +93,6 @@
     background: #ffffff;
     box-shadow: 0px 2px 4px 0px rgb(0 0 0 / 12%);
     cursor: pointer;
-    opacity: 0;
     transition: all 0.2s ease-in-out;
 }
 .avatar-upload:hover .avatar-edit input + label {opacity: 1;}
@@ -128,7 +127,7 @@
 			.dTbale {
 				margin-top: calc(30vh - 170px);
 			}
-
+			.avatar-upload .avatar-edit input + label{opacity: 1!important;}
 			.ProjectLabAssignment .form_group {
 				display: block !important;
 			}
@@ -193,7 +192,7 @@
 							<div class="attachFile">
 								<div class="addfile">
 									<label for="qfile" class="custom-file-upload">Add File </label>
-									<input name="assignment" type="file" id="qfile"
+									<input name="assignment" type="file" id="qfile" multiple="multiple"
 										accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png"
 										style="display: none;">
 								</div>
@@ -265,7 +264,7 @@
 				<div class="col50">
 					<form class="commForm mt-3" method="POST" action="/profile/" enctype="multipart/form-data">
 						{% csrf_token %}
-						<h2 class="text-dark text-left" id="user_name">{{user_detail.name}}</h2>
+						
 						<div class="avatar-upload">
 					        <div class="avatar-edit">
 					            <input type='file' id="imageUpload" name="profile" accept=".png, .jpg, .jpeg" />
@@ -280,7 +279,7 @@
 					            </div>
 					        </div>
 					    </div>
-
+					    <h2 class="text-dark text-left" id="user_name">{{user_detail.name}}</h2>
 						<p>Edit/update your details here</p>
 						<div class="">
 							<label>Enter Your Name </label>
@@ -556,6 +555,7 @@
 
 
 	<div class="chat_box">
+		<button id="close_chat" type="button" class="close">×</button>
 		<h3>ChatBox</h3>
 	</div>
 
@@ -564,11 +564,18 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script>
+
+
+		$('.date_time').on('keydown', function() {
+		    $(this).addClass("focus");
+		});
+
 		$('#choose-file').change(function () {
 			var i = $(this).prev('label').clone();
 			var file = $('#choose-file')[0].files[0].name;
 			$(this).prev('label').text(file);
 		});
+
 
 		$('#reffile').change(function () {
 			var i = $(this).prev('.custom-file-upload').clone();
@@ -671,6 +678,9 @@
 		$(document).ready(function () {
 			$('.main_chat_icon').click(function () {
 				$('.chat_box').addClass("open");
+			});
+			$('#close_chat').click(function () {
+				$('.chat_box').removeClass("open");
 			});
 		});
 

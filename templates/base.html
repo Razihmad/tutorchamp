@@ -510,6 +510,10 @@ window.onload = init;
                 }
             });
 
+            $('.date_time').focusout(function (){
+                $('.date_time').addClass("removeAfter");
+            });
+
 
 
           $(".close").click(function(){
@@ -640,6 +644,11 @@ window.onload = init;
             lp.type = "password";
           }
         }
+
+        
+        $(".date_time").keypress(function(){
+          $(this).addClass("focus");
+        });
     </script>
 
 

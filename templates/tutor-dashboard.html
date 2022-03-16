@@ -14,6 +14,49 @@
 	<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<style>
+
+.avatar-upload {
+  position: relative;
+  max-width: 100px;
+  margin-bottom: 12px;
+}
+.avatar-upload .avatar-edit {
+    position: absolute;
+	right: -4px;
+	bottom: -2px;
+	z-index: 1;
+}
+.avatar-upload .avatar-edit input {
+  display: none;
+}
+.avatar-upload .avatar-edit input + label {
+  width: 34px;
+    height: 34px;
+    border-radius: 100%;
+    background: #ffffff;
+    box-shadow: 0px 2px 4px 0px rgb(0 0 0 / 12%);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.avatar-upload:hover .avatar-edit input + label {opacity: 1;}
+.avatar-upload .avatar-edit input + label img{padding: 6px;}
+.avatar-upload .avatar-preview {
+    width: 110px;
+	height: 110px;
+	position: relative;
+	border-radius: 100%;
+	border: 4px solid #ffffff;
+	box-shadow: 1px 1px 15px #e0e0e0;
+}
+.avatar-upload .avatar-preview > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+		.show_password_icon, .show_CPassword_icon{top: 32px;}
 		.notifications_table{margin-top: 30px}
 		.noti_icon_box {
 			position: absolute;
@@ -201,7 +244,7 @@
 		}
 
 		.thead td {
-			width: 25%;
+			width: auto;
 			border: 1px solid #fff;
 		}
 
@@ -254,6 +297,13 @@
 		}
 
 		@media screen and (max-width: 767px) {
+			.avatar-upload .avatar-edit input + label{opacity: 1!important;}
+			.aq_cstm_h2{text-align: center!important;}
+			.commForm .pos_rel {
+			    width: 100% !important;
+			}
+			.commForm .form_group{display: block;}
+			.pos_rel.px_15{padding: 0!important;}
 			.dTbale {
 				margin-top: calc(30vh - 170px);
 			}
@@ -268,7 +318,7 @@
 
 			td,
 			th {
-				font-size: 12px;
+				font-size: 11px;
 			}
 		}
 
@@ -372,21 +422,23 @@
 								<tbody>
 									<tr class="thead"
 										style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
-										<td style="width: 20%;">ID</td>
-										<td style="width: 20%;">Subject</td>
-										<td style="width: 20%;">Deadline</td>
-										<td style="width: 20%;">Time</td>
-										<td style="width: 20%;">Amount</td>
+										<td>ID</td>
+										<td>Subject</td>
+										<td>Deadline</td>
+										<td>Time</td>
+										<td>Amount</td>
+										<td>Chat</td>
 									</tr>
 									{% for assignment in assignments %}
 									  {% if assignment.status == "Completed" %}
 										
 									  <tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
-										  <td style="width: 20%;">{{assignment.order.order_id}}</td>
-										  <td style="width: 20%;">{{assignment.order.subject}}</td>
-										  <td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
-										  <td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
-										  <td style="width: 20%;color: #43b97e;">{{assignment.amount}}</td>
+										  <td>{{assignment.order.order_id}}</td>
+										  <td>{{assignment.order.subject}}</td>
+										  <td style="color:#43b97e;">{{assignment.order.deadline}}</td>
+										  <td style="color:#43b97e;">{{assignment.order.deadline}}</td>
+										  <td style="color: #43b97e;">{{assignment.amount}}</td>
+										  <td><div class="chatIcon main_chat_icon"><img src="/static/dashboard/images/chat.png"></div></td>
 										</tr>
 										{% endif %}
 									{% endfor %}
@@ -405,21 +457,21 @@
 								<tbody>
 									<tr class="thead"
 										style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
-										<td style="width: 20%;">ID</td>
-										<td style="width: 20%;">Subject</td>
-										<td style="width: 20%;">Deadline</td>
-										<td style="width: 20%;">Time</td>
-										<td style="width: 20%;">Amount</td>
+										<td>ID</td>
+										<td>Subject</td>
+										<td>Deadline</td>
+										<td>Time</td>
+										<td>Amount</td>
 									</tr>
 									{% for lab in labs %}
 									  {% if lab.status == "Completed" %}
 										
 									  <tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
-										  <td style="width: 20%;">{{lab.labs.order_id}}</td>
-										  <td style="width: 20%;">{{lab.labs.subject}}</td>
-										  <td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
-										  <td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
-										  <td style="width: 20%;color: #43b97e;">{{lab.amount}}</td>
+										  <td>{{lab.labs.order_id}}</td>
+										  <td>{{lab.labs.subject}}</td>
+										  <td style="color:#43b97e;">{{lab.labs.deadline}}</td>
+										  <td style="color:#43b97e;">{{lab.labs.deadline}}</td>
+										  <td style="color: #43b97e;">{{lab.amount}}</td>
 										</tr>
 										{% endif %}
 									{% endfor %}
@@ -435,8 +487,32 @@
 				<div class="col50">
 					<form class="commForm mt-3" method="POST" action="/tutor_profile/">
 						{% csrf_token %}
-						<div class="userprof"><img style="    filter: grayscale(1);"
-								src="/static/dashboard/images/profi.png"></div>
+						<div class="avatar-upload">
+					        <div class="avatar-edit">
+					            <input type='file' id="imageUpload" name="profile" accept=".png, .jpg, .jpeg" />
+					            <label for="imageUpload"><img title="Add profile photo" src="/static/images/camera.png"></label>
+					        </div>
+					        <div class="avatar-preview">
+								{% if user_detail.profile %}
+					            <div id="imagePreview" style="background-image: url('{{user_detail.profile.url}}');">
+									{% else %}
+									<div id="imagePreview" style="background-image: url('');">
+										{% endif %}
+					            </div>
+					        </div>
+					    </div>
+						<!-- <div class="avatar-upload">
+					        <div class="avatar-edit">
+					            <input type='file' id="imageUpload" name="profile" accept=".png, .jpg, .jpeg" />
+					            <label for="imageUpload"><img title="Add profile photo" src="/static/images/camera.png"></label>
+					        </div>
+					        <div class="avatar-preview">
+					            <div id="imagePreview" style="background: url(../static/images/author-1.jpg);">
+									
+					            </div>
+					        </div>
+					    </div> -->
+						
 						<h2 class="text-dark text-left">{{tutor_register.name}}</h2>
 						<p>Edit/update your details here</p>
 						<div class="">
@@ -477,14 +553,16 @@
 						{% csrf_token %}
 						<h2 class="text-dark text-left">Password</h2>
 						<p>Create new password here</p>
-						<div class="">
+						<div class="" style="position: relative;">
 							<label>New Password</label>
-							<input class="input" type="password" name="password" placeholder="New Password" id="">
+							<input class="input" type="password" name="password" placeholder="New Password" id="password">
+							<i onclick="changeInputType()" class="show_password_icon fa fa-eye"></i>
 						</div>
-						<div class="" id="confm_password">
+						<div class="" id="confm_password" style="position: relative;">
 							<label>Confirm Password</label>
 							<input class="input" type="password" name="confm_password" placeholder="Confirm Password"
-								id="">
+								id="con_password">
+							<i onclick="changeInputType2()" class="show_CPassword_icon fa fa-eye"></i>
 						</div>
 						<div class="psr mt-3">
 							<input type="submit" class="formBtn theme-btn btn-style-one" value="Update">
@@ -513,21 +591,21 @@
 								<tbody>
 									<tr class="thead"
 										style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
-										<td style="width: 20%;">Order ID</td>
-										<td style="width: 20%;">Subject</td>
-										<td style="width: 20%;">Deadline</td>
-										<td style="width: 20%;">Time</td>
-										<td style="width: 20%;">Amount</td>
+										<td>Order ID</td>
+										<td>Subject</td>
+										<td>Deadline</td>
+										<td>Time</td>
+										<td>Amount</td>
 									</tr>
 									{% for assignment in assignments %}
 									{% if assignment.status == "Pending" %}
 									  
 									<tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
-										<td style="width: 20%;">{{assignment.order.order_id}}</td>
-										<td style="width: 20%;">{{assignment.order.subject}}</td>
-										<td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
-										<td style="width: 20%;color:#43b97e;">{{assignment.order.deadline}}</td>
-										<td style="width: 20%;color: #43b97e;">{{assignment.amount}}</td>
+										<td>{{assignment.order.order_id}}</td>
+										<td>{{assignment.order.subject}}</td>
+										<td style="color:#43b97e;">{{assignment.order.deadline}}</td>
+										<td style="color:#43b97e;">{{assignment.order.deadline}}</td>
+										<td style="color: #43b97e;">{{assignment.amount}}</td>
 									</tr>
 									{% endif %}
 									{% endfor %}
@@ -546,21 +624,21 @@
 								<tbody>
 									<tr class="thead"
 										style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
-										<td style="width: 20%;">ID</td>
-										<td style="width: 20%;">Subject</td>
-										<td style="width: 20%;">Deadline</td>
-										<td style="width: 20%;">Time</td>
-										<td style="width: 20%;">Amount</td>
+										<td>ID</td>
+										<td>Subject</td>
+										<td>Deadline</td>
+										<td>Time</td>
+										<td>Amount</td>
 									</tr>
 									{% for lab in labs %}
 									  {% if lab.status == "Pending" %}
 										
 									  <tr style="font-size: 13px;color: #3c3b3b;border-top: none;text-align: center;">
-										  <td style="width: 20%;">{{lab.labs.order_id}}</td>
-										  <td style="width: 20%;">{{lab.labs.subject}}</td>
-										  <td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
-										  <td style="width: 20%;color:#43b97e;">{{lab.labs.deadline}}</td>
-										  <td style="width: 20%;color: #43b97e;">{{lab.amount}}</td>
+										  <td>{{lab.labs.order_id}}</td>
+										  <td>{{lab.labs.subject}}</td>
+										  <td style="color:#43b97e;">{{lab.labs.deadline}}</td>
+										  <td style="color:#43b97e;">{{lab.labs.deadline}}</td>
+										  <td style="color: #43b97e;">{{lab.amount}}</td>
 										</tr>
 										{% endif %}
 									{% endfor %}
@@ -586,7 +664,7 @@
 
 					{% csrf_token %}
 					<div>
-						<h2>
+						<h2 class="aq_cstm_h2">
 							<b>Redeemable & Total Earning
 								<sup><i class="fa fa-exclamation-circle" aria-hidden="true"></i></sup><br> {{b}} INR
 							</b>
@@ -607,17 +685,17 @@
 					<div class="tab-content">
 
 						<div id="tutor_payments" class="tab-pane fade">
-							<div class="connent_con">
+							<div class="connent_con table_container">
 								<table class="table table-striped" style="border: 2px solid #43b97e;">
 									<tbody>
 										<tr class="thead"
 											style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
-											<td style="width: 16%;">Trans. ID</td>
-											<td style="width: 16%;">Date</td>
-											<td style="width: 16%;">Amount</td>
-											<td style="width: 20%;">Transferred to Account</td>
-											<td style="width: 16%;">TDS</td>
-											<td style="width: 16%;">Payout Status</td>
+											<td>Trans. ID</td>
+											<td>Date</td>
+											<td>Amount</td>
+											<td>Transferred to Account</td>
+											<td>TDS</td>
+											<td>Payout Status</td>
 										</tr>
 										{% for history in payment_history %}
 										  
@@ -625,7 +703,7 @@
 											<td style="width: 16%;">{{history.transaction_id}}</td>
 											<td style="width: 16%;">{{history.date}}</td>
 											<td style="width: 16%;">{{history.amount}}</td>
-											<td style="width: 20%;">{{history.account}}</td>
+											<td>{{history.account}}</td>
 											<td style="width: 16%;">{{history.tds}}</td>
 											<td style="width: 16%;">{{history.status}}</td>
 										</tr>
@@ -718,19 +796,19 @@
 				<table class="table table-striped" style="border: 2px solid #43b97e;">
 					<tbody>
 						<tr class="thead" style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
-							<td style="width: 20%;">ID</td>
-							<td style="width: 20%;">Assignment</td>
-							<td style="width: 20%;">Deadline</td>
-							<td style="width: 20%;">Amount</td>
-							<td style="width: 20%;">Interest</td>
+							<td>ID</td>
+							<td>Assignment</td>
+							<td>Deadline</td>
+							<td>Amount</td>
+							<td>Interest</td>
 						</tr>
 						{% for order in orders %}
 						<tr style="font-size: 15px;color: #000;border-top: none;width: 100%;text-align: center;">
-							<td style="width: 20%;">{{order.order_id}}</td>
-							<td style="width: 20%;"><a href="{{order.assignment.url}}">Preview</a></td>
-							<td style="width: 20%;">{{order.deadline}}</td>
-							<td style="width: 20%;">{{order.amount}}</td>
-							<td style="width: 20%;"><form action="/interest/" method="post" id="interest">
+							<td>{{order.order_id}}</td>
+							<td><a href="{{order.assignment.url}}">Preview</a></td>
+							<td>{{order.deadline}}</td>
+							<td>{{order.amount}}</td>
+							<td><form action="/interest/" method="post" id="interest">
 								{% csrf_token %}
 								<input type="text" name="order_id" id="order_id" value="{{order.order_id}}" style="display: none;">
 								<input id="b" type="submit" value="Interested">
@@ -829,6 +907,11 @@
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<div class="chat_box">
+		<button id="close_chat" type="button" class="close">×</button>
+		<h3>ChatBox</h3>
 	</div>
 
 
@@ -949,6 +1032,38 @@
 			})
 		})
 	</script>
+
+
+	<script>
+        function changeInputType() {
+        $(".show_password_icon").toggleClass("fa-eye-slash");
+          var x = document.getElementById("password");
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+        }
+
+        function changeInputType2() {
+        $(".show_CPassword_icon").toggleClass("fa-eye-slash");
+          var ConfirmPassword = document.getElementById("con_password");
+          if (ConfirmPassword.type === "password") {
+            ConfirmPassword.type = "text";
+          } else {
+            ConfirmPassword.type = "password";
+          }
+        }
+
+        $(document).ready(function () {
+			$('.main_chat_icon').click(function () {
+				$('.chat_box').addClass("open");
+			});
+			$('#close_chat').click(function () {
+				$('.chat_box').removeClass("open");
+			});
+		});
+    </script>
 
 
 
