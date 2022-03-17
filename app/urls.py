@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.urls import path
 from app import views
 from django.conf import settings
@@ -64,5 +65,8 @@ urlpatterns = [
     path('thank-you/<int:id>/',views.thanks,name='thank you'),
     path('reset-tutor-password/',views.password_reset,name='tutor_reset_password'),
     path('interest/',views.interest,name='interset'),
+    path('d/',views.tutordashboardtesting),
+    path('t/',views.thank)
+    
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
