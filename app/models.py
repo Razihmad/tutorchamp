@@ -50,7 +50,7 @@ class Orders(models.Model):
     assigned = models.BooleanField(default=False)
     reference_material = models.ImageField(null=True,blank=True)
     amount = models.IntegerField(default=0)
-    assignment_completed_file = models.FileField()
+    assignment_completed_file = models.FileField(null=True,blank=True)
 
     def __str__(self):
         return self.order_id
@@ -73,6 +73,7 @@ class LabOrders(models.Model):
         ('Awaiting Confirmation','Awaiting Confirmation'),
         ('Order Confirmed','Order Confirmed'),
         ('Order Rejected','Order Rejected'),
+        ('Payment Done','Payment Done'),
         ('Assignment In Progress','Assignment In Progress'),
         ('Review Your Assignment','Review Your Assignment'),
         ('Assignment Under Revision','Assignment Under Revision'),
@@ -82,6 +83,7 @@ class LabOrders(models.Model):
     submission_date = models.DateField(default=date.today())
     assigned = models.BooleanField(default=False)
     amount = models.IntegerField(default=0)
+    assignment_completed_file = models.FileField(null=True,blank=True)
     
     def __str__(self):
         return self.order_id
