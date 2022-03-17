@@ -4708,7 +4708,7 @@ form.login_form h5 + p{line-height:24px;margin-bottom:33px}
 .aj_a:hover{color:#43b97e}
 .aj_a{text-decoration:underline}
 input[name="deadline"]:after{content:"Deadline";position:absolute;left:9px;bottom:8px;color:#a5a5a5;background:#fff;width:calc(100% - 40px)}
-input[name="deadline"]:focus:after{display:none}
+input[name="deadline"]::focus::after{display:none}
 .input.removeAfter:after{display:none}
 .inn_progrss{margin-bottom:-10px}
 .inn_progrss span{display:inline-block;padding:2px 8px;border-left:3px solid #47bf7f;margin-top:15px}
@@ -4782,4 +4782,20 @@ border-radius: 5px;
 .review_height{height: auto!important; margin-bottom: 20px!important;}
 #all_blog_post{overflow: hidden; height: 1235px;}
 .blog_height{height: auto!important;}
-.show_password_icon{position: absolute; right: 25px;  top: 10px; font-size: 22px!important; cursor: pointer; color: #737373;}
+.show_password_icon, .show_CPassword_icon, .log_password{position: absolute; right: 25px;  top: 10px; font-size: 22px!important; cursor: pointer; color: #737373;}
+.chat_box.open{display: block!important;}
+.chat_box{    position: fixed;
+    bottom: 15px;
+    right: 10px;
+    min-width: 330px;
+    background: #fff;
+    z-index: 999;
+    box-shadow: 0 0 10px #919191;
+    min-height: 420px;
+    border-radius: 10px;
+    padding: 30px 10px 10px;
+    display: none;
+}
+#close_chat{position: absolute; top: 3px; right: 5px; z-index: 999;}
+
+
