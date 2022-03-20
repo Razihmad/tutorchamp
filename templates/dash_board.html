@@ -140,11 +140,16 @@
 			th {
 				font-size: 12px;
 			}
+			.sDashboard .col3 {width: 100%!important;}
+			.sDashboard h1 {
+			    font-size: 24px;
+			}
+
 		}
 	</style>
 </head>
 
-<body>
+<body class="sDashboard">
 	<div class="mobHeader">
 		<div>
 			<div><img src="{% static 'images/logo.png' %}" alt="logo"></div>
@@ -229,36 +234,37 @@
 				</form>
 
 				<div class="inn_progrss"><span>In Progress (Assignments)</span> </div>
-
-				<table class="mt30 table table-striped" id="hwdata" style="border: 2px solid #43b97e;">
-					
-					<tr class="thead"
-						style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
-						<td>Order ID</td>
-						<td>Assignment</td>
-						<td>Deadline</td>
-						<td>Subject</td>
-						<td>Status</td>
-						<td>Chat</td>
-					</tr>
-					{% for detail in details %}
-					{% if detail.duration is none %}
-					<tr style="color: black;">
-						<td>{{detail.order_id}}</td>
-						{% if detail.assignment %}
-						<td><a href="{{detail.assignment.url}}">Preview</a> </td>
-							{% else %}
-							<td>No File</td>
-							{% endif %}
-							<td>{{detail.deadline}}</td>
-							<td>{{detail.subject}}</td>
-							<td class="{{detail.status}}">{{detail.get_status_display}}</td>
-							<td><div class="chatIcon main_chat_icon"><img src="/static/dashboard/images/chat.png"></div></td>
+				<div class=" table_container">
+					<table class="mt30 table table-striped" id="hwdata" style="border: 2px solid #43b97e;">
+						
+						<tr class="thead"
+							style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
+							<td>Order ID</td>
+							<td>Assignment</td>
+							<td>Deadline</td>
+							<td>Subject</td>
+							<td>Status</td>
+							<td>Chat</td>
 						</tr>
-						{% endif %}
+						{% for detail in details %}
+						{% if detail.duration is none %}
+						<tr style="color: black;">
+							<td>{{detail.order_id}}</td>
+							{% if detail.assignment %}
+							<td><a href="{{detail.assignment.url}}">Preview</a> </td>
+								{% else %}
+								<td>No File</td>
+								{% endif %}
+								<td>{{detail.deadline}}</td>
+								<td>{{detail.subject}}</td>
+								<td class="{{detail.status}}">{{detail.get_status_display}}</td>
+								<td><div class="chatIcon main_chat_icon"><img src="/static/dashboard/images/chat.png"></div></td>
+							</tr>
+							{% endif %}
 
-					{% endfor %}
-				</table>
+						{% endfor %}
+					</table>
+				</div>
 			</div>
 			<div class="profileContent">
 				<div class="col50">
