@@ -109,11 +109,30 @@
     font-size: 13px;
     left: 10px
     }
+    #msg{
+        position: absolute;
+        color: #e31b1bd4;;
+        text-align: center;
+        left: 55px;
+        top: 1px;
+    }
 
     </style>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NVND638');</script>
+    <!-- End Google Tag Manager -->
 </head>
 
 <body> 
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVND638"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <div class="page-wrapper">
         <header class="">
             <div class="container">
@@ -127,18 +146,20 @@
                     <h2 class="color_000">Benefits of Becoming Tutors With<br> <span class="sec-underline">TutorChamps</span></h2>
                     <ul style="font-size: 1.15rem;" class="mt-5">
                         <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Share your expertise across the globe.</li> 
-                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Earn handsome money by sharing your knowledge.</li> 
+                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Earn money by sharing your knowledge on a daily basis.</li> 
                         <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Increase your knowledge by practicing and solving a variety of questions.</li>
-                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Share your expertise across the globe.</li> 
-                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Earn handsome money by sharing your knowledge.</li> 
+                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Earn and Learn everywhere/everytime.</li> 
+                        <li><i style="color: #ffe00c;" class="fa fa-star"> </i> Join 3000+ Tutors team.</li> 
                     </ul>
                 </div>
                 <form class="commForm login_form loginF" method="POST">
                 {% csrf_token %}
                
                 <div class="first_step">
+                    <p id="msg"><b>We are currently hiring only from India right now</b></p>
                     <h3 class="text-dark text-center">Register Here</h3>
                     <p>You just need to share your basic info to start the process to be a TutorChamp:</p>
+                    
                     <div class="form_group">
                         <div class="pos_rel">
 

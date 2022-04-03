@@ -93,7 +93,6 @@
     background: #ffffff;
     box-shadow: 0px 2px 4px 0px rgb(0 0 0 / 12%);
     cursor: pointer;
-    opacity: 0;
     transition: all 0.2s ease-in-out;
 }
 .avatar-upload:hover .avatar-edit input + label {opacity: 1;}
@@ -121,14 +120,14 @@
     width: 32%!important;
     max-width: 100%!important;
 }
-
+.show_password_icon, .show_CPassword_icon{top: 32px;}
 
 
 		@media screen and (max-width: 767px) {
 			.dTbale {
 				margin-top: calc(30vh - 170px);
 			}
-
+			.avatar-upload .avatar-edit input + label{opacity: 1!important;}
 			.ProjectLabAssignment .form_group {
 				display: block !important;
 			}
@@ -141,11 +140,32 @@
 			th {
 				font-size: 12px;
 			}
+			.sDashboard .col3 {width: 100%!important;}
+			.sDashboard h1 {
+			    font-size: 24px;
+			}
+
 		}
 	</style>
+	<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NVND638');</script>
+    <!-- End Google Tag Manager -->
 </head>
 
+<<<<<<< HEAD
+<body class="sDashboard">
+=======
 <body>
+	<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVND638"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+>>>>>>> my
 	<div class="mobHeader">
 		<div>
 			<div><img src="{% static 'images/logo.png' %}" alt="logo"></div>
@@ -176,7 +196,7 @@
 			<div class="dTbale homeContant active_">
 				<div class="head_content">
 					<h1>Welcome to TutorChamps</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					<p>TutorChamps is committed to provide best homework solution to it's students 24/7 and always puts students on top priority. Our mission is to make the students perform better in their academics and achieve their goals with certainty </p>
 				</div>
 				<!-- home page form  -->
 				<form class="mb55 commForm mt-3 " id="hwform" method="POST" action="{% url 'old-user' %}" enctype="multipart/form-data">
@@ -193,7 +213,7 @@
 							<div class="attachFile">
 								<div class="addfile">
 									<label for="qfile" class="custom-file-upload">Add File </label>
-									<input name="assignment" type="file" id="qfile"
+									<input name="assignment" type="file" id="qfile" multiple="multiple"
 										accept=".jpg,.jpeg,.pdf,doc,docx,application/msword,.png"
 										style="display: none;">
 								</div>
@@ -230,6 +250,19 @@
 				</form>
 
 				<div class="inn_progrss"><span>In Progress (Assignments)</span> </div>
+<<<<<<< HEAD
+				<div class=" table_container">
+					<table class="mt30 table table-striped" id="hwdata" style="border: 2px solid #43b97e;">
+						
+						<tr class="thead"
+							style="font-size: 15px;font-weight: 500;color: #000;border-top: none;width: 100%;background: #47bf7f;border-bottom: 2px solid #43b97e;text-align: center;">
+							<td>Order ID</td>
+							<td>Assignment</td>
+							<td>Deadline</td>
+							<td>Subject</td>
+							<td>Status</td>
+							<td>Chat</td>
+=======
 
 				<table class="mt30 table table-striped" id="hwdata" style="border: 2px solid #43b97e;">
 					
@@ -254,18 +287,34 @@
 							<td>{{detail.deadline}}</td>
 							<td>{{detail.subject}}</td>
 							<td class="{{detail.status}}">{{detail.get_status_display}}</td>
-							<td><div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div></td>
+							<td><div class="chatIcon"><a href="https://wa.me/+919711569678" target="_blank"><img src="/static/dashboard/images/chat.png"></a></div></td>
+>>>>>>> my
 						</tr>
-						{% endif %}
+						{% for detail in details %}
+						{% if detail.duration is none %}
+						<tr style="color: black;">
+							<td>{{detail.order_id}}</td>
+							{% if detail.assignment %}
+							<td><a href="{{detail.assignment.url}}">Preview</a> </td>
+								{% else %}
+								<td>No File</td>
+								{% endif %}
+								<td>{{detail.deadline}}</td>
+								<td>{{detail.subject}}</td>
+								<td class="{{detail.status}}">{{detail.get_status_display}}</td>
+								<td><div class="chatIcon main_chat_icon"><img src="/static/dashboard/images/chat.png"></div></td>
+							</tr>
+							{% endif %}
 
-					{% endfor %}
-				</table>
+						{% endfor %}
+					</table>
+				</div>
 			</div>
 			<div class="profileContent">
 				<div class="col50">
 					<form class="commForm mt-3" method="POST" action="/profile/" enctype="multipart/form-data">
 						{% csrf_token %}
-						<h2 class="text-dark text-left" id="user_name">{{user_detail.name}}</h2>
+						
 						<div class="avatar-upload">
 					        <div class="avatar-edit">
 					            <input type='file' id="imageUpload" name="profile" accept=".png, .jpg, .jpeg" />
@@ -280,7 +329,7 @@
 					            </div>
 					        </div>
 					    </div>
-
+					    <h2 class="text-dark text-left" id="user_name">{{user_detail.name}}</h2>
 						<p>Edit/update your details here</p>
 						<div class="">
 							<label>Enter Your Name </label>
@@ -320,14 +369,17 @@
 						{% csrf_token %}
 						<h2 class="text-dark text-left">Password</h2>
 						<p>Create new password here</p>
-						<div class="">
+						<div class="" style="position: relative;">
 							<label>New Password</label>
-							<input class="input" type="password" name="password" placeholder="New Password" id="">
+							<input class="input" type="password" name="password" placeholder="New Password" id="password">
+							<i onclick="changeInputType()" class="show_password_icon fa fa-eye"></i>
 						</div>
 						<div class="pos_rel">
 							<label>Confirm Password</label>
 							<input class="input" type="password" name="confm_password" placeholder="Confirm Password"
-								id="">
+								id="con_password">
+							<i onclick="changeInputType2()" class="show_CPassword_icon fa fa-eye"></i>
+
 						</div>
 						<div class="psr mt-3">
 							<input type="submit" class="formBtn theme-btn btn-style-one" value="Update">
@@ -418,7 +470,7 @@
 						<td>{{detail.duration}}</td>
 						<td>{{detail.subject}}</td>
 						<td class="{{detail.status}}">{{detail.get_status_display}}</td>
-						<td><div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div></td>
+						<td><div class="chatIcon"><a href="https://wa.me/+919711569678" target="_blank" ><img src="/static/dashboard/images/chat.png"></a></div></td>
 					</tr>
 					{% endif %}
 
@@ -501,8 +553,9 @@
 						<td>{{lab.deadline}}</td>
 						<td>{{lab.subject}}</td>
 						<td class="{{lab.status}}">{{lab.status}}</td>
-						<td><div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div></td>
+						<td><div class="chatIcon"><a href="https://wa.me/+919711569678" target="_blank"><img src="/static/dashboard/images/chat.png"></a></div></td>
 					</tr>
+				
 					{% endfor %}
 				</table>
 			</div>
@@ -550,17 +603,31 @@
 			</div>
 		</div>
 	</div>
+	
+
+
+	<div class="chat_box">
+		<button id="close_chat" type="button" class="close">×</button>
+		<h3>ChatBox</h3>
+	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script>
+
+
+		$('.date_time').on('keydown', function() {
+		    $(this).addClass("focus");
+		});
+
 		$('#choose-file').change(function () {
 			var i = $(this).prev('label').clone();
 			var file = $('#choose-file')[0].files[0].name;
 			$(this).prev('label').text(file);
 		});
+
 
 		$('#reffile').change(function () {
 			var i = $(this).prev('.custom-file-upload').clone();
@@ -660,6 +727,14 @@
 				$('.sidebar').toggleClass("open");
 			});
 		});
+		$(document).ready(function () {
+			$('.main_chat_icon').click(function () {
+				$('.chat_box').addClass("open");
+			});
+			$('#close_chat').click(function () {
+				$('.chat_box').removeClass("open");
+			});
+		});
 
 	$("input[name='deadline']").click(function(){
 	  $(this).addClass("removeAfter");
@@ -700,7 +775,7 @@ function getdata(){
 			var deadline = data[i].deadline
 			var subject = data[i].subject
 			var status = data[i].status
-			var temp = '<tr><td>'+order_id+'</td><td>'+deadline+'</td><td>'+subject+'</td><td>'+status+'</td><td>'+'<div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
+			var temp = '<tr><td>'+order_id+'</td><td>'+deadline+'</td><td>'+subject+'</td><td>'+status+'</td><td>'+'<div class="chatIcon main_chat_icon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
 			$("#labdata tr:last").after(temp)
 		}
 		}
@@ -735,7 +810,7 @@ function getdata(){
 						var deadline = data.deadline
 						var subject = data.subject
 						var status = data.status
-						var temp = '<tr><td>'+order_id+'</td>'+'<td>'+'<a href='+assignment+'>'+'Preview' +'</a>' +'</td>'+'<td>'+deadline+'</td><td>'+subject+'</td>'+'<td class='+`${status}`+'>' +status+'</td>'+'<td>'+'<div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
+						var temp = '<tr><td>'+order_id+'</td>'+'<td>'+'<a href='+assignment+'>'+'Preview' +'</a>' +'</td>'+'<td>'+deadline+'</td><td>'+subject+'</td>'+'<td class='+`${status}`+'>' +status+'</td>'+'<td>'+'<div class="chatIcon main_chat_icon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
 						$("#hwdata tr:last").after(temp)
 						$('#hwform').trigger('reset')
 					}
@@ -761,7 +836,7 @@ function getdata(){
 						var deadline = data.deadline
 						var subject = data.subject
 						var status = data.status
-						var temp = '<tr><td>'+order_id+'</td>'+'<td>'+'<a href='+assignment+'>'+'Preview' +'</a>' +'</td>'+'<td>'+deadline+'</td>'+'<td>'+duration +'</td>' +'<td>'+subject+'</td>'+'<td class='+`${status}`+'>' +status+'</td>'+'<td>'+'<div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
+						var temp = '<tr><td>'+order_id+'</td>'+'<td>'+'<a href='+assignment+'>'+'Preview' +'</a>' +'</td>'+'<td>'+deadline+'</td>'+'<td>'+duration +'</td>' +'<td>'+subject+'</td>'+'<td class='+`${status}`+'>' +status+'</td>'+'<td>'+'<div class="chatIcon main_chat_icon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
 							$("#lsdata tr:last").after(temp)
 						$('#lsform').trigger('reset')
 					}
@@ -787,13 +862,36 @@ function getdata(){
 						var deadline = data.deadline
 						var subject = data.subject
 						var status = data.status
-						var temp = '<tr><td>'+order_id+'</td><td>'+deadline+'</td><td>'+subject+'</td>'+'<td class='+`${status}`+'>' +status+'</td>'+'<td>'+'<div class="chatIcon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
+						var temp = '<tr><td>'+order_id+'</td><td>'+deadline+'</td><td>'+subject+'</td>'+'<td class='+`${status}`+'>' +status+'</td>'+'<td>'+'<div class="chatIcon main_chat_icon"><img src="/static/dashboard/images/chat.png"></div>'+'</td></tr>'
 						$("#labdata tr:last").after(temp)
 						$('#labform').trigger('reset')
 					}
 				})
 			})
 		</script>
+
+		<script>
+        function changeInputType() {
+        $(this).toggleClass("fa-eye-slash");
+          var x = document.getElementById("password");
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+        }
+
+        function changeInputType2() {
+        $(".show_CPassword_icon").toggleClass("fa-eye-slash");
+          var ConfirmPassword = document.getElementById("con_password");
+          if (ConfirmPassword.type === "password") {
+            ConfirmPassword.type = "text";
+          } else {
+            ConfirmPassword.type = "password";
+          }
+        }
+    </script>
+
 </body>
 
 </html>

@@ -39,9 +39,15 @@
 			<div class = "dialog-container chat-subsection">
 				<div id = "room-title">
 					<div class="back-button-container">
-						<img id="back-button" src="{% static 'img/left-arrow.svg' %}">
+						<img id="back-button" src="{% static 'images/left-arrow.svg' %}">
 					</div>
+					  
+					{% if request.user.is_staff %}
 					<div>{{room_name}}</div>
+						
+					{% else %}
+						<div>TutorChamps Support</div>
+					{% endif %}
 				</div>
 				<div id = "chat-dialog">
 					<!--AI==========================================================
@@ -78,10 +84,10 @@
 				</div>
 				<div class = "input-container">
 					<input type="text" id = "send-message" rows = "1"
-						placeholder = "Talk to tutor...">
+						placeholder = "Talk to Staff...">
 					<div id="send-btn-parent">
 						<img id="send-button" height="30px" role="button"
-							src="{% static 'img/send-button.svg' %}">
+							src="{% static 'images/send-button.svg' %}">
 					</div>
 				</div>
 			</div>

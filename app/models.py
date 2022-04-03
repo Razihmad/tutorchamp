@@ -1,4 +1,3 @@
-from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
@@ -38,17 +37,20 @@ class Orders(models.Model):
     CHOICES = (
         ('Awaiting Confirmation','Awaiting Confirmation'),
         ('Order Confirmed','Order Confirmed'),
+        ('Payment Done','Payment Done'),
         ('Order Rejected','Order Rejected'),
         ('Assignment In Progress','Assignment In Progress'),
         ('Review Your Assignment','Review Your Assignment'),
         ('Assignment Under Revision','Assignment Under Revision'),
         ('Assignment Completed','Assignment Completed'),
+        
     )
     status = models.CharField(max_length=100,choices=CHOICES)
     submission_date = models.DateField(default=date.today())
     assigned = models.BooleanField(default=False)
     reference_material = models.ImageField(null=True,blank=True)
     amount = models.IntegerField(default=0)
+    completed_assignment = models.FileField()
 
     def __str__(self):
         return self.order_id
@@ -226,16 +228,6 @@ class Questions(models.Model):
         verbose_name = 'Question'
         verbose_name_plural = 'Questions'
 
-class Blog(models.Model):
-    title = models.CharField(max_length=500)
-
-
-
-    class Meta:
-        db_table = ''
-        managed = True
-        verbose_name = 'Blog'
-        verbose_name_plural = 'Blogs'
         
 class Reviews(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)

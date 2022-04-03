@@ -52,6 +52,9 @@ h2{font-size:26px}
 .blog-detail .inner-box .blockquote-box .image-column .inner-column,.user-profile-section .profile-box{margin-left:0}
 }
 @media only screen and (min-width: 768px) {
+	.rating_inner li:nth-child(1) .img_con img {
+    margin-bottom: -14px;
+}
 .pl0_large{padding-left:0}
 .main-menu .navigation > li > ul,.main-menu .navigation > li > ul > li > ul{display:block!important;visibility:hidden;opacity:0}
 .main-footer .footer-bottom .nav-column ul{text-align:right!important}
@@ -114,6 +117,7 @@ h2{font-size:26px}
 .course-detail-section .info-column .inner-column:before{display:none}
 }
 @media only screen and (max-width: 767px) {
+.inn_subject_sec ul li{width: 100%!important;}
 .how-it-works article + span.arrow{display:none}
 .header_login_btn{margin-left:12px}
 .main-footer .logo-widget .social-box li a{font-size:18px;width:35px;height:35px;line-height:32px}
@@ -188,7 +192,6 @@ footer .foot_row .column_2 ul{columns:1;-webkit-columns:1;-moz-columns:1}
 .main-header .header-upper .logo-box+a{right:73px;display:block!important}
 section#counter-stats{padding:0}
 footer .column{padding-left:15px!important}
-.main-header .header-upper .logo-box a img{width:170px}
 .banner-section .content-column .title{margin-top:20px!important}
 .mobile-menu .navigation li+a.sign_up{display:none}
 .main-header .header-upper .logo-box .logo{text-align:left;padding:4px 0 10px}
@@ -243,7 +246,7 @@ h1{font-size:28px!important;line-height:45px!important}
 .main-header .outer-box .option-box > li{margin-left:0;margin-right:20px}
 .main-header .header-lower .search-box-outer .dropdown-menu{left:0!important;top:40px!important}
 .main-header .outer-box .option-box .cart-box .cart-panel{left:0!important;right:auto}
-.nav-outer .mobile-nav-toggler{display:block;margin:0;padding:8px 0;margin-left:20px}
+.nav-outer .mobile-nav-toggler{display:block;margin:0;padding:15px 0 0;margin-left:20px}
 #navbarSupportedContent{display:block}
 .mCSB_inside > .mCSB_container{margin-right:0}
 .main-header .outer-box{position:absolute;left:0;top:0;right:0;margin-left:0;padding:8px 0;background:#f7f7f7}
@@ -401,15 +404,24 @@ h3{font-size:22px}
 .blog-page-section .content-box .text{font-size:17px}
 }
 @media screen and (max-width:767px) {
+
 .ctaSec{display:block;padding:20px;border-radius:20px}
 .img_dot{display:none}
 .ctaSec > span{padding:0 0 24px!important;font-size:17px}
 .banner_con{width:100%}
-.rating_inner li > span{font-size:27px}
+.rating_inner li > span{font-size:20px;}
+.rating_inner p{font-size: 14px;}
 .rating_inner p a{font-size:12px}
 .rating_inner li{max-width:168px}
 .rating_inner{flex-wrap:wrap}
 .rating_inner li:nth-child(2){padding-right:0}
+.rating_inner li:nth-child(2) .img_con img{margin-top: 0px!important;}
+.rating_inner .img_con {
+    height: 31px!important;
+    width: 32px!important;
+    margin-bottom: -10px;
+}
+.rating_inner li:nth-child(3) .img_con img{margin-top: -54px!important;}
 .mCustomScrollBox{max-height:inherit}
 .mob_visible{display:block!important}
 .feature-section .image-column .image .overlay-box{padding:50px 50px 50px 15px !important}

@@ -152,6 +152,27 @@
     .profileContent{display: block;}
     .profileContent .col50, .col50{width: 100%;}
     .DashboardContent .commForm h2+p{line-height: 22px;}
+    .DashboardContent {padding: 50px 12px 25px 12px!important;}
+    .commForm {
+    padding: 20px 10px 26px!important;}
+    .table td, .table th{padding: 6px 10px!important; width: auto!important;}
+    .DashboardContent .commForm h2{font-size: 17px; text-align: left;}
+    .nav.nav-tabs a {font-size: 12px!important; padding: 6px 12px!important;}
+    .Redeem_box{justify-content: space-between; padding: 10px!important;}
+    .DashboardContent .commForm h2 br{display: none;}
+    .Redeem_box input + input {max-width: 114px!important;
+    padding: 4px 15px;
+    line-height: 22px;
+    font-size: 13px;}
+    .Redeem_box input{height: 35px!important;}
+    
+p{font-size: 13px!important;}
+.table_container{max-width: 100%; overflow-x: scroll;}
+.table {
+    width: max-content!important;
+    max-width: initial!important;
+}
+
 }
 .Rejected{position: relative; color: #ff0000;}
 .Completed{color: #28a745;}

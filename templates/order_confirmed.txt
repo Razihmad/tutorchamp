@@ -1,0 +1,17 @@
+{% autoescape off %}
+Dear {{user}}
+
+
+We are glad to inform you that your order has been confirmed and we will deliver the order before the timeline. 
+
+Here is the confirmation number:
+
+{{order_id}}
+
+
+Best,
+
+
+TutorChamps Students Support Team
+
+{% endautoescape %}

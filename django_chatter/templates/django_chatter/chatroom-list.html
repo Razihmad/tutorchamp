@@ -17,7 +17,7 @@
 	for users as well as the name of the chatroom.
 	===========================================================AI-->
 	<div class="chatroom-list-title">Chats</div>
-	<!-- <div class="search">
+	<div class="search">
 		<form class="search-form" action="{% url 'django_chatter:get_chat_url' %}" method="post">
 			{% csrf_token %}
 		
@@ -26,7 +26,7 @@
 			</select>
 			<button type="submit" name="button" class="select-chat-button">Go</button>
 		</form>
-	</div> -->
+	</div>
 
 <!--AI==========================================================
 	The following block represents the list of chatrooms at the left
@@ -42,19 +42,32 @@
 			<div class='chat-list-item'>
 			{% endif %}
 				<div class="chat-list-title">
-					{% if room.members.all|length == 2 %}
+				 {% if room.members.all|length == 2 %}
 
 						{% for user in room.members.all %}
 
-							{% if user != request.user %}
-								{{user}}
-							{% endif %}
+						{% if user.is_staff %}
+						  
+						{% else %}
+						  {{user}}
+						{% endif %}
+						
 
 						{% endfor %}
 
 					{% else %}
-							{{room}}
+					{% for user in room.members.all %}
+						{% if user.is_staff %}
+						  
+						{% else %}
+						  {{user}}
+						{% endif %}
+						
+
+				{% endfor %}
 					{% endif %}
+					
+
 				</div>
 
 				<div class="chat-list-last-message">

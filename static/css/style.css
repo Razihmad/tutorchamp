@@ -708,11 +708,6 @@ img{
 	padding:10px 0px;
 }
 
-.main-header .header-upper .logo-box .logo{
-	position:relative;
-	padding-top: 9px;
-}
-
 .main-header .outer-box{
 	padding: 24px 0px;
 	display: flex;
@@ -977,12 +972,6 @@ img{
 	-ms-transition:all 500ms ease;
 	-o-transition:all 500ms ease;
 }
-
-.sticky-header .logo{
-	padding: 17px 0px 18px;
-	margin-right: 42px;
-}
-
 .fixed-header .sticky-header{
 	z-index:999;
 	opacity:1;
@@ -1466,26 +1455,18 @@ img{
 	visibility: hidden;
 	z-index: 999999;
 }
-
 .mobile-menu .nav-logo{
 	position:relative;
 	padding:20px 20px;
 	text-align:left;	
 }
-
-.mobile-menu .nav-logo img{
-	max-width:200px;
-}
-
 .mobile-menu-visible{
 	overflow: hidden;
 }
-
 .mobile-menu-visible .mobile-menu{
 	opacity: 1;
 	visibility: visible;
 }
-
 .mobile-menu .menu-backdrop{
 	position: fixed;
 	right: 0;
@@ -3423,7 +3404,7 @@ img{display:inline-block;max-width:100%;height:auto}
 .main-header .header-upper .outer-container{position:relative;padding:0 60px}
 .main-header .nav-outer{position:static;float:right;padding-left:120px}
 .main-header .header-upper .logo-box{position:relative;padding:10px 0}
-.main-header .header-upper .logo-box .logo{position:relative;padding-top:9px}
+.main-header .header-upper .logo-box .logo{position:relative;}
 .main-header .outer-box{padding:24px 0;display:flex;align-items:center}
 .main-header .btn-box{position:relative;float:left;margin-left:30px}
 .main-header .header-lower .search-box{float:right}
@@ -3456,7 +3437,7 @@ img{display:inline-block;max-width:100%;height:auto}
 .main-menu .navigation > li > .mega-menu .lower-box .btn-box{position:absolute;right:0;top:65px}
 .main-menu .navigation > li > .mega-menu .lower-box .side-icon{position:absolute;right:-240px;bottom:-30px}
 .sticky-header{position:fixed;opacity:0;visibility:hidden;left:0;top:0;width:100%;padding:0;background:#fff;z-index:0;border-bottom:1px solid #e8f1f7;transition:all 500ms ease;-moz-transition:all 500ms ease;-webkit-transition:all 500ms ease;-ms-transition:all 500ms ease;-o-transition:all 500ms ease}
-.sticky-header .logo{padding:17px 0 18px;margin-right:42px}
+.sticky-header .logo{padding:10px 0;margin-right:42px}
 .fixed-header .sticky-header{z-index:999;opacity:1;visibility:visible;-ms-animation-name:fadeInDown;-moz-animation-name:fadeInDown;-op-animation-name:fadeInDown;-webkit-animation-name:fadeInDown;animation-name:fadeInDown;-ms-animation-duration:500ms;-moz-animation-duration:500ms;-op-animation-duration:500ms;-webkit-animation-duration:500ms;animation-duration:500ms;-ms-animation-timing-function:linear;-moz-animation-timing-function:linear;-op-animation-timing-function:linear;-webkit-animation-timing-function:linear;animation-timing-function:linear;-ms-animation-iteration-count:1;-moz-animation-iteration-count:1;-op-animation-iteration-count:1;-webkit-animation-iteration-count:1;animation-iteration-count:1}
 .main-menu .navigation > li > a{position:relative;display:inline-block;color:#06142d;text-align:center;line-height:30px;text-transform:capitalize;letter-spacing:0;opacity:1;font-weight:500;padding:22px 25px;font-size:16px;transition:all 500ms ease;-moz-transition:all 500ms ease;-webkit-transition:all 500ms ease;-ms-transition:all 500ms ease;-o-transition:all 500ms ease}
 .sticky-header .main-menu .navigation > li{margin-left:0;margin-right:0}
@@ -3515,7 +3496,6 @@ img{display:inline-block;max-width:100%;height:auto}
 .nav-outer .mobile-nav-toggler{position:relative;float:right;font-size:36px;line-height:50px;cursor:pointer;color:#000;display:none}
 .mobile-menu{position:fixed;right:0;top:0;width:300px;padding-right:30px;max-width:100%;height:100%;opacity:0;visibility:hidden;z-index:999999}
 .mobile-menu .nav-logo{position:relative;padding:20px;text-align:left}
-.mobile-menu .nav-logo img{max-width:200px}
 .mobile-menu-visible{overflow:hidden}
 .mobile-menu-visible .mobile-menu{opacity:1;visibility:visible}
 .mobile-menu .menu-backdrop{position:fixed;right:0;top:0;width:100%;height:100%;z-index:1;background:rgba(0,0,0,0.90);-webkit-transform:translateX(101%);-ms-transform:translateX(101%);transform:translateX(101%)}
@@ -4687,7 +4667,7 @@ form.login_form h5 + p{line-height:24px;margin-bottom:33px}
 .rating_inner li{max-width:192px;width:auto;display:flex;align-items:center;justify-content:space-between;padding-right:15px}
 .rating_inner .img_con{overflow:hidden;height:34px;width:40px}
 .rating_inner .img_con + div{padding:0 4px}
-.rating_inner li > span{font-size:33px;color:#43b97e}
+.rating_inner li > span{font-size:28px;color:#43b97e}
 .rating_inner li > div p + img{max-width:65px}
 .rating_inner p{margin-bottom:0;line-height:22px}
 .rating_inner p a{font-size:14px;color:#000;font-weight:500}
@@ -4708,7 +4688,7 @@ form.login_form h5 + p{line-height:24px;margin-bottom:33px}
 .aj_a:hover{color:#43b97e}
 .aj_a{text-decoration:underline}
 input[name="deadline"]:after{content:"Deadline";position:absolute;left:9px;bottom:8px;color:#a5a5a5;background:#fff;width:calc(100% - 40px)}
-input[name="deadline"]:focus:after{display:none}
+input[name="deadline"]::focus::after{display:none}
 .input.removeAfter:after{display:none}
 .inn_progrss{margin-bottom:-10px}
 .inn_progrss span{display:inline-block;padding:2px 8px;border-left:3px solid #47bf7f;margin-top:15px}
@@ -4782,4 +4762,20 @@ border-radius: 5px;
 .review_height{height: auto!important; margin-bottom: 20px!important;}
 #all_blog_post{overflow: hidden; height: 1235px;}
 .blog_height{height: auto!important;}
-.show_password_icon{position: absolute; right: 25px;  top: 10px; font-size: 22px!important; cursor: pointer; color: #737373;}
+.show_password_icon, .show_CPassword_icon, .log_password{position: absolute; right: 25px;  top: 10px; font-size: 22px!important; cursor: pointer; color: #737373;}
+.chat_box.open{display: block!important;}
+.chat_box{    position: fixed;
+    bottom: 15px;
+    right: 10px;
+    min-width: 330px;
+    background: #fff;
+    z-index: 999;
+    box-shadow: 0 0 10px #919191;
+    min-height: 420px;
+    border-radius: 10px;
+    padding: 30px 10px 10px;
+    display: none;
+}
+#close_chat{position: absolute; top: 3px; right: 5px; z-index: 999;}
+
+

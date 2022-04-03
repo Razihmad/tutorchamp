@@ -1,0 +1,1635 @@
+[mHTTP GET /admin/app/orders/104/change/ 200 [1.17, 127.0.0.1:62305][0m
+Internal Server Error: /admin/app/orders/104/change/
+Traceback (most recent call last):
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\admin\options.py", line 683, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\admin\options.py", line 1888, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\admin\options.py", line 1745, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\admin\options.py", line 1797, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\admin\options.py", line 1220, in save_model
+    obj.save()
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\base.py", line 841, in save_base
+    pre_save.send(
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\dispatch\dispatcher.py", line 176, in send
+    return [
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\dispatch\dispatcher.py", line 177, in <listcomp>
+    (receiver, receiver(signal=self, sender=sender, **named))
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\app\signals.py", line 98, in statusUpdated
+    email.send()
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\core\mail\message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\core\mail\backends\smtp.py", line 131, in send_messages
+    sent = self._send(message)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\core\mail\backends\smtp.py", line 149, in _send
+    self.connection.sendmail(
+  File "C:\Users\Razi Ahmad\AppData\Local\Programs\Python\Python310\lib\smtplib.py", line 901, in sendmail
+    raise SMTPRecipientsRefused(senderrs)
+smtplib.SMTPRecipientsRefused: {'5N3F10KN9CO9F3NM0VP3': (450, b'4.7.1 <5N3F10KN9CO9F3NM0VP3>: Recipient address rejected: invalid send or receive address')}
+[35;1mHTTP POST /admin/app/orders/104/change/ 500 [1.74, 127.0.0.1:62305][0m
+[mHTTP GET /admin/app/orders/104/change/ 200 [1.18, 127.0.0.1:62312][0m
+[mHTTP GET /admin/app/orders/ 200 [0.92, 127.0.0.1:62312][0m
+[mHTTP POST /admin/app/orders/ 200 [0.86, 127.0.0.1:62315][0m
+[mHTTP GET /static/admin/js/cancel.js 200 [0.04, 127.0.0.1:62315][0m
+[32mHTTP POST /admin/app/orders/ 302 [1.07, 127.0.0.1:62315][0m
+[mHTTP GET /admin/app/orders/ 200 [0.87, 127.0.0.1:62315][0m
+[mHTTP GET /admin/jsi18n/ 200 [0.65, 127.0.0.1:62315][0m
+[36mHTTP GET /static/admin/img/icon-yes.svg 304 [0.01, 127.0.0.1:62315][0m
+[mHTTP GET / 200 [0.02, 127.0.0.1:62324][0m
+[mHTTP GET /static/css/bootstrap.css 200 [0.02, 127.0.0.1:62324][0m
+[mHTTP GET /static/css/style.css 200 [0.04, 127.0.0.1:62325][0m
+[mHTTP GET /static/css/responsive.css 200 [0.05, 127.0.0.1:62326][0m
+[mHTTP GET /static/css/custom-animate.css 200 [0.06, 127.0.0.1:62329][0m
+[mHTTP GET /static/css/animate.css 200 [0.07, 127.0.0.1:62328][0m
+[mHTTP GET /static/css/animation.css 200 [0.08, 127.0.0.1:62327][0m
+[mHTTP GET /static/css/flaticon.css 200 [0.09, 127.0.0.1:62324][0m
+[mHTTP GET /static/css/font-awesome.css 200 [0.10, 127.0.0.1:62325][0m
+[mHTTP GET /static/css/jquery-ui.css 200 [0.10, 127.0.0.1:62326][0m
+[mHTTP GET /static/css/owl.css 200 [0.11, 127.0.0.1:62329][0m
+[mHTTP GET /static/css/jquery.mCustomScrollbar.min.css 200 [0.12, 127.0.0.1:62328][0m
+[mHTTP GET /static/css/jquery.fancybox.min.css 200 [0.13, 127.0.0.1:62327][0m
+[mHTTP GET /static/css/jquery.bootstrap-touchspin.css 200 [0.14, 127.0.0.1:62324][0m
+[mHTTP GET /static/js/jquery.js 200 [0.20, 127.0.0.1:62324][0m
+[mHTTP GET /static/js/popper.min.js 200 [0.26, 127.0.0.1:62327][0m
+[mHTTP GET /static/js/bootstrap.min.js 200 [0.33, 127.0.0.1:62328][0m
+[mHTTP GET /static/js/jquery.mCustomScrollbar.concat.min.js 200 [0.44, 127.0.0.1:62329][0m
+[mHTTP GET /static/js/appear.js 200 [0.50, 127.0.0.1:62326][0m
+[mHTTP GET /static/js/parallax.min.js 200 [0.58, 127.0.0.1:62325][0m
+[mHTTP GET /static/js/jquery.paroller.min.js 200 [0.51, 127.0.0.1:62324][0m
+[mHTTP GET /static/js/owl.js 200 [0.54, 127.0.0.1:62327][0m
+[mHTTP GET /static/images/whatsapp.svg 200 [0.43, 127.0.0.1:62328][0m
+[mHTTP GET /static/fonts/flaticon.woff 200 [0.33, 127.0.0.1:62329][0m
+[mHTTP GET /static/images/logo.png 200 [0.29, 127.0.0.1:62326][0m
+[mHTTP GET /static/images/icons/button-icon-one.png 200 [0.21, 127.0.0.1:62325][0m
+[mHTTP GET /static/images/icons/button-icon-two.png 200 [0.17, 127.0.0.1:62324][0m
+[mHTTP GET /static/images/main-slider/pattern-2.png 200 [0.07, 127.0.0.1:62327][0m
+[mHTTP GET /static/images/main-slider/pattern-1.png 200 [0.07, 127.0.0.1:62328][0m
+[mHTTP GET /static/images/main-slider/pattern-5.png 200 [0.07, 127.0.0.1:62329][0m
+[mHTTP GET /static/images/main-slider/pattern-4.png 200 [0.07, 127.0.0.1:62326][0m
+[mHTTP GET /static/images/main-slider/pattern-6.png 200 [0.07, 127.0.0.1:62325][0m
+[mHTTP GET /static/images/main-slider/icon-1.png 200 [0.07, 127.0.0.1:62324][0m
+[mHTTP GET /static/images/main-slider/pattern-3.png 200 [0.07, 127.0.0.1:62327][0m
+[mHTTP GET /static/images/main-slider/icon-2.png 200 [0.07, 127.0.0.1:62328][0m
+[mHTTP GET /static/images/main-slider/image-4.png 200 [0.07, 127.0.0.1:62329][0m
+[mHTTP GET /static/images/main-slider/image-1.png 200 [0.07, 127.0.0.1:62326][0m
+[mHTTP GET /static/images/attach.png 200 [0.07, 127.0.0.1:62325][0m
+[mHTTP GET /static/images/rating-sprite-v2.svg 200 [0.08, 127.0.0.1:62324][0m
+[mHTTP GET /static/images/background/pattern-5.png 200 [0.08, 127.0.0.1:62327][0m
+[mHTTP GET /static/fonts/fontawesome-webfonte0a5.woff2?v=4.3.0 200 [0.08, 127.0.0.1:62328][0m
+[mHTTP GET /static/images/icons/icon-1.png 200 [0.08, 127.0.0.1:62329][0m
+[mHTTP GET /static/images/chat.png 200 [0.07, 127.0.0.1:62326][0m
+[mHTTP GET /static/js/wow.js 200 [0.09, 127.0.0.1:62325][0m
+[mHTTP GET /static/js/nav-tool.js 200 [0.09, 127.0.0.1:62324][0m
+[mHTTP GET /static/js/jquery-ui.js 200 [0.30, 127.0.0.1:62327][0m
+[mHTTP GET /static/js/script.js 200 [0.34, 127.0.0.1:62328][0m
+[mHTTP GET /static/images/uName.svg 200 [0.37, 127.0.0.1:62329][0m
+[mHTTP GET /static/images/password_Img.svg 200 [0.39, 127.0.0.1:62326][0m
+[mHTTP GET /static/images/google.png 200 [0.39, 127.0.0.1:62325][0m
+[mHTTP GET /static/images/fb.png 200 [0.40, 127.0.0.1:62324][0m
+[mHTTP GET /static/images/small_logo.jpg 200 [0.19, 127.0.0.1:62327][0m
+[mHTTP GET /static/images/stars.svg 200 [0.17, 127.0.0.1:62328][0m
+[mHTTP GET /static/images/trustpilot.png 200 [0.16, 127.0.0.1:62329][0m
+[mHTTP GET /static/images/hwhelp.jpg 200 [0.16, 127.0.0.1:62326][0m
+[mHTTP GET /static/images/reader.png 200 [0.16, 127.0.0.1:62325][0m
+[mHTTP GET /static/images/resource/course-3.jpg 200 [0.15, 127.0.0.1:62324][0m
+[mHTTP GET /static/images/assignmentIco.png 200 [0.16, 127.0.0.1:62327][0m
+[mHTTP GET /static/images/resource/course-2.jpg 200 [0.16, 127.0.0.1:62328][0m
+[mHTTP GET /static/images/essay.png 200 [0.16, 127.0.0.1:62329][0m
+[mHTTP GET /static/images/live.jpg 200 [0.16, 127.0.0.1:62326][0m
+[mHTTP GET /static/images/stopwatch.png 200 [0.16, 127.0.0.1:62325][0m
+[mHTTP GET /static/images/projectrp.jpg 200 [0.16, 127.0.0.1:62324][0m
+[mHTTP GET /static/images/projectReport.png 200 [0.16, 127.0.0.1:62327][0m
+[mHTTP GET /static/images/dissertation-writing.jpg 200 [0.16, 127.0.0.1:62328][0m
+[mHTTP GET /static/images/DWriting.png 200 [0.15, 127.0.0.1:62329][0m
+[mHTTP GET /static/images/coursework_img.jpg 200 [0.15, 127.0.0.1:62326][0m
+[mHTTP GET /static/images/course_icon.png 200 [0.15, 127.0.0.1:62325][0m
+[mHTTP GET /static/images/case-study.jpg 200 [0.15, 127.0.0.1:62324][0m
+[mHTTP GET /static/images/case-study_icon.png 200 [0.16, 127.0.0.1:62327][0m
+[mHTTP GET /static/images/graduation.png 200 [0.16, 127.0.0.1:62328][0m
+[mHTTP GET /static/images/subject_ico.png 200 [0.17, 127.0.0.1:62329][0m
+[mHTTP GET /static/images/24-hours_ico.png 200 [0.17, 127.0.0.1:62326][0m
+[mHTTP GET /static/images/pricing_ico.png 200 [0.17, 127.0.0.1:62325][0m
+[mHTTP GET /static/images/time_ico_2.png 200 [0.17, 127.0.0.1:62324][0m
+[mHTTP GET /static/images/high_quality_ico.png 200 [0.17, 127.0.0.1:62327][0m
+[mHTTP GET /static/images/resource/skill.png 200 [0.17, 127.0.0.1:62328][0m
+[mHTTP GET /static/images/customer.png 200 [0.18, 127.0.0.1:62329][0m
+[mHTTP GET /static/images/resource/career.jpg 200 [0.17, 127.0.0.1:62326][0m
+[mHTTP GET /static/images/top-50-research-paper-topics-in-2021-home.jpg 200 [0.17, 127.0.0.1:62325][0m
+[mHTTP GET /static/images/resource/news-7.jpg 200 [0.18, 127.0.0.1:62324][0m
+[mHTTP GET /static/js/tilt.jquery.min.js 200 [0.21, 127.0.0.1:62327][0m
+[mHTTP GET /static/js/slider.min.js 200 [0.31, 127.0.0.1:62328][0m
+[mHTTP GET /static/images/background/pattern-2.png 200 [0.31, 127.0.0.1:62329][0m
+[mHTTP GET /static/images/background/pattern-8.png 200 [0.31, 127.0.0.1:62326][0m
+[mHTTP GET /static/images/background/1.png 200 [0.30, 127.0.0.1:62325][0m
+[mHTTP GET /static/images/background/pattern-1.png 200 [0.30, 127.0.0.1:62324][0m
+[mHTTP GET /static/images/background/pattern-10.png 200 [0.26, 127.0.0.1:62327][0m
+[mHTTP GET /static/images/background/pattern-9.jpg 200 [0.15, 127.0.0.1:62328][0m
+[mHTTP GET /static/images/background/pattern-11.png 200 [0.15, 127.0.0.1:62329][0m
+[mHTTP GET /static/images/icons/icon-2.png 200 [0.15, 127.0.0.1:62326][0m
+[mHTTP GET /static/images/background/pattern-12.png 200 [0.14, 127.0.0.1:62325][0m
+[mHTTP GET /static/images/background/pattern-13.png 200 [0.14, 127.0.0.1:62324][0m
+[mHTTP GET /static/images/background/pattern-14.png 200 [0.14, 127.0.0.1:62327][0m
+[mHTTP GET /static/images/favicon.png 200 [0.02, 127.0.0.1:62327][0m
+[32mHTTP POST /order/ 302 [0.93, 127.0.0.1:62339][0m
+[mHTTP GET /sign-up/ 200 [0.68, 127.0.0.1:62339][0m
+[32mHTTP POST /login/ 302 [6.89, 127.0.0.1:62343][0m
+[mHTTP GET /dashboard/old-user/ 200 [0.74, 127.0.0.1:62343][0m
+[mHTTP GET /dashboard/old-user/ 200 [0.76, 127.0.0.1:62343][0m
+[mHTTP GET /static/css/dash.css 200 [0.03, 127.0.0.1:62343][0m
+[mHTTP GET /static/dashboard/css/dashboard.css 200 [0.05, 127.0.0.1:62348][0m
+[mHTTP GET /static/dashboard/images/chat.png 200 [0.03, 127.0.0.1:62348][0m
+[mHTTP GET /static/images/camera.png 200 [0.04, 127.0.0.1:62343][0m
+[mHTTP GET /static/dashboard/images/tutorChamp_dashboard_pattren_bg.png 200 [0.02, 127.0.0.1:62343][0m
+[mHTTP GET /static/dashboard/images/addFile.png 200 [0.03, 127.0.0.1:62348][0m
+[mHTTP GET /dashboard/old-user/ 200 [0.74, 127.0.0.1:62351][0m
+[mHTTP GET /admin/app/orders/ 200 [0.97, 127.0.0.1:62353][0m
+[mHTTP GET /static/admin/css/base.css 200 [0.04, 127.0.0.1:62353][0m
+[mHTTP GET /static/admin/css/changelists.css 200 [0.06, 127.0.0.1:62356][0m
+[mHTTP GET /admin/jsi18n/ 200 [0.62, 127.0.0.1:62357][0m
+[mHTTP GET /static/admin/css/nav_sidebar.css 200 [0.64, 127.0.0.1:62355][0m
+[mHTTP GET /static/admin/js/vendor/jquery/jquery.js 200 [0.82, 127.0.0.1:62358][0m
+[mHTTP GET /static/admin/js/jquery.init.js 200 [0.83, 127.0.0.1:62359][0m
+[mHTTP GET /static/admin/css/responsive.css 200 [0.83, 127.0.0.1:62353][0m
+[mHTTP GET /static/admin/js/core.js 200 [0.83, 127.0.0.1:62356][0m
+[mHTTP GET /static/admin/css/fonts.css 200 [0.28, 127.0.0.1:62357][0m
+[mHTTP GET /static/admin/js/admin/RelatedObjectLookups.js 200 [0.28, 127.0.0.1:62355][0m
+[mHTTP GET /static/admin/js/actions.js 200 [0.12, 127.0.0.1:62358][0m
+[mHTTP GET /static/admin/js/urlify.js 200 [0.12, 127.0.0.1:62359][0m
+[mHTTP GET /static/admin/js/prepopulate.js 200 [0.12, 127.0.0.1:62353][0m
+[mHTTP GET /static/admin/js/vendor/xregexp/xregexp.js 200 [0.19, 127.0.0.1:62356][0m
+[mHTTP GET /static/admin/js/nav_sidebar.js 200 [0.11, 127.0.0.1:62353][0m
+[mHTTP GET /static/admin/img/search.svg 200 [0.03, 127.0.0.1:62356][0m
+[mHTTP GET /static/admin/fonts/Roboto-Regular-webfont.woff 200 [0.02, 127.0.0.1:62353][0m
+[mHTTP GET /static/admin/img/icon-addlink.svg 200 [0.03, 127.0.0.1:62359][0m
+[mHTTP GET /static/admin/fonts/Roboto-Light-webfont.woff 200 [0.04, 127.0.0.1:62358][0m
+[mHTTP GET /static/admin/fonts/Roboto-Bold-webfont.woff 200 [0.05, 127.0.0.1:62355][0m
+[mHTTP GET /static/admin/img/tooltag-add.svg 200 [0.06, 127.0.0.1:62356][0m
+Not Found: /favicon.ico
+[33mHTTP GET /favicon.ico 404 [0.52, 127.0.0.1:62356][0m
+[mHTTP GET /admin/app/orders/105/change/ 200 [1.29, 127.0.0.1:62356][0m
+[mHTTP GET /admin/jsi18n/ 200 [0.56, 127.0.0.1:62356][0m
+[32mHTTP POST /admin/app/orders/105/change/ 302 [2.02, 127.0.0.1:62367][0m
+[mHTTP GET /admin/app/orders/ 200 [0.86, 127.0.0.1:62367][0m
+[mHTTP GET /admin/jsi18n/ 200 [0.58, 127.0.0.1:62367][0m
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 187, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: django_session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\app\views.py", line 70, in home
+    return render(request, 'index.html')
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\template\backends\django.py", line 62, in render
+    return self.template.render(context)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    match = condition.eval(context)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\template\defaulttags.py", line 878, in eval
+    return self.value.resolve(context, ignore_failures=True)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\template\base.py", line 712, in resolve
+    obj = self.var.resolve(context)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\template\base.py", line 842, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\template\base.py", line 875, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\utils\functional.py", line 258, in inner
+    self._setup()
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\utils\functional.py", line 398, in _setup
+    self._wrapped = self._setupfunc()
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\auth\middleware.py", line 25, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\auth\middleware.py", line 11, in get_user
+    request._cached_user = auth.get_user(request)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\auth\__init__.py", line 191, in get_user
+    user_id = _get_user_session_key(request)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\auth\__init__.py", line 60, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 53, in __getitem__
+    return self._session[key]
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 192, in _get_session
+    self._session_cache = self.load()
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\sessions\backends\db.py", line 42, in load
+    s = self._get_session_from_db()
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\sessions\backends\db.py", line 32, in _get_session_from_db
+    return self.model.objects.get(
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\query.py", line 492, in get
+    num = len(clone)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\query.py", line 302, in __len__
+    self._fetch_all()
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\query.py", line 1507, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\query.py", line 57, in __iter__
+    results = compiler.execute_sql(
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\sql\compiler.py", line 1361, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: django_session
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 187, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: django_session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\utils\deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\sessions\middleware.py", line 48, in process_response
+    if request.session.get_expire_at_browser_close():
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 279, in get_expire_at_browser_close
+    if self.get("_session_expiry") is None:
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 68, in get
+    return self._session.get(key, default)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 192, in _get_session
+    self._session_cache = self.load()
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\sessions\backends\db.py", line 42, in load
+    s = self._get_session_from_db()
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\sessions\backends\db.py", line 32, in _get_session_from_db
+    return self.model.objects.get(
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\query.py", line 492, in get
+    num = len(clone)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\query.py", line 302, in __len__
+    self._fetch_all()
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\query.py", line 1507, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\query.py", line 57, in __iter__
+    results = compiler.execute_sql(
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\sql\compiler.py", line 1361, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: django_session
+[35;1mHTTP GET / 500 [0.37, 127.0.0.1:49905][0m
+Internal Server Error: /favicon.ico
+Traceback (most recent call last):
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 187, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: django_session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\utils\deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\sessions\middleware.py", line 48, in process_response
+    if request.session.get_expire_at_browser_close():
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 279, in get_expire_at_browser_close
+    if self.get("_session_expiry") is None:
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 68, in get
+    return self._session.get(key, default)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\sessions\backends\base.py", line 192, in _get_session
+    self._session_cache = self.load()
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\sessions\backends\db.py", line 42, in load
+    s = self._get_session_from_db()
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\contrib\sessions\backends\db.py", line 32, in _get_session_from_db
+    return self.model.objects.get(
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\query.py", line 492, in get
+    num = len(clone)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\query.py", line 302, in __len__
+    self._fetch_all()
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\query.py", line 1507, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\query.py", line 57, in __iter__
+    results = compiler.execute_sql(
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\sql\compiler.py", line 1361, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: django_session
+[35;1mHTTP GET /favicon.ico 500 [0.05, 127.0.0.1:49905][0m
+Watching for file changes with StatReloader
+[mHTTP GET / 200 [0.05, 127.0.0.1:49948][0m
+[mHTTP GET /static/css/bootstrap.css 200 [0.04, 127.0.0.1:49948][0m
+[mHTTP GET /static/css/animation.css 200 [0.04, 127.0.0.1:49951][0m
+[mHTTP GET /static/css/responsive.css 200 [0.05, 127.0.0.1:49950][0m
+[mHTTP GET /static/css/style.css 200 [0.06, 127.0.0.1:49949][0m
+[mHTTP GET /static/css/animate.css 200 [0.07, 127.0.0.1:49952][0m
+[mHTTP GET /static/css/custom-animate.css 200 [0.08, 127.0.0.1:49953][0m
+[mHTTP GET /static/css/flaticon.css 200 [0.05, 127.0.0.1:49948][0m
+[mHTTP GET /static/css/font-awesome.css 200 [0.05, 127.0.0.1:49951][0m
+[mHTTP GET /static/css/jquery-ui.css 200 [0.05, 127.0.0.1:49950][0m
+[mHTTP GET /static/css/owl.css 200 [0.05, 127.0.0.1:49949][0m
+[mHTTP GET /static/css/jquery.mCustomScrollbar.min.css 200 [0.05, 127.0.0.1:49952][0m
+[mHTTP GET /static/css/jquery.fancybox.min.css 200 [0.05, 127.0.0.1:49953][0m
+[mHTTP GET /static/css/jquery.bootstrap-touchspin.css 200 [0.05, 127.0.0.1:49948][0m
+[mHTTP GET /static/js/jquery.js 200 [0.05, 127.0.0.1:49948][0m
+[mHTTP GET /static/js/popper.min.js 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/js/bootstrap.min.js 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/js/jquery.mCustomScrollbar.concat.min.js 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/js/appear.js 200 [0.01, 127.0.0.1:49948][0m
+[mHTTP GET /static/js/parallax.min.js 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/js/jquery.paroller.min.js 200 [0.03, 127.0.0.1:49953][0m
+[mHTTP GET /static/js/owl.js 200 [0.04, 127.0.0.1:49952][0m
+[mHTTP GET /static/js/wow.js 200 [0.05, 127.0.0.1:49949][0m
+[mHTTP GET /static/js/nav-tool.js 200 [0.06, 127.0.0.1:49950][0m
+[mHTTP GET /static/js/jquery-ui.js 200 [0.15, 127.0.0.1:49951][0m
+[mHTTP GET /static/js/script.js 200 [0.15, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/logo.png 200 [0.15, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/uName.svg 200 [0.13, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/password_Img.svg 200 [0.13, 127.0.0.1:49949][0m
+[mHTTP GET /static/fonts/flaticon.woff 200 [0.13, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/icons/button-icon-one.png 200 [0.05, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/icons/button-icon-two.png 200 [0.04, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/main-slider/pattern-3.png 200 [0.03, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/main-slider/pattern-6.png 200 [0.03, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/main-slider/pattern-2.png 200 [0.03, 127.0.0.1:49949][0m
+[mHTTP GET /static/images/main-slider/icon-2.png 200 [0.02, 127.0.0.1:49950][0m
+[mHTTP GET /static/fonts/fontawesome-webfonte0a5.woff2?v=4.3.0 200 [0.02, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/main-slider/image-4.png 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/main-slider/pattern-1.png 200 [0.02, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/main-slider/pattern-5.png 200 [0.02, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/main-slider/pattern-4.png 200 [0.02, 127.0.0.1:49949][0m
+[mHTTP GET /static/images/main-slider/icon-1.png 200 [0.02, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/main-slider/image-1.png 200 [0.02, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/attach.png 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/trustpilot.png 200 [0.02, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/rating-sprite-v2.svg 200 [0.03, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/small_logo.jpg 200 [0.03, 127.0.0.1:49949][0m
+[mHTTP GET /static/images/google.png 200 [0.03, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/fb.png 200 [0.02, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/background/pattern-5.png 200 [0.03, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/whatsapp.svg 200 [0.03, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/icons/icon-1.png 200 [0.02, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/chat.png 200 [0.02, 127.0.0.1:49949][0m
+[mHTTP GET /static/images/stars.svg 200 [0.03, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/hwhelp.jpg 200 [0.03, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/reader.png 200 [0.03, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/resource/course-3.jpg 200 [0.03, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/assignmentIco.png 200 [0.03, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/resource/course-2.jpg 200 [0.03, 127.0.0.1:49949][0m
+[mHTTP GET /static/images/essay.png 200 [0.02, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/live.jpg 200 [0.02, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/stopwatch.png 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/projectrp.jpg 200 [0.02, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/projectReport.png 200 [0.02, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/dissertation-writing.jpg 200 [0.02, 127.0.0.1:49949][0m
+[mHTTP GET /static/images/DWriting.png 200 [0.02, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/coursework_img.jpg 200 [0.02, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/course_icon.png 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/case-study.jpg 200 [0.02, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/case-study_icon.png 200 [0.02, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/graduation.png 200 [0.02, 127.0.0.1:49949][0m
+[mHTTP GET /static/images/subject_ico.png 200 [0.02, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/24-hours_ico.png 200 [0.02, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/pricing_ico.png 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/time_ico_2.png 200 [0.02, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/high_quality_ico.png 200 [0.02, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/resource/skill.png 200 [0.02, 127.0.0.1:49949][0m
+[mHTTP GET /static/images/customer.png 200 [0.02, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/resource/career.jpg 200 [0.02, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/top-50-research-paper-topics-in-2021-home.jpg 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/resource/news-7.jpg 200 [0.02, 127.0.0.1:49953][0m
+[mHTTP GET /static/js/tilt.jquery.min.js 200 [0.03, 127.0.0.1:49952][0m
+[mHTTP GET /static/js/slider.min.js 200 [0.05, 127.0.0.1:49949][0m
+[mHTTP GET /static/images/background/pattern-2.png 200 [0.05, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/background/pattern-8.png 200 [0.05, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/background/1.png 200 [0.05, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/background/pattern-1.png 200 [0.05, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/background/pattern-10.png 200 [0.04, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/background/pattern-9.jpg 200 [0.02, 127.0.0.1:49949][0m
+[mHTTP GET /static/images/background/pattern-11.png 200 [0.02, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/icons/icon-2.png 200 [0.02, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/background/pattern-12.png 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/background/pattern-13.png 200 [0.02, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/background/pattern-14.png 200 [0.01, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/favicon.png 200 [0.00, 127.0.0.1:49952][0m
+[mHTTP GET /tutor/ 200 [0.03, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/RectLogo.jpg 200 [0.01, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/Create-Account.svg 200 [0.01, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/Get-questions.svg 200 [0.01, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/Submit-solutions.svg 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/work1.svg 200 [0.06, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/Get-Paid.svg 200 [0.07, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/benefits.svg 200 [0.12, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/background/pattern-9.png 200 [0.10, 127.0.0.1:49948][0m
+[33mHTTP GET /static/js/parallax.min.js.map 404 [0.01, 127.0.0.1:49948][0m
+[mHTTP GET / 200 [0.08, 127.0.0.1:49948][0m
+[mHTTP GET /static/css/bootstrap.css 200 [0.01, 127.0.0.1:49948][0m
+[mHTTP GET /static/css/style.css 200 [0.01, 127.0.0.1:49951][0m
+[mHTTP GET /static/css/animation.css 200 [0.01, 127.0.0.1:49950][0m
+[mHTTP GET /static/css/responsive.css 200 [0.02, 127.0.0.1:49952][0m
+[mHTTP GET /static/css/animate.css 200 [0.02, 127.0.0.1:49953][0m
+[mHTTP GET /static/css/custom-animate.css 200 [0.02, 127.0.0.1:49986][0m
+[mHTTP GET /static/css/flaticon.css 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/css/font-awesome.css 200 [0.02, 127.0.0.1:49951][0m
+[mHTTP GET /static/css/jquery-ui.css 200 [0.02, 127.0.0.1:49950][0m
+[mHTTP GET /static/css/owl.css 200 [0.02, 127.0.0.1:49952][0m
+[mHTTP GET /static/css/jquery.mCustomScrollbar.min.css 200 [0.02, 127.0.0.1:49953][0m
+[mHTTP GET /static/css/jquery.fancybox.min.css 200 [0.01, 127.0.0.1:49950][0m
+[mHTTP GET /static/css/jquery.bootstrap-touchspin.css 200 [0.01, 127.0.0.1:49951][0m
+[mHTTP GET /static/js/jquery.js 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/js/popper.min.js 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/js/bootstrap.min.js 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/js/jquery.mCustomScrollbar.concat.min.js 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/js/appear.js 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/js/parallax.min.js 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/js/jquery.paroller.min.js 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/js/owl.js 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/js/wow.js 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/js/nav-tool.js 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/js/jquery-ui.js 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/js/script.js 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/logo.png 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/uName.svg 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/password_Img.svg 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/google.png 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/fb.png 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/main-slider/image-1.png 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/main-slider/image-4.png 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/small_logo.jpg 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/stars.svg 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/trustpilot.png 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/rating-sprite-v2.svg 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/hwhelp.jpg 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/reader.png 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/resource/course-3.jpg 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/assignmentIco.png 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/resource/course-2.jpg 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/essay.png 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/live.jpg 200 [0.00, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/stopwatch.png 200 [0.00, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/projectrp.jpg 200 [0.01, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/projectReport.png 200 [0.01, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/dissertation-writing.jpg 200 [0.01, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/DWriting.png 200 [0.01, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/coursework_img.jpg 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/course_icon.png 200 [0.02, 127.0.0.1:49986][0m
+[mHTTP GET /static/images/case-study.jpg 200 [0.02, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/case-study_icon.png 200 [0.02, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/graduation.png 200 [0.02, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/subject_ico.png 200 [0.02, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/24-hours_ico.png 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/pricing_ico.png 200 [0.02, 127.0.0.1:49986][0m
+[mHTTP GET /static/images/time_ico_2.png 200 [0.02, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/high_quality_ico.png 200 [0.02, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/resource/skill.png 200 [0.02, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/customer.png 200 [0.02, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/resource/career.jpg 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/top-50-research-paper-topics-in-2021-home.jpg 200 [0.02, 127.0.0.1:49986][0m
+[mHTTP GET /static/images/resource/news-7.jpg 200 [0.03, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/whatsapp.svg 200 [0.03, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/chat.png 200 [0.03, 127.0.0.1:49953][0m
+[mHTTP GET /static/js/tilt.jquery.min.js 200 [0.03, 127.0.0.1:49952][0m
+[mHTTP GET /static/js/slider.min.js 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/icons/button-icon-one.png 200 [0.02, 127.0.0.1:49986][0m
+[mHTTP GET /static/images/icons/button-icon-two.png 200 [0.02, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/main-slider/pattern-4.png 200 [0.02, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/main-slider/pattern-5.png 200 [0.02, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/main-slider/icon-2.png 200 [0.02, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/main-slider/pattern-1.png 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/main-slider/pattern-2.png 200 [0.02, 127.0.0.1:49986][0m
+[mHTTP GET /static/images/main-slider/icon-1.png 200 [0.03, 127.0.0.1:49950][0m
+[mHTTP GET /static/fonts/flaticon.woff 200 [0.03, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/main-slider/pattern-3.png 200 [0.02, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/main-slider/pattern-6.png 200 [0.02, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/attach.png 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/background/pattern-2.png 200 [0.02, 127.0.0.1:49986][0m
+[mHTTP GET /static/images/background/pattern-5.png 200 [0.01, 127.0.0.1:49986][0m
+[mHTTP GET /static/images/icons/icon-1.png 200 [0.01, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/background/pattern-8.png 200 [0.01, 127.0.0.1:49952][0m
+[mHTTP GET /static/images/background/pattern-1.png 200 [0.02, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/background/1.png 200 [0.02, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/background/pattern-10.png 200 [0.02, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/background/pattern-9.jpg 200 [0.02, 127.0.0.1:49986][0m
+[mHTTP GET /static/images/background/pattern-11.png 200 [0.02, 127.0.0.1:49948][0m
+[mHTTP GET /static/images/icons/icon-2.png 200 [0.02, 127.0.0.1:49952][0m
+[mHTTP GET /static/fonts/fontawesome-webfonte0a5.woff2?v=4.3.0 200 [0.02, 127.0.0.1:49951][0m
+[mHTTP GET /static/images/background/pattern-12.png 200 [0.02, 127.0.0.1:49953][0m
+[mHTTP GET /static/images/background/pattern-13.png 200 [0.02, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/background/pattern-14.png 200 [0.02, 127.0.0.1:49986][0m
+[33mHTTP GET /static/js/bootstrap.min.js.map 404 [0.01, 127.0.0.1:49986][0m
+[33mHTTP GET /static/js/parallax.min.js.map 404 [0.01, 127.0.0.1:49950][0m
+[mHTTP GET /static/images/favicon.png 200 [0.01, 127.0.0.1:49950][0m
+[33mHTTP GET /static/js/bootstrap.min.js.map 404 [0.01, 127.0.0.1:59153][0m
+[33mHTTP GET /static/js/parallax.min.js.map 404 [0.01, 127.0.0.1:59154][0m
+[mHTTP GET / 200 [0.08, 127.0.0.1:59211][0m
+[mHTTP GET /static/css/bootstrap.css 200 [0.01, 127.0.0.1:59211][0m
+[mHTTP GET /static/css/style.css 200 [0.01, 127.0.0.1:59212][0m
+[mHTTP GET /static/css/responsive.css 200 [0.02, 127.0.0.1:59213][0m
+[mHTTP GET /static/css/animation.css 200 [0.02, 127.0.0.1:59214][0m
+[mHTTP GET /static/css/animate.css 200 [0.02, 127.0.0.1:59215][0m
+[mHTTP GET /static/css/custom-animate.css 200 [0.02, 127.0.0.1:59216][0m
+[mHTTP GET /static/css/flaticon.css 200 [0.02, 127.0.0.1:59211][0m
+[mHTTP GET /static/css/font-awesome.css 200 [0.02, 127.0.0.1:59212][0m
+[mHTTP GET /static/css/jquery-ui.css 200 [0.02, 127.0.0.1:59213][0m
+[mHTTP GET /static/css/owl.css 200 [0.02, 127.0.0.1:59214][0m
+[mHTTP GET /static/css/jquery.mCustomScrollbar.min.css 200 [0.02, 127.0.0.1:59215][0m
+[mHTTP GET /static/css/jquery.fancybox.min.css 200 [0.01, 127.0.0.1:59211][0m
+[mHTTP GET /static/css/jquery.bootstrap-touchspin.css 200 [0.02, 127.0.0.1:59216][0m
+[mHTTP GET /static/js/jquery.js 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/js/popper.min.js 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/js/bootstrap.min.js 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/js/jquery.mCustomScrollbar.concat.min.js 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/js/appear.js 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/js/parallax.min.js 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/js/jquery.paroller.min.js 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/js/owl.js 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/js/wow.js 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/js/nav-tool.js 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/js/jquery-ui.js 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/js/script.js 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/logo.png 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/uName.svg 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/password_Img.svg 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/google.png 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/fb.png 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/main-slider/image-1.png 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/main-slider/image-4.png 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/small_logo.jpg 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/stars.svg 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/trustpilot.png 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/rating-sprite-v2.svg 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/hwhelp.jpg 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/reader.png 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/resource/course-3.jpg 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/assignmentIco.png 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/resource/course-2.jpg 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/essay.png 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/live.jpg 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/stopwatch.png 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/projectrp.jpg 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/projectReport.png 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/dissertation-writing.jpg 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/DWriting.png 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/coursework_img.jpg 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/course_icon.png 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/case-study.jpg 200 [0.00, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/case-study_icon.png 200 [0.01, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/graduation.png 200 [0.01, 127.0.0.1:59211][0m
+[mHTTP GET /static/images/subject_ico.png 200 [0.01, 127.0.0.1:59215][0m
+[mHTTP GET /static/images/24-hours_ico.png 200 [0.01, 127.0.0.1:59214][0m
+[mHTTP GET /static/images/time_ico_2.png 200 [0.02, 127.0.0.1:59212][0m
+[mHTTP GET /static/images/pricing_ico.png 200 [0.02, 127.0.0.1:59213][0m
+[mHTTP GET /static/images/high_quality_ico.png 200 [0.02, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/resource/skill.png 200 [0.02, 127.0.0.1:59211][0m
+[mHTTP GET /static/images/customer.png 200 [0.02, 127.0.0.1:59215][0m
+[mHTTP GET /static/images/resource/career.jpg 200 [0.02, 127.0.0.1:59214][0m
+[mHTTP GET /static/images/top-50-research-paper-topics-in-2021-home.jpg 200 [0.02, 127.0.0.1:59212][0m
+[mHTTP GET /static/images/resource/news-7.jpg 200 [0.02, 127.0.0.1:59213][0m
+[mHTTP GET /static/images/whatsapp.svg 200 [0.03, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/chat.png 200 [0.03, 127.0.0.1:59211][0m
+[mHTTP GET /static/js/tilt.jquery.min.js 200 [0.03, 127.0.0.1:59215][0m
+[mHTTP GET /static/js/slider.min.js 200 [0.02, 127.0.0.1:59214][0m
+[mHTTP GET /static/images/icons/button-icon-one.png 200 [0.02, 127.0.0.1:59212][0m
+[mHTTP GET /static/images/icons/button-icon-two.png 200 [0.03, 127.0.0.1:59213][0m
+[mHTTP GET /static/fonts/flaticon.woff 200 [0.02, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/main-slider/pattern-2.png 200 [0.02, 127.0.0.1:59211][0m
+[mHTTP GET /static/images/main-slider/pattern-4.png 200 [0.03, 127.0.0.1:59215][0m
+[mHTTP GET /static/images/main-slider/icon-2.png 200 [0.03, 127.0.0.1:59214][0m
+[mHTTP GET /static/images/main-slider/pattern-1.png 200 [0.03, 127.0.0.1:59212][0m
+[mHTTP GET /static/images/main-slider/pattern-5.png 200 [0.03, 127.0.0.1:59213][0m
+[mHTTP GET /static/images/main-slider/icon-1.png 200 [0.03, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/main-slider/pattern-3.png 200 [0.02, 127.0.0.1:59211][0m
+[mHTTP GET /static/images/main-slider/pattern-6.png 200 [0.03, 127.0.0.1:59215][0m
+[mHTTP GET /static/images/attach.png 200 [0.03, 127.0.0.1:59214][0m
+[mHTTP GET /static/images/background/pattern-2.png 200 [0.02, 127.0.0.1:59212][0m
+[mHTTP GET /static/images/background/pattern-5.png 200 [0.01, 127.0.0.1:59212][0m
+[mHTTP GET /static/images/icons/icon-1.png 200 [0.01, 127.0.0.1:59214][0m
+[mHTTP GET /static/images/background/pattern-8.png 200 [0.01, 127.0.0.1:59215][0m
+[mHTTP GET /static/images/background/1.png 200 [0.02, 127.0.0.1:59211][0m
+[mHTTP GET /static/images/background/pattern-1.png 200 [0.02, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/background/pattern-10.png 200 [0.02, 127.0.0.1:59213][0m
+[mHTTP GET /static/images/background/pattern-9.jpg 200 [0.02, 127.0.0.1:59212][0m
+[mHTTP GET /static/images/background/pattern-11.png 200 [0.02, 127.0.0.1:59214][0m
+[mHTTP GET /static/images/icons/icon-2.png 200 [0.02, 127.0.0.1:59215][0m
+[mHTTP GET /static/images/background/pattern-12.png 200 [0.02, 127.0.0.1:59211][0m
+[mHTTP GET /static/fonts/fontawesome-webfonte0a5.woff2?v=4.3.0 200 [0.02, 127.0.0.1:59216][0m
+[mHTTP GET /static/images/background/pattern-13.png 200 [0.02, 127.0.0.1:59213][0m
+[mHTTP GET /static/images/background/pattern-14.png 200 [0.02, 127.0.0.1:59212][0m
+[33mHTTP GET /static/js/bootstrap.min.js.map 404 [0.01, 127.0.0.1:59212][0m
+[33mHTTP GET /static/js/parallax.min.js.map 404 [0.01, 127.0.0.1:59213][0m
+[mHTTP GET /static/images/favicon.png 200 [0.00, 127.0.0.1:59213][0m
+C:\Users\Razi Ahmad\Desktop\tutorchamp\app\models.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Razi Ahmad\Desktop\tutorchamp\app\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Razi Ahmad\Desktop\tutorchamp\tutorchamps\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Razi Ahmad\Desktop\tutorchamp\app\migrations\0001_initial.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Razi Ahmad\Desktop\tutorchamp\tutorchamps\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+[mHTTP GET / 200 [0.21, 127.0.0.1:61661][0m
+[mHTTP GET /static/css/bootstrap.css 200 [0.06, 127.0.0.1:61661][0m
+[mHTTP GET /static/css/style.css 200 [0.07, 127.0.0.1:61662][0m
+[mHTTP GET /static/css/responsive.css 200 [0.08, 127.0.0.1:61663][0m
+[mHTTP GET /static/css/custom-animate.css 200 [0.09, 127.0.0.1:61666][0m
+[mHTTP GET /static/css/animation.css 200 [0.11, 127.0.0.1:61664][0m
+[mHTTP GET /static/css/animate.css 200 [0.12, 127.0.0.1:61665][0m
+[mHTTP GET /static/css/flaticon.css 200 [0.08, 127.0.0.1:61661][0m
+[mHTTP GET /static/css/font-awesome.css 200 [0.09, 127.0.0.1:61662][0m
+[mHTTP GET /static/css/jquery-ui.css 200 [0.09, 127.0.0.1:61663][0m
+[mHTTP GET /static/css/owl.css 200 [0.10, 127.0.0.1:61666][0m
+[mHTTP GET /static/css/jquery.mCustomScrollbar.min.css 200 [0.10, 127.0.0.1:61664][0m
+[mHTTP GET /static/css/jquery.fancybox.min.css 200 [0.10, 127.0.0.1:61665][0m
+[mHTTP GET /static/css/jquery.bootstrap-touchspin.css 200 [0.10, 127.0.0.1:61661][0m
+[mHTTP GET /static/js/jquery.js 200 [0.09, 127.0.0.1:61661][0m
+[mHTTP GET /static/js/popper.min.js 200 [0.07, 127.0.0.1:61665][0m
+[mHTTP GET /static/js/bootstrap.min.js 200 [0.10, 127.0.0.1:61664][0m
+[mHTTP GET /static/js/jquery.mCustomScrollbar.concat.min.js 200 [0.15, 127.0.0.1:61666][0m
+[mHTTP GET /static/js/parallax.min.js 200 [0.18, 127.0.0.1:61662][0m
+[mHTTP GET /static/js/appear.js 200 [0.21, 127.0.0.1:61663][0m
+[mHTTP GET /static/js/jquery.paroller.min.js 200 [0.21, 127.0.0.1:61661][0m
+[mHTTP GET /static/js/owl.js 200 [0.23, 127.0.0.1:61665][0m
+[mHTTP GET /static/images/icons/button-icon-one.png 200 [0.18, 127.0.0.1:61664][0m
+[mHTTP GET /static/fonts/flaticon.woff 200 [0.15, 127.0.0.1:61666][0m
+[mHTTP GET /static/images/icons/button-icon-two.png 200 [0.13, 127.0.0.1:61662][0m
+[33mHTTP GET /static/images/logo.png 404 [0.18, 127.0.0.1:61663][0m
+[mHTTP GET /static/images/main-slider/pattern-5.png 200 [0.16, 127.0.0.1:61661][0m
+[mHTTP GET /static/images/main-slider/pattern-1.png 200 [0.12, 127.0.0.1:61665][0m
+[mHTTP GET /static/images/main-slider/pattern-4.png 200 [0.12, 127.0.0.1:61664][0m
+[mHTTP GET /static/images/main-slider/pattern-6.png 200 [0.11, 127.0.0.1:61666][0m
+[mHTTP GET /static/images/main-slider/icon-1.png 200 [0.11, 127.0.0.1:61662][0m
+[mHTTP GET /static/images/main-slider/pattern-3.png 200 [0.04, 127.0.0.1:61663][0m
+[mHTTP GET /static/images/main-slider/pattern-2.png 200 [0.04, 127.0.0.1:61661][0m
+[mHTTP GET /static/images/main-slider/icon-2.png 200 [0.04, 127.0.0.1:61665][0m
+[mHTTP GET /static/images/main-slider/image-4.png 200 [0.04, 127.0.0.1:61664][0m
+[mHTTP GET /static/images/main-slider/image-1.png 200 [0.04, 127.0.0.1:61666][0m
+[mHTTP GET /static/images/small_logo.jpg 200 [0.05, 127.0.0.1:61662][0m
+[mHTTP GET /static/images/attach.png 200 [0.05, 127.0.0.1:61663][0m
+[mHTTP GET /static/images/rating-sprite-v2.svg 200 [0.06, 127.0.0.1:61661][0m
+[mHTTP GET /static/images/trustpilot.png 200 [0.06, 127.0.0.1:61665][0m
+[mHTTP GET /static/js/wow.js 200 [0.09, 127.0.0.1:61664][0m
+[mHTTP GET /static/js/nav-tool.js 200 [0.09, 127.0.0.1:61666][0m
+[mHTTP GET /static/images/icons/icon-1.png 200 [0.10, 127.0.0.1:61662][0m
+[mHTTP GET /static/images/background/pattern-5.png 200 [0.09, 127.0.0.1:61663][0m
+[mHTTP GET /static/images/whatsapp.svg 200 [0.09, 127.0.0.1:61661][0m
+[mHTTP GET /static/fonts/fontawesome-webfonte0a5.woff2?v=4.3.0 200 [0.10, 127.0.0.1:61665][0m
+[mHTTP GET /static/images/chat.png 200 [0.07, 127.0.0.1:61664][0m
+[mHTTP GET /static/js/jquery-ui.js 200 [0.23, 127.0.0.1:61666][0m
+[mHTTP GET /static/js/script.js 200 [0.25, 127.0.0.1:61662][0m
+[mHTTP GET /static/images/uName.svg 200 [0.25, 127.0.0.1:61663][0m
+[mHTTP GET /static/images/password_Img.svg 200 [0.26, 127.0.0.1:61661][0m
+[mHTTP GET /static/images/google.png 200 [0.25, 127.0.0.1:61665][0m
+[mHTTP GET /static/images/fb.png 200 [0.25, 127.0.0.1:61664][0m
+[mHTTP GET /static/images/stars.svg 200 [0.08, 127.0.0.1:61666][0m
+[mHTTP GET /static/images/hwhelp.jpg 200 [0.06, 127.0.0.1:61662][0m
+[mHTTP GET /static/images/reader.png 200 [0.05, 127.0.0.1:61663][0m
+[mHTTP GET /static/images/resource/course-3.jpg 200 [0.04, 127.0.0.1:61661][0m
+[mHTTP GET /static/images/assignmentIco.png 200 [0.04, 127.0.0.1:61665][0m
+[mHTTP GET /static/images/resource/course-2.jpg 200 [0.04, 127.0.0.1:61664][0m
+[mHTTP GET /static/images/essay.png 200 [0.03, 127.0.0.1:61666][0m
+[mHTTP GET /static/images/live.jpg 200 [0.03, 127.0.0.1:61662][0m
+[mHTTP GET /static/images/stopwatch.png 200 [0.03, 127.0.0.1:61663][0m
+[mHTTP GET /static/images/projectrp.jpg 200 [0.03, 127.0.0.1:61661][0m
+[mHTTP GET /static/images/projectReport.png 200 [0.03, 127.0.0.1:61665][0m
+[mHTTP GET /static/images/dissertation-writing.jpg 200 [0.03, 127.0.0.1:61664][0m
+[mHTTP GET /static/images/DWriting.png 200 [0.03, 127.0.0.1:61666][0m
+[mHTTP GET /static/images/coursework_img.jpg 200 [0.03, 127.0.0.1:61662][0m
+[mHTTP GET /static/images/course_icon.png 200 [0.04, 127.0.0.1:61663][0m
+[mHTTP GET /static/images/case-study.jpg 200 [0.04, 127.0.0.1:61661][0m
+[mHTTP GET /static/images/case-study_icon.png 200 [0.04, 127.0.0.1:61665][0m
+[mHTTP GET /static/images/graduation.png 200 [0.04, 127.0.0.1:61664][0m
+[mHTTP GET /static/images/subject_ico.png 200 [0.04, 127.0.0.1:61666][0m
+[mHTTP GET /static/images/24-hours_ico.png 200 [0.03, 127.0.0.1:61662][0m
+[mHTTP GET /static/images/pricing_ico.png 200 [0.04, 127.0.0.1:61663][0m
+[mHTTP GET /static/images/time_ico_2.png 200 [0.04, 127.0.0.1:61661][0m
+[mHTTP GET /static/images/high_quality_ico.png 200 [0.04, 127.0.0.1:61665][0m
+[mHTTP GET /static/images/resource/skill.png 200 [0.04, 127.0.0.1:61664][0m
+[mHTTP GET /static/images/customer.png 200 [0.04, 127.0.0.1:61666][0m
+[mHTTP GET /static/images/resource/career.jpg 200 [0.04, 127.0.0.1:61662][0m
+[mHTTP GET /static/images/top-50-research-paper-topics-in-2021-home.jpg 200 [0.04, 127.0.0.1:61663][0m
+[mHTTP GET /static/images/resource/news-7.jpg 200 [0.04, 127.0.0.1:61661][0m
+[mHTTP GET /static/js/tilt.jquery.min.js 200 [0.06, 127.0.0.1:61665][0m
+[mHTTP GET /static/js/slider.min.js 200 [0.09, 127.0.0.1:61664][0m
+[mHTTP GET /static/images/background/pattern-2.png 200 [0.09, 127.0.0.1:61666][0m
+[mHTTP GET /static/images/background/pattern-8.png 200 [0.09, 127.0.0.1:61662][0m
+[mHTTP GET /static/images/background/1.png 200 [0.09, 127.0.0.1:61663][0m
+[mHTTP GET /static/images/background/pattern-1.png 200 [0.09, 127.0.0.1:61661][0m
+[mHTTP GET /static/images/background/pattern-10.png 200 [0.07, 127.0.0.1:61665][0m
+[mHTTP GET /static/images/background/pattern-9.jpg 200 [0.04, 127.0.0.1:61664][0m
+[mHTTP GET /static/images/background/pattern-11.png 200 [0.04, 127.0.0.1:61666][0m
+[mHTTP GET /static/images/icons/icon-2.png 200 [0.04, 127.0.0.1:61662][0m
+[mHTTP GET /static/images/background/pattern-12.png 200 [0.04, 127.0.0.1:61663][0m
+[mHTTP GET /static/images/background/pattern-13.png 200 [0.03, 127.0.0.1:61661][0m
+[mHTTP GET /static/images/background/pattern-14.png 200 [0.03, 127.0.0.1:61665][0m
+[mHTTP GET /static/images/favicon.png 200 [0.01, 127.0.0.1:61665][0m
+[33mHTTP GET /static/js/bootstrap.min.js.map 404 [0.01, 127.0.0.1:61679][0m
+[33mHTTP GET /static/js/parallax.min.js.map 404 [0.01, 127.0.0.1:61680][0m
+[mHTTP GET / 200 [0.15, 127.0.0.1:61715][0m
+[mHTTP GET /static/css/bootstrap.css 200 [0.02, 127.0.0.1:61715][0m
+[mHTTP GET /static/css/style.css 200 [0.02, 127.0.0.1:61717][0m
+[mHTTP GET /static/css/animate.css 200 [0.03, 127.0.0.1:61720][0m
+[mHTTP GET /static/css/custom-animate.css 200 [0.04, 127.0.0.1:61721][0m
+[mHTTP GET /static/css/responsive.css 200 [0.05, 127.0.0.1:61718][0m
+[mHTTP GET /static/css/animation.css 200 [0.06, 127.0.0.1:61719][0m
+[mHTTP GET /static/css/flaticon.css 200 [0.07, 127.0.0.1:61715][0m
+[mHTTP GET /static/css/font-awesome.css 200 [0.07, 127.0.0.1:61717][0m
+[mHTTP GET /static/css/jquery-ui.css 200 [0.07, 127.0.0.1:61720][0m
+[mHTTP GET /static/css/owl.css 200 [0.07, 127.0.0.1:61721][0m
+[mHTTP GET /static/css/jquery.mCustomScrollbar.min.css 200 [0.06, 127.0.0.1:61718][0m
+[mHTTP GET /static/css/jquery.fancybox.min.css 200 [0.06, 127.0.0.1:61719][0m
+[mHTTP GET /static/css/jquery.bootstrap-touchspin.css 200 [0.05, 127.0.0.1:61715][0m
+[mHTTP GET /static/js/jquery.js 200 [0.01, 127.0.0.1:61715][0m
+[mHTTP GET /static/js/popper.min.js 200 [0.01, 127.0.0.1:61715][0m
+[mHTTP GET /static/js/bootstrap.min.js 200 [0.02, 127.0.0.1:61719][0m
+[mHTTP GET /static/js/jquery.mCustomScrollbar.concat.min.js 200 [0.02, 127.0.0.1:61718][0m
+[mHTTP GET /static/js/parallax.min.js 200 [0.03, 127.0.0.1:61720][0m
+[mHTTP GET /static/js/appear.js 200 [0.03, 127.0.0.1:61721][0m
+[mHTTP GET /static/js/jquery.paroller.min.js 200 [0.04, 127.0.0.1:61717][0m
+[mHTTP GET /static/js/owl.js 200 [0.04, 127.0.0.1:61715][0m
+[mHTTP GET /static/js/wow.js 200 [0.03, 127.0.0.1:61719][0m
+[mHTTP GET /static/js/nav-tool.js 200 [0.04, 127.0.0.1:61718][0m
+[mHTTP GET /static/js/jquery-ui.js 200 [0.04, 127.0.0.1:61720][0m
+[mHTTP GET /static/js/script.js 200 [0.04, 127.0.0.1:61721][0m
+[mHTTP GET /static/fonts/flaticon.woff 200 [0.04, 127.0.0.1:61717][0m
+[mHTTP GET /static/images/icons/button-icon-one.png 200 [0.04, 127.0.0.1:61715][0m
+[mHTTP GET /static/images/icons/button-icon-two.png 200 [0.04, 127.0.0.1:61719][0m
+[mHTTP GET /static/images/logo.jpg 200 [0.05, 127.0.0.1:61718][0m
+[33mHTTP GET /static/images/logo.png 404 [0.05, 127.0.0.1:61720][0m
+[mHTTP GET /static/images/main-slider/pattern-1.png 200 [0.05, 127.0.0.1:61721][0m
+[mHTTP GET /static/images/main-slider/pattern-5.png 200 [0.05, 127.0.0.1:61717][0m
+[mHTTP GET /static/images/main-slider/pattern-4.png 200 [0.05, 127.0.0.1:61715][0m
+[mHTTP GET /static/images/main-slider/pattern-6.png 200 [0.05, 127.0.0.1:61719][0m
+[mHTTP GET /static/images/main-slider/pattern-2.png 200 [0.05, 127.0.0.1:61718][0m
+[mHTTP GET /static/images/main-slider/icon-2.png 200 [0.04, 127.0.0.1:61720][0m
+[mHTTP GET /static/images/main-slider/icon-1.png 200 [0.04, 127.0.0.1:61721][0m
+[mHTTP GET /static/images/main-slider/image-4.png 200 [0.04, 127.0.0.1:61717][0m
+[mHTTP GET /static/images/main-slider/image-1.png 200 [0.04, 127.0.0.1:61715][0m
+[mHTTP GET /static/images/uName.svg 200 [0.04, 127.0.0.1:61719][0m
+[mHTTP GET /static/images/password_Img.svg 200 [0.04, 127.0.0.1:61718][0m
+[mHTTP GET /static/images/google.png 200 [0.04, 127.0.0.1:61720][0m
+[mHTTP GET /static/images/fb.png 200 [0.04, 127.0.0.1:61721][0m
+[mHTTP GET /static/images/small_logo.jpg 200 [0.04, 127.0.0.1:61717][0m
+[mHTTP GET /static/images/stars.svg 200 [0.04, 127.0.0.1:61715][0m
+[mHTTP GET /static/images/trustpilot.png 200 [0.04, 127.0.0.1:61719][0m
+[mHTTP GET /static/images/rating-sprite-v2.svg 200 [0.04, 127.0.0.1:61718][0m
+[mHTTP GET /static/images/hwhelp.jpg 200 [0.04, 127.0.0.1:61720][0m
+[mHTTP GET /static/images/reader.png 200 [0.04, 127.0.0.1:61721][0m
+[mHTTP GET /static/images/resource/course-3.jpg 200 [0.04, 127.0.0.1:61717][0m
+[mHTTP GET /static/images/assignmentIco.png 200 [0.04, 127.0.0.1:61715][0m
+[mHTTP GET /static/images/resource/course-2.jpg 200 [0.04, 127.0.0.1:61719][0m
+[33mHTTP GET /static/js/bootstrap.min.js.map 404 [0.04, 127.0.0.1:61718][0m
+[mHTTP GET /static/fonts/fontawesome-webfonte0a5.woff2?v=4.3.0 200 [0.04, 127.0.0.1:61720][0m
+[mHTTP GET /static/images/essay.png 200 [0.04, 127.0.0.1:61721][0m
+[mHTTP GET /static/images/live.jpg 200 [0.05, 127.0.0.1:61717][0m
+[mHTTP GET /static/images/stopwatch.png 200 [0.04, 127.0.0.1:61715][0m
+[mHTTP GET /static/images/projectrp.jpg 200 [0.04, 127.0.0.1:61719][0m
+[mHTTP GET /static/images/projectReport.png 200 [0.04, 127.0.0.1:61718][0m
+[33mHTTP GET /static/js/parallax.min.js.map 404 [0.05, 127.0.0.1:61720][0m
+[mHTTP GET /static/images/dissertation-writing.jpg 200 [0.04, 127.0.0.1:61721][0m
+[mHTTP GET /static/images/DWriting.png 200 [0.04, 127.0.0.1:61717][0m
+[mHTTP GET /static/images/background/pattern-5.png 200 [0.04, 127.0.0.1:61715][0m
+[mHTTP GET /static/images/icons/icon-1.png 200 [0.04, 127.0.0.1:61719][0m
+[mHTTP GET /static/images/whatsapp.svg 200 [0.04, 127.0.0.1:61718][0m
+[mHTTP GET /static/images/chat.png 200 [0.04, 127.0.0.1:61720][0m
+[mHTTP GET /static/images/coursework_img.jpg 200 [0.04, 127.0.0.1:61721][0m
+[mHTTP GET /static/images/course_icon.png 200 [0.04, 127.0.0.1:61717][0m
+[mHTTP GET /static/images/case-study.jpg 200 [0.04, 127.0.0.1:61715][0m
+[mHTTP GET /static/images/case-study_icon.png 200 [0.04, 127.0.0.1:61719][0m
+[mHTTP GET /static/images/graduation.png 200 [0.04, 127.0.0.1:61718][0m
+[mHTTP GET /static/images/subject_ico.png 200 [0.03, 127.0.0.1:61720][0m
+[mHTTP GET /static/images/24-hours_ico.png 200 [0.03, 127.0.0.1:61721][0m
+[mHTTP GET /static/images/pricing_ico.png 200 [0.03, 127.0.0.1:61717][0m
+[mHTTP GET /static/images/time_ico_2.png 200 [0.03, 127.0.0.1:61715][0m
+[mHTTP GET /static/images/high_quality_ico.png 200 [0.03, 127.0.0.1:61719][0m
+[mHTTP GET /static/images/resource/skill.png 200 [0.03, 127.0.0.1:61718][0m
+[mHTTP GET /static/images/customer.png 200 [0.04, 127.0.0.1:61720][0m
+[mHTTP GET /static/images/resource/career.jpg 200 [0.04, 127.0.0.1:61721][0m
+[mHTTP GET /static/images/top-50-research-paper-topics-in-2021-home.jpg 200 [0.03, 127.0.0.1:61717][0m
+[mHTTP GET /static/images/resource/news-7.jpg 200 [0.03, 127.0.0.1:61715][0m
+[mHTTP GET /static/js/tilt.jquery.min.js 200 [0.04, 127.0.0.1:61719][0m
+[mHTTP GET /static/js/slider.min.js 200 [0.04, 127.0.0.1:61718][0m
+[mHTTP GET /static/images/main-slider/pattern-3.png 200 [0.04, 127.0.0.1:61720][0m
+[mHTTP GET /static/images/attach.png 200 [0.04, 127.0.0.1:61721][0m
+[mHTTP GET /static/images/background/pattern-2.png 200 [0.04, 127.0.0.1:61717][0m
+[mHTTP GET /static/images/background/pattern-8.png 200 [0.03, 127.0.0.1:61715][0m
+[mHTTP GET /static/images/background/1.png 200 [0.03, 127.0.0.1:61719][0m
+[mHTTP GET /static/images/background/pattern-1.png 200 [0.03, 127.0.0.1:61718][0m
+[mHTTP GET /static/images/background/pattern-10.png 200 [0.04, 127.0.0.1:61720][0m
+[mHTTP GET /static/images/background/pattern-9.jpg 200 [0.03, 127.0.0.1:61721][0m
+[mHTTP GET /static/images/background/pattern-11.png 200 [0.03, 127.0.0.1:61717][0m
+[mHTTP GET /static/images/icons/icon-2.png 200 [0.03, 127.0.0.1:61715][0m
+[mHTTP GET /static/images/background/pattern-12.png 200 [0.03, 127.0.0.1:61719][0m
+[mHTTP GET /static/images/background/pattern-13.png 200 [0.03, 127.0.0.1:61718][0m
+[mHTTP GET /static/images/background/pattern-14.png 200 [0.03, 127.0.0.1:61720][0m
+[mHTTP GET / 200 [0.08, 127.0.0.1:54183][0m
+[mHTTP GET /static/css/bootstrap.css 200 [0.01, 127.0.0.1:54183][0m
+[mHTTP GET /static/css/style.css 200 [0.01, 127.0.0.1:54184][0m
+[mHTTP GET /static/css/responsive.css 200 [0.02, 127.0.0.1:54185][0m
+[mHTTP GET /static/css/animation.css 200 [0.02, 127.0.0.1:54186][0m
+[mHTTP GET /static/css/animate.css 200 [0.03, 127.0.0.1:54187][0m
+[mHTTP GET /static/css/custom-animate.css 200 [0.03, 127.0.0.1:54188][0m
+[mHTTP GET /static/css/flaticon.css 200 [0.04, 127.0.0.1:54183][0m
+[mHTTP GET /static/css/font-awesome.css 200 [0.03, 127.0.0.1:54184][0m
+[mHTTP GET /static/css/jquery-ui.css 200 [0.04, 127.0.0.1:54185][0m
+[mHTTP GET /static/css/owl.css 200 [0.03, 127.0.0.1:54186][0m
+[mHTTP GET /static/css/jquery.mCustomScrollbar.min.css 200 [0.03, 127.0.0.1:54187][0m
+[mHTTP GET /static/css/jquery.fancybox.min.css 200 [0.03, 127.0.0.1:54188][0m
+[mHTTP GET /static/css/jquery.bootstrap-touchspin.css 200 [0.03, 127.0.0.1:54183][0m
+[mHTTP GET /static/js/jquery.js 200 [0.00, 127.0.0.1:54183][0m
+[mHTTP GET /static/js/popper.min.js 200 [0.00, 127.0.0.1:54183][0m
+[mHTTP GET /static/js/bootstrap.min.js 200 [0.00, 127.0.0.1:54183][0m
+[mHTTP GET /static/js/jquery.mCustomScrollbar.concat.min.js 200 [0.00, 127.0.0.1:54183][0m
+[mHTTP GET /static/js/appear.js 200 [0.00, 127.0.0.1:54183][0m
+[mHTTP GET /static/js/parallax.min.js 200 [0.00, 127.0.0.1:54183][0m
+[mHTTP GET /static/js/jquery.paroller.min.js 200 [0.00, 127.0.0.1:54183][0m
+[mHTTP GET /static/js/owl.js 200 [0.00, 127.0.0.1:54183][0m
+[mHTTP GET /static/js/wow.js 200 [0.00, 127.0.0.1:54183][0m
+[mHTTP GET /static/js/nav-tool.js 200 [0.00, 127.0.0.1:54183][0m
+[mHTTP GET /static/js/jquery-ui.js 200 [0.01, 127.0.0.1:54183][0m
+[mHTTP GET /static/js/script.js 200 [0.00, 127.0.0.1:54183][0m
+[mHTTP GET /static/images/logo.jpg 200 [0.01, 127.0.0.1:54183][0m
+[33mHTTP GET /static/images/logo.png 404 [0.02, 127.0.0.1:54183][0m
+[mHTTP GET /static/images/uName.svg 200 [0.03, 127.0.0.1:54188][0m
+[mHTTP GET /static/images/password_Img.svg 200 [0.03, 127.0.0.1:54187][0m
+[mHTTP GET /static/images/google.png 200 [0.04, 127.0.0.1:54186][0m
+[mHTTP GET /static/images/fb.png 200 [0.04, 127.0.0.1:54185][0m
+[mHTTP GET /static/images/main-slider/image-1.png 200 [0.04, 127.0.0.1:54184][0m
+[mHTTP GET /static/images/main-slider/image-4.png 200 [0.04, 127.0.0.1:54183][0m
+[mHTTP GET /static/images/small_logo.jpg 200 [0.05, 127.0.0.1:54188][0m
+[mHTTP GET /static/images/stars.svg 200 [0.05, 127.0.0.1:54187][0m
+[mHTTP GET /static/images/trustpilot.png 200 [0.05, 127.0.0.1:54186][0m
+[mHTTP GET /static/images/rating-sprite-v2.svg 200 [0.05, 127.0.0.1:54185][0m
+[mHTTP GET /static/images/hwhelp.jpg 200 [0.04, 127.0.0.1:54184][0m
+[mHTTP GET /static/images/reader.png 200 [0.04, 127.0.0.1:54183][0m
+[mHTTP GET /static/images/resource/course-3.jpg 200 [0.04, 127.0.0.1:54188][0m
+[mHTTP GET /static/images/assignmentIco.png 200 [0.04, 127.0.0.1:54187][0m
+[mHTTP GET /static/images/resource/course-2.jpg 200 [0.04, 127.0.0.1:54186][0m
+[mHTTP GET /static/images/essay.png 200 [0.04, 127.0.0.1:54185][0m
+[mHTTP GET /static/images/live.jpg 200 [0.04, 127.0.0.1:54184][0m
+[mHTTP GET /static/images/stopwatch.png 200 [0.04, 127.0.0.1:54183][0m
+[mHTTP GET /static/images/projectrp.jpg 200 [0.05, 127.0.0.1:54188][0m
+[mHTTP GET /static/images/projectReport.png 200 [0.05, 127.0.0.1:54187][0m
+[mHTTP GET /static/images/dissertation-writing.jpg 200 [0.07, 127.0.0.1:54186][0m
+[mHTTP GET /static/images/DWriting.png 200 [0.06, 127.0.0.1:54185][0m
+[mHTTP GET /static/images/coursework_img.jpg 200 [0.06, 127.0.0.1:54184][0m
+[mHTTP GET /static/images/course_icon.png 200 [0.06, 127.0.0.1:54183][0m
+[mHTTP GET /static/images/case-study.jpg 200 [0.06, 127.0.0.1:54188][0m
+[mHTTP GET /static/images/case-study_icon.png 200 [0.06, 127.0.0.1:54187][0m
+[mHTTP GET /static/images/graduation.png 200 [0.04, 127.0.0.1:54186][0m
+[mHTTP GET /static/images/subject_ico.png 200 [0.04, 127.0.0.1:54185][0m
+[mHTTP GET /static/images/24-hours_ico.png 200 [0.04, 127.0.0.1:54184][0m
+[mHTTP GET /static/fonts/flaticon.woff 200 [0.04, 127.0.0.1:54183][0m
+[mHTTP GET /static/images/icons/button-icon-two.png 200 [0.04, 127.0.0.1:54188][0m
+[mHTTP GET /static/images/main-slider/pattern-1.png 200 [0.04, 127.0.0.1:54187][0m
+[mHTTP GET /static/images/main-slider/pattern-4.png 200 [0.04, 127.0.0.1:54186][0m
+[mHTTP GET /static/images/main-slider/pattern-6.png 200 [0.04, 127.0.0.1:54185][0m
+[mHTTP GET /static/images/main-slider/pattern-5.png 200 [0.04, 127.0.0.1:54184][0m
+[mHTTP GET /static/images/main-slider/pattern-2.png 200 [0.04, 127.0.0.1:54183][0m
+[mHTTP GET /static/images/main-slider/icon-2.png 200 [0.04, 127.0.0.1:54188][0m
+[mHTTP GET /static/images/icons/button-icon-one.png 200 [0.04, 127.0.0.1:54187][0m
+[mHTTP GET /static/images/pricing_ico.png 200 [0.04, 127.0.0.1:54186][0m
+[mHTTP GET /static/images/time_ico_2.png 200 [0.04, 127.0.0.1:54185][0m
+[mHTTP GET /static/images/high_quality_ico.png 200 [0.04, 127.0.0.1:54184][0m
+[mHTTP GET /static/images/resource/skill.png 200 [0.04, 127.0.0.1:54183][0m
+[mHTTP GET /static/images/customer.png 200 [0.04, 127.0.0.1:54188][0m
+[mHTTP GET /static/images/resource/career.jpg 200 [0.04, 127.0.0.1:54187][0m
+[mHTTP GET /static/images/top-50-research-paper-topics-in-2021-home.jpg 200 [0.04, 127.0.0.1:54186][0m
+[mHTTP GET /static/images/resource/news-7.jpg 200 [0.04, 127.0.0.1:54185][0m
+[mHTTP GET /static/images/whatsapp.svg 200 [0.04, 127.0.0.1:54184][0m
+[mHTTP GET /static/images/chat.png 200 [0.04, 127.0.0.1:54183][0m
+[mHTTP GET /static/js/tilt.jquery.min.js 200 [0.04, 127.0.0.1:54188][0m
+[mHTTP GET /static/js/slider.min.js 200 [0.04, 127.0.0.1:54187][0m
+[mHTTP GET /static/images/main-slider/icon-1.png 200 [0.04, 127.0.0.1:54186][0m
+[mHTTP GET /static/images/main-slider/pattern-3.png 200 [0.04, 127.0.0.1:54185][0m
+[mHTTP GET /static/images/attach.png 200 [0.04, 127.0.0.1:54184][0m
+[mHTTP GET /static/images/background/pattern-2.png 200 [0.04, 127.0.0.1:54183][0m
+[33mHTTP GET /static/images/logo.png 404 [0.04, 127.0.0.1:54188][0m
+[mHTTP GET /static/images/background/pattern-5.png 200 [0.04, 127.0.0.1:54187][0m
+[mHTTP GET /static/fonts/fontawesome-webfonte0a5.woff2?v=4.3.0 200 [0.04, 127.0.0.1:54186][0m
+[mHTTP GET /static/images/icons/icon-1.png 200 [0.04, 127.0.0.1:54185][0m
+[mHTTP GET /static/images/background/pattern-8.png 200 [0.04, 127.0.0.1:54184][0m
+[mHTTP GET /static/images/background/1.png 200 [0.04, 127.0.0.1:54183][0m
+[mHTTP GET /static/images/background/pattern-1.png 200 [0.04, 127.0.0.1:54188][0m
+[mHTTP GET /static/images/background/pattern-10.png 200 [0.04, 127.0.0.1:54187][0m
+[mHTTP GET /static/images/background/pattern-9.jpg 200 [0.04, 127.0.0.1:54186][0m
+[mHTTP GET /static/images/background/pattern-11.png 200 [0.04, 127.0.0.1:54185][0m
+[mHTTP GET /static/images/icons/icon-2.png 200 [0.03, 127.0.0.1:54184][0m
+[mHTTP GET /static/images/background/pattern-12.png 200 [0.03, 127.0.0.1:54183][0m
+[mHTTP GET /static/images/background/pattern-13.png 200 [0.04, 127.0.0.1:54188][0m
+[mHTTP GET /static/images/background/pattern-14.png 200 [0.03, 127.0.0.1:54187][0m
+[33mHTTP GET /static/js/bootstrap.min.js.map 404 [0.02, 127.0.0.1:54183][0m
+[33mHTTP GET /static/js/parallax.min.js.map 404 [0.03, 127.0.0.1:54184][0m
+Watching for file changes with StatReloader
+[mHTTP GET / 200 [0.13, 127.0.0.1:54284][0m
+[mHTTP GET /static/css/bootstrap.css 200 [0.07, 127.0.0.1:54284][0m
+[mHTTP GET /static/css/style.css 200 [0.07, 127.0.0.1:54285][0m
+[mHTTP GET /static/css/responsive.css 200 [0.08, 127.0.0.1:54286][0m
+[mHTTP GET /static/css/custom-animate.css 200 [0.08, 127.0.0.1:54289][0m
+[mHTTP GET /static/css/animation.css 200 [0.09, 127.0.0.1:54287][0m
+[mHTTP GET /static/css/animate.css 200 [0.10, 127.0.0.1:54288][0m
+[mHTTP GET /static/css/flaticon.css 200 [0.04, 127.0.0.1:54284][0m
+[mHTTP GET /static/css/font-awesome.css 200 [0.04, 127.0.0.1:54285][0m
+[mHTTP GET /static/css/jquery-ui.css 200 [0.04, 127.0.0.1:54286][0m
+[mHTTP GET /static/css/owl.css 200 [0.04, 127.0.0.1:54289][0m
+[mHTTP GET /static/css/jquery.mCustomScrollbar.min.css 200 [0.04, 127.0.0.1:54287][0m
+[mHTTP GET /static/css/jquery.fancybox.min.css 200 [0.03, 127.0.0.1:54288][0m
+[mHTTP GET /static/css/jquery.bootstrap-touchspin.css 200 [0.03, 127.0.0.1:54284][0m
+[mHTTP GET /static/js/jquery.js 200 [0.01, 127.0.0.1:54284][0m
+[mHTTP GET /static/js/popper.min.js 200 [0.01, 127.0.0.1:54284][0m
+[mHTTP GET /static/js/bootstrap.min.js 200 [0.01, 127.0.0.1:54284][0m
+[mHTTP GET /static/js/jquery.mCustomScrollbar.concat.min.js 200 [0.01, 127.0.0.1:54284][0m
+[mHTTP GET /static/js/appear.js 200 [0.01, 127.0.0.1:54284][0m
+[mHTTP GET /static/js/parallax.min.js 200 [0.01, 127.0.0.1:54284][0m
+[mHTTP GET /static/js/jquery.paroller.min.js 200 [0.01, 127.0.0.1:54284][0m
+[mHTTP GET /static/js/owl.js 200 [0.01, 127.0.0.1:54284][0m
+[mHTTP GET /static/js/wow.js 200 [0.01, 127.0.0.1:54284][0m
+[mHTTP GET /static/js/nav-tool.js 200 [0.02, 127.0.0.1:54284][0m
+[mHTTP GET /static/js/jquery-ui.js 200 [0.03, 127.0.0.1:54288][0m
+[mHTTP GET /static/images/uName.svg 200 [0.03, 127.0.0.1:54285][0m
+[mHTTP GET /static/images/logo.jpg 200 [0.04, 127.0.0.1:54289][0m
+[33mHTTP GET /static/images/logo.png 404 [0.06, 127.0.0.1:54286][0m
+[mHTTP GET /static/js/script.js 200 [0.07, 127.0.0.1:54287][0m
+[mHTTP GET /static/images/password_Img.svg 200 [0.07, 127.0.0.1:54284][0m
+[mHTTP GET /static/images/google.png 200 [0.07, 127.0.0.1:54288][0m
+[mHTTP GET /static/images/fb.png 200 [0.07, 127.0.0.1:54285][0m
+[mHTTP GET /static/images/main-slider/image-1.png 200 [0.07, 127.0.0.1:54289][0m
+[mHTTP GET /static/images/main-slider/image-4.png 200 [0.05, 127.0.0.1:54286][0m
+[mHTTP GET /static/images/small_logo.jpg 200 [0.05, 127.0.0.1:54287][0m
+[mHTTP GET /static/images/stars.svg 200 [0.05, 127.0.0.1:54284][0m
+[mHTTP GET /static/images/icons/button-icon-one.png 200 [0.05, 127.0.0.1:54288][0m
+[mHTTP GET /static/images/icons/button-icon-two.png 200 [0.06, 127.0.0.1:54285][0m
+[mHTTP GET /static/images/trustpilot.png 200 [0.06, 127.0.0.1:54289][0m
+[mHTTP GET /static/images/rating-sprite-v2.svg 200 [0.06, 127.0.0.1:54286][0m
+[mHTTP GET /static/images/hwhelp.jpg 200 [0.06, 127.0.0.1:54287][0m
+[mHTTP GET /static/fonts/flaticon.woff 200 [0.06, 127.0.0.1:54284][0m
+[mHTTP GET /static/images/reader.png 200 [0.06, 127.0.0.1:54288][0m
+[mHTTP GET /static/images/resource/course-3.jpg 200 [0.06, 127.0.0.1:54285][0m
+[mHTTP GET /static/images/assignmentIco.png 200 [0.06, 127.0.0.1:54289][0m
+[mHTTP GET /static/images/resource/course-2.jpg 200 [0.06, 127.0.0.1:54286][0m
+[mHTTP GET /static/images/main-slider/icon-2.png 200 [0.05, 127.0.0.1:54287][0m
+[mHTTP GET /static/images/main-slider/pattern-4.png 200 [0.04, 127.0.0.1:54284][0m
+[mHTTP GET /static/images/main-slider/pattern-2.png 200 [0.04, 127.0.0.1:54288][0m
+[mHTTP GET /static/images/main-slider/pattern-1.png 200 [0.04, 127.0.0.1:54285][0m
+[mHTTP GET /static/images/main-slider/pattern-5.png 200 [0.04, 127.0.0.1:54289][0m
+[mHTTP GET /static/images/main-slider/pattern-6.png 200 [0.04, 127.0.0.1:54286][0m
+[mHTTP GET /static/images/main-slider/icon-1.png 200 [0.04, 127.0.0.1:54287][0m
+[mHTTP GET /static/images/essay.png 200 [0.04, 127.0.0.1:54284][0m
+[mHTTP GET /static/images/live.jpg 200 [0.05, 127.0.0.1:54288][0m
+[mHTTP GET /static/images/stopwatch.png 200 [0.05, 127.0.0.1:54285][0m
+[mHTTP GET /static/images/projectrp.jpg 200 [0.05, 127.0.0.1:54289][0m
+[mHTTP GET /static/images/projectReport.png 200 [0.05, 127.0.0.1:54286][0m
+[mHTTP GET /static/images/dissertation-writing.jpg 200 [0.05, 127.0.0.1:54287][0m
+[mHTTP GET /static/images/DWriting.png 200 [0.05, 127.0.0.1:54284][0m
+[mHTTP GET /static/images/case-study.jpg 200 [0.03, 127.0.0.1:54289][0m
+[mHTTP GET /static/images/case-study_icon.png 200 [0.03, 127.0.0.1:54286][0m
+[mHTTP GET /static/images/graduation.png 200 [0.03, 127.0.0.1:54287][0m
+[mHTTP GET /static/images/subject_ico.png 200 [0.03, 127.0.0.1:54284][0m
+[mHTTP GET /static/images/24-hours_ico.png 200 [0.03, 127.0.0.1:54289][0m
+[mHTTP GET /static/images/pricing_ico.png 200 [0.03, 127.0.0.1:54286][0m
+[mHTTP GET /static/images/time_ico_2.png 200 [0.03, 127.0.0.1:54287][0m
+[mHTTP GET /static/images/high_quality_ico.png 200 [0.03, 127.0.0.1:54284][0m
+[mHTTP GET /static/images/resource/skill.png 200 [0.03, 127.0.0.1:54289][0m
+[mHTTP GET /static/images/customer.png 200 [0.03, 127.0.0.1:54286][0m
+[mHTTP GET /static/images/resource/career.jpg 200 [0.03, 127.0.0.1:54287][0m
+[mHTTP GET /static/images/top-50-research-paper-topics-in-2021-home.jpg 200 [0.03, 127.0.0.1:54284][0m
+[mHTTP GET /static/images/resource/news-7.jpg 200 [0.03, 127.0.0.1:54289][0m
+[mHTTP GET /static/images/whatsapp.svg 200 [0.03, 127.0.0.1:54286][0m
+[mHTTP GET /static/images/chat.png 200 [0.03, 127.0.0.1:54287][0m
+[mHTTP GET /static/js/tilt.jquery.min.js 200 [0.03, 127.0.0.1:54284][0m
+[mHTTP GET /static/js/slider.min.js 200 [0.02, 127.0.0.1:54289][0m
+[mHTTP GET /static/images/main-slider/pattern-3.png 200 [0.03, 127.0.0.1:54286][0m
+[mHTTP GET /static/images/attach.png 200 [0.02, 127.0.0.1:54287][0m
+[mHTTP GET /static/images/background/pattern-2.png 200 [0.02, 127.0.0.1:54284][0m
+[33mHTTP GET /static/images/logo.png 404 [0.03, 127.0.0.1:54289][0m
+[mHTTP GET /static/images/background/pattern-5.png 200 [0.01, 127.0.0.1:54289][0m
+[mHTTP GET /static/images/icons/icon-1.png 200 [0.01, 127.0.0.1:54284][0m
+[mHTTP GET /static/images/background/pattern-8.png 200 [0.02, 127.0.0.1:54287][0m
+[mHTTP GET /static/images/background/1.png 200 [0.02, 127.0.0.1:54286][0m
+[mHTTP GET /static/images/background/pattern-1.png 200 [0.02, 127.0.0.1:54289][0m
+[mHTTP GET /static/images/background/pattern-10.png 200 [0.02, 127.0.0.1:54284][0m
+[mHTTP GET /static/fonts/fontawesome-webfonte0a5.woff2?v=4.3.0 200 [0.02, 127.0.0.1:54287][0m
+[mHTTP GET /static/images/background/pattern-9.jpg 200 [0.02, 127.0.0.1:54286][0m
+[mHTTP GET /static/images/background/pattern-11.png 200 [0.02, 127.0.0.1:54289][0m
+[mHTTP GET /static/images/icons/icon-2.png 200 [0.02, 127.0.0.1:54284][0m
+[mHTTP GET /static/images/background/pattern-12.png 200 [0.02, 127.0.0.1:54287][0m
+[mHTTP GET /static/images/background/pattern-13.png 200 [0.02, 127.0.0.1:54286][0m
+[mHTTP GET /static/images/background/pattern-14.png 200 [0.02, 127.0.0.1:54289][0m
+Exception inside application: Single thread executor already being used, would deadlock
+Traceback (most recent call last):
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\channels\staticfiles.py", line 40, in __call__
+    return await self.staticfiles_handler_class()(
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\channels\staticfiles.py", line 56, in __call__
+    return await super().__call__(scope, receive, send)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\channels\http.py", line 198, in __call__
+    await self.handle(scope, async_to_sync(send), body_stream)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\asgiref\sync.py", line 382, in __call__
+    raise RuntimeError(
+RuntimeError: Single thread executor already being used, would deadlock
+[35;1mHTTP GET /static/images/coursework_img.jpg 500 [0.44, 127.0.0.1:54288][0m
+Exception inside application: Single thread executor already being used, would deadlock
+Traceback (most recent call last):
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\channels\staticfiles.py", line 40, in __call__
+    return await self.staticfiles_handler_class()(
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\channels\staticfiles.py", line 56, in __call__
+    return await super().__call__(scope, receive, send)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\channels\http.py", line 198, in __call__
+    await self.handle(scope, async_to_sync(send), body_stream)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\asgiref\sync.py", line 382, in __call__
+    raise RuntimeError(
+RuntimeError: Single thread executor already being used, would deadlock
+[35;1mHTTP GET /static/images/course_icon.png 500 [0.44, 127.0.0.1:54285][0m
+[33mHTTP GET /static/js/bootstrap.min.js.map 404 [0.02, 127.0.0.1:54288][0m
+[33mHTTP GET /static/js/parallax.min.js.map 404 [0.04, 127.0.0.1:54285][0m
+[mHTTP GET /static/images/fav.png 200 [0.01, 127.0.0.1:54285][0m
+Watching for file changes with StatReloader
+[mHTTP GET / 200 [0.11, 127.0.0.1:64288][0m
+[mHTTP GET /static/css/bootstrap.css 200 [0.08, 127.0.0.1:64288][0m
+[mHTTP GET /static/css/responsive.css 200 [0.09, 127.0.0.1:64289][0m
+[mHTTP GET /static/css/style.css 200 [0.10, 127.0.0.1:64290][0m
+[mHTTP GET /static/css/animation.css 200 [0.03, 127.0.0.1:64288][0m
+[mHTTP GET /static/css/animate.css 200 [0.03, 127.0.0.1:64289][0m
+[mHTTP GET /static/css/custom-animate.css 200 [0.03, 127.0.0.1:64290][0m
+[mHTTP GET /static/css/flaticon.css 200 [0.03, 127.0.0.1:64288][0m
+[mHTTP GET /static/css/font-awesome.css 200 [0.04, 127.0.0.1:64289][0m
+[mHTTP GET /static/css/jquery-ui.css 200 [0.06, 127.0.0.1:64290][0m
+[mHTTP GET /static/css/owl.css 200 [0.07, 127.0.0.1:64288][0m
+[mHTTP GET /static/css/jquery.mCustomScrollbar.min.css 200 [0.06, 127.0.0.1:64289][0m
+[mHTTP GET /static/css/jquery.fancybox.min.css 200 [0.04, 127.0.0.1:64288][0m
+[mHTTP GET /static/css/jquery.bootstrap-touchspin.css 200 [0.04, 127.0.0.1:64289][0m
+[mHTTP GET /static/js/jquery.js 200 [0.15, 127.0.0.1:64289][0m
+[mHTTP GET /static/js/popper.min.js 200 [0.03, 127.0.0.1:64289][0m
+[mHTTP GET /static/js/bootstrap.min.js 200 [0.04, 127.0.0.1:64289][0m
+[mHTTP GET /static/js/jquery.mCustomScrollbar.concat.min.js 200 [0.06, 127.0.0.1:64289][0m
+[mHTTP GET /static/js/appear.js 200 [0.03, 127.0.0.1:64288][0m
+[mHTTP GET /static/js/parallax.min.js 200 [0.04, 127.0.0.1:64289][0m
+[mHTTP GET /static/js/jquery.paroller.min.js 200 [0.07, 127.0.0.1:64290][0m
+[mHTTP GET /static/js/owl.js 200 [0.05, 127.0.0.1:64289][0m
+[mHTTP GET /static/js/wow.js 200 [0.08, 127.0.0.1:64288][0m
+[mHTTP GET /static/js/nav-tool.js 200 [0.09, 127.0.0.1:64290][0m
+[mHTTP GET /static/js/jquery-ui.js 200 [0.24, 127.0.0.1:64289][0m
+[mHTTP GET /static/js/script.js 200 [0.25, 127.0.0.1:64288][0m
+[mHTTP GET /static/images/logo.jpg 200 [0.25, 127.0.0.1:64290][0m
+[33mHTTP GET /static/images/logo.png 404 [0.15, 127.0.0.1:64289][0m
+[mHTTP GET /static/images/uName.svg 200 [0.13, 127.0.0.1:64290][0m
+[mHTTP GET /static/images/password_Img.svg 200 [0.14, 127.0.0.1:64288][0m
+[mHTTP GET /static/images/main-slider/pattern-5.png 200 [0.02, 127.0.0.1:64288][0m
+[mHTTP GET /static/images/background/pattern-5.png 200 [0.04, 127.0.0.1:64290][0m
+[mHTTP GET /static/images/main-slider/pattern-1.png 200 [0.05, 127.0.0.1:64289][0m
+[mHTTP GET /static/images/main-slider/pattern-4.png 200 [0.04, 127.0.0.1:64293][0m
+[mHTTP GET /static/images/main-slider/icon-1.png 200 [0.06, 127.0.0.1:64295][0m
+[mHTTP GET /static/images/main-slider/pattern-6.png 200 [0.07, 127.0.0.1:64294][0m
+[mHTTP GET /static/images/icons/icon-1.png 200 [0.08, 127.0.0.1:64288][0m
+[mHTTP GET /static/images/main-slider/pattern-3.png 200 [0.08, 127.0.0.1:64290][0m
+[mHTTP GET /static/images/main-slider/pattern-2.png 200 [0.08, 127.0.0.1:64289][0m
+[mHTTP GET /static/images/whatsapp.svg 200 [0.07, 127.0.0.1:64293][0m
+[mHTTP GET /static/images/main-slider/icon-2.png 200 [0.06, 127.0.0.1:64295][0m
+[mHTTP GET /static/images/attach.png 200 [0.05, 127.0.0.1:64294][0m
+[mHTTP GET /static/images/icons/button-icon-one.png 200 [0.05, 127.0.0.1:64288][0m
+[mHTTP GET /static/images/icons/button-icon-two.png 200 [0.05, 127.0.0.1:64290][0m
+[mHTTP GET /static/images/main-slider/image-1.png 200 [0.05, 127.0.0.1:64289][0m
+[mHTTP GET /static/images/main-slider/image-4.png 200 [0.04, 127.0.0.1:64293][0m
+[mHTTP GET /static/images/rating-sprite-v2.svg 200 [0.05, 127.0.0.1:64295][0m
+[mHTTP GET /static/images/chat.png 200 [0.06, 127.0.0.1:64294][0m
+[mHTTP GET /static/images/google.png 200 [0.06, 127.0.0.1:64288][0m
+[mHTTP GET /static/images/fb.png 200 [0.06, 127.0.0.1:64290][0m
+[mHTTP GET /static/images/small_logo.jpg 200 [0.06, 127.0.0.1:64289][0m
+[mHTTP GET /static/images/stars.svg 200 [0.07, 127.0.0.1:64293][0m
+[mHTTP GET /static/fonts/fontawesome-webfonte0a5.woff2?v=4.3.0 200 [0.06, 127.0.0.1:64295][0m
+[mHTTP GET /static/fonts/flaticon.woff 200 [0.07, 127.0.0.1:64294][0m
+[mHTTP GET /static/images/trustpilot.png 200 [0.06, 127.0.0.1:64288][0m
+[mHTTP GET /static/images/hwhelp.jpg 200 [0.07, 127.0.0.1:64290][0m
+[mHTTP GET /static/images/reader.png 200 [0.06, 127.0.0.1:64289][0m
+[mHTTP GET /static/images/resource/course-3.jpg 200 [0.06, 127.0.0.1:64293][0m
+[mHTTP GET /static/images/assignmentIco.png 200 [0.05, 127.0.0.1:64295][0m
+[mHTTP GET /static/images/resource/course-2.jpg 200 [0.04, 127.0.0.1:64294][0m
+[mHTTP GET /static/images/essay.png 200 [0.04, 127.0.0.1:64288][0m
+[mHTTP GET /static/images/live.jpg 200 [0.04, 127.0.0.1:64290][0m
+[mHTTP GET /static/images/stopwatch.png 200 [0.03, 127.0.0.1:64289][0m
+[mHTTP GET /static/images/projectrp.jpg 200 [0.03, 127.0.0.1:64293][0m
+[mHTTP GET /static/images/projectReport.png 200 [0.03, 127.0.0.1:64295][0m
+[mHTTP GET /static/images/dissertation-writing.jpg 200 [0.03, 127.0.0.1:64294][0m
+[mHTTP GET /static/images/DWriting.png 200 [0.03, 127.0.0.1:64288][0m
+[mHTTP GET /static/images/coursework_img.jpg 200 [0.03, 127.0.0.1:64290][0m
+[mHTTP GET /static/images/course_icon.png 200 [0.04, 127.0.0.1:64289][0m
+[mHTTP GET /static/images/case-study.jpg 200 [0.04, 127.0.0.1:64293][0m
+[mHTTP GET /static/images/case-study_icon.png 200 [0.04, 127.0.0.1:64295][0m
+[mHTTP GET /static/images/graduation.png 200 [0.04, 127.0.0.1:64294][0m
+[mHTTP GET /static/images/subject_ico.png 200 [0.04, 127.0.0.1:64288][0m
+[mHTTP GET /static/images/24-hours_ico.png 200 [0.04, 127.0.0.1:64290][0m
+[mHTTP GET /static/images/pricing_ico.png 200 [0.04, 127.0.0.1:64289][0m
+[mHTTP GET /static/images/time_ico_2.png 200 [0.03, 127.0.0.1:64293][0m
+[mHTTP GET /static/images/high_quality_ico.png 200 [0.03, 127.0.0.1:64295][0m
+[mHTTP GET /static/images/resource/skill.png 200 [0.03, 127.0.0.1:64294][0m
+[mHTTP GET /static/images/customer.png 200 [0.03, 127.0.0.1:64288][0m
+[mHTTP GET /static/images/resource/career.jpg 200 [0.03, 127.0.0.1:64290][0m
+[mHTTP GET /static/images/top-50-research-paper-topics-in-2021-home.jpg 200 [0.03, 127.0.0.1:64289][0m
+[mHTTP GET /static/images/resource/news-7.jpg 200 [0.03, 127.0.0.1:64293][0m
+[mHTTP GET /static/js/tilt.jquery.min.js 200 [0.05, 127.0.0.1:64295][0m
+[mHTTP GET /static/js/slider.min.js 200 [0.09, 127.0.0.1:64294][0m
+[mHTTP GET /static/images/background/pattern-2.png 200 [0.09, 127.0.0.1:64288][0m
+[mHTTP GET /static/images/background/pattern-8.png 200 [0.09, 127.0.0.1:64290][0m
+[mHTTP GET /static/images/background/1.png 200 [0.09, 127.0.0.1:64289][0m
+[mHTTP GET /static/images/background/pattern-1.png 200 [0.09, 127.0.0.1:64293][0m
+[mHTTP GET /static/images/background/pattern-10.png 200 [0.08, 127.0.0.1:64295][0m
+[mHTTP GET /static/images/background/pattern-9.jpg 200 [0.04, 127.0.0.1:64294][0m
+[mHTTP GET /static/images/background/pattern-11.png 200 [0.04, 127.0.0.1:64288][0m
+[mHTTP GET /static/images/icons/icon-2.png 200 [0.04, 127.0.0.1:64290][0m
+[mHTTP GET /static/images/background/pattern-12.png 200 [0.03, 127.0.0.1:64289][0m
+[mHTTP GET /static/images/background/pattern-13.png 200 [0.03, 127.0.0.1:64293][0m
+[mHTTP GET /static/images/background/pattern-14.png 200 [0.03, 127.0.0.1:64295][0m
+[mHTTP GET /static/images/fav.png 200 [0.02, 127.0.0.1:64295][0m
+[32mHTTP POST /order/ 302 [0.13, 127.0.0.1:64295][0m
+[mHTTP GET /sign-up/ 200 [0.14, 127.0.0.1:64295][0m
+Internal Server Error: /sign-up/
+Traceback (most recent call last):
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\app\views.py", line 341, in signup
+    User.objects.get(email=email)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+django.contrib.auth.models.User.DoesNotExist: User matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: django_chatter_room
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\app\views.py", line 351, in signup
+    room = create_room(staff)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\django_chatter\utils.py", line 141, in create_room
+    if rooms.exists():
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\query.py", line 892, in exists
+    return self.query.has_results(using=self.db)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\sql\query.py", line 580, in has_results
+    return compiler.has_results()
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\sql\compiler.py", line 1329, in has_results
+    return bool(self.execute_sql(SINGLE))
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\sql\compiler.py", line 1361, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: django_chatter_room
+[35;1mHTTP POST /sign-up/ 500 [1.17, 127.0.0.1:64295][0m
+[33mHTTP GET /static/js/bootstrap.min.js.map 404 [0.01, 127.0.0.1:56159][0m
+[33mHTTP GET /static/js/parallax.min.js.map 404 [0.02, 127.0.0.1:56160][0m
+[mHTTP POST /sign-up/ 200 [0.05, 127.0.0.1:56160][0m
+Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\app\views.py", line 460, in signin
+    userdetail = UserDetails.objects.get(user=new_user)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+app.models.UserDetails.DoesNotExist: UserDetails matching query does not exist.
+[35;1mHTTP POST /login/ 500 [0.76, 127.0.0.1:56220][0m
+[mHTTP GET / 200 [0.07, 127.0.0.1:56220][0m
+[mHTTP GET /static/css/bootstrap.css 200 [0.02, 127.0.0.1:56220][0m
+[mHTTP GET /static/css/style.css 200 [0.04, 127.0.0.1:56228][0m
+[mHTTP GET /static/css/responsive.css 200 [0.04, 127.0.0.1:56229][0m
+[mHTTP GET /static/css/animate.css 200 [0.06, 127.0.0.1:56231][0m
+[mHTTP GET /static/css/flaticon.css 200 [0.06, 127.0.0.1:56220][0m
+[mHTTP GET /static/css/custom-animate.css 200 [0.07, 127.0.0.1:56232][0m
+[mHTTP GET /static/css/animation.css 200 [0.07, 127.0.0.1:56230][0m
+[mHTTP GET /static/css/font-awesome.css 200 [0.07, 127.0.0.1:56228][0m
+[mHTTP GET /static/css/jquery-ui.css 200 [0.05, 127.0.0.1:56229][0m
+[mHTTP GET /static/css/owl.css 200 [0.04, 127.0.0.1:56231][0m
+[mHTTP GET /static/css/jquery.mCustomScrollbar.min.css 200 [0.04, 127.0.0.1:56220][0m
+[mHTTP GET /static/css/jquery.fancybox.min.css 200 [0.00, 127.0.0.1:56220][0m
+[mHTTP GET /static/css/jquery.bootstrap-touchspin.css 200 [0.01, 127.0.0.1:56231][0m
+[mHTTP GET /static/js/jquery.js 200 [0.01, 127.0.0.1:56231][0m
+[mHTTP GET /static/js/popper.min.js 200 [0.00, 127.0.0.1:56231][0m
+[mHTTP GET /static/js/bootstrap.min.js 200 [0.00, 127.0.0.1:56231][0m
+[mHTTP GET /static/js/jquery.mCustomScrollbar.concat.min.js 200 [0.00, 127.0.0.1:56231][0m
+[mHTTP GET /static/js/appear.js 200 [0.01, 127.0.0.1:56231][0m
+[mHTTP GET /static/js/parallax.min.js 200 [0.01, 127.0.0.1:56231][0m
+[mHTTP GET /static/js/jquery.paroller.min.js 200 [0.01, 127.0.0.1:56231][0m
+[mHTTP GET /static/js/owl.js 200 [0.00, 127.0.0.1:56231][0m
+[mHTTP GET /static/js/wow.js 200 [0.01, 127.0.0.1:56231][0m
+[mHTTP GET /static/js/nav-tool.js 200 [0.01, 127.0.0.1:56231][0m
+[mHTTP GET /static/js/jquery-ui.js 200 [0.01, 127.0.0.1:56231][0m
+[mHTTP GET /static/js/script.js 200 [0.01, 127.0.0.1:56231][0m
+[mHTTP GET /static/images/logo.jpg 200 [0.02, 127.0.0.1:56231][0m
+[33mHTTP GET /static/images/logo.png 404 [0.03, 127.0.0.1:56220][0m
+[mHTTP GET /static/images/uName.svg 200 [0.04, 127.0.0.1:56229][0m
+[mHTTP GET /static/images/google.png 200 [0.04, 127.0.0.1:56230][0m
+[mHTTP GET /static/images/fb.png 200 [0.05, 127.0.0.1:56232][0m
+[mHTTP GET /static/images/password_Img.svg 200 [0.06, 127.0.0.1:56228][0m
+[mHTTP GET /static/images/main-slider/image-1.png 200 [0.05, 127.0.0.1:56231][0m
+[mHTTP GET /static/images/main-slider/image-4.png 200 [0.05, 127.0.0.1:56220][0m
+[mHTTP GET /static/images/small_logo.jpg 200 [0.05, 127.0.0.1:56229][0m
+[mHTTP GET /static/images/stars.svg 200 [0.05, 127.0.0.1:56230][0m
+[mHTTP GET /static/images/trustpilot.png 200 [0.05, 127.0.0.1:56232][0m
+[mHTTP GET /static/images/rating-sprite-v2.svg 200 [0.05, 127.0.0.1:56228][0m
+[mHTTP GET /static/images/hwhelp.jpg 200 [0.05, 127.0.0.1:56231][0m
+[mHTTP GET /static/images/reader.png 200 [0.05, 127.0.0.1:56220][0m
+[mHTTP GET /static/images/resource/course-3.jpg 200 [0.05, 127.0.0.1:56229][0m
+[mHTTP GET /static/images/assignmentIco.png 200 [0.04, 127.0.0.1:56230][0m
+[mHTTP GET /static/images/resource/course-2.jpg 200 [0.04, 127.0.0.1:56232][0m
+[mHTTP GET /static/images/essay.png 200 [0.04, 127.0.0.1:56228][0m
+[mHTTP GET /static/images/live.jpg 200 [0.04, 127.0.0.1:56231][0m
+[mHTTP GET /static/images/stopwatch.png 200 [0.05, 127.0.0.1:56220][0m
+[mHTTP GET /static/images/projectrp.jpg 200 [0.04, 127.0.0.1:56229][0m
+[mHTTP GET /static/images/icons/button-icon-two.png 200 [0.04, 127.0.0.1:56230][0m
+[mHTTP GET /static/images/icons/button-icon-one.png 200 [0.04, 127.0.0.1:56232][0m
+[mHTTP GET /static/images/projectReport.png 200 [0.04, 127.0.0.1:56228][0m
+[mHTTP GET /static/images/dissertation-writing.jpg 200 [0.04, 127.0.0.1:56231][0m
+[mHTTP GET /static/images/DWriting.png 200 [0.04, 127.0.0.1:56220][0m
+[mHTTP GET /static/images/coursework_img.jpg 200 [0.04, 127.0.0.1:56229][0m
+[mHTTP GET /static/images/course_icon.png 200 [0.04, 127.0.0.1:56230][0m
+[mHTTP GET /static/images/case-study.jpg 200 [0.04, 127.0.0.1:56232][0m
+[mHTTP GET /static/images/case-study_icon.png 200 [0.04, 127.0.0.1:56228][0m
+[mHTTP GET /static/images/graduation.png 200 [0.04, 127.0.0.1:56231][0m
+[mHTTP GET /static/images/subject_ico.png 200 [0.04, 127.0.0.1:56220][0m
+[mHTTP GET /static/images/24-hours_ico.png 200 [0.04, 127.0.0.1:56229][0m
+[mHTTP GET /static/images/pricing_ico.png 200 [0.04, 127.0.0.1:56230][0m
+[mHTTP GET /static/images/time_ico_2.png 200 [0.04, 127.0.0.1:56232][0m
+[mHTTP GET /static/images/high_quality_ico.png 200 [0.04, 127.0.0.1:56228][0m
+[mHTTP GET /static/images/resource/skill.png 200 [0.04, 127.0.0.1:56231][0m
+[mHTTP GET /static/images/customer.png 200 [0.04, 127.0.0.1:56220][0m
+[mHTTP GET /static/images/resource/career.jpg 200 [0.04, 127.0.0.1:56229][0m
+[mHTTP GET /static/images/top-50-research-paper-topics-in-2021-home.jpg 200 [0.05, 127.0.0.1:56230][0m
+[mHTTP GET /static/images/resource/news-7.jpg 200 [0.05, 127.0.0.1:56232][0m
+[mHTTP GET /static/images/whatsapp.svg 200 [0.05, 127.0.0.1:56228][0m
+[mHTTP GET /static/images/chat.png 200 [0.05, 127.0.0.1:56231][0m
+[mHTTP GET /static/js/tilt.jquery.min.js 200 [0.04, 127.0.0.1:56220][0m
+[mHTTP GET /static/fonts/flaticon.woff 200 [0.05, 127.0.0.1:56229][0m
+[mHTTP GET /static/js/slider.min.js 200 [0.04, 127.0.0.1:56230][0m
+[mHTTP GET /static/images/main-slider/pattern-4.png 200 [0.01, 127.0.0.1:56230][0m
+[mHTTP GET /static/images/main-slider/pattern-1.png 200 [0.02, 127.0.0.1:56231][0m
+[mHTTP GET /static/images/main-slider/icon-2.png 200 [0.02, 127.0.0.1:56220][0m
+[mHTTP GET /static/images/main-slider/pattern-5.png 200 [0.03, 127.0.0.1:56229][0m
+[mHTTP GET /static/images/main-slider/icon-1.png 200 [0.03, 127.0.0.1:56232][0m
+[mHTTP GET /static/images/main-slider/pattern-2.png 200 [0.04, 127.0.0.1:56228][0m
+[mHTTP GET /static/images/main-slider/pattern-3.png 200 [0.03, 127.0.0.1:56230][0m
+[mHTTP GET /static/images/main-slider/pattern-6.png 200 [0.03, 127.0.0.1:56231][0m
+[mHTTP GET /static/images/attach.png 200 [0.01, 127.0.0.1:56231][0m
+[mHTTP GET /static/images/background/pattern-2.png 200 [0.01, 127.0.0.1:56230][0m
+[33mHTTP GET /static/images/logo.png 404 [0.01, 127.0.0.1:56230][0m
+[mHTTP GET /static/images/background/pattern-5.png 200 [0.02, 127.0.0.1:56230][0m
+[mHTTP GET /static/images/icons/icon-1.png 200 [0.03, 127.0.0.1:56231][0m
+[mHTTP GET /static/images/background/pattern-8.png 200 [0.04, 127.0.0.1:56228][0m
+[mHTTP GET /static/images/background/1.png 200 [0.05, 127.0.0.1:56232][0m
+[mHTTP GET /static/images/background/pattern-1.png 200 [0.07, 127.0.0.1:56229][0m
+[mHTTP GET /static/images/background/pattern-10.png 200 [0.07, 127.0.0.1:56220][0m
+[mHTTP GET /static/images/background/pattern-9.jpg 200 [0.08, 127.0.0.1:56230][0m
+[mHTTP GET /static/images/background/pattern-11.png 200 [0.08, 127.0.0.1:56231][0m
+[mHTTP GET /static/images/icons/icon-2.png 200 [0.07, 127.0.0.1:56228][0m
+[mHTTP GET /static/images/background/pattern-12.png 200 [0.07, 127.0.0.1:56232][0m
+[mHTTP GET /static/images/background/pattern-13.png 200 [0.06, 127.0.0.1:56229][0m
+[mHTTP GET /static/fonts/fontawesome-webfonte0a5.woff2?v=4.3.0 200 [0.07, 127.0.0.1:56220][0m
+[mHTTP GET /static/images/background/pattern-14.png 200 [0.06, 127.0.0.1:56230][0m
+[33mHTTP GET /static/js/bootstrap.min.js.map 404 [0.03, 127.0.0.1:56230][0m
+[33mHTTP GET /static/js/parallax.min.js.map 404 [0.05, 127.0.0.1:56220][0m
+[mHTTP GET /static/images/fav.png 200 [0.01, 127.0.0.1:56220][0m
+[32mHTTP POST /order/ 302 [0.12, 127.0.0.1:56220][0m
+[mHTTP GET /sign-up/ 200 [0.05, 127.0.0.1:56220][0m
+Internal Server Error: /login/
+Traceback (most recent call last):
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\app\views.py", line 460, in signin
+    userdetail = UserDetails.objects.get(user=new_user)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Razi Ahmad\Desktop\tutorchamp\env\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+app.models.UserDetails.DoesNotExist: UserDetails matching query does not exist.
+[35;1mHTTP POST /login/ 500 [0.85, 127.0.0.1:56220][0m
+[mHTTP GET /admin/login/?next=/admin/ 200 [0.29, 127.0.0.1:56404][0m
+[mHTTP GET /static/admin/css/base.css 200 [0.03, 127.0.0.1:56404][0m
+[mHTTP GET /static/admin/css/nav_sidebar.css 200 [0.04, 127.0.0.1:56405][0m
+[mHTTP GET /static/admin/css/login.css 200 [0.07, 127.0.0.1:56406][0m
+[mHTTP GET /static/admin/css/responsive.css 200 [0.09, 127.0.0.1:56407][0m
+[mHTTP GET /static/admin/js/nav_sidebar.js 200 [0.07, 127.0.0.1:56405][0m
+[mHTTP GET /static/admin/css/fonts.css 200 [0.07, 127.0.0.1:56404][0m
+[mHTTP GET /static/admin/img/icon-yes.svg 200 [0.02, 127.0.0.1:56404][0m
+[mHTTP GET /static/admin/fonts/Roboto-Regular-webfont.woff 200 [0.03, 127.0.0.1:56404][0m
+[mHTTP GET /static/admin/fonts/Roboto-Light-webfont.woff 200 [0.03, 127.0.0.1:56405][0m
+Not Found: /favicon.ico
+[33mHTTP GET /favicon.ico 404 [0.05, 127.0.0.1:56405][0m
+[32mHTTP POST /admin/login/?next=/admin/ 302 [0.63, 127.0.0.1:56405][0m
+[mHTTP GET /admin/ 200 [0.10, 127.0.0.1:56405][0m
+[mHTTP GET /static/admin/css/dashboard.css 200 [0.03, 127.0.0.1:56405][0m
+[mHTTP GET /static/admin/img/icon-addlink.svg 200 [0.02, 127.0.0.1:56405][0m
+[mHTTP GET /static/admin/img/icon-changelink.svg 200 [0.05, 127.0.0.1:56404][0m
+[mHTTP GET /static/admin/fonts/Roboto-Bold-webfont.woff 200 [0.03, 127.0.0.1:56405][0m
+[mHTTP GET /admin/app/userdetails/ 200 [0.26, 127.0.0.1:56405][0m
+[mHTTP GET /static/admin/css/changelists.css 200 [0.04, 127.0.0.1:56405][0m
+[mHTTP GET /admin/jsi18n/ 200 [0.10, 127.0.0.1:56404][0m
+[mHTTP GET /static/admin/js/vendor/jquery/jquery.js 200 [0.29, 127.0.0.1:56407][0m
+[mHTTP GET /static/admin/js/core.js 200 [0.33, 127.0.0.1:56418][0m
+[mHTTP GET /static/admin/js/jquery.init.js 200 [0.36, 127.0.0.1:56406][0m
+[mHTTP GET /static/admin/js/admin/RelatedObjectLookups.js 200 [0.39, 127.0.0.1:56419][0m
+[mHTTP GET /static/admin/js/actions.js 200 [0.40, 127.0.0.1:56405][0m
+[mHTTP GET /static/admin/js/urlify.js 200 [0.38, 127.0.0.1:56404][0m
+[mHTTP GET /static/admin/js/prepopulate.js 200 [0.21, 127.0.0.1:56407][0m
+[mHTTP GET /static/admin/js/vendor/xregexp/xregexp.js 200 [0.32, 127.0.0.1:56418][0m
+[mHTTP GET /static/admin/img/search.svg 200 [0.16, 127.0.0.1:56407][0m
+[mHTTP GET /static/admin/img/tooltag-add.svg 200 [0.01, 127.0.0.1:56407][0m
+[mHTTP GET /admin/auth/user/ 200 [0.31, 127.0.0.1:56407][0m
+[mHTTP GET /admin/jsi18n/ 200 [0.06, 127.0.0.1:56407][0m
+[mHTTP GET /static/admin/img/icon-no.svg 200 [0.03, 127.0.0.1:56407][0m
+[mHTTP GET /static/admin/img/sorting-icons.svg 200 [0.02, 127.0.0.1:56407][0m
+[mHTTP POST /admin/auth/user/ 200 [0.18, 127.0.0.1:56407][0m
+[mHTTP GET /static/admin/js/cancel.js 200 [0.02, 127.0.0.1:56407][0m
+[32mHTTP POST /admin/auth/user/ 302 [0.23, 127.0.0.1:56407][0m
+[mHTTP GET /admin/auth/user/ 200 [0.20, 127.0.0.1:56407][0m
+[mHTTP GET /admin/jsi18n/ 200 [0.05, 127.0.0.1:56407][0m
+[mHTTP GET /admin/logout/ 200 [0.10, 127.0.0.1:56407][0m
+[mHTTP GET / 200 [0.02, 127.0.0.1:56407][0m
+[33mHTTP GET /static/images/logo.png 404 [0.01, 127.0.0.1:56407][0m
+[33mHTTP GET /static/images/logo.png 404 [0.01, 127.0.0.1:56407][0m
+[33mHTTP GET /static/js/bootstrap.min.js.map 404 [0.01, 127.0.0.1:56407][0m
+[33mHTTP GET /static/js/parallax.min.js.map 404 [0.01, 127.0.0.1:56418][0m
+[32mHTTP POST /order/ 302 [0.11, 127.0.0.1:56418][0m
+[mHTTP GET /sign-up/ 200 [0.06, 127.0.0.1:56418][0m
+[mHTTP POST /sign-up/ 200 [11.04, 127.0.0.1:56418][0m
+[mHTTP GET /dashboard/new-user/ 200 [0.13, 127.0.0.1:56418][0m
+[mHTTP GET /static/css/dash.css 200 [0.01, 127.0.0.1:56418][0m
+[mHTTP GET /static/dashboard/css/dashboard.css 200 [0.02, 127.0.0.1:56407][0m
+[mHTTP GET /static/dashboard/images/chat.png 200 [0.01, 127.0.0.1:56407][0m
+[mHTTP GET /static/images/camera.png 200 [0.01, 127.0.0.1:56418][0m
+[33mHTTP GET /static/images/logo.png 404 [0.02, 127.0.0.1:57245][0m
+[mHTTP GET /static/dashboard/images/tutorChamp_dashboard_pattren_bg.png 200 [0.00, 127.0.0.1:57245][0m
+[mHTTP GET /static/dashboard/images/addFile.png 200 [0.02, 127.0.0.1:57245][0m
+[mHTTP GET /dashboard/new-user/ 200 [0.11, 127.0.0.1:57245][0m
+[33mHTTP GET /static/images/favicon.png 404 [0.01, 127.0.0.1:57245][0m
+[mHTTP GET / 200 [0.02, 127.0.0.1:57260][0m
+[mHTTP GET /static/css/bootstrap.css 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/css/style.css 200 [0.01, 127.0.0.1:57261][0m
+[mHTTP GET /static/css/responsive.css 200 [0.02, 127.0.0.1:57262][0m
+[mHTTP GET /static/css/animate.css 200 [0.02, 127.0.0.1:57264][0m
+[mHTTP GET /static/css/custom-animate.css 200 [0.02, 127.0.0.1:57265][0m
+[mHTTP GET /static/css/animation.css 200 [0.03, 127.0.0.1:57263][0m
+[mHTTP GET /static/css/flaticon.css 200 [0.03, 127.0.0.1:57260][0m
+[mHTTP GET /static/css/font-awesome.css 200 [0.03, 127.0.0.1:57261][0m
+[mHTTP GET /static/css/jquery-ui.css 200 [0.03, 127.0.0.1:57262][0m
+[mHTTP GET /static/css/owl.css 200 [0.02, 127.0.0.1:57264][0m
+[mHTTP GET /static/css/jquery.mCustomScrollbar.min.css 200 [0.03, 127.0.0.1:57265][0m
+[mHTTP GET /static/css/jquery.fancybox.min.css 200 [0.03, 127.0.0.1:57263][0m
+[mHTTP GET /static/css/jquery.bootstrap-touchspin.css 200 [0.02, 127.0.0.1:57260][0m
+[mHTTP GET /static/js/jquery.js 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/js/popper.min.js 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/js/bootstrap.min.js 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/js/jquery.mCustomScrollbar.concat.min.js 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/js/appear.js 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/js/parallax.min.js 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/js/jquery.paroller.min.js 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/js/owl.js 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/js/wow.js 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/js/nav-tool.js 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/js/jquery-ui.js 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/js/script.js 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/logo.jpg 200 [0.01, 127.0.0.1:57260][0m
+[33mHTTP GET /static/images/logo.png 404 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/uName.svg 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/password_Img.svg 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/google.png 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/fb.png 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/main-slider/image-1.png 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/main-slider/image-4.png 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/small_logo.jpg 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/stars.svg 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/trustpilot.png 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/rating-sprite-v2.svg 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/hwhelp.jpg 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/reader.png 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/resource/course-3.jpg 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/assignmentIco.png 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/resource/course-2.jpg 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/essay.png 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/live.jpg 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/stopwatch.png 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/projectrp.jpg 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/projectReport.png 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/dissertation-writing.jpg 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/DWriting.png 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/coursework_img.jpg 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/course_icon.png 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/case-study.jpg 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/case-study_icon.png 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/graduation.png 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/subject_ico.png 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/24-hours_ico.png 200 [0.00, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/pricing_ico.png 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/time_ico_2.png 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/high_quality_ico.png 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/resource/skill.png 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/customer.png 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/resource/career.jpg 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/top-50-research-paper-topics-in-2021-home.jpg 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/resource/news-7.jpg 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/whatsapp.svg 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/chat.png 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/js/tilt.jquery.min.js 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/js/slider.min.js 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/icons/button-icon-one.png 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/icons/button-icon-two.png 200 [0.01, 127.0.0.1:57263][0m
+[33mHTTP GET /static/images/logo.png 404 [0.01, 127.0.0.1:57263][0m
+[mHTTP GET /static/fonts/flaticon.woff 200 [0.01, 127.0.0.1:57263][0m
+[mHTTP GET /static/images/main-slider/pattern-4.png 200 [0.02, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/main-slider/icon-2.png 200 [0.02, 127.0.0.1:57264][0m
+[mHTTP GET /static/images/main-slider/pattern-1.png 200 [0.02, 127.0.0.1:57262][0m
+[mHTTP GET /static/images/main-slider/pattern-5.png 200 [0.03, 127.0.0.1:57265][0m
+[mHTTP GET /static/images/main-slider/pattern-2.png 200 [0.03, 127.0.0.1:57261][0m
+[mHTTP GET /static/images/main-slider/icon-1.png 200 [0.03, 127.0.0.1:57263][0m
+[mHTTP GET /static/images/main-slider/pattern-3.png 200 [0.03, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/main-slider/pattern-6.png 200 [0.03, 127.0.0.1:57264][0m
+[mHTTP GET /static/images/attach.png 200 [0.01, 127.0.0.1:57264][0m
+[mHTTP GET /static/images/background/pattern-2.png 200 [0.01, 127.0.0.1:57260][0m
+[33mHTTP GET /static/images/logo.png 404 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/background/pattern-5.png 200 [0.01, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/icons/icon-1.png 200 [0.02, 127.0.0.1:57264][0m
+[mHTTP GET /static/images/background/pattern-8.png 200 [0.02, 127.0.0.1:57263][0m
+[mHTTP GET /static/images/background/1.png 200 [0.03, 127.0.0.1:57261][0m
+[mHTTP GET /static/images/background/pattern-1.png 200 [0.03, 127.0.0.1:57265][0m
+[mHTTP GET /static/images/background/pattern-10.png 200 [0.04, 127.0.0.1:57262][0m
+[mHTTP GET /static/images/background/pattern-9.jpg 200 [0.04, 127.0.0.1:57260][0m
+[mHTTP GET /static/images/background/pattern-11.png 200 [0.03, 127.0.0.1:57264][0m
+[mHTTP GET /static/images/icons/icon-2.png 200 [0.03, 127.0.0.1:57263][0m
+[mHTTP GET /static/images/background/pattern-12.png 200 [0.03, 127.0.0.1:57261][0m
+[mHTTP GET /static/images/background/pattern-13.png 200 [0.03, 127.0.0.1:57265][0m
+[mHTTP GET /static/images/background/pattern-14.png 200 [0.03, 127.0.0.1:57262][0m
+[mHTTP GET /static/fonts/fontawesome-webfonte0a5.woff2?v=4.3.0 200 [0.00, 127.0.0.1:57262][0m
+[mHTTP GET /static/images/fav.png 200 [0.01, 127.0.0.1:57262][0m
+[mHTTP GET /admin/login/?next=/admin/ 200 [0.03, 127.0.0.1:57262][0m
+[mHTTP GET /static/admin/css/base.css 200 [0.01, 127.0.0.1:57262][0m
+[mHTTP GET /static/admin/css/nav_sidebar.css 200 [0.01, 127.0.0.1:57265][0m
+[mHTTP GET /static/admin/js/nav_sidebar.js 200 [0.02, 127.0.0.1:57264][0m
+[mHTTP GET /static/admin/css/responsive.css 200 [0.02, 127.0.0.1:57263][0m
+[mHTTP GET /static/admin/css/login.css 200 [0.02, 127.0.0.1:57261][0m
+[mHTTP GET /static/admin/css/fonts.css 200 [0.02, 127.0.0.1:57262][0m
+[mHTTP GET /static/admin/fonts/Roboto-Regular-webfont.woff 200 [0.01, 127.0.0.1:57262][0m
+[mHTTP GET /static/admin/fonts/Roboto-Light-webfont.woff 200 [0.02, 127.0.0.1:57261][0m
+[32mHTTP POST /admin/login/?next=/admin/ 302 [0.68, 127.0.0.1:57261][0m
+[mHTTP GET /admin/ 200 [0.08, 127.0.0.1:57261][0m
+[mHTTP GET /static/admin/css/dashboard.css 200 [0.01, 127.0.0.1:57261][0m
+[mHTTP GET /static/admin/img/icon-addlink.svg 200 [0.01, 127.0.0.1:57261][0m
+[mHTTP GET /static/admin/img/icon-changelink.svg 200 [0.01, 127.0.0.1:57262][0m
+[mHTTP GET /static/admin/img/icon-deletelink.svg 200 [0.03, 127.0.0.1:57263][0m
+[mHTTP GET /static/admin/fonts/Roboto-Bold-webfont.woff 200 [0.01, 127.0.0.1:57263][0m
+[mHTTP GET /admin/app/orders/ 200 [0.15, 127.0.0.1:57263][0m
+[mHTTP GET /static/admin/css/changelists.css 200 [0.01, 127.0.0.1:57263][0m
+[mHTTP GET /admin/jsi18n/ 200 [0.04, 127.0.0.1:57262][0m
+[mHTTP GET /static/admin/js/jquery.init.js 200 [0.04, 127.0.0.1:57264][0m
+[mHTTP GET /static/admin/js/core.js 200 [0.05, 127.0.0.1:57265][0m
+[mHTTP GET /static/admin/js/vendor/jquery/jquery.js 200 [0.05, 127.0.0.1:57261][0m
+[mHTTP GET /static/admin/js/admin/RelatedObjectLookups.js 200 [0.06, 127.0.0.1:57260][0m
+[mHTTP GET /static/admin/js/actions.js 200 [0.06, 127.0.0.1:57263][0m
+[mHTTP GET /static/admin/js/urlify.js 200 [0.04, 127.0.0.1:57262][0m
+[mHTTP GET /static/admin/js/prepopulate.js 200 [0.04, 127.0.0.1:57264][0m
+[mHTTP GET /static/admin/js/vendor/xregexp/xregexp.js 200 [0.03, 127.0.0.1:57265][0m
+[mHTTP GET /static/admin/img/search.svg 200 [0.01, 127.0.0.1:57265][0m
+[mHTTP GET /static/admin/img/tooltag-add.svg 200 [0.01, 127.0.0.1:57265][0m
+[mHTTP GET /admin/app/orders/3/change/ 200 [0.34, 127.0.0.1:57265][0m
+[mHTTP GET /static/admin/css/forms.css 200 [0.02, 127.0.0.1:57265][0m
+[mHTTP GET /admin/jsi18n/ 200 [0.04, 127.0.0.1:57264][0m
+[mHTTP GET /static/admin/js/calendar.js 200 [0.06, 127.0.0.1:57262][0m
+[mHTTP GET /static/admin/js/admin/DateTimeShortcuts.js 200 [0.09, 127.0.0.1:57263][0m
+[mHTTP GET /static/admin/css/widgets.css 200 [0.09, 127.0.0.1:57265][0m
+[mHTTP GET /static/admin/js/prepopulate_init.js 200 [0.03, 127.0.0.1:57263][0m
+[mHTTP GET /static/admin/js/change_form.js 200 [0.03, 127.0.0.1:57265][0m
+[mHTTP GET /static/admin/img/icon-calendar.svg 200 [0.02, 127.0.0.1:57265][0m
+[mHTTP GET /static/admin/img/icon-clock.svg 200 [0.03, 127.0.0.1:57263][0m
+[mHTTP POST /admin/app/orders/3/change/ 200 [0.24, 127.0.0.1:57263][0m
+[mHTTP GET /admin/jsi18n/ 200 [0.03, 127.0.0.1:57263][0m
+Watching for file changes with StatReloader
+C:\Users\Razi Ahmad\Desktop\tutorchamp\tutorchamps\settings.py changed, reloading.
