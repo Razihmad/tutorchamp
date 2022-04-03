@@ -1,6 +1,26 @@
 {% autoescape off %}
+Dear {{user}}
 
 
+Thank you for choosing TutorChamps. Your order has been created successfully. Your order summary is as:
+
+
+Subject: {{subject}}
+Order Id: {{order_id}}
+Deadline: {{deadline}}
+
+
+Please allow us some time to confirm your order. Our team has already working on this. We will get back to you shortly. 
+
+You can check the status of your assignment by logging into your dashboard by using your email and password.
+
+To access dashboard login to our website by using the given link below.
+
+https://tutorchamps.com/login/
+
+Best,
+
+TutorChamps Students Support Team
 Sincerely,
 The Tutorchamps Team
 

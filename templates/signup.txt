@@ -1,0 +1,19 @@
+{% autoescape off %}
+Dear {{user}}
+
+
+
+Thanks for choosing TutorChamps. Your account has been created successfully. Now you can easily create the order as per your requirements to avail of our services. 
+
+
+
+Looking forward to helping you in your academic journey.
+
+
+
+Best,
+
+
+
+TutorChamps Students Support Team
+{% endautoescape %}

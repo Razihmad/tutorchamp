@@ -1,0 +1,10 @@
+{% autoescape off %}
+Dear {{user}}
+
+Your payment is received and your assignment with order id {{order_id}} is in progress now. We will let you know when your assignment will be completed.
+
+Best,
+
+TutorChamps Students Support Team
+
+{% endautoescape %}

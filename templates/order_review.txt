@@ -1,0 +1,23 @@
+{% autoescape off %} 
+
+Dear {{user}}
+
+
+Our tutor has completed the assignment with order id {{order_id}}. You are requested to go through your assignment in detail and let us know if there are any changes you need in the same. 
+
+
+Looking forward to hearing from you soon. 
+
+
+
+PFA
+
+
+
+Best,
+
+
+
+TutorChamps Students Support Team
+
+{% endautoescape %}

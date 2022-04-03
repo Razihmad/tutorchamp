@@ -6,3 +6,4 @@ fake.py
 migrations
 db.sqlite3
 admin
+logs
