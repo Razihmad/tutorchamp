@@ -22,7 +22,7 @@
         rel="stylesheet">
     
 
-    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/fav.png' %}" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         {% block meta %}
           
@@ -98,13 +98,13 @@ window.onload = init;
 
             </div>
         </div>
-        <div class="topHeader">
+        <!-- <div class="topHeader">
             <div class="auto-container d-flex justify-content-between">
                 <div>
                    <a href="https://wa.me/+919540989578" target="_blank">
                         <small>&nbsp; WhatsApp for any query </small>
                         <div class="whatsAppCTAWrp ">
-                            <span class="whtIcon"><img src="{% static 'images/whatsapp.svg' %}" alt="My Assignment Services- Whatsapp"> </span>
+                            <span class="whtIcon"><img src="{% static 'images/whatsapp.svg' %}" alt="Become a tutor- Whatsapp"> </span>
                         </div>
                         <small class="mob_visible">&nbsp; For Query</small>
                     </a>
@@ -114,12 +114,12 @@ window.onload = init;
                     <a href="/tutor/" class="ml-4">Sign In</a>
                 </div>
             </div>
-        </div>
+        </div> -->
         <header class="main-header">
             <div class="header-upper">
                 <div class="auto-container clearfix">
                     <div class="pull-left logo-box">
-                        <div class="logo"><a href="/"><img src="{% static 'images/logo.png' %}" alt="Tutor Champs" title="Tutor Champs"></a>
+                        <div class="logo"><a href="/"><img src="{% static 'images/logo.png' %}" alt="TutorChamps" title="TutorChamps"></a>
                         </div>
                     </div>
         
@@ -239,6 +239,7 @@ window.onload = init;
                                     <img src="{% static 'images/password_Img.svg' %}" alt="password">
                                     <input class="form-control" type="password" name="password" placeholder="Create Password"
                                         id="password">
+                                    <i onclick="changeInputType()" class="show_password_icon fa fa-eye"></i>
                                 </div>
                                 <div class="text-center psr mt-3">
                                     <input type="submit" class="formBtn theme-btn btn-style-one" value="Sign Up">
@@ -268,7 +269,8 @@ window.onload = init;
                                 <div class="form-group loginField login">
                                     <img src="{% static 'images/password_Img.svg' %}" alt="password">
                                     <input class="form-control" type="password" name="password" placeholder="Password"
-                                        id="password">
+                                        id="logInPassword">
+                                    <i onclick="changeInputType2()" class="log_password fa fa-eye"></i>
                                 </div>
                                 <div class="row mt-3 login" style="display: flex;">
                                     <div class="col-6 pr-0 col-sm-6">
@@ -424,6 +426,7 @@ window.onload = init;
                                 <li><a href="/terms-and-conditions/">Terms and Conditions</a></li>
                                 <li><a href="/faqs/">FAQs</a></li>
                                 <li><a href="/reviews/">Reviews</a></li>
+                                <li><a href="/tutor/">Become a Tutor</a></li>
                             </ul>
                         </div>
                                 
@@ -448,7 +451,7 @@ window.onload = init;
                                 </div>
                                 <div class="font-13"> 
                                     <a href="mailto:help@tutorchamps.com" title="E-mail" target="_blank" class="fa fw fa-envelope font-14" rel="noopener"></a>
-                                    <a href="https://wa.me/+919891365498" title="Whatsapp" target="_blank" class="fa fw fa-whatsapp font-14" rel="noopener"></a>
+                                    <a href="https://wa.me/+919711569678" title="Whatsapp" target="_blank" class="fa fw fa-whatsapp font-14" rel="noopener"></a>
                                 </div>
                                 <!-- <div class="font-13 mb-1 mb-lg-0 mb-xl-0"><span class="fa fw fa-phone"> </span> <a href="tel:+919891365498" target="_blank" class="font-14" rel="noopener">+91 9891365498</a></div>-->
                             </div>
@@ -462,7 +465,7 @@ window.onload = init;
     </div>
 
     <div class="whatsAppCTAWrp">
-        <a href="https://wa.me/+919540989578" target="_blank"> 
+        <a href="https://wa.me/+919711569678" target="_blank"> 
             <span class="whtIcon"><img src="{% static 'images/whatsapp.svg' %}" alt="My Assignment Services- Whatsapp"></span> <span class="whatsAppText"><strong>Tap to Chat</strong><small>Get instant assignment help</small></span>
         </a>
     </div> 
@@ -506,6 +509,10 @@ window.onload = init;
                 else{
                    $(".mob_fix_button").removeClass("visible"); 
                 }
+            });
+
+            $('.date_time').focusout(function (){
+                $('.date_time').addClass("removeAfter");
             });
 
 
@@ -618,8 +625,37 @@ window.onload = init;
             })  
         })
     </script>
+    <script>
+        function changeInputType() {
+        $(".show_password_icon").toggleClass("fa-eye-slash");
+          var x = document.getElementById("password");
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+        }
+
+        function changeInputType2() {
+        $(".log_password").toggleClass("fa-eye-slash");
+          var lp = document.getElementById("logInPassword");
+          if (lp.type === "password") {
+            lp.type = "text";
+          } else {
+            lp.type = "password";
+          }
+        }
+
+        
+        $(".date_time").keypress(function(){
+          $(this).addClass("focus");
+        });
+    </script>
+
+
     {% endif %}
     
+<!--Add the following script at the bottom of the web page (before </body></html>)-->
 
 
 
