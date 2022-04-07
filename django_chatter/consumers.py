@@ -182,7 +182,7 @@ class ChatConsumer(AsyncJsonWebsocketConsumer):
                     'room_id': room_id,
                 }
             )
-
+            print(self.room)
             for username in self.room_username_list:
                 if username != self.user.username:
                     await self.channel_layer.group_send(

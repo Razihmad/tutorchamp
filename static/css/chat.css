@@ -1,0 +1,122 @@
+.chat-btn {
+    position: fixed;
+    right: 14px;
+    bottom: 30px;
+    cursor: pointer
+}
+
+.chat-btn .close {
+    display: none;
+    transition: all 0.4s
+}
+
+.chat-btn i {
+    transition: all 0.9s ease
+}
+
+#check:checked~.chat-btn i {
+    display: block;
+    pointer-events: auto;
+    transform: rotate(180deg);
+    transition: all 0.4s
+}
+#check:checked~.chat-btn {
+    background-color: rgb(80, 15, 10);
+}
+
+
+#check:checked~.chat-btn .comment {
+    display: none
+}
+
+.chat-btn i {
+    font-size: 22px;
+    color: #fff !important
+}
+
+.chat-btn {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    background-color: rgb(51, 92, 47);
+    color: #fff;
+    font-size: 22px;
+    border: none;
+    margin:0px
+}
+
+.chatwindow {
+    position: fixed;
+    right: -400px;
+    bottom: 90px;
+    height:400px;
+    width: 350px;
+    background-color: rgb(238, 151, 151);
+    border-radius: 5px;
+    z-index: -111;
+    transition: all 0.4s
+}
+
+#check:checked~.chatwindow {
+    background-color: rgb(134, 11, 11);
+    z-index: 111;
+    right: 15px
+}
+
+.chatheader {
+    padding: 13px;
+    background-color: rgb(0, 217, 255);
+    border-radius: 5px 5px 0px 0px;
+    margin-bottom: 10px;
+    color: #fff
+}
+
+.chat-form {
+    padding: 15px
+}
+
+.chat-form input,
+textarea,
+button {
+    margin-bottom: 10px
+}
+
+.chat-form textarea {
+    resize: none
+}
+
+.form-control:focus,
+.btn:focus {
+    box-shadow: none
+}
+
+.btn,
+.btn:focus,
+.btn:hover {
+    background-color: blue;
+    border: blue
+}
+
+#check {
+    display: none !important
+}
+
+.chat-head{
+    position:fixed;
+    bottom:30px;
+    right:15px;
+    width:55px;
+    height:55px;
+    text-align:center;
+    z-index:101;
+    cursor:pointer;
+    margin:0px;
+    -webkit-transition:all 300ms ease;
+    -ms-transition:all 300ms ease;
+    -o-transition:all 300ms ease;
+    -moz-transition:all 300ms ease;
+    transition:all 300ms ease
+}

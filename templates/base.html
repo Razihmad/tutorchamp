@@ -9,6 +9,7 @@
     {% endblock css %}
     
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/chat.css' %}" rel="stylesheet">
     <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/animation.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
@@ -22,7 +23,7 @@
         rel="stylesheet">
     
 
-    <link rel="shortcut icon" href="{% static 'images/fav.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         {% block meta %}
           
@@ -119,7 +120,7 @@ window.onload = init;
             <div class="header-upper">
                 <div class="auto-container clearfix">
                     <div class="pull-left logo-box">
-                        <div class="logo"><a href="/"><img width="231px" src="{% static 'images/logo.jpg' %}" alt="TutorChamps" title="TutorChamps"></a>
+                        <div class="logo"><a href="/"><img src="{% static 'images/logo.png' %}" alt="TutorChamps" title="TutorChamps"></a>
                         </div>
                     </div>
         
@@ -474,7 +475,21 @@ window.onload = init;
     </div>
 
     <!--Scroll to top-->
+    {% if request.user.is_authenticated %}
+    <div class="chat-head" data-target="html"> </span>
+        <input type="checkbox" id="check"> <label class="chat-btn" for="check"> <img class="comment" src="{% static 'images/chat.png' %}"><i class="fa fa-close close"></i> </label>
+        <div class="chatwindow">
+            
+            {% include 'chat_head/chat-window.html' with uuid=user %}
+            
+           
+        </div>
+    </div>
+    {% else %}
     <div class="chat_icon" data-target="html"> <img  src="{% static 'images/chat.png' %}"> </span></div>
+    {% endif %}
+    
+    
 
     <script src="{% static 'js/jquery.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
