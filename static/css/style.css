@@ -702,12 +702,6 @@ img{
 	/* padding-right: 160px; */
 	padding-left:120px;
 }
-
-.main-header .header-upper .logo-box{
-	position: relative;
-	padding:10px 0px;
-}
-
 .main-header .outer-box{
 	padding: 24px 0px;
 	display: flex;
@@ -3403,7 +3397,7 @@ img{display:inline-block;max-width:100%;height:auto}
 .main-header .header-upper .inner-container{position:relative}
 .main-header .header-upper .outer-container{position:relative;padding:0 60px}
 .main-header .nav-outer{position:static;float:right;padding-left:120px}
-.main-header .header-upper .logo-box{position:relative;padding:10px 0}
+.main-header .header-upper .logo-box{position:relative;padding:20px 0 0}
 .main-header .header-upper .logo-box .logo{position:relative;}
 .main-header .outer-box{padding:24px 0;display:flex;align-items:center}
 .main-header .btn-box{position:relative;float:left;margin-left:30px}
@@ -3437,7 +3431,7 @@ img{display:inline-block;max-width:100%;height:auto}
 .main-menu .navigation > li > .mega-menu .lower-box .btn-box{position:absolute;right:0;top:65px}
 .main-menu .navigation > li > .mega-menu .lower-box .side-icon{position:absolute;right:-240px;bottom:-30px}
 .sticky-header{position:fixed;opacity:0;visibility:hidden;left:0;top:0;width:100%;padding:0;background:#fff;z-index:0;border-bottom:1px solid #e8f1f7;transition:all 500ms ease;-moz-transition:all 500ms ease;-webkit-transition:all 500ms ease;-ms-transition:all 500ms ease;-o-transition:all 500ms ease}
-.sticky-header .logo{padding:10px 0;margin-right:42px}
+.sticky-header .logo{padding:16px 0 0;margin-right:42px}
 .fixed-header .sticky-header{z-index:999;opacity:1;visibility:visible;-ms-animation-name:fadeInDown;-moz-animation-name:fadeInDown;-op-animation-name:fadeInDown;-webkit-animation-name:fadeInDown;animation-name:fadeInDown;-ms-animation-duration:500ms;-moz-animation-duration:500ms;-op-animation-duration:500ms;-webkit-animation-duration:500ms;animation-duration:500ms;-ms-animation-timing-function:linear;-moz-animation-timing-function:linear;-op-animation-timing-function:linear;-webkit-animation-timing-function:linear;animation-timing-function:linear;-ms-animation-iteration-count:1;-moz-animation-iteration-count:1;-op-animation-iteration-count:1;-webkit-animation-iteration-count:1;animation-iteration-count:1}
 .main-menu .navigation > li > a{position:relative;display:inline-block;color:#06142d;text-align:center;line-height:30px;text-transform:capitalize;letter-spacing:0;opacity:1;font-weight:500;padding:22px 25px;font-size:16px;transition:all 500ms ease;-moz-transition:all 500ms ease;-webkit-transition:all 500ms ease;-ms-transition:all 500ms ease;-o-transition:all 500ms ease}
 .sticky-header .main-menu .navigation > li{margin-left:0;margin-right:0}
