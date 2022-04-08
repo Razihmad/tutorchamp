@@ -629,7 +629,13 @@ window.onload = init;
                 success:function(data){
                     if(data.status=="ok"){
                         console.log("successfull registered")
-                        window.location.href = window.location.origin+'/dashboard/new-user/';
+                        console.log(data.order)
+                        if(data.order == "YES"){
+                            window.location.href = window.location.origin+'/dashboard/new-user/order-successful';
+                        }
+                        else{
+                            window.location.href = window.location.origin+'/dashboard/new-user/';
+                        }
                     }
                     else{
                         var content = data.msg

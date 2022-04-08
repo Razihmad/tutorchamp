@@ -255,7 +255,7 @@
 						<td>Chat</td>
 					</tr>
 					{% for detail in details %}
-					{% if detail.duration is none %}
+					{% if detail.duration is None %}
 					<tr style="color: black;">
 						<td>{{detail.order_id}}</td>
 						{% if detail.assignment %}
@@ -588,7 +588,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script>
 
-
+		if ('{{ ordered }}' == 'True'){
+			$("#check").click()
+		}
+		console.log($("#checkbox").checked)
 		$('.date_time').on('keydown', function() {
 		    $(this).addClass("focus");
 		});
