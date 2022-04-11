@@ -24,7 +24,7 @@ def presaveSignal(sender,instance,**kwargs):
                 }
                 email=instance.email
                 email_msg = render_to_string('test_pass.txt',c)
-                connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
+                connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.gmail.com',
                                                  use_tls=True,port=587,username='tutors@tutorchamps.com',password=config('tutorPassword'))
                 connection.open()
                 email = EmailMessage(subject='Congratulations || You have nailed it',body=email_msg,from_email='TutorChamps Tutors Support <tutors@tutorchamps.com>',to=[email])
@@ -43,14 +43,15 @@ def predeleteSignal(sender,instance,**kwargs):
         'useranme':username,
         'email':email,
     }
-    
+
     email_msg = render_to_string('test_fail.txt',c)
-    connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.hostinger.com',
-                                     use_tls=True,port=587,username='tutors@tutorchamps.com',password=config('tutorPassword'))
-    connection.open()
+    # connection = mail.get_connection(backend='django.core.mail.backends.smtp.EmailBackend',host='smtp.gmail.com',
+    #                                  use_tls=True,port=587,username='tutors@tutorchamps.com',password=config('tutorPassword'))
+    # connection.open()
     email = EmailMessage(subject='Best of luck for next time',body=email_msg,from_email='TutorChamps Tutors Support <tutors@tutorchamps.com>',to=[email])
-    connection.send_messages([email])
-    connection.close()
+    # connection.send_messages([email])
+    # connection.close()
+    email.send()
     
     
 @receiver(post_save,sender=Orders)
