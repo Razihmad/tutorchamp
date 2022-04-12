@@ -78,6 +78,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends',  # <-- Here
                 'social_django.context_processors.login_redirect',
+                'app.context_processors.chat_context'
             ],
         },
     },
@@ -96,8 +97,17 @@ AUTHENTICATION_BACKENDS = (
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME':str(os.path.join( BASE_DIR, 'db.sqlite3'))
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('NAME'),
+
+        'USER': config('USER'),
+
+        'PASSWORD': config('PASSWORD'),
+
+        'HOST': config('HOST'),
+
+        'PORT': config('PORT'),
+        
     }
 }
 
@@ -170,4 +180,23 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 SOCIAL_AUTH_FACEBOOK_KEY = config('SOCIAL_AUTH_FACEBOOK_KEY') 
 SOCIAL_AUTH_FACEBOOK_SECRET = config('SOCIAL_AUTH_FACEBOOK_SECRET')
-os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"   
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename':os.path.join(BASE_DIR,'logs/debug.log')
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}

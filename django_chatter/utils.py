@@ -5,6 +5,11 @@ from channels.db import database_sync_to_async
 from django.contrib.sessions.models import Session
 from django.utils.crypto import constant_time_compare
 from django.contrib.auth.models import AnonymousUser
+from channels.layers import get_channel_layer
+from django_chatter.consumers import save_message
+from asgiref.sync import async_to_sync
+
+
 from django.contrib.auth import (
     get_user_model,
     HASH_SESSION_KEY,
@@ -147,3 +152,50 @@ def create_room(user_list):
         room.members.set(user_list)
         room.save()
         return room
+
+
+def update_room_with_staff():
+    room = Room.objects.all()
+    staff = get_user_model().objects.filter(groups__name='Students Help')
+    for r in room:
+        r.members.add(*staff)
+        r.save()
+
+def send_message(request, msg):
+    channel_layer = get_channel_layer()
+    room = Room.objects.filter(members=request.user).order_by('-date_modified')[0]
+    room_id = room.id
+    room_group_name = 'chat_%s' % room_id
+    print("util",room)
+    sender = get_user_model().objects.filter(groups__name='Students Help')[0]
+    time = async_to_sync(save_message)(room,
+                        sender,
+                        msg,
+                        )
+    t = time.strftime("%d %b %Y %H:%M:%S %Z")
+    #t = strftime("%d %b %Y %H:%M:%S %Z", gmtime())
+    async_to_sync(channel_layer.group_send)(
+                room_group_name,
+                {
+                    'type': 'send_to_websocket',
+                    'message_type': 'text',
+                    'message': msg,
+                    'date_created': t,
+                    'sender': sender.username,
+                    'room_id': str(room_id),
+                }
+            )
+
+    async_to_sync(channel_layer.group_send)(
+                f'user_{request.user.username}',
+                {
+                    'type': 'receive_json',
+                    'message_type': 'text',
+                    'message': msg,
+                    'date_created': t,
+                    'sender': sender.username,
+                    'room_id': str(room_id),
+                }
+            )
+
+

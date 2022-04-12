@@ -2,8 +2,5 @@
 __pycache__
 media
 env
-fake.py
-migrations
-db.sqlite3
 admin
 logs

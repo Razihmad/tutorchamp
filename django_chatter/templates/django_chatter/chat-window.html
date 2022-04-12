@@ -3,7 +3,7 @@
 ===========================================================AI-->
 
 <!--Extends the Chat app base-->
-{% extends base_template %}
+{% extends "django_chatter/base.html" %}
 
 <!--Django staticfiles functions are loaded using this tag-->
 {% load static %}
@@ -103,7 +103,7 @@
 </div>
 <script>
 	var room_id = '{{room_uuid_json}}';
-	var get_room_url = '{% url "django_chatter:get_messages" uuid=room_uuid_json %}';
+	var get_room_url = '';
 	var username = '{{user.username}}';
 </script>
 <script src = "{% static 'js/dateFormatter.js' %}"></script>

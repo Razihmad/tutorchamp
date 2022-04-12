@@ -9,6 +9,7 @@
 	<link href="{% static 'css/dash.css' %}" rel="stylesheet">
 	<link href="{% static 'dashboard/css/dashboard.css' %}" rel="stylesheet">
 	<link href="{% static 'css/style.css' %}" rel="stylesheet">
+	<link href="{% static 'css/chat.css' %}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&amp;display=swap"
 		rel="stylesheet">
 	<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
@@ -572,7 +573,15 @@
 		</div>
 	</div>
 	
-
+    <div class="chat-head" data-target="html"> </span>
+        <input type="checkbox" id="check"> <label class="chat-btn" for="check"> <img class="comment" src="{% static 'images/chat.png' %}"><i class="fa fa-close close"></i> </label>
+        <div class="chatwindow">
+            
+            {% include 'chat_head/chat-window.html' with uuid=user %}
+            
+           
+        </div>
+    </div>
 
 	<div class="chat_box">
 		<button id="close_chat" type="button" class="close">×</button>
@@ -585,7 +594,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script>
 
-
+		if ('{{ ordered }}' == 'True'){
+			$("#check").click()
+		}
+		console.log($("#checkbox").checked)
 		$('.date_time').on('keydown', function() {
 		    $(this).addClass("focus");
 		});

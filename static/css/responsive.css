@@ -53,7 +53,7 @@ h2{font-size:26px}
 }
 @media only screen and (min-width: 768px) {
 	.rating_inner li:nth-child(1) .img_con img {
-    margin-bottom: -14px;
+    margin-bottom: -12px;
 }
 .pl0_large{padding-left:0}
 .main-menu .navigation > li > ul,.main-menu .navigation > li > ul > li > ul{display:block!important;visibility:hidden;opacity:0}

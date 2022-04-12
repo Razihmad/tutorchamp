@@ -87,7 +87,7 @@ class ChatRoomView(LoginRequiredMixin, TemplateView):
 				for member in all_members:
 					if member.is_staff==False:
 						room_name = member.username
-      
+			
 			context['room_uuid_json'] = kwargs.get('uuid')
 			context['latest_messages_curr_room'] = latest_messages_curr_room
 			context['room_name'] = room_name
@@ -108,7 +108,6 @@ class ChatRoomView(LoginRequiredMixin, TemplateView):
 					rooms_with_unread.append(room.id)
 			context['rooms_list'] = rooms_list
 			context['rooms_with_unread'] = rooms_with_unread
-
 			return context
 		else:
 			raise Http404("Sorry! What you're looking for isn't here.")
