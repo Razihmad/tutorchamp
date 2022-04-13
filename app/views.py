@@ -408,7 +408,7 @@ def signup(request):
                     login(request,usr)
                     data = {'status':'ok','msg':'User created successfully'}
                     print("Order successful, order id : {}".format(order.order_id))
-                    send_message(request, "Order successful, order id : {}".format(order.order_id))
+                    send_message(request, "Order successful, order id : {}".format(order_id))
                     data['order'] = "YES"
                     #return redirect('new-user-ordered', order="order-successful")
                     return JsonResponse(data)
