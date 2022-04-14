@@ -86,7 +86,7 @@ def statusUpdated(sender,instance,**kwargs):
             if instance.status =='Assignment Completed':
                 content = render_to_string('order_completed.txt',c)
                 email = EmailMessage(subject="Assignment Completed",body=content,from_email='TutorChamps Students Support <help@tutorchamps.com>',to=[email])
-                file = instance.assignment_completed_file
+                file = instance.completed_assignment
                 email.attach(file.name,file.read())
                 email.send()
             elif instance.status =='Order Rejected':
