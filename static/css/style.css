@@ -4771,5 +4771,8 @@ border-radius: 5px;
     display: none;
 }
 #close_chat{position: absolute; top: 3px; right: 5px; z-index: 999;}
-
+.questions-con .btn, .questions-con .btn:focus, .questions-con .btn:hover {
+    background-color: transparent!important;
+    border: transparent!important;
+}
 
